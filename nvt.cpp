@@ -10,6 +10,7 @@
 #include "nvtModelDatabase.h"
 #include "logEquilibrationStateWriter.h"
 #include "analysisPackage.h"
+#include "periodicBoundaries.h"
 
 
 /*!
@@ -22,7 +23,7 @@ move the positions. If you want the forces and the positions to be sync'ed, you 
 Voronoi model's computeForces() funciton right before saving a state.
 */
 
-/*This is the nvt test to verify the results from 2018 anomalous paper*/
+/*This is the nose-hoove test under PBD to verify the results from 2018 anomalous paper*/
 int main(int argc, char*argv[])
 {
     //...some default parameters
@@ -119,6 +120,10 @@ int main(int argc, char*argv[])
 
     //combine the equation of motion and the cell configuration in a "Simulation"
     SimulationPtr sim = make_shared<Simulation>();
+
+    PeriodicBoxPtr newbox = make_shared<periodicBoundaries>(sqrt(numpts),sqrt(numpts));
+    sim->setBox(newbox);
+
     sim->setConfiguration(voronoiModel);
     sim->addUpdater(nvt,voronoiModel);
     //set the time step size
