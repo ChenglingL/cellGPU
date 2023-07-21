@@ -1,0 +1,2 @@
+/usr/bin/ar qc libanalysis.a CMakeFiles/analysis.dir/autocorrelator.cpp.o CMakeFiles/analysis.dir/dynamicalFeatures.cpp.o CMakeFiles/analysis.dir/structuralFeatures.cpp.o
+/usr/bin/ranlib libanalysis.a
