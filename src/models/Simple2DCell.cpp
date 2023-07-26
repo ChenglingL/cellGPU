@@ -106,6 +106,35 @@ void Simple2DCell::setCellPreferences(vector<double2> &APPref)
         };
     };
 
+void Simple2DCell::setBidisperseCellPreferences(double q0, double alpha, double fraction)
+    {
+    double a1 = alpha / (1.0 + fraction*(alpha-1));
+    double a2 = a1 / alpha;
+    int cutoff = Ncells*fraction;
+    AreaPeriPreferences.resize(Ncells);
+    cellType.resize(Ncells);
+    ArrayHandle<double2> h_ap(AreaPeriPreferences,access_location::host,access_mode::overwrite);
+    ArrayHandle<int> h_ct(cellType,access_location::host,access_mode::overwrite);
+
+ 
+
+    for(int ii = 0 ; ii < cutoff; ++ii)
+        {
+        h_ct.data[ii] = 0;
+        h_ap.data[ii].x = a1;
+        h_ap.data[ii].y = q0*sqrt(a1);
+        }
+    for(int ii = cutoff ; ii < Ncells; ++ii)
+        {
+        h_ct.data[ii] = 1;
+        h_ap.data[ii].x = a2;
+        h_ap.data[ii].y = q0*sqrt(a2);
+        }
+
+ 
+
+    }
+
 /*!
 Simply call either the CPU or GPU routine in the current or derived model
 */

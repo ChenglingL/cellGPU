@@ -40,6 +40,7 @@ void nvtModelDatabase::SetDimVar()
     additionalDataVar   = File.add_var("additionalData",ncDouble,recDim,dofDim);
     BoxMatrixVar        = File.add_var("BoxMatrix",     ncDouble,recDim, boxDim);
     timeVar             = File.add_var("time",     ncDouble,recDim, unitDim);
+    meanqVar            = File.add_var("meanQ",     ncDouble,recDim, unitDim);
     }
 
 void nvtModelDatabase::GetDimVar()
@@ -57,6 +58,7 @@ void nvtModelDatabase::GetDimVar()
     additionalDataVar = File.get_var("additionalData");
     BoxMatrixVar = File.get_var("BoxMatrix");
     timeVar = File.get_var("time");
+    meanqVar     = File.add_var("meanQ",     ncDouble,recDim, unitDim);
 
     }
 
@@ -104,8 +106,11 @@ void nvtModelDatabase::writeState(STATE c, double time, int rec)
         idx +=1;
         };
 
+    double meanq = s->reportq();
+
     //Write all the data
     posVar           ->put_rec(&posdat[0],       rec);
+    meanqVar         ->put_rec(&meanq,rec);
     velVar           ->put_rec(&veldat[0],       rec);
     additionalDataVar->put_rec(&additionaldat[0],rec);
     typeVar          ->put_rec(&typedat[0],      rec);

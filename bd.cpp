@@ -54,6 +54,7 @@ int main(int argc, char*argv[])
             case 'p': p0 = atof(optarg); break;
             case 'a': a0 = atof(optarg); break;
             case 'v': T = atof(optarg); break;
+            case 'r': alpha = atof(optarg); break;
             case 'm': Mu = atof(optarg); break;
             //case 'y': v0 = atof(optarg); break;
             case 'x': id = atof(optarg); break; //indentify different simulations
@@ -101,24 +102,11 @@ int main(int argc, char*argv[])
     //define a voronoi configuration with a quadratic energy functional
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,4.0,reproducible,initializeGPU);
 
-    //set the cell preferences to uniformly have A_0 = 1, P_0 = p_0
-    vector<double2> MixedPre; // Vector to store double2 elements
+    //set the cell preferences to uniformly have <A_0> = 1, P_0 = p_0
 
     //set the system to be 50:50 mixed and a0/a1=4/3
-    for (int i = 0; i < numpts; ++i) {
-        if (i < numpts/2) {
-            double2 element1;
-            element1.x = 1.0;
-            element1.y = p0 * 1.0;
-            MixedPre.push_back(element1);
-        } else {
-            double2 element2;
-            element2.x = 0.75;
-            element2.y = p0 * sqrt(0.75);
-            MixedPre.push_back(element2);
-        }
-    }
-    voronoiModel->setCellPreferences(MixedPre);
+
+    voronoiModel->setBidisperseCellPreferences(p0,alpha,0.5);
     //voronoiModel->setCellPreferencesWithRandomAreas(p0,0.8,1.2);
 
     voronoiModel->setCellVelocitiesMaxwellBoltzmann(T);
