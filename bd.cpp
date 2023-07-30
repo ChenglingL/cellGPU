@@ -40,6 +40,7 @@ int main(int argc, char*argv[])
     double T = 0.1;  // the temperature
     double v0 = 0.01;
     double Mu = 1.0;
+    double alpha = 4/3;
     int id = 0;      //The index of different configuration
 
     //The defaults can be overridden from the command line

@@ -58,7 +58,7 @@ void nvtModelDatabase::GetDimVar()
     additionalDataVar = File.get_var("additionalData");
     BoxMatrixVar = File.get_var("BoxMatrix");
     timeVar = File.get_var("time");
-    meanqVar     = File.add_var("meanQ",     ncDouble,recDim, unitDim);
+    meanqVar = File.get_var("meanQ");
 
     }
 
