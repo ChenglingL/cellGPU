@@ -41,6 +41,8 @@ void nvtModelDatabase::SetDimVar()
     BoxMatrixVar        = File.add_var("BoxMatrix",     ncDouble,recDim, boxDim);
     timeVar             = File.add_var("time",     ncDouble,recDim, unitDim);
     meanqVar            = File.add_var("meanQ",     ncDouble,recDim, unitDim);
+    sigmaVar            = File.add_var("sigma",     ncDouble,recDim, unitDim);
+    overlapVar          = File.add_var("overlap",     ncDouble,recDim, unitDim);
     }
 
 void nvtModelDatabase::GetDimVar()
@@ -59,6 +61,8 @@ void nvtModelDatabase::GetDimVar()
     BoxMatrixVar = File.get_var("BoxMatrix");
     timeVar = File.get_var("time");
     meanqVar = File.get_var("meanQ");
+    sigmaVar = File.get_var("sigma");
+    overlapVar = File.get_var("overlap");
 
     }
 
@@ -105,17 +109,23 @@ void nvtModelDatabase::writeState(STATE c, double time, int rec)
         typedat[ii] = h_ct.data[pidx];
         idx +=1;
         };
+    dynamicalFeatures dynFeat(s->returnPositions(),s->Box);
+
 
     double meanq = s->reportq();
+    double sigma = s->getSigmaXY();
+    double overlap = dynFeat.computeOverlapFunction(s->returnPositions());
 
     //Write all the data
     posVar           ->put_rec(&posdat[0],       rec);
-    meanqVar         ->put_rec(&meanq,rec);
+    meanqVar         ->put_rec(&meanq,           rec);
     velVar           ->put_rec(&veldat[0],       rec);
     additionalDataVar->put_rec(&additionaldat[0],rec);
     typeVar          ->put_rec(&typedat[0],      rec);
     timeVar          ->put_rec(&time,            rec);
     BoxMatrixVar     ->put_rec(&boxdat[0],       rec);
+    overlapVar       ->put_rec(&overlap,         rec);
+    sigmaVar         ->put_rec(&sigma,           rec);
     File.sync();
     }
 

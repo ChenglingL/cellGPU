@@ -43,6 +43,7 @@ int main(int argc, char*argv[])
     double alpha = 4/3;
     double dgamma = 0.0025; //the shear strain
     int id = 0;      //The index of different configuration
+    double writeSpacing = 1000; // The spacing of saved states
 
     //The defaults can be overridden from the command line
     while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:d:")) != -1)
@@ -97,7 +98,7 @@ int main(int argc, char*argv[])
     lewriter.identifyNextFrame();
 
 
-    cout << "initializing a system of " << numpts << " cells at temperature " << T << endl;
+    cout << "initializing a system of " << numpts << " cells at gamma " << dgamma << " cells at temperature " << T << endl;
     shared_ptr<brownianParticleDynamics> bd = make_shared<brownianParticleDynamics>(numpts);
     bd->setT(T);
     bd->setMu(Mu);
@@ -117,7 +118,7 @@ int main(int argc, char*argv[])
     //combine the equation of motion and the cell configuration in a "Simulation"
     SimulationPtr sim = make_shared<Simulation>();
 
-    PeriodicBoxPtr newbox = make_shared<periodicBoundaries>(sqrt(numpts),sqrt(numpts));
+    PeriodicBoxPtr newbox = make_shared<periodicBoundaries>(sqrt(numpts),dgamma,sqrt(numpts),0);
     sim->setBox(newbox);
     sim->setConfiguration(voronoiModel);
     sim->addUpdater(bd,voronoiModel);
@@ -150,9 +151,8 @@ int main(int argc, char*argv[])
     for(long long int ii = 0; ii < tSteps; ++ii)
         {
 
-        if (ii == lewriter.nextFrameToSave)
+        if (ii % writeSpacing == 0)
             {
-            voronoiModel->computeForces();
             lewriter.writeState(voronoiModel,ii);
             printf("time_step: %i *0.001 \t energy %f \t msd %f \t overlap %f\n", ii, voronoiModel->computeEnergy(),dynFeat.computeMSD(voronoiModel->returnPositions()),dynFeat.computeOverlapFunction(voronoiModel->returnPositions()));
             }
