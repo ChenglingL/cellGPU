@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/database.dir/DatabaseNetCDFSPV.cpp.o.d"
   "CMakeFiles/database.dir/DatabaseTextVoronoi.cpp.o"
   "CMakeFiles/database.dir/DatabaseTextVoronoi.cpp.o.d"
+  "CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.o"
+  "CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.o.d"
   "CMakeFiles/database.dir/logEquilibrationStateWriter.cpp.o"
   "CMakeFiles/database.dir/logEquilibrationStateWriter.cpp.o.d"
   "CMakeFiles/database.dir/nvtModelDatabase.cpp.o"

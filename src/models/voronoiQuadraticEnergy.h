@@ -70,6 +70,8 @@ class VoronoiQuadraticEnergy : public voronoiModelBase
     //be friends with the associated Database class so it can access data to store or read
     friend class SPVDatabaseNetCDF;
     friend class nvtModelDatabase;
+    friend class nvtModelDatabase;
+    friend class GlassyDynModelDatabase;
     };
 
 #endif

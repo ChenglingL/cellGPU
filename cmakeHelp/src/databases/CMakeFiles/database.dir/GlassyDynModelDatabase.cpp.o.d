@@ -1,5 +1,13 @@
-CMakeFiles/bd.out.dir/bd.cpp.o: /u/cli6/Cell_G/cellGPU/bd.cpp \
- /usr/include/stdc-predef.h /u/cli6/Cell_G/cellGPU/inc/std_include.h \
+src/databases/CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.o: \
+ /u/cli6/Cell_G/cellGPU/src/databases/GlassyDynModelDatabase.cpp \
+ /usr/include/stdc-predef.h \
+ /u/cli6/Cell_G/cellGPU/src/databases/GlassyDynModelDatabase.h \
+ /u/cli6/Cell_G/cellGPU/src/models/voronoiQuadraticEnergy.h \
+ /u/cli6/Cell_G/cellGPU/src/models/voronoiModelBase.h \
+ /u/cli6/Cell_G/cellGPU/src/models/Simple2DActiveCell.h \
+ /u/cli6/Cell_G/cellGPU/src/models/Simple2DCell.h \
+ /u/cli6/Cell_G/cellGPU/src/models/Simple2DModel.h \
+ /u/cli6/Cell_G/cellGPU/inc/std_include.h \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/cmath \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/c++config.h \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -259,17 +267,13 @@ CMakeFiles/bd.out.dir/bd.cpp.o: /u/cli6/Cell_G/cellGPU/bd.cpp \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
  /u/cli6/Cell_G/cellGPU/inc/vectorTypeOperations.h \
+ /u/cli6/Cell_G/cellGPU/src/utility/gpuarray.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/channel_descriptor.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_functions.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
- /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_profiler_api.h \
- /u/cli6/Cell_G/cellGPU/src/simulation/Simulation.h \
- /u/cli6/Cell_G/cellGPU/src/models/Simple2DCell.h \
- /u/cli6/Cell_G/cellGPU/src/models/Simple2DModel.h \
- /u/cli6/Cell_G/cellGPU/src/utility/gpuarray.h \
  /u/cli6/Cell_G/cellGPU/src/utility/indexer.h \
  /u/cli6/Cell_G/cellGPU/src/utility/periodicBoundaries.h \
  /u/cli6/Cell_G/cellGPU/src/utility/HilbertSort.h \
@@ -303,18 +307,6 @@ CMakeFiles/bd.out.dir/bd.cpp.o: /u/cli6/Cell_G/cellGPU/bd.cpp \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_tree.h \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_set.h \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_multiset.h \
- /u/cli6/Cell_G/cellGPU/src/updaters/simpleEquationOfMotion.h \
- /u/cli6/Cell_G/cellGPU/src/updaters/simpleEquationOfMotion.cuh \
- /u/cli6/Cell_G/cellGPU/src/updaters/updaterWithNoise.h \
- /u/cli6/Cell_G/cellGPU/src/updaters/updater.h \
- /u/cli6/Cell_G/cellGPU/src/models/Simple2DModel.h \
- /u/cli6/Cell_G/cellGPU/src/updaters/updater.h \
- /u/cli6/Cell_G/cellGPU/src/updaters/brownianParticleDynamics.h \
- /u/cli6/Cell_G/cellGPU/src/updaters/simpleEquationOfMotion.h \
- /u/cli6/Cell_G/cellGPU/src/models/voronoiQuadraticEnergy.h \
- /u/cli6/Cell_G/cellGPU/src/models/voronoiModelBase.h \
- /u/cli6/Cell_G/cellGPU/src/models/Simple2DActiveCell.h \
- /u/cli6/Cell_G/cellGPU/src/models/Simple2DCell.h \
  /u/cli6/Cell_G/cellGPU/src/models/Simple2DCell.cuh \
  /u/cli6/Cell_G/cellGPU/src/utility/cellListGPU.cuh \
  /u/cli6/Cell_G/cellGPU/src/utility/indexer.h \
@@ -1232,24 +1224,24 @@ CMakeFiles/bd.out.dir/bd.cpp.o: /u/cli6/Cell_G/cellGPU/bd.cpp \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/IO.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/DenseBase.h \
- /u/cli6/.local/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h \
- /u/cli6/.local/include/eigen3/Eigen/src/plugins/BlockMethods.h \
- /u/cli6/.local/include/eigen3/Eigen/src/plugins/IndexedViewMethods.h \
- /u/cli6/.local/include/eigen3/Eigen/src/plugins/IndexedViewMethods.h \
- /u/cli6/.local/include/eigen3/Eigen/src/plugins/ReshapedMethods.h \
- /u/cli6/.local/include/eigen3/Eigen/src/plugins/ReshapedMethods.h \
+ /u/cli6/.local/include/eigen3/Eigen/src/Core/../plugins/CommonCwiseUnaryOps.h \
+ /u/cli6/.local/include/eigen3/Eigen/src/Core/../plugins/BlockMethods.h \
+ /u/cli6/.local/include/eigen3/Eigen/src/Core/../plugins/IndexedViewMethods.h \
+ /u/cli6/.local/include/eigen3/Eigen/src/Core/../plugins/IndexedViewMethods.h \
+ /u/cli6/.local/include/eigen3/Eigen/src/Core/../plugins/ReshapedMethods.h \
+ /u/cli6/.local/include/eigen3/Eigen/src/Core/../plugins/ReshapedMethods.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/MatrixBase.h \
- /u/cli6/.local/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h \
- /u/cli6/.local/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
- /u/cli6/.local/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
+ /u/cli6/.local/include/eigen3/Eigen/src/Core/../plugins/CommonCwiseBinaryOps.h \
+ /u/cli6/.local/include/eigen3/Eigen/src/Core/../plugins/MatrixCwiseUnaryOps.h \
+ /u/cli6/.local/include/eigen3/Eigen/src/Core/../plugins/MatrixCwiseBinaryOps.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/EigenBase.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/Product.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/CoreEvaluators.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/AssignEvaluator.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/Assign.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/ArrayBase.h \
- /u/cli6/.local/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h \
- /u/cli6/.local/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h \
+ /u/cli6/.local/include/eigen3/Eigen/src/Core/../plugins/ArrayCwiseUnaryOps.h \
+ /u/cli6/.local/include/eigen3/Eigen/src/Core/../plugins/ArrayCwiseBinaryOps.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/util/BlasUtil.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/DenseStorage.h \
  /u/cli6/.local/include/eigen3/Eigen/src/Core/NestByValue.h \
@@ -2583,15 +2575,9 @@ CMakeFiles/bd.out.dir/bd.cpp.o: /u/cli6/Cell_G/cellGPU/bd.cpp \
  /u/cli6/Cell_G/cellGPU/src/models/structures.h \
  /u/cli6/Cell_G/cellGPU/src/models/voronoiModelBase.cuh \
  /u/cli6/Cell_G/cellGPU/src/models/voronoiQuadraticEnergy.cuh \
- /u/cli6/Cell_G/cellGPU/src/updaters/NoseHooverChainNVT.h \
- /u/cli6/Cell_G/cellGPU/src/databases/nvtModelDatabase.h \
  /u/cli6/Cell_G/cellGPU/src/analysis/dynamicalFeatures.h \
  /u/cli6/Cell_G/cellGPU/src/databases/DatabaseNetCDF.h \
  /u/cli6/.local/include/netcdfcpp.h /u/cli6/.local/include/ncvalues.h \
  /u/cli6/.local/include/netcdf.h \
  /u/cli6/Cell_G/cellGPU/src/databases/BaseDatabase.h \
- /u/cli6/Cell_G/cellGPU/src/databases/logEquilibrationStateWriter.h \
- /u/cli6/Cell_G/cellGPU/src/analysis/analysisPackage.h \
- /u/cli6/Cell_G/cellGPU/src/analysis/autocorrelator.h \
- /u/cli6/Cell_G/cellGPU/src/analysis/dynamicalFeatures.h \
- /u/cli6/Cell_G/cellGPU/src/analysis/structuralFeatures.h
+ /u/cli6/Cell_G/cellGPU/src/models/Simple2DCell.h

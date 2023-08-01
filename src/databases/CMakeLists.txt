@@ -23,5 +23,6 @@ add_library(database
     DatabaseTextVoronoi.cpp
     vectorValueDatabase.cpp
     nvtModelDatabase.cpp
+    GlassyDynModelDatabase.cpp
     )
 

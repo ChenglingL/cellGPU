@@ -8,7 +8,7 @@
 #include "brownianParticleDynamics.h"
 #include "voronoiQuadraticEnergy.h"
 #include "NoseHooverChainNVT.h"
-#include "nvtModelDatabase.h"
+#include "GlassyDynModelDatabase.h"
 #include "logEquilibrationStateWriter.h"
 #include "analysisPackage.h"
 #include "periodicBoundaries.h"
@@ -24,7 +24,7 @@ move the positions. If you want the forces and the positions to be sync'ed, you 
 Voronoi model's computeForces() funciton right before saving a state.
 */
 
-/*This is the BD test under PBD to verify the results from 2018 anomalous paper using brownian dynamics*/
+/*This .cpp is used to get the shear stress sigma at some small shear strain at temperature T*/
 int main(int argc, char*argv[])
 {
     //...some default parameters
@@ -43,7 +43,7 @@ int main(int argc, char*argv[])
     double alpha = 4/3;
     double dgamma = 0.0025; //the shear strain
     int id = 0;      //The index of different configuration
-    double writeSpacing = 1000; // The spacing of saved states
+    int writeSpacing = 1000; // The spacing of saved states
 
     //The defaults can be overridden from the command line
     while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:d:")) != -1)
@@ -82,20 +82,10 @@ int main(int argc, char*argv[])
     if (!gpu)
         initializeGPU = false;
 
-    //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
-    logEquilibrationStateWriter lewriter(0.2);
     char dataname[256];
     double equilibrationTime = dt*initSteps;
-    vector<long long int> offsets;
-    offsets.push_back(0);
-    //offsets.push_back(100);offsets.push_back(1000);offsets.push_back(50);
-    for(int ii = 0; ii < offsets.size(); ++ii)
-        {
-        sprintf(dataname,"bd_N%i_p%.3f_T%.8f_t%.6f_ga%f_%i.nc",numpts,p0,T,tSteps*dt,dgamma,id);
-        shared_ptr<nvtModelDatabase> ncdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
-        lewriter.addDatabase(ncdat,offsets[ii]);
-        }
-    lewriter.identifyNextFrame();
+    sprintf(dataname,"bd_N%i_p%.3f_T%.8f_t%.6f_ga%f_%i.nc",numpts,p0,T,tSteps*dt,dgamma,id);
+    shared_ptr<GlassyDynModelDatabase> ncdat=make_shared<GlassyDynModelDatabase>(numpts,dataname,NcFile::Replace);
 
 
     cout << "initializing a system of " << numpts << " cells at gamma " << dgamma << " cells at temperature " << T << endl;
@@ -153,7 +143,7 @@ int main(int argc, char*argv[])
 
         if (ii % writeSpacing == 0)
             {
-            lewriter.writeState(voronoiModel,ii);
+            ncdat->writeState(voronoiModel);
             printf("time_step: %i *0.001 \t energy %f \t msd %f \t overlap %f\n", ii, voronoiModel->computeEnergy(),dynFeat.computeMSD(voronoiModel->returnPositions()),dynFeat.computeOverlapFunction(voronoiModel->returnPositions()));
             }
 

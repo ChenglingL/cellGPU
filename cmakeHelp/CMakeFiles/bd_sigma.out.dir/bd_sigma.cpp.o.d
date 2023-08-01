@@ -1,5 +1,6 @@
-CMakeFiles/bd.out.dir/bd.cpp.o: /u/cli6/Cell_G/cellGPU/bd.cpp \
- /usr/include/stdc-predef.h /u/cli6/Cell_G/cellGPU/inc/std_include.h \
+CMakeFiles/bd_sigma.out.dir/bd_sigma.cpp.o: \
+ /u/cli6/Cell_G/cellGPU/bd_sigma.cpp /usr/include/stdc-predef.h \
+ /u/cli6/Cell_G/cellGPU/inc/std_include.h \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/cmath \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/c++config.h \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -2584,7 +2585,7 @@ CMakeFiles/bd.out.dir/bd.cpp.o: /u/cli6/Cell_G/cellGPU/bd.cpp \
  /u/cli6/Cell_G/cellGPU/src/models/voronoiModelBase.cuh \
  /u/cli6/Cell_G/cellGPU/src/models/voronoiQuadraticEnergy.cuh \
  /u/cli6/Cell_G/cellGPU/src/updaters/NoseHooverChainNVT.h \
- /u/cli6/Cell_G/cellGPU/src/databases/nvtModelDatabase.h \
+ /u/cli6/Cell_G/cellGPU/src/databases/GlassyDynModelDatabase.h \
  /u/cli6/Cell_G/cellGPU/src/analysis/dynamicalFeatures.h \
  /u/cli6/Cell_G/cellGPU/src/databases/DatabaseNetCDF.h \
  /u/cli6/.local/include/netcdfcpp.h /u/cli6/.local/include/ncvalues.h \

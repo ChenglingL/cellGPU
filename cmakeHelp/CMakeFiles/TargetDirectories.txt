@@ -1,7 +1,6 @@
 /u/cli6/Cell_G/cellGPU/cmakeHelp/CMakeFiles/rebuild_cache.dir
 /u/cli6/Cell_G/cellGPU/cmakeHelp/CMakeFiles/edit_cache.dir
-/u/cli6/Cell_G/cellGPU/cmakeHelp/CMakeFiles/bd.out.dir
-/u/cli6/Cell_G/cellGPU/cmakeHelp/CMakeFiles/nvt.out.dir
+/u/cli6/Cell_G/cellGPU/cmakeHelp/CMakeFiles/bd_sigma.out.dir
 /u/cli6/Cell_G/cellGPU/cmakeHelp/src/CMakeFiles/rebuild_cache.dir
 /u/cli6/Cell_G/cellGPU/cmakeHelp/src/CMakeFiles/edit_cache.dir
 /u/cli6/Cell_G/cellGPU/cmakeHelp/src/utility/CMakeFiles/rebuild_cache.dir

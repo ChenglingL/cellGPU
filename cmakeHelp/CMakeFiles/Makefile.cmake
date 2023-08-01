@@ -179,8 +179,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/bd.out.dir/DependInfo.cmake"
-  "CMakeFiles/nvt.out.dir/DependInfo.cmake"
+  "CMakeFiles/bd_sigma.out.dir/DependInfo.cmake"
   "src/utility/CMakeFiles/utilityGPU.dir/DependInfo.cmake"
   "src/utility/CMakeFiles/utility.dir/DependInfo.cmake"
   "src/simulation/CMakeFiles/simulation.dir/DependInfo.cmake"

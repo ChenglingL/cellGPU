@@ -2584,6 +2584,7 @@ CMakeFiles/nvt.out.dir/nvt.cpp.o: /u/cli6/Cell_G/cellGPU/nvt.cpp \
  /u/cli6/Cell_G/cellGPU/src/updaters/NoseHooverChainNVT.h \
  /u/cli6/Cell_G/cellGPU/src/updaters/simpleEquationOfMotion.h \
  /u/cli6/Cell_G/cellGPU/src/databases/nvtModelDatabase.h \
+ /u/cli6/Cell_G/cellGPU/src/analysis/dynamicalFeatures.h \
  /u/cli6/Cell_G/cellGPU/src/databases/DatabaseNetCDF.h \
  /u/cli6/.local/include/netcdfcpp.h /u/cli6/.local/include/ncvalues.h \
  /u/cli6/.local/include/netcdf.h \

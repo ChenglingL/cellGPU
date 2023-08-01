@@ -226,6 +226,30 @@ DatabaseTextVoronoi.cpp.s:
 	cd /u/cli6/Cell_G/cellGPU/cmakeHelp && $(MAKE) $(MAKESILENT) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/DatabaseTextVoronoi.cpp.s
 .PHONY : DatabaseTextVoronoi.cpp.s
 
+GlassyDynModelDatabase.o: GlassyDynModelDatabase.cpp.o
+.PHONY : GlassyDynModelDatabase.o
+
+# target to build an object file
+GlassyDynModelDatabase.cpp.o:
+	cd /u/cli6/Cell_G/cellGPU/cmakeHelp && $(MAKE) $(MAKESILENT) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.o
+.PHONY : GlassyDynModelDatabase.cpp.o
+
+GlassyDynModelDatabase.i: GlassyDynModelDatabase.cpp.i
+.PHONY : GlassyDynModelDatabase.i
+
+# target to preprocess a source file
+GlassyDynModelDatabase.cpp.i:
+	cd /u/cli6/Cell_G/cellGPU/cmakeHelp && $(MAKE) $(MAKESILENT) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.i
+.PHONY : GlassyDynModelDatabase.cpp.i
+
+GlassyDynModelDatabase.s: GlassyDynModelDatabase.cpp.s
+.PHONY : GlassyDynModelDatabase.s
+
+# target to generate assembly for a file
+GlassyDynModelDatabase.cpp.s:
+	cd /u/cli6/Cell_G/cellGPU/cmakeHelp && $(MAKE) $(MAKESILENT) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.s
+.PHONY : GlassyDynModelDatabase.cpp.s
+
 logEquilibrationStateWriter.o: logEquilibrationStateWriter.cpp.o
 .PHONY : logEquilibrationStateWriter.o
 
@@ -319,6 +343,9 @@ help:
 	@echo "... DatabaseTextVoronoi.o"
 	@echo "... DatabaseTextVoronoi.i"
 	@echo "... DatabaseTextVoronoi.s"
+	@echo "... GlassyDynModelDatabase.o"
+	@echo "... GlassyDynModelDatabase.i"
+	@echo "... GlassyDynModelDatabase.s"
 	@echo "... logEquilibrationStateWriter.o"
 	@echo "... logEquilibrationStateWriter.i"
 	@echo "... logEquilibrationStateWriter.s"

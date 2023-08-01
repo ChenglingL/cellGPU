@@ -117,30 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named bd.out
+# Target rules for targets named bd_sigma.out
 
 # Build rule for target.
-bd.out: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bd.out
-.PHONY : bd.out
+bd_sigma.out: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bd_sigma.out
+.PHONY : bd_sigma.out
 
 # fast build rule for target.
-bd.out/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bd.out.dir/build.make CMakeFiles/bd.out.dir/build
-.PHONY : bd.out/fast
-
-#=============================================================================
-# Target rules for targets named nvt.out
-
-# Build rule for target.
-nvt.out: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nvt.out
-.PHONY : nvt.out
-
-# fast build rule for target.
-nvt.out/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/build
-.PHONY : nvt.out/fast
+bd_sigma.out/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bd_sigma.out.dir/build.make CMakeFiles/bd_sigma.out.dir/build
+.PHONY : bd_sigma.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -259,53 +246,29 @@ database/fast:
 	$(MAKE) $(MAKESILENT) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-bd.o: bd.cpp.o
-.PHONY : bd.o
+bd_sigma.o: bd_sigma.cpp.o
+.PHONY : bd_sigma.o
 
 # target to build an object file
-bd.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bd.out.dir/build.make CMakeFiles/bd.out.dir/bd.cpp.o
-.PHONY : bd.cpp.o
+bd_sigma.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bd_sigma.out.dir/build.make CMakeFiles/bd_sigma.out.dir/bd_sigma.cpp.o
+.PHONY : bd_sigma.cpp.o
 
-bd.i: bd.cpp.i
-.PHONY : bd.i
-
-# target to preprocess a source file
-bd.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bd.out.dir/build.make CMakeFiles/bd.out.dir/bd.cpp.i
-.PHONY : bd.cpp.i
-
-bd.s: bd.cpp.s
-.PHONY : bd.s
-
-# target to generate assembly for a file
-bd.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bd.out.dir/build.make CMakeFiles/bd.out.dir/bd.cpp.s
-.PHONY : bd.cpp.s
-
-nvt.o: nvt.cpp.o
-.PHONY : nvt.o
-
-# target to build an object file
-nvt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/nvt.cpp.o
-.PHONY : nvt.cpp.o
-
-nvt.i: nvt.cpp.i
-.PHONY : nvt.i
+bd_sigma.i: bd_sigma.cpp.i
+.PHONY : bd_sigma.i
 
 # target to preprocess a source file
-nvt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/nvt.cpp.i
-.PHONY : nvt.cpp.i
+bd_sigma.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bd_sigma.out.dir/build.make CMakeFiles/bd_sigma.out.dir/bd_sigma.cpp.i
+.PHONY : bd_sigma.cpp.i
 
-nvt.s: nvt.cpp.s
-.PHONY : nvt.s
+bd_sigma.s: bd_sigma.cpp.s
+.PHONY : bd_sigma.s
 
 # target to generate assembly for a file
-nvt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/nvt.cpp.s
-.PHONY : nvt.cpp.s
+bd_sigma.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bd_sigma.out.dir/build.make CMakeFiles/bd_sigma.out.dir/bd_sigma.cpp.s
+.PHONY : bd_sigma.cpp.s
 
 # Help Target
 help:
@@ -316,22 +279,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... analysis"
-	@echo "... bd.out"
+	@echo "... bd_sigma.out"
 	@echo "... database"
 	@echo "... model"
 	@echo "... modelGPU"
-	@echo "... nvt.out"
 	@echo "... simulation"
 	@echo "... updaters"
 	@echo "... updatersGPU"
 	@echo "... utility"
 	@echo "... utilityGPU"
-	@echo "... bd.o"
-	@echo "... bd.i"
-	@echo "... bd.s"
-	@echo "... nvt.o"
-	@echo "... nvt.i"
-	@echo "... nvt.s"
+	@echo "... bd_sigma.o"
+	@echo "... bd_sigma.i"
+	@echo "... bd_sigma.s"
 .PHONY : help
 
 
