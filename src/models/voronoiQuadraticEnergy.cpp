@@ -482,7 +482,7 @@ double VoronoiQuadraticEnergy::getSigmaXY()
             dAdg += dot(dAidv,dhdg);
             dPdg += dot(dPidv,dhdg);
 
-            rij=rik;
+            rij=rik;ighborType
             vlast=vcur;
             };
         sigmaXY -= 2.0*Adiff*dAdg + 2.0*Pdiff*dPdg;

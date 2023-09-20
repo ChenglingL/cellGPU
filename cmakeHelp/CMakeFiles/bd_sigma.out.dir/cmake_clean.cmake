@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/bd_sigma.out.dir/bd_sigma.cpp.o"
-  "CMakeFiles/bd_sigma.out.dir/bd_sigma.cpp.o.d"
   "bd_sigma.out"
   "bd_sigma.out.pdb"
 )

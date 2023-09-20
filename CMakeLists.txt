@@ -64,6 +64,7 @@ set(HEADERS
 
 # list the names of cpp files corresponding to linked executables you'd like...
 foreach(ARG
+        voronoi
         bd_sigma
         )
 add_executable("${ARG}.out" "${ARG}.cpp" )
