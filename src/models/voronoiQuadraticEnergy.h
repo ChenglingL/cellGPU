@@ -64,7 +64,7 @@ class VoronoiQuadraticEnergy : public voronoiModelBase
         virtual double getSigmaXY();
 
         //!calculate the current global off-diagonal stress
-        double2 deidHn(int i,int nn)
+        virtual double getd2Edgammadgamma();
 
     protected:
         //! Second derivative of the energy w/r/t cell positions...for getting dynMat info

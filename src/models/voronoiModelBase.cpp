@@ -912,18 +912,19 @@ vector<double> voronoiModelBase::d2Hdridrj(double2 rj, double2 rk, int jj)
 \param r2 The position of cell 2 (similar to rj)
 \param r3 The position of cell 3 (similar to rk)
 Returns the analytical 1st derivative of the position of a voronoi vertex formd by cell 1, 2, and 3 w.r.t. to gamma.
-Here, r2 and r3 are the displacement vector from r1
 */
-double2 voronoiModelBase::dHdgamma(double2 r2, double2 r3)
+double2 voronoiModelBase::dHdgamma(double2 r1, double2 r2, double2 r3)
 {
     double2 answer;
-    double r2x,r2y,r3x,r3y;
-    r2x = r2.x; r2y=r2.y; r3x=r3.x;r3y=r3.y;
-    double hxdgamma2 = (r2y * (r2x - r3x) * r3y) / (-r2y * r3x + r2x * r3y);
-    double hydgamma2 = (-r2x * r2x * r3y + 2 * r2x * r3x * (-r2y + r3y) + r2y * (r3x * r3x + r3y * (-r2y + r3y))) / (-2 * r2y * r3x + 2 * r2x * r3y);
+    double r1x,r1y,r2x,r2y,r3x,r3y;
+    r1x = r1.x; r1y=r1.y;r2x = r2.x; r2y=r2.y; r3x=r3.x;r3y=r3.y;
+    double dhxdgamma = (r1x*r1y*(r2y - r3y) + r2y*(r2x - r3x)*r3y + r1y*(-(r2x*r2y) + r3x*r3y))/(-(r2y*r3x) + r1y*(-r2x + r3x) + r1x*(r2y - r3y) + r2x*r3y);
+    double dhydgamma = (-2*r2x*r2y*r3x + 2*r2x*r3x*r3y + 2*r1x*(r2x*r2y + r1y*(-r2x + r3x) - r3x*r3y) + (-r2y + r3y)*(r1x*r1x) + (-r2y + r3y)*(r1y*r1y) - 
+                        r3y*(r2x*r2x) - r3y*(r2y*r2y) + r2y*(r3x*r3x) + r1y*(r2x*r2x + r2y*r2y - r3x*r3x - r3y*r3y) + r2y*(r3y*r3y))/
+                        (2.*(-(r2y*r3x) + r1y*(-r2x + r3x) + r1x*(r2y - r3y) + r2x*r3y));
 
-    answer.x=hxdgamma2;
-    answer.y=hydgamma2;
+    answer.x=dhxdgamma;
+    answer.y=dhydgamma;
     return answer;
 };
 
@@ -932,18 +933,18 @@ double2 voronoiModelBase::dHdgamma(double2 r2, double2 r3)
 \param r2 The position of cell 2 (similar to rj)
 \param r3 The position of cell 3 (similar to rk)
 Returns the analytical 1st derivative of the position of a voronoi vertex formd by cell 1, 2, and 3 w.r.t. to gamma.
-Here, r2 and r3 are the displacement vector from r1 
 */
-double2 voronoiModelBase::d2Hdgamma2(double2 r2, double2 r3)
+double2 voronoiModelBase::d2Hdgamma2(double2 r1, double2 r2, double2 r3)
 {
     double2 answer;
-    double r2x,r2y,r3x,r3y;
-    r2x = r2.x; r2y=r2.y; r3x=r3.x;r3y=r3.y;
-    double hxdgamma = (r2y * (r2y - r3y) * r3y) / (-r2y * r3x + r2x * r3y);
-    double hydgamma = (-r2y * r2y * r3x + 2 * r2y * (-r2x + r3x) * r3y + r2x * r3y * r3y) / (-r2y * r3x + r2x * r3y);
+    double r1x,r1y,r2x,r2y,r3x,r3y;
+    r1x = r1.x; r1y=r1.y;r2x = r2.x; r2y=r2.y; r3x=r3.x;r3y=r3.y;
+    double d2hxdgamma2 = ((r1y - r2y)*(r1y - r3y)*(r2y - r3y))/(-(r2y*r3x) + r1y*(-r2x + r3x) + r1x*(r2y - r3y) + r2x*r3y);
+    double d2hydgamma2 = (-2*r2x*r2y*r3y + 2*r2y*r3x*r3y + 2*r1y*(r2x*r2y - r3x*r3y + r1x*(-r2y + r3y)) + (-r2x + r3x)*(r1y*r1y) - r3x*(r2y*r2y) + 
+                        r1x*(r2y*r2y - r3y*r3y) + r2x*(r3y*r3y))/(-(r2y*r3x) + r1y*(-r2x + r3x) + r1x*(r2y - r3y) + r2x*r3y);
 
-    answer.x=hxdgamma;
-    answer.y=hydgamma;
+    answer.x = d2hxdgamma2;
+    answer.y = d2hydgamma2;
     return answer;
 };
 

@@ -946,6 +946,11 @@ double2 VoronoiQuadraticEnergy::deidHn(int i,int nn)
 \param nn The index of vertex of cell i
 \param j The index of vertex of cell i
 We first take the derivative w/r/t vertex nn and the take the second derivative w/r/t vertex j
+The goal is to return a matrix (x11,x12,x21,x22) with
+x11 = d^2 ei / dh_{n,x} dh_{j,x}
+x12 = d^2 ei / dh_{n,x} dh_{j,y}
+x21 = d^2 ei / dh_{n,y} dh_{j,x}
+x22 = d^2 ei / dh_{n,y} dh_{j,y}
 */
 
 Matrix2x2 VoronoiQuadraticEnergy::d2eidHndHj(int i, int nn, int j)
@@ -961,9 +966,7 @@ Matrix2x2 VoronoiQuadraticEnergy::d2eidHndHj(int i, int nn, int j)
     ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
     ArrayHandle<double2> h_AP(AreaPeri,access_location::host,access_mode::read);
     ArrayHandle<double2> h_APpref(AreaPeriPreferences,access_location::host,access_mode::read);
-    ArrayHandle<double2> h_Moduli(Moduli,access_location::host,access_mode::read);
 
-    ArrayHandle<int> h_cvn(cellVertexNum,access_location::host, access_mode::read);
 
     double P = h_AP.data[i].y; 
     double A = h_AP.data[i].x;
@@ -1109,6 +1112,40 @@ Matrix2x2 VoronoiQuadraticEnergy::d2eidHndHj(int i, int nn, int j)
                     ((-hjLasty + hjy)/sqrt((hjLastx - hjx)*(hjLastx - hjx) + (hjLasty - hjy)*(hjLasty - hjy)) + 
                     (-hjNexty + hjy)/sqrt((-hjNextx + hjx)*(-hjNextx + hjx) + (-hjNexty + hjy)*(-hjNexty + hjy)));
     }
+
+    return answer;    
+    }
+
+
+double VoronoiQuadraticEnergy::getd2Edgammadgamma()
+    {
+    double2 answer = 0.0;
+
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+
+    ArrayHandle<double4> h_vln(voroLastNext,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host,access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_AP(AreaPeri,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_APpref(AreaPeriPreferences,access_location::host,access_mode::read);
+    ArrayHandle<int> h_cvn(cellVertexNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_vcn(vertexCellNeighbors,access_location::host, access_mode::read);
+
+    //Loop over all the cells
+    for (int cell = 0; cell < Ncells; ++cell)
+        {
+        for (int i = 0; i < cellVertexNum[cell]; i++)
+        {
+            for(int j = 0; j < cellVertexNum[cell]; j++)
+            {
+                answer += d2eidHndHj(cell, i, j) * dHdgamma() //need to figure out absolute index of a VERTEX
+            }
+        }
+        };
+
+
 
     return answer;    
     }
