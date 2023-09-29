@@ -908,6 +908,46 @@ vector<double> voronoiModelBase::d2Hdridrj(double2 rj, double2 rk, int jj)
     };
 
 /*!
+\param r1 The position of cell 1 (similar to ri)
+\param r2 The position of cell 2 (similar to rj)
+\param r3 The position of cell 3 (similar to rk)
+Returns the analytical 1st derivative of the position of a voronoi vertex formd by cell 1, 2, and 3 w.r.t. to gamma.
+Here, r2 and r3 are the displacement vector from r1
+*/
+double2 voronoiModelBase::dHdgamma(double2 r2, double2 r3)
+{
+    double2 answer;
+    double r2x,r2y,r3x,r3y;
+    r2x = r2.x; r2y=r2.y; r3x=r3.x;r3y=r3.y;
+    double hxdgamma2 = (r2y * (r2x - r3x) * r3y) / (-r2y * r3x + r2x * r3y);
+    double hydgamma2 = (-r2x * r2x * r3y + 2 * r2x * r3x * (-r2y + r3y) + r2y * (r3x * r3x + r3y * (-r2y + r3y))) / (-2 * r2y * r3x + 2 * r2x * r3y);
+
+    answer.x=hxdgamma2;
+    answer.y=hydgamma2;
+    return answer;
+};
+
+/*!
+\param r1 The position of cell 1 (similar to ri)
+\param r2 The position of cell 2 (similar to rj)
+\param r3 The position of cell 3 (similar to rk)
+Returns the analytical 1st derivative of the position of a voronoi vertex formd by cell 1, 2, and 3 w.r.t. to gamma.
+Here, r2 and r3 are the displacement vector from r1 
+*/
+double2 voronoiModelBase::d2Hdgamma2(double2 r2, double2 r3)
+{
+    double2 answer;
+    double r2x,r2y,r3x,r3y;
+    r2x = r2.x; r2y=r2.y; r3x=r3.x;r3y=r3.y;
+    double hxdgamma = (r2y * (r2y - r3y) * r3y) / (-r2y * r3x + r2x * r3y);
+    double hydgamma = (-r2y * r2y * r3x + 2 * r2y * (-r2x + r3x) * r3y + r2x * r3y * r3y) / (-r2y * r3x + r2x * r3y);
+
+    answer.x=hxdgamma;
+    answer.y=hydgamma;
+    return answer;
+};
+
+/*!
 As the code is modified, all GPUArrays whose size depend on neighMax should be added to this function
 \post voroCur,voroLastNext, delSets, delOther, and forceSets grow to size neighMax*Ncells
 */

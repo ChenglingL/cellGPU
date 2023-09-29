@@ -123,6 +123,10 @@ class voronoiModelBase : public Simple2DActiveCell
         Matrix2x2 d2Peridvdr(Matrix2x2 &dvdr, Matrix2x2 &dvmdr, Matrix2x2 &dvpdr,double2 vm, double2 v, double2 vp);
         //!second derivatives of voronoi vertex with respect to cell positions
         vector<double> d2Hdridrj(double2 rj, double2 rk, int jj);
+        //!First derivative of voronoi vertex with respect to shear strain gamma
+        double2 dHdgamma(double2 r2, double2 r3);
+        //!Second derivative of voronoi vertex with respect to shear strain gamma
+        double2 d2Hdgamma2(double2 r2, double2 r3);
 
     //public member variables
     public:

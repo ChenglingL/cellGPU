@@ -498,6 +498,10 @@ double VoronoiQuadraticEnergy::getSigmaXY()
 \param rcs a vector of (row,col) locations
 \param vals a vector of the corresponding value of the dynamical matrix
 */
+
+
+
+
 void VoronoiQuadraticEnergy::getDynMatEntries(vector<int2> &rcs, vector<double> &vals,double unstress, double stress)
     {
     printf("evaluating dynamical matrix\n");
@@ -894,3 +898,217 @@ Matrix2x2 VoronoiQuadraticEnergy::d2Edridrj(int i, int j, neighborType neighbor,
 
     return answer;
     };
+
+
+/*!
+\param i The index of cell i
+\param nn The index of vertex of cell i
+*/
+
+double2 VoronoiQuadraticEnergy::deidHn(int i,int nn)
+    {
+    double2 answer;
+
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+
+    ArrayHandle<double4> h_vln(voroLastNext,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host,access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_AP(AreaPeri,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_APpref(AreaPeriPreferences,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_Moduli(Moduli,access_location::host,access_mode::read);
+
+    double P = h_AP.data[i].y; 
+    double A = h_AP.data[i].x;
+    double PA = h_APpref.data[i].x;
+    double PP = h_APpref.data[i].y;
+
+    //From here i refers to the nth vertex
+    double hix = h_v.data[n_idx(nn,i)].x;
+    double hiy = h_v.data[n_idx(nn,i)].y;
+    double hiLastx = h_vln.data[n_idx(nn,i)].x;
+    double hiLasty = h_vln.data[n_idx(nn,i)].y;
+    double hiNextx = h_vln.data[n_idx(nn,i)].z;
+    double hiNexty = h_vln.data[n_idx(nn,i)].w;
+
+
+    answer.x = (-hiLasty + hiNexty)*KA*(A - PA) + 2*KP*(P - PP)*((-hiLastx + hix)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + (-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)));
+    answer.y = (-hiLastx + hiNextx)*KA*(-A + PA) + 2*KP*(P - PP)*((-hiLasty + hiy)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + (-hiNexty + hiy)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)));
+
+    return answer;    
+    }
+
+
+/*!
+\param i The index of cell i
+\param nn The index of vertex of cell i
+\param j The index of vertex of cell i
+We first take the derivative w/r/t vertex nn and the take the second derivative w/r/t vertex j
+*/
+
+Matrix2x2 VoronoiQuadraticEnergy::d2eidHndHj(int i, int nn, int j)
+    {
+    Matrix2x2 answer;
+
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+
+    ArrayHandle<double4> h_vln(voroLastNext,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host,access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_AP(AreaPeri,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_APpref(AreaPeriPreferences,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_Moduli(Moduli,access_location::host,access_mode::read);
+
+    ArrayHandle<int> h_cvn(cellVertexNum,access_location::host, access_mode::read);
+
+    double P = h_AP.data[i].y; 
+    double A = h_AP.data[i].x;
+    double PA = h_APpref.data[i].x;
+    double PP = h_APpref.data[i].y;
+
+    //From here i refers to the nth vertex
+    double hix = h_v.data[n_idx(nn,i)].x;
+    double hiy = h_v.data[n_idx(nn,i)].y;
+    double hiLastx = h_vln.data[n_idx(nn,i)].x;
+    double hiLasty = h_vln.data[n_idx(nn,i)].y;
+    double hiNextx = h_vln.data[n_idx(nn,i)].z;
+    double hiNexty = h_vln.data[n_idx(nn,i)].w;
+
+    double hjx = h_v.data[n_idx(j,i)].x;
+    double hjy = h_v.data[n_idx(j,i)].y;
+    double hjLastx = h_vln.data[n_idx(j,i)].x;
+    double hjLasty = h_vln.data[n_idx(j,i)].y;
+    double hjNextx = h_vln.data[n_idx(j,i)].z;
+    double hjNexty = h_vln.data[n_idx(j,i)].w;
+
+    if (j == nn) {
+        //when we take the derivative w/r/t the same vertice twice
+        answer.x11 = 2*(KA*((-0.5*hiLasty + 0.5*hiNexty)*(-0.5*hiLasty + 0.5*hiNexty)) + 
+                     KP*(P - PP)*(-(((-hiLastx + hix)*(-hiLastx + hix))/(sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy))*sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy))*sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)))) + 
+                     1/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) - 
+                     ((-hiNextx + hix)*(-hiNextx + hix))/(sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))*sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))*sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))) + 
+                     1/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))) + 
+                     KP*(((-hiLastx + hix)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                     (-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))*
+                     ((-hiLastx + hix)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                     (-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))));
+    
+        answer.x12 = 2*((0.5*hiLastx - 0.5*hiNextx)*(-0.5*hiLasty + 0.5*hiNexty)*KA + 
+                    KP*(P - PP)*(-(((-hiLastx + hix)*(-hiLasty + hiy))/(sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy))*sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy))*sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)))) - 
+                    ((-hiNextx + hix)*(-hiNexty + hiy))/(sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))*sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))*sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))) + 
+                    KP*((-hiLastx + hix)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))*
+                    ((-hiLasty + hiy)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (-hiNexty + hiy)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))));
+    
+        answer.x21 = 2*((0.5*hiLastx - 0.5*hiNextx)*(-0.5*hiLasty + 0.5*hiNexty)*KA + 
+                    KP*(P - PP)*(-(((-hiLastx + hix)*(-hiLasty + hiy))/(sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy))*sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy))*sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)))) - 
+                    ((-hiNextx + hix)*(-hiNexty + hiy))/(sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))*sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))*sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))) + 
+                    KP*((-hiLastx + hix)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))*
+                    ((-hiLasty + hiy)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (-hiNexty + hiy)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))));
+    
+        answer.x22 = 2*(KA*((-0.5*hiLastx + 0.5*hiNextx)*(-0.5*hiLastx + 0.5*hiNextx)) + 
+                    KP*(P - PP)*(-(((-hiLasty + hiy)*(-hiLasty + hiy))/(sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy))*sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy))*sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)))) + 
+                    1/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) - 
+                    ((-hiNexty + hiy)*(-hiNexty + hiy))/(sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))*sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))*sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))) + 
+                    1/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy))) + 
+                    KP*(((-hiLasty + hiy)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (-hiNexty + hiy)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))*
+                    ((-hiLasty + hiy)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (-hiNexty + hiy)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))));
+    }
+    else if (j == (nn+1) % h_cvn.data[i]) {
+        //j is the next vertex of n
+        answer.x11 = 2*((-0.5*hiy + 0.5*hjNexty)*(-0.5*hiLasty + 0.5*hjy)*KA - 
+                    (KP*(P - PP)*((hiy - hjy)*(hiy - hjy)))/(sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))) + 
+                    KP*((-hiLastx + hix)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (hix - hjx)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)))*
+                    ((-hix + hjx)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)) + 
+                    (-hjNextx + hjx)/sqrt((-hjNextx + hjx)*(-hjNextx + hjx) + (-hjNexty + hjy)*(-hjNexty + hjy))));
+
+        answer.x12 = 2*(0.5*hix - 0.5*hjNextx)*(-0.5*hiLasty + 0.5*hjy)*KA - KA*(-A + PA) + 
+                    (2*(hix - hjx)*(hiy - hjy)*KP*(P - PP))/(sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))) + 
+                    2*KP*((-hiLastx + hix)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (hix - hjx)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)))*
+                    ((-hiy + hjy)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)) + 
+                    (-hjNexty + hjy)/sqrt((-hjNextx + hjx)*(-hjNextx + hjx) + (-hjNexty + hjy)*(-hjNexty + hjy)));
+
+        answer.x21 = 2*(-0.5*hiy + 0.5*hjNexty)*(0.5*hiLastx - 0.5*hjx)*KA + KA*(-A + PA) + 
+                    (2*(hix - hjx)*(hiy - hjy)*KP*(P - PP))/(sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))) + 
+                    2*KP*((-hiLasty + hiy)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (hiy - hjy)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)))*
+                    ((-hix + hjx)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)) + 
+                    (-hjNextx + hjx)/sqrt((-hjNextx + hjx)*(-hjNextx + hjx) + (-hjNexty + hjy)*(-hjNexty + hjy)));
+    
+        answer.x22 = 2*((0.5*hix - 0.5*hjNextx)*(0.5*hiLastx - 0.5*hjx)*KA - 
+                    (KP*(P - PP)*((hix - hjx)*(hix - hjx)))/(sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))) + 
+                    KP*((-hiLasty + hiy)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (hiy - hjy)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)))*
+                    ((-hiy + hjy)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)) + 
+                    (-hjNexty + hjy)/sqrt((-hjNextx + hjx)*(-hjNextx + hjx) + (-hjNexty + hjy)*(-hjNexty + hjy))));
+    }
+    else if (j == (nn-1) % h_cvn.data[i]) {
+        //j is the last vertex of n
+        answer.x11 = 2*((0.5*hiy - 0.5*hjLasty)*(0.5*hiNexty - 0.5*hjy)*KA - (KP*(P - PP)*((hiy - hjy)*(hiy - hjy)))/
+                    (sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))) + 
+                    KP*((-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)) + 
+                    (hix - hjx)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)))*
+                    ((-hix + hjx)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)) + 
+                    (-hjLastx + hjx)/sqrt((hjLastx - hjx)*(hjLastx - hjx) + (hjLasty - hjy)*(hjLasty - hjy))));
+
+        answer.x12 = 2*(-0.5*hix + 0.5*hjLastx)*(0.5*hiNexty - 0.5*hjy)*KA + KA*(-A + PA) + 
+                    (2*(hix - hjx)*(hiy - hjy)*KP*(P - PP))/(sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))) + 
+                    2*KP*((-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)) + 
+                    (hix - hjx)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)))*
+                    ((-hiy + hjy)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)) + 
+                    (-hjLasty + hjy)/sqrt((hjLastx - hjx)*(hjLastx - hjx) + (hjLasty - hjy)*(hjLasty - hjy)));
+    
+        answer.x21 = 2*(0.5*hiy - 0.5*hjLasty)*(-0.5*hiNextx + 0.5*hjx)*KA - KA*(-A + PA) + 
+                    (2*(hix - hjx)*(hiy - hjy)*KP*(P - PP))/(sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))) + 
+                    2*KP*((-hiNexty + hiy)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)) + 
+                    (hiy - hjy)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)))*
+                    ((-hix + hjx)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)) + 
+                    (-hjLastx + hjx)/sqrt((hjLastx - hjx)*(hjLastx - hjx) + (hjLasty - hjy)*(hjLasty - hjy)));
+    
+        answer.x22 = 2*((-0.5*hix + 0.5*hjLastx)*(-0.5*hiNextx + 0.5*hjx)*KA - 
+                    (KP*(P - PP)*((hix - hjx)*(hix - hjx)))/(sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))) + 
+                    KP*((-hiNexty + hiy)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)) + 
+                    (hiy - hjy)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)))*
+                    ((-hiy + hjy)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)) + 
+                    (-hjLasty + hjy)/sqrt((hjLastx - hjx)*(hjLastx - hjx) + (hjLasty - hjy)*(hjLasty - hjy))));
+    }
+    else {
+        //j is not n nor neighbor of n
+        answer.x11 = 2*(-0.5*hiLasty + 0.5*hiNexty)*(-0.5*hjLasty + 0.5*hjNexty)*KA + 
+                    2*KP*((-hiLastx + hix)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))*
+                    ((-hjLastx + hjx)/sqrt((hjLastx - hjx)*(hjLastx - hjx) + (hjLasty - hjy)*(hjLasty - hjy)) + 
+                    (-hjNextx + hjx)/sqrt((-hjNextx + hjx)*(-hjNextx + hjx) + (-hjNexty + hjy)*(-hjNexty + hjy)));
+
+        answer.x12 = 2*(-0.5*hiLasty + 0.5*hiNexty)*(0.5*hjLastx - 0.5*hjNextx)*KA + 
+                    2*KP*((-hiLastx + hix)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))*
+                    ((-hjLasty + hjy)/sqrt((hjLastx - hjx)*(hjLastx - hjx) + (hjLasty - hjy)*(hjLasty - hjy)) + 
+                    (-hjNexty + hjy)/sqrt((-hjNextx + hjx)*(-hjNextx + hjx) + (-hjNexty + hjy)*(-hjNexty + hjy)));                    
+    
+        answer.x21 = 2*(0.5*hiLastx - 0.5*hiNextx)*(-0.5*hjLasty + 0.5*hjNexty)*KA + 
+                    2*KP*((-hiLasty + hiy)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (-hiNexty + hiy)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))*
+                    ((-hjLastx + hjx)/sqrt((hjLastx - hjx)*(hjLastx - hjx) + (hjLasty - hjy)*(hjLasty - hjy)) + 
+                    (-hjNextx + hjx)/sqrt((-hjNextx + hjx)*(-hjNextx + hjx) + (-hjNexty + hjy)*(-hjNexty + hjy)));
+    
+        answer.x22 = 2*(0.5*hiLastx - 0.5*hiNextx)*(0.5*hjLastx - 0.5*hjNextx)*KA + 
+                    2*KP*((-hiLasty + hiy)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
+                    (-hiNexty + hiy)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))*
+                    ((-hjLasty + hjy)/sqrt((hjLastx - hjx)*(hjLastx - hjx) + (hjLasty - hjy)*(hjLasty - hjy)) + 
+                    (-hjNexty + hjy)/sqrt((-hjNextx + hjx)*(-hjNextx + hjx) + (-hjNexty + hjy)*(-hjNexty + hjy)));
+    }
+
+    return answer;    
+    }
