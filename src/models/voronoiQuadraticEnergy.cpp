@@ -973,7 +973,7 @@ Matrix2x2 VoronoiQuadraticEnergy::d2eidHndHj(int i, int nn, int j)
     double PA = h_APpref.data[i].x;
     double PP = h_APpref.data[i].y;
 
-    //From here i refers to the nth vertex
+    //From here i in hix,hiy... refers to the nth vertex
     double hix = h_v.data[n_idx(nn,i)].x;
     double hiy = h_v.data[n_idx(nn,i)].y;
     double hiLastx = h_vln.data[n_idx(nn,i)].x;
@@ -1123,14 +1123,6 @@ double VoronoiQuadraticEnergy::getd2Edgammadgamma()
 
     //read in the needed data
     ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
-    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
-
-    ArrayHandle<double4> h_vln(voroLastNext,access_location::host,access_mode::read);
-    ArrayHandle<int> h_nn(neighborNum,access_location::host,access_mode::read);
-    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
-    ArrayHandle<double2> h_AP(AreaPeri,access_location::host,access_mode::read);
-    ArrayHandle<double2> h_APpref(AreaPeriPreferences,access_location::host,access_mode::read);
-    ArrayHandle<int> h_cvn(cellVertexNum,access_location::host, access_mode::read);
     ArrayHandle<int> h_vcn(vertexCellNeighbors,access_location::host, access_mode::read);
 
     //Loop over all the cells
@@ -1140,8 +1132,19 @@ double VoronoiQuadraticEnergy::getd2Edgammadgamma()
         {
             for(int j = 0; j < cellVertexNum[cell]; j++)
             {
-                answer += d2eidHndHj(cell, i, j) * dHdgamma() //need to figure out absolute index of a VERTEX
-            }
+                double2 ri1,ri2,ri3; //all the cells that are neighbors of vertex i
+                ri1=h_p.data[h_vcn.data[3*n_idx(i,cell)]];
+                ri2=h_p.data[h_vcn.data[3*n_idx(i,cell)+1]];
+                ri3=h_p.data[h_vcn.data[3*n_idx(i,cell)+2]];
+
+                double2 rj1,rj2,rj3; //all the cells that are neighbors of vertex j
+                rj1=h_p.data[h_vcn.data[3*n_idx(j,cell)]];
+                rj2=h_p.data[h_vcn.data[3*n_idx(j,cell)+1]];
+                rj3=h_p.data[h_vcn.data[3*n_idx(j,cell)+2]];
+
+                answer += (d2eidHndHj(cell, i, j) * dHdgamma(ri1,ri2,ri3)) * dHdgamma(rj1,rj2,rj3); 
+                            
+            answer += deidHn(cell,i) * d2Hdgamma2(ri1,ri2,ri3);
         }
         };
 
