@@ -53,8 +53,7 @@ CMAKE_BINARY_DIR = /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cma
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/bd_sigma.out.dir/all
-all: CMakeFiles/voronoi.out.dir/all
+all: CMakeFiles/nvt.out.dir/all
 all: src/all
 
 .PHONY : all
@@ -65,8 +64,7 @@ preinstall: src/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/bd_sigma.out.dir/clean
-clean: CMakeFiles/voronoi.out.dir/clean
+clean: CMakeFiles/nvt.out.dir/clean
 clean: src/clean
 
 .PHONY : clean
@@ -219,74 +217,39 @@ src/utility/clean: src/utility/CMakeFiles/utility.dir/clean
 .PHONY : src/utility/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/bd_sigma.out.dir
+# Target rules for target CMakeFiles/nvt.out.dir
 
 # All Build rule for target.
-CMakeFiles/bd_sigma.out.dir/all: src/utility/CMakeFiles/utilityGPU.dir/all
-CMakeFiles/bd_sigma.out.dir/all: src/utility/CMakeFiles/utility.dir/all
-CMakeFiles/bd_sigma.out.dir/all: src/simulation/CMakeFiles/simulation.dir/all
-CMakeFiles/bd_sigma.out.dir/all: src/updaters/CMakeFiles/updatersGPU.dir/all
-CMakeFiles/bd_sigma.out.dir/all: src/updaters/CMakeFiles/updaters.dir/all
-CMakeFiles/bd_sigma.out.dir/all: src/models/CMakeFiles/modelGPU.dir/all
-CMakeFiles/bd_sigma.out.dir/all: src/models/CMakeFiles/model.dir/all
-CMakeFiles/bd_sigma.out.dir/all: src/analysis/CMakeFiles/analysis.dir/all
-CMakeFiles/bd_sigma.out.dir/all: src/databases/CMakeFiles/database.dir/all
-	$(MAKE) -f CMakeFiles/bd_sigma.out.dir/build.make CMakeFiles/bd_sigma.out.dir/depend
-	$(MAKE) -f CMakeFiles/bd_sigma.out.dir/build.make CMakeFiles/bd_sigma.out.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=5,6 "Built target bd_sigma.out"
-.PHONY : CMakeFiles/bd_sigma.out.dir/all
+CMakeFiles/nvt.out.dir/all: src/utility/CMakeFiles/utilityGPU.dir/all
+CMakeFiles/nvt.out.dir/all: src/utility/CMakeFiles/utility.dir/all
+CMakeFiles/nvt.out.dir/all: src/simulation/CMakeFiles/simulation.dir/all
+CMakeFiles/nvt.out.dir/all: src/updaters/CMakeFiles/updatersGPU.dir/all
+CMakeFiles/nvt.out.dir/all: src/updaters/CMakeFiles/updaters.dir/all
+CMakeFiles/nvt.out.dir/all: src/models/CMakeFiles/modelGPU.dir/all
+CMakeFiles/nvt.out.dir/all: src/models/CMakeFiles/model.dir/all
+CMakeFiles/nvt.out.dir/all: src/analysis/CMakeFiles/analysis.dir/all
+CMakeFiles/nvt.out.dir/all: src/databases/CMakeFiles/database.dir/all
+	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/depend
+	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=34,35 "Built target nvt.out"
+.PHONY : CMakeFiles/nvt.out.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/bd_sigma.out.dir/rule: cmake_check_build_system
+CMakeFiles/nvt.out.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 68
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/bd_sigma.out.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/nvt.out.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 0
-.PHONY : CMakeFiles/bd_sigma.out.dir/rule
+.PHONY : CMakeFiles/nvt.out.dir/rule
 
 # Convenience name for target.
-bd_sigma.out: CMakeFiles/bd_sigma.out.dir/rule
+nvt.out: CMakeFiles/nvt.out.dir/rule
 
-.PHONY : bd_sigma.out
-
-# clean rule for target.
-CMakeFiles/bd_sigma.out.dir/clean:
-	$(MAKE) -f CMakeFiles/bd_sigma.out.dir/build.make CMakeFiles/bd_sigma.out.dir/clean
-.PHONY : CMakeFiles/bd_sigma.out.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/voronoi.out.dir
-
-# All Build rule for target.
-CMakeFiles/voronoi.out.dir/all: src/utility/CMakeFiles/utilityGPU.dir/all
-CMakeFiles/voronoi.out.dir/all: src/utility/CMakeFiles/utility.dir/all
-CMakeFiles/voronoi.out.dir/all: src/simulation/CMakeFiles/simulation.dir/all
-CMakeFiles/voronoi.out.dir/all: src/updaters/CMakeFiles/updatersGPU.dir/all
-CMakeFiles/voronoi.out.dir/all: src/updaters/CMakeFiles/updaters.dir/all
-CMakeFiles/voronoi.out.dir/all: src/models/CMakeFiles/modelGPU.dir/all
-CMakeFiles/voronoi.out.dir/all: src/models/CMakeFiles/model.dir/all
-CMakeFiles/voronoi.out.dir/all: src/analysis/CMakeFiles/analysis.dir/all
-CMakeFiles/voronoi.out.dir/all: src/databases/CMakeFiles/database.dir/all
-	$(MAKE) -f CMakeFiles/voronoi.out.dir/build.make CMakeFiles/voronoi.out.dir/depend
-	$(MAKE) -f CMakeFiles/voronoi.out.dir/build.make CMakeFiles/voronoi.out.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=69,70 "Built target voronoi.out"
-.PHONY : CMakeFiles/voronoi.out.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/voronoi.out.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 68
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/voronoi.out.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 0
-.PHONY : CMakeFiles/voronoi.out.dir/rule
-
-# Convenience name for target.
-voronoi.out: CMakeFiles/voronoi.out.dir/rule
-
-.PHONY : voronoi.out
+.PHONY : nvt.out
 
 # clean rule for target.
-CMakeFiles/voronoi.out.dir/clean:
-	$(MAKE) -f CMakeFiles/voronoi.out.dir/build.make CMakeFiles/voronoi.out.dir/clean
-.PHONY : CMakeFiles/voronoi.out.dir/clean
+CMakeFiles/nvt.out.dir/clean:
+	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/clean
+.PHONY : CMakeFiles/nvt.out.dir/clean
 
 #=============================================================================
 # Target rules for target src/utility/CMakeFiles/utilityGPU.dir
@@ -430,7 +393,7 @@ src/updaters/CMakeFiles/updaters.dir/clean:
 src/models/CMakeFiles/modelGPU.dir/all:
 	$(MAKE) -f src/models/CMakeFiles/modelGPU.dir/build.make src/models/CMakeFiles/modelGPU.dir/depend
 	$(MAKE) -f src/models/CMakeFiles/modelGPU.dir/build.make src/models/CMakeFiles/modelGPU.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=27,28,29,30,31,32,33,34,35 "Built target modelGPU"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=25,26,27,28,29,30,31,32,33 "Built target modelGPU"
 .PHONY : src/models/CMakeFiles/modelGPU.dir/all
 
 # Build rule for subdir invocation for target.
@@ -457,7 +420,7 @@ src/models/CMakeFiles/modelGPU.dir/clean:
 src/models/CMakeFiles/model.dir/all:
 	$(MAKE) -f src/models/CMakeFiles/model.dir/build.make src/models/CMakeFiles/model.dir/depend
 	$(MAKE) -f src/models/CMakeFiles/model.dir/build.make src/models/CMakeFiles/model.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=16,17,18,19,20,21,22,23,24,25,26 "Built target model"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=14,15,16,17,18,19,20,21,22,23,24 "Built target model"
 .PHONY : src/models/CMakeFiles/model.dir/all
 
 # Build rule for subdir invocation for target.
@@ -511,7 +474,7 @@ src/analysis/CMakeFiles/analysis.dir/clean:
 src/databases/CMakeFiles/database.dir/all:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/depend
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15 "Built target database"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13 "Built target database"
 .PHONY : src/databases/CMakeFiles/database.dir/all
 
 # Build rule for subdir invocation for target.

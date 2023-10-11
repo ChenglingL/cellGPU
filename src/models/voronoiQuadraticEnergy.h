@@ -63,7 +63,7 @@ class VoronoiQuadraticEnergy : public voronoiModelBase
         //!calculate the current global off-diagonal stress
         virtual double getSigmaXY();
 
-        //!calculate the current global off-diagonal stress
+        //!calculate the current global d2Edgammadgamma
         virtual double getd2Edgammadgamma();
 
     protected:

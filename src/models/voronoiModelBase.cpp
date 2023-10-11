@@ -209,6 +209,7 @@ void voronoiModelBase::globalTriangulationDelGPU(bool verbose)
 
     neighMax = delGPU.MaxSize;
     n_idx = Index2D(neighMax,Ncells);
+    //cout<<"neighMax "<<neighMax<<endl;
     if(neighbors.getNumElements() != Ncells*neighMax)
         neighbors.resize( Ncells*neighMax);
     if(oldNeighMax != neighMax)
@@ -908,7 +909,7 @@ vector<double> voronoiModelBase::d2Hdridrj(double2 rj, double2 rk, int jj)
     };
 
 /*!
-\param r1 The position of cell 1 (similar to ri)
+\param r1 The position of cell 1 (similar to rj)
 \param r2 The position of cell 2 (similar to rj)
 \param r3 The position of cell 3 (similar to rk)
 Returns the analytical 1st derivative of the position of a voronoi vertex formd by cell 1, 2, and 3 w.r.t. to gamma.
@@ -916,15 +917,22 @@ Returns the analytical 1st derivative of the position of a voronoi vertex formd 
 double2 voronoiModelBase::dHdgamma(double2 r1, double2 r2, double2 r3)
 {
     double2 answer;
-    double r1x,r1y,r2x,r2y,r3x,r3y;
-    r1x = r1.x; r1y=r1.y;r2x = r2.x; r2y=r2.y; r3x=r3.x;r3y=r3.y;
-    double dhxdgamma = (r1x*r1y*(r2y - r3y) + r2y*(r2x - r3x)*r3y + r1y*(-(r2x*r2y) + r3x*r3y))/(-(r2y*r3x) + r1y*(-r2x + r3x) + r1x*(r2y - r3y) + r2x*r3y);
-    double dhydgamma = (-2*r2x*r2y*r3x + 2*r2x*r3x*r3y + 2*r1x*(r2x*r2y + r1y*(-r2x + r3x) - r3x*r3y) + (-r2y + r3y)*(r1x*r1x) + (-r2y + r3y)*(r1y*r1y) - 
-                        r3y*(r2x*r2x) - r3y*(r2y*r2y) + r2y*(r3x*r3x) + r1y*(r2x*r2x + r2y*r2y - r3x*r3x - r3y*r3y) + r2y*(r3y*r3y))/
-                        (2.*(-(r2y*r3x) + r1y*(-r2x + r3x) + r1x*(r2y - r3y) + r2x*r3y));
+    double r2x,r2y,r3x,r3y;
+    double2 r12,r13;
+    
+    Box->minDist(r2,r1,r12);
+    Box->minDist(r3,r1,r13);
+    r2x = r12.x;
+    r2y = r12.y;
+    r3x = r13.x;
+    r3y = r13.y;
+
+    double dhxdgamma = (r2y*(r2x - r3x)*r3y)/(-(r2y*r3x) + r2x*r3y);
+    double dhydgamma = (2*r2x*r3x*(-r2y + r3y) - r3y*(r2x*r2x) + r2y*(r3y*(-r2y + r3y) + r3x*r3x))/(-2*r2y*r3x + 2*r2x*r3y);
 
     answer.x=dhxdgamma;
     answer.y=dhydgamma;
+    //cout<<"dHdgamma correct "<<answer.x<<" "<<answer.y<<endl;
     return answer;
 };
 
@@ -937,14 +945,23 @@ Returns the analytical 1st derivative of the position of a voronoi vertex formd 
 double2 voronoiModelBase::d2Hdgamma2(double2 r1, double2 r2, double2 r3)
 {
     double2 answer;
-    double r1x,r1y,r2x,r2y,r3x,r3y;
-    r1x = r1.x; r1y=r1.y;r2x = r2.x; r2y=r2.y; r3x=r3.x;r3y=r3.y;
-    double d2hxdgamma2 = ((r1y - r2y)*(r1y - r3y)*(r2y - r3y))/(-(r2y*r3x) + r1y*(-r2x + r3x) + r1x*(r2y - r3y) + r2x*r3y);
-    double d2hydgamma2 = (-2*r2x*r2y*r3y + 2*r2y*r3x*r3y + 2*r1y*(r2x*r2y - r3x*r3y + r1x*(-r2y + r3y)) + (-r2x + r3x)*(r1y*r1y) - r3x*(r2y*r2y) + 
-                        r1x*(r2y*r2y - r3y*r3y) + r2x*(r3y*r3y))/(-(r2y*r3x) + r1y*(-r2x + r3x) + r1x*(r2y - r3y) + r2x*r3y);
+    double r2x,r2y,r3x,r3y;
+    double2 r12,r13;
+
+    Box->minDist(r2,r1,r12);
+    Box->minDist(r3,r1,r13);
+    r2x = r12.x;
+    r2y = r12.y;
+    r3x = r13.x;
+    r3y = r13.y;
+    
+    r2x = r12.x; r2y=r12.y; r3x=r13.x;r3y=r13.y;
+    double d2hxdgamma2 = (r2y*(r2y - r3y)*r3y)/(-(r2y*r3x) + r2x*r3y);
+    double d2hydgamma2 = (2*r2y*(-r2x + r3x)*r3y - r3x*(r2y*r2y) + r2x*(r3y*r3y))/(-(r2y*r3x) + r2x*r3y);
 
     answer.x = d2hxdgamma2;
     answer.y = d2hydgamma2;
+    //cout<<"d2Hdgamma2 correct "<<answer.x<<" "<<answer.y<<endl;
     return answer;
 };
 

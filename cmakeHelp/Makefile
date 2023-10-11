@@ -111,30 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named bd_sigma.out
+# Target rules for targets named nvt.out
 
 # Build rule for target.
-bd_sigma.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 bd_sigma.out
-.PHONY : bd_sigma.out
+nvt.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nvt.out
+.PHONY : nvt.out
 
 # fast build rule for target.
-bd_sigma.out/fast:
-	$(MAKE) -f CMakeFiles/bd_sigma.out.dir/build.make CMakeFiles/bd_sigma.out.dir/build
-.PHONY : bd_sigma.out/fast
-
-#=============================================================================
-# Target rules for targets named voronoi.out
-
-# Build rule for target.
-voronoi.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 voronoi.out
-.PHONY : voronoi.out
-
-# fast build rule for target.
-voronoi.out/fast:
-	$(MAKE) -f CMakeFiles/voronoi.out.dir/build.make CMakeFiles/voronoi.out.dir/build
-.PHONY : voronoi.out/fast
+nvt.out/fast:
+	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/build
+.PHONY : nvt.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -253,59 +240,32 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-bd_sigma.o: bd_sigma.cpp.o
+nvt.o: nvt.cpp.o
 
-.PHONY : bd_sigma.o
-
-# target to build an object file
-bd_sigma.cpp.o:
-	$(MAKE) -f CMakeFiles/bd_sigma.out.dir/build.make CMakeFiles/bd_sigma.out.dir/bd_sigma.cpp.o
-.PHONY : bd_sigma.cpp.o
-
-bd_sigma.i: bd_sigma.cpp.i
-
-.PHONY : bd_sigma.i
-
-# target to preprocess a source file
-bd_sigma.cpp.i:
-	$(MAKE) -f CMakeFiles/bd_sigma.out.dir/build.make CMakeFiles/bd_sigma.out.dir/bd_sigma.cpp.i
-.PHONY : bd_sigma.cpp.i
-
-bd_sigma.s: bd_sigma.cpp.s
-
-.PHONY : bd_sigma.s
-
-# target to generate assembly for a file
-bd_sigma.cpp.s:
-	$(MAKE) -f CMakeFiles/bd_sigma.out.dir/build.make CMakeFiles/bd_sigma.out.dir/bd_sigma.cpp.s
-.PHONY : bd_sigma.cpp.s
-
-voronoi.o: voronoi.cpp.o
-
-.PHONY : voronoi.o
+.PHONY : nvt.o
 
 # target to build an object file
-voronoi.cpp.o:
-	$(MAKE) -f CMakeFiles/voronoi.out.dir/build.make CMakeFiles/voronoi.out.dir/voronoi.cpp.o
-.PHONY : voronoi.cpp.o
+nvt.cpp.o:
+	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/nvt.cpp.o
+.PHONY : nvt.cpp.o
 
-voronoi.i: voronoi.cpp.i
+nvt.i: nvt.cpp.i
 
-.PHONY : voronoi.i
+.PHONY : nvt.i
 
 # target to preprocess a source file
-voronoi.cpp.i:
-	$(MAKE) -f CMakeFiles/voronoi.out.dir/build.make CMakeFiles/voronoi.out.dir/voronoi.cpp.i
-.PHONY : voronoi.cpp.i
+nvt.cpp.i:
+	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/nvt.cpp.i
+.PHONY : nvt.cpp.i
 
-voronoi.s: voronoi.cpp.s
+nvt.s: nvt.cpp.s
 
-.PHONY : voronoi.s
+.PHONY : nvt.s
 
 # target to generate assembly for a file
-voronoi.cpp.s:
-	$(MAKE) -f CMakeFiles/voronoi.out.dir/build.make CMakeFiles/voronoi.out.dir/voronoi.cpp.s
-.PHONY : voronoi.cpp.s
+nvt.cpp.s:
+	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/nvt.cpp.s
+.PHONY : nvt.cpp.s
 
 # Help Target
 help:
@@ -315,8 +275,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... bd_sigma.out"
-	@echo "... voronoi.out"
+	@echo "... nvt.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -326,12 +285,9 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... bd_sigma.o"
-	@echo "... bd_sigma.i"
-	@echo "... bd_sigma.s"
-	@echo "... voronoi.o"
-	@echo "... voronoi.i"
-	@echo "... voronoi.s"
+	@echo "... nvt.o"
+	@echo "... nvt.i"
+	@echo "... nvt.s"
 .PHONY : help
 
 

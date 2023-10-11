@@ -41,7 +41,8 @@ void nvtModelDatabase::SetDimVar()
     BoxMatrixVar        = File.add_var("BoxMatrix",     ncDouble,recDim, boxDim);
     timeVar             = File.add_var("time",     ncDouble,recDim, unitDim);
     meanqVar            = File.add_var("meanQ",     ncDouble,recDim, unitDim);
-    sigmaVar            = File.add_var("sigma",     ncDouble,recDim, unitDim);
+    d2EidgammadgammaVar  = File.add_var("d2Eidgammadgamma",     ncDouble,recDim, NvDim);
+    d2EdgammadgammaVar  = File.add_var("d2Edgammadgamma",     ncDouble,recDim, unitDim);
     overlapVar          = File.add_var("overlap",     ncDouble,recDim, unitDim);
     }
 
@@ -61,7 +62,8 @@ void nvtModelDatabase::GetDimVar()
     BoxMatrixVar = File.get_var("BoxMatrix");
     timeVar = File.get_var("time");
     meanqVar = File.get_var("meanQ");
-    sigmaVar = File.get_var("sigma");
+    d2EdgammadgammaVar = File.get_var("d2Edgammadgamma");
+    d2EidgammadgammaVar = File.get_var("d2Eidgammadgamma");
     overlapVar = File.get_var("overlap");
 
     }
@@ -84,6 +86,7 @@ void nvtModelDatabase::writeState(STATE c, double time, int rec)
     std::vector<double> veldat(2*Nv);
     std::vector<double> additionaldat(2*Nv);
     std::vector<int> typedat(Nv);
+    std::vector<double> d2Eidgammadgammadat;
     int idx = 0;
 
     ArrayHandle<double2> h_p(s->cellPositions,access_location::host,access_mode::read);
@@ -111,9 +114,8 @@ void nvtModelDatabase::writeState(STATE c, double time, int rec)
         };
     dynamicalFeatures dynFeat(s->returnPositions(),s->Box);
 
-
     double meanq = s->reportq();
-    double sigma = s->getSigmaXY();
+    double d2Edgammadgammadat = s->getd2Edgammadgamma();
     double overlap = dynFeat.computeOverlapFunction(s->returnPositions());
 
     //Write all the data
@@ -125,7 +127,8 @@ void nvtModelDatabase::writeState(STATE c, double time, int rec)
     timeVar          ->put_rec(&time,            rec);
     BoxMatrixVar     ->put_rec(&boxdat[0],       rec);
     overlapVar       ->put_rec(&overlap,         rec);
-    sigmaVar         ->put_rec(&sigma,           rec);
+    d2EdgammadgammaVar  ->put_rec(&d2Edgammadgammadat, rec);
+    //d2EidgammadgammaVar ->put_rec(&d2Eidgammadgammadat[0], rec);
     File.sync();
     }
 

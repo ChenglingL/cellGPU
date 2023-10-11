@@ -19,7 +19,7 @@ private:
     int Nv; //!< number of vertices in delaunay triangulation
     NcDim *recDim, *NvDim, *dofDim, *boxDim, *unitDim; //!< NcDims we'll use
     //!Currently using "additionalData" to hold target a_0 and p_0 information
-    NcVar *timeVar, *sigmaVar, *overlapVar; //!<NcVars we'll use
+    NcVar *d2EdgammadgammaVar; //!<NcVars we'll use *posVar,
     int Current;    //!< keeps track of the current record when in write mode
 
 

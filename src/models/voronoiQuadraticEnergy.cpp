@@ -482,7 +482,7 @@ double VoronoiQuadraticEnergy::getSigmaXY()
             dAdg += dot(dAidv,dhdg);
             dPdg += dot(dPidv,dhdg);
 
-            rij=rik;ighborType
+            rij=rik;
             vlast=vcur;
             };
         sigmaXY -= 2.0*Adiff*dAdg + 2.0*Pdiff*dPdg;
@@ -910,29 +910,32 @@ double2 VoronoiQuadraticEnergy::deidHn(int i,int nn)
     double2 answer;
 
     //read in the needed data
-    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
     ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
 
-    ArrayHandle<double4> h_vln(voroLastNext,access_location::host,access_mode::read);
     ArrayHandle<int> h_nn(neighborNum,access_location::host,access_mode::read);
     ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
     ArrayHandle<double2> h_AP(AreaPeri,access_location::host,access_mode::read);
     ArrayHandle<double2> h_APpref(AreaPeriPreferences,access_location::host,access_mode::read);
-    ArrayHandle<double2> h_Moduli(Moduli,access_location::host,access_mode::read);
 
+    n_idx = Index2D(neighMax,Ncells);
     double P = h_AP.data[i].y; 
     double A = h_AP.data[i].x;
     double PA = h_APpref.data[i].x;
     double PP = h_APpref.data[i].y;
 
+    int ilast = nn - 1;
+        if(ilast == -1){
+            ilast = h_nn.data[i] - 1;
+        }
+    int inext = (nn + 1)%(h_nn.data[i]);
+
     //From here i refers to the nth vertex
     double hix = h_v.data[n_idx(nn,i)].x;
     double hiy = h_v.data[n_idx(nn,i)].y;
-    double hiLastx = h_vln.data[n_idx(nn,i)].x;
-    double hiLasty = h_vln.data[n_idx(nn,i)].y;
-    double hiNextx = h_vln.data[n_idx(nn,i)].z;
-    double hiNexty = h_vln.data[n_idx(nn,i)].w;
-
+    double hiLastx = h_v.data[n_idx(ilast,i)].x;
+    double hiLasty = h_v.data[n_idx(ilast,i)].y;
+    double hiNextx = h_v.data[n_idx(inext,i)].x;
+    double hiNexty = h_v.data[n_idx(inext,i)].y;
 
     answer.x = (-hiLasty + hiNexty)*KA*(A - PA) + 2*KP*(P - PP)*((-hiLastx + hix)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + (-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)));
     answer.y = (-hiLastx + hiNextx)*KA*(-A + PA) + 2*KP*(P - PP)*((-hiLasty + hiy)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + (-hiNexty + hiy)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)));
@@ -958,35 +961,43 @@ Matrix2x2 VoronoiQuadraticEnergy::d2eidHndHj(int i, int nn, int j)
     Matrix2x2 answer;
 
     //read in the needed data
-    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
     ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
-
-    ArrayHandle<double4> h_vln(voroLastNext,access_location::host,access_mode::read);
     ArrayHandle<int> h_nn(neighborNum,access_location::host,access_mode::read);
     ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
     ArrayHandle<double2> h_AP(AreaPeri,access_location::host,access_mode::read);
     ArrayHandle<double2> h_APpref(AreaPeriPreferences,access_location::host,access_mode::read);
 
-
+    n_idx = Index2D(neighMax,Ncells);
     double P = h_AP.data[i].y; 
     double A = h_AP.data[i].x;
     double PA = h_APpref.data[i].x;
     double PP = h_APpref.data[i].y;
 
     //From here i in hix,hiy... refers to the nth vertex
+    int ilast = nn - 1;
+        if(ilast == -1){
+            ilast = h_nn.data[i] - 1;
+        }
+    int inext = (nn + 1)%(h_nn.data[i]);
+    int jlast = j - 1;
+        if(jlast == -1){
+            jlast = h_nn.data[i] - 1;
+        }
+    int jnext = (j + 1)%(h_nn.data[i]);
+
     double hix = h_v.data[n_idx(nn,i)].x;
     double hiy = h_v.data[n_idx(nn,i)].y;
-    double hiLastx = h_vln.data[n_idx(nn,i)].x;
-    double hiLasty = h_vln.data[n_idx(nn,i)].y;
-    double hiNextx = h_vln.data[n_idx(nn,i)].z;
-    double hiNexty = h_vln.data[n_idx(nn,i)].w;
+    double hiLastx = h_v.data[n_idx(ilast,i)].x;
+    double hiLasty = h_v.data[n_idx(ilast,i)].y;
+    double hiNextx = h_v.data[n_idx(inext,i)].x;
+    double hiNexty = h_v.data[n_idx(inext,i)].y;
 
     double hjx = h_v.data[n_idx(j,i)].x;
     double hjy = h_v.data[n_idx(j,i)].y;
-    double hjLastx = h_vln.data[n_idx(j,i)].x;
-    double hjLasty = h_vln.data[n_idx(j,i)].y;
-    double hjNextx = h_vln.data[n_idx(j,i)].z;
-    double hjNexty = h_vln.data[n_idx(j,i)].w;
+    double hjLastx = h_v.data[n_idx(jlast,i)].x;
+    double hjLasty = h_v.data[n_idx(jlast,i)].y;
+    double hjNextx = h_v.data[n_idx(jnext,i)].x;
+    double hjNexty = h_v.data[n_idx(jnext,i)].y;
 
     if (j == nn) {
         //when we take the derivative w/r/t the same vertice twice
@@ -1026,7 +1037,7 @@ Matrix2x2 VoronoiQuadraticEnergy::d2eidHndHj(int i, int nn, int j)
                     ((-hiLasty + hiy)/sqrt((-hiLastx + hix)*(-hiLastx + hix) + (-hiLasty + hiy)*(-hiLasty + hiy)) + 
                     (-hiNexty + hiy)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)))));
     }
-    else if (j == (nn+1) % h_cvn.data[i]) {
+    else if (j == inext) {
         //j is the next vertex of n
         answer.x11 = 2*((-0.5*hiy + 0.5*hjNexty)*(-0.5*hiLasty + 0.5*hjy)*KA - 
                     (KP*(P - PP)*((hiy - hjy)*(hiy - hjy)))/(sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))) + 
@@ -1056,11 +1067,10 @@ Matrix2x2 VoronoiQuadraticEnergy::d2eidHndHj(int i, int nn, int j)
                     ((-hiy + hjy)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)) + 
                     (-hjNexty + hjy)/sqrt((-hjNextx + hjx)*(-hjNextx + hjx) + (-hjNexty + hjy)*(-hjNexty + hjy))));
     }
-    else if (j == (nn-1) % h_cvn.data[i]) {
+    else if (j == ilast) {
         //j is the last vertex of n
         answer.x11 = 2*((0.5*hiy - 0.5*hjLasty)*(0.5*hiNexty - 0.5*hjy)*KA - (KP*(P - PP)*((hiy - hjy)*(hiy - hjy)))/
-                    (sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))) + 
-                    KP*((-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)) + 
+                    (sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))*sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy))) + KP*((-hiNextx + hix)/sqrt((-hiNextx + hix)*(-hiNextx + hix) + (-hiNexty + hiy)*(-hiNexty + hiy)) + 
                     (hix - hjx)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)))*
                     ((-hix + hjx)/sqrt((hix - hjx)*(hix - hjx) + (hiy - hjy)*(hiy - hjy)) + 
                     (-hjLastx + hjx)/sqrt((hjLastx - hjx)*(hjLastx - hjx) + (hjLasty - hjy)*(hjLasty - hjy))));
@@ -1112,42 +1122,76 @@ Matrix2x2 VoronoiQuadraticEnergy::d2eidHndHj(int i, int nn, int j)
                     ((-hjLasty + hjy)/sqrt((hjLastx - hjx)*(hjLastx - hjx) + (hjLasty - hjy)*(hjLasty - hjy)) + 
                     (-hjNexty + hjy)/sqrt((-hjNextx + hjx)*(-hjNextx + hjx) + (-hjNexty + hjy)*(-hjNexty + hjy)));
     }
-
     return answer;    
     }
 
 
 double VoronoiQuadraticEnergy::getd2Edgammadgamma()
     {
-    double2 answer = 0.0;
-
+    double answer = 0.0;
+    //d2Eidgammadgamma.reserve(Ncells);
     //read in the needed data
     ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
-    ArrayHandle<int> h_vcn(vertexCellNeighbors,access_location::host, access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+    //double d2EidgammadgammaData;
+
+    // for (int cell = 0; cell < Ncells; ++cell)
+    //     {
+    //         cout<<"Cell "<<cell<<" number of vertices "<<h_cvn.data[cell]<<endl;
+    //         for (int i = 0; i < h_cvn.data[cell]; i++)
+    //         {
+    //             cout<<"n_idx(i,cell): "<<n_idx(i,cell)<<endl;
+    //             cout<<"Cell "<<cell<<" Vetex"<<i<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+1]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+2]<<endl;
+    //         }
+    //     }
 
     //Loop over all the cells
     for (int cell = 0; cell < Ncells; ++cell)
         {
-        for (int i = 0; i < cellVertexNum[cell]; i++)
+            //d2EidgammadgammaData = 0.0;
+        for (int i = 0; i < h_nn.data[cell]; i++)
         {
-            for(int j = 0; j < cellVertexNum[cell]; j++)
+            //all the cells that are neighbors of vertex i
+            double2 ri1,ri2,ri3; 
+            // index of the 3rd cell center that is neighbour of vertex i.
+            // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+            int ilast = i - 1;
+            if(ilast == -1){
+                ilast = h_nn.data[cell] - 1;
+            }
+
+            ri1=h_p.data[cell];
+            ri2=h_p.data[h_n.data[n_idx(i,cell)]];
+            ri3=h_p.data[h_n.data[n_idx(ilast,cell)]];
+            // double2 circumcent;
+            // Circumcenter(ri2-ri1,ri3-ri1,circumcent);
+            // cout<<"cencumcenter:( "<<circumcent.x<<", "<<circumcent.y<<" and vorocur: ("<<h_v.data[n_idx(i,cell)].x<<", "<<h_v.data[n_idx(i,cell)].y<<endl;
+            // break;
+            for(int j = 0; j < h_nn.data[cell]; j++)
             {
-                double2 ri1,ri2,ri3; //all the cells that are neighbors of vertex i
-                ri1=h_p.data[h_vcn.data[3*n_idx(i,cell)]];
-                ri2=h_p.data[h_vcn.data[3*n_idx(i,cell)+1]];
-                ri3=h_p.data[h_vcn.data[3*n_idx(i,cell)+2]];
 
-                double2 rj1,rj2,rj3; //all the cells that are neighbors of vertex j
-                rj1=h_p.data[h_vcn.data[3*n_idx(j,cell)]];
-                rj2=h_p.data[h_vcn.data[3*n_idx(j,cell)+1]];
-                rj3=h_p.data[h_vcn.data[3*n_idx(j,cell)+2]];
+                double2 rj1,rj2,rj3; 
+                // index of the 3rd cell center that is neighbour of vertex i.
+                // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+                int jlast = j - 1;
+                if(jlast == -1){
+                    jlast = h_nn.data[cell] - 1;
+                }
 
-                answer += (d2eidHndHj(cell, i, j) * dHdgamma(ri1,ri2,ri3)) * dHdgamma(rj1,rj2,rj3); 
-                            
-            answer += deidHn(cell,i) * d2Hdgamma2(ri1,ri2,ri3);
+                rj1=h_p.data[cell];
+                rj2=h_p.data[h_n.data[n_idx(j,cell)]];
+                rj3=h_p.data[h_n.data[n_idx(jlast,cell)]];
+
+                answer += dot(d2eidHndHj(cell, i, j) * dHdgamma(rj1,rj2,rj3), dHdgamma(ri1,ri2,ri3));
+                //d2EidgammadgammaData += dot(d2eidHndHj(cell, i, j) * dHdgamma(rj1,rj2,rj3), dHdgamma(ri1,ri2,ri3));
+            }                
+            answer += dot(deidHn(cell,i), d2Hdgamma2(ri1,ri2,ri3));
+            //d2EidgammadgammaData += dot(deidHn(cell,i), d2Hdgamma2(ri1,ri2,ri3));   
         }
+        //d2Eidgammadgamma.push_back(d2EidgammadgammaData);
         };
-
 
 
     return answer;    
