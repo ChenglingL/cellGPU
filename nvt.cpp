@@ -147,7 +147,10 @@ int main(int argc, char*argv[])
         {
         //voronoiModel->computeGeometry();
         //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl;
-        ncdat->writeState(voronoiModel);
+        if (ii % 100 == 0){
+            ncdat->writeState(voronoiModel);
+        }
+        
         //printf("time_step: %i *0.001 \t energy %f \t msd %f \t overlap %f\n", ii, voronoiModel->computeEnergy(),dynFeat.computeMSD(voronoiModel->returnPositions()),dynFeat.computeOverlapFunction(voronoiModel->returnPositions()));
         sim->performTimestep();
         };
