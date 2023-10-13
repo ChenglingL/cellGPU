@@ -64,7 +64,7 @@ set(HEADERS
 
 # list the names of cpp files corresponding to linked executables you'd like...
 foreach(ARG
-        nvt
+        test
         )
 add_executable("${ARG}.out" "${ARG}.cpp" )
 target_link_libraries("${ARG}.out"

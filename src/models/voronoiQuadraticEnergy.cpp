@@ -495,6 +495,100 @@ double VoronoiQuadraticEnergy::getSigmaXY()
     };
 
 /*!
+This function calculates
+\sigma_{xy} = 1/Area_{total}*(dE/d\gamma), the normalized change in energy when deforming the box with a strain tensor given by
+0   \gamma
+0   1
+. Notably, this is done by taking analytic derivatives, not by doing a finite-difference computed
+by actually deforming the box a bit and recomputing the geometry.
+*/
+double VoronoiQuadraticEnergy::getSigmaXY(vector<double> &sigmai)
+    {
+    sigmai.reserve(Ncells);
+    double sigmaXY = 0.0;
+    double Pthreshold = THRESHOLD;
+
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+
+    ArrayHandle<double4> h_vln(voroLastNext,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host,access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_AP(AreaPeri,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_APpref(AreaPeriPreferences,access_location::host,access_mode::read);
+
+    //compute the contribution from each cell
+    for (int i = 0; i < Ncells; ++i)
+        {
+        double2 pi = h_p.data[i];
+        //get Delaunay neighbors of the cell
+        int neigh = h_nn.data[i];
+        vector<int> ns(neigh);
+        vector<double2> voro(neigh);
+        for (int nn = 0; nn < neigh; ++nn)
+            {
+            ns[nn]=h_n.data[n_idx(nn,i)];
+            int id = n_idx(nn,i);
+            voro[nn] = h_v.data[id];
+            };
+        //loop through the Delaunay neighbors, computing dA/d\gamma and dP/d\gamma
+        double2 rij,rik,dhdg;
+        double2 nnextp,nlastp;
+        double2 vlast,vnext,vcur;
+        nlastp = h_p.data[ns[ns.size()-1]]; 
+        Box->minDist(nlastp,pi,rij);
+        double Adiff = KA*(h_AP.data[i].x - h_APpref.data[i].x);
+        double Pdiff = KP*(h_AP.data[i].y - h_APpref.data[i].y);
+        double dAdg = 0.0;
+        double dPdg = 0.0;
+        vlast = voro[neigh-1];
+        for (int nn = 0; nn < neigh; ++nn)
+            {
+            vcur = voro[nn];
+            vnext = voro[(nn+1)%neigh];
+            nnextp = h_p.data[ns[nn]];
+            Box->minDist(nnextp,pi,rik);
+            getdhdgamma(dhdg,rij,rik);
+
+            //get area and perimeter derivatives from force calculation
+            //note that in the force calculation we adopted a sign convention to avoid computing the
+            //final minus sign in f= - \nabla E
+            //We'll compensate by writing sigmaXY -= (blah blah) instead of the more natural +=
+            double2 dAidv,dPidv;
+            dAidv.x = 0.5*(vlast.y-vnext.y);
+            dAidv.y = 0.5*(vnext.x-vlast.x);
+            double2 dlast,dnext;
+            dlast.x = vlast.x-vcur.x;
+            dlast.y=vlast.y-vcur.y;
+            double dlnorm = sqrt(dlast.x*dlast.x+dlast.y*dlast.y);
+            dnext.x = vcur.x-vnext.x;
+            dnext.y = vcur.y-vnext.y;
+            double dnnorm = sqrt(dnext.x*dnext.x+dnext.y*dnext.y);
+            if(dnnorm < Pthreshold)
+                    dnnorm = Pthreshold;
+            if(dlnorm < Pthreshold)
+                    dlnorm = Pthreshold;
+            dPidv.x = dlast.x/dlnorm - dnext.x/dnnorm;
+            dPidv.y = dlast.y/dlnorm - dnext.y/dnnorm;
+
+            dAdg += dot(dAidv,dhdg);
+            dPdg += dot(dPidv,dhdg);
+
+            rij=rik;
+            vlast=vcur;
+            };
+        sigmaXY -= 2.0*Adiff*dAdg + 2.0*Pdiff*dPdg;
+        sigmai.push_back(-2.0*Adiff*dAdg - 2.0*Pdiff*dPdg);
+        };
+
+    double b1,b2,b3,b4;
+    Box->getBoxDims(b1,b2,b3,b4);
+    double area = b1*b4;
+    return sigmaXY/area;
+    };
+
+/*!
 \param rcs a vector of (row,col) locations
 \param vals a vector of the corresponding value of the dynamical matrix
 */
@@ -1126,16 +1220,17 @@ Matrix2x2 VoronoiQuadraticEnergy::d2eidHndHj(int i, int nn, int j)
     }
 
 
-double VoronoiQuadraticEnergy::getd2Edgammadgamma()
+double VoronoiQuadraticEnergy::getd2Edgammadgamma(vector<double> &d2Eidgammadgamma)
     {
     double answer = 0.0;
-    //d2Eidgammadgamma.reserve(Ncells);
+    computeGeometry();
+    d2Eidgammadgamma.reserve(Ncells);
     //read in the needed data
     ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
     ArrayHandle<int> h_nn(neighborNum,access_location::host, access_mode::read);
     ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
     ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
-    //double d2EidgammadgammaData;
+    double d2EidgammadgammaData;
 
     // for (int cell = 0; cell < Ncells; ++cell)
     //     {
@@ -1150,7 +1245,7 @@ double VoronoiQuadraticEnergy::getd2Edgammadgamma()
     //Loop over all the cells
     for (int cell = 0; cell < Ncells; ++cell)
         {
-            //d2EidgammadgammaData = 0.0;
+            d2EidgammadgammaData = 0.0;
         for (int i = 0; i < h_nn.data[cell]; i++)
         {
             //all the cells that are neighbors of vertex i
@@ -1185,12 +1280,78 @@ double VoronoiQuadraticEnergy::getd2Edgammadgamma()
                 rj3=h_p.data[h_n.data[n_idx(jlast,cell)]];
 
                 answer += dot(d2eidHndHj(cell, i, j) * dHdgamma(rj1,rj2,rj3), dHdgamma(ri1,ri2,ri3));
-                //d2EidgammadgammaData += dot(d2eidHndHj(cell, i, j) * dHdgamma(rj1,rj2,rj3), dHdgamma(ri1,ri2,ri3));
+                d2EidgammadgammaData += dot(d2eidHndHj(cell, i, j) * dHdgamma(rj1,rj2,rj3), dHdgamma(ri1,ri2,ri3));
             }                
             answer += dot(deidHn(cell,i), d2Hdgamma2(ri1,ri2,ri3));
-            //d2EidgammadgammaData += dot(deidHn(cell,i), d2Hdgamma2(ri1,ri2,ri3));   
+            d2EidgammadgammaData += dot(deidHn(cell,i), d2Hdgamma2(ri1,ri2,ri3));   
         }
-        //d2Eidgammadgamma.push_back(d2EidgammadgammaData);
+        d2Eidgammadgamma.push_back(d2EidgammadgammaData);
+        };
+
+
+    return answer;    
+    }
+
+double VoronoiQuadraticEnergy::getd2Edgammadgamma()
+    {
+    computeGeometry();
+    double answer = 0.0;
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+
+    // for (int cell = 0; cell < Ncells; ++cell)
+    //     {
+    //         cout<<"Cell "<<cell<<" number of vertices "<<h_cvn.data[cell]<<endl;
+    //         for (int i = 0; i < h_cvn.data[cell]; i++)
+    //         {
+    //             cout<<"n_idx(i,cell): "<<n_idx(i,cell)<<endl;
+    //             cout<<"Cell "<<cell<<" Vetex"<<i<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+1]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+2]<<endl;
+    //         }
+    //     }
+
+    //Loop over all the cells
+    for (int cell = 0; cell < Ncells; ++cell)
+        {
+        for (int i = 0; i < h_nn.data[cell]; i++)
+        {
+            //all the cells that are neighbors of vertex i
+            double2 ri1,ri2,ri3; 
+            // index of the 3rd cell center that is neighbour of vertex i.
+            // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+            int ilast = i - 1;
+            if(ilast == -1){
+                ilast = h_nn.data[cell] - 1;
+            }
+
+            ri1=h_p.data[cell];
+            ri2=h_p.data[h_n.data[n_idx(i,cell)]];
+            ri3=h_p.data[h_n.data[n_idx(ilast,cell)]];
+            // double2 circumcent;
+            // Circumcenter(ri2-ri1,ri3-ri1,circumcent);
+            // cout<<"cencumcenter:( "<<circumcent.x<<", "<<circumcent.y<<" and vorocur: ("<<h_v.data[n_idx(i,cell)].x<<", "<<h_v.data[n_idx(i,cell)].y<<endl;
+            // break;
+            for(int j = 0; j < h_nn.data[cell]; j++)
+            {
+
+                double2 rj1,rj2,rj3; 
+                // index of the 3rd cell center that is neighbour of vertex i.
+                // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+                int jlast = j - 1;
+                if(jlast == -1){
+                    jlast = h_nn.data[cell] - 1;
+                }
+
+                rj1=h_p.data[cell];
+                rj2=h_p.data[h_n.data[n_idx(j,cell)]];
+                rj3=h_p.data[h_n.data[n_idx(jlast,cell)]];
+
+                answer += dot(d2eidHndHj(cell, i, j) * dHdgamma(rj1,rj2,rj3), dHdgamma(ri1,ri2,ri3));
+            }                
+            answer += dot(deidHn(cell,i), d2Hdgamma2(ri1,ri2,ri3));
+        }
         };
 
 

@@ -17,9 +17,9 @@ class nvtModelDatabase : public BaseDatabaseNetCDF
 private:
     typedef shared_ptr<Simple2DCell> STATE;
     int Nv; //!< number of vertices in delaunay triangulation
-    NcDim *recDim, *NvDim, *dofDim, *boxDim, *unitDim; //!< NcDims we'll use
+    NcDim *recDim, *NvDim, *dofDim, *boxDim, *unitDim, *neighborDim; //!< NcDims we'll use
     //!Currently using "additionalData" to hold target a_0 and p_0 information
-    NcVar *posVar, *velVar, *typeVar, *additionalDataVar, *BoxMatrixVar, *timeVar, *meanqVar, *d2EdgammadgammaVar, *d2EidgammadgammaVar, *overlapVar; //!<NcVars we'll use
+    NcVar *posVar, *velVar, *typeVar, *additionalDataVar, *BoxMatrixVar, *timeVar, *meanqVar, *d2EdgammadgammaVar, *d2EidgammadgammaVar, *overlapVar, *sigmaVar, *sigmaiVar, *neighborVar; //!<NcVars we'll use
     int Current;    //!< keeps track of the current record when in write mode
 
 

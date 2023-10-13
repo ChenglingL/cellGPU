@@ -382,10 +382,10 @@ CUDA_rt_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 EIGEN3_INCLUDE_DIR:UNINITIALIZED=/home/chengling/.local/include/eigen3
 
 //The directory containing the GMPXX include files
-GMPXX_INCLUDE_DIR:PATH=GMPXX_INCLUDE_DIR-NOTFOUND
+GMPXX_INCLUDE_DIR:PATH=/usr/include
 
 //Path to the GMPXX library
-GMPXX_LIBRARIES:FILEPATH=GMPXX_LIBRARIES-NOTFOUND
+GMPXX_LIBRARIES:FILEPATH=/usr/lib/x86_64-linux-gnu/libgmpxx.so
 
 //No help, variable specified on the command line.
 GMP_INCLUDE_DIR:UNINITIALIZED=/home/chengling/.local/include

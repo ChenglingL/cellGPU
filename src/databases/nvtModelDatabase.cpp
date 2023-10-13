@@ -32,6 +32,7 @@ void nvtModelDatabase::SetDimVar()
     dofDim = File.add_dim("dof", Nv*2);
     boxDim = File.add_dim("boxdim",4);
     unitDim = File.add_dim("unit",1);
+    neighborDim = File.add_dim("neighbor",Nv*20);
 
     //Set the variables
     posVar              = File.add_var("position",       ncDouble,recDim, dofDim);
@@ -44,10 +45,14 @@ void nvtModelDatabase::SetDimVar()
     d2EidgammadgammaVar  = File.add_var("d2Eidgammadgamma",     ncDouble,recDim, NvDim);
     d2EdgammadgammaVar  = File.add_var("d2Edgammadgamma",     ncDouble,recDim, unitDim);
     overlapVar          = File.add_var("overlap",     ncDouble,recDim, unitDim);
+    sigmaVar            = File.add_var("sigma",     ncDouble,recDim, unitDim);
+    sigmaiVar           = File.add_var("sigmai",     ncDouble,recDim, NvDim);
+    neighborVar         = File.add_var("neighbor",     ncInt,recDim, neighborDim);
     }
 
 void nvtModelDatabase::GetDimVar()
     {
+    
     //Get the dimensions
     recDim = File.get_dim("rec");
     boxDim = File.get_dim("boxdim");
@@ -65,7 +70,8 @@ void nvtModelDatabase::GetDimVar()
     d2EdgammadgammaVar = File.get_var("d2Edgammadgamma");
     d2EidgammadgammaVar = File.get_var("d2Eidgammadgamma");
     overlapVar = File.get_var("overlap");
-
+    sigmaVar = File.get_var("sigma");
+    sigmaiVar = File.get_var("sigmai");
     }
 
 void nvtModelDatabase::writeState(STATE c, double time, int rec)
@@ -87,12 +93,15 @@ void nvtModelDatabase::writeState(STATE c, double time, int rec)
     std::vector<double> additionaldat(2*Nv);
     std::vector<int> typedat(Nv);
     std::vector<double> d2Eidgammadgammadat;
+    std::vector<double> sigmaidat;
     int idx = 0;
 
     ArrayHandle<double2> h_p(s->cellPositions,access_location::host,access_mode::read);
     ArrayHandle<double2> h_v(s->returnVelocities());
     ArrayHandle<double2> h_m(s->returnAreaPeriPreferences());
     ArrayHandle<int> h_ct(s->cellType,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(s->neighborNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_n(s->neighbors,access_location::host,access_mode::read);
 
     for (int ii = 0; ii < Nv; ++ii)
         {
@@ -112,10 +121,37 @@ void nvtModelDatabase::writeState(STATE c, double time, int rec)
         typedat[ii] = h_ct.data[pidx];
         idx +=1;
         };
+    int neighborListLength = 0;
+    int maxcount = 0;
+
+    Index2D nidx=s->n_idx;
+    for (int ii = 0; ii < Nv; ++ii)
+        {
+            if (maxcount < h_nn.data[ii])
+            {
+                maxcount = h_nn.data[ii];
+            }
+            for (int j = 0; j < h_nn.data[ii]; j++)
+            {
+                neighborListLength++;
+            }
+        
+        };
+
+    std::vector<int> neighbordat(20*Nv,-1);
+    for (int ii = 0; ii < Nv; ++ii)
+        {
+            for (int j = 0; j < h_nn.data[ii]; j++)
+            {
+                neighbordat[ii * maxcount + j] = h_n.data[nidx(j,ii)];
+            }
+        
+        };
     dynamicalFeatures dynFeat(s->returnPositions(),s->Box);
 
     double meanq = s->reportq();
-    double d2Edgammadgammadat = s->getd2Edgammadgamma();
+    double d2Edgammadgammadat = s->getd2Edgammadgamma(d2Eidgammadgammadat);
+    double sigma = s->getSigmaXY(sigmaidat);
     double overlap = dynFeat.computeOverlapFunction(s->returnPositions());
 
     //Write all the data
@@ -128,7 +164,10 @@ void nvtModelDatabase::writeState(STATE c, double time, int rec)
     BoxMatrixVar     ->put_rec(&boxdat[0],       rec);
     overlapVar       ->put_rec(&overlap,         rec);
     d2EdgammadgammaVar  ->put_rec(&d2Edgammadgammadat, rec);
-    //d2EidgammadgammaVar ->put_rec(&d2Eidgammadgammadat[0], rec);
+    d2EidgammadgammaVar ->put_rec(&d2Eidgammadgammadat[0], rec);
+    sigmaVar         ->put_rec(&sigma, rec);
+    sigmaiVar        ->put_rec(&sigmaidat[0], rec);
+    neighborVar      ->put_rec(&neighbordat[0], rec);
     File.sync();
     }
 

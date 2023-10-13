@@ -53,7 +53,7 @@ CMAKE_BINARY_DIR = /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cma
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/nvt.out.dir/all
+all: CMakeFiles/test.out.dir/all
 all: src/all
 
 .PHONY : all
@@ -64,7 +64,7 @@ preinstall: src/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/nvt.out.dir/clean
+clean: CMakeFiles/test.out.dir/clean
 clean: src/clean
 
 .PHONY : clean
@@ -217,39 +217,39 @@ src/utility/clean: src/utility/CMakeFiles/utility.dir/clean
 .PHONY : src/utility/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/nvt.out.dir
+# Target rules for target CMakeFiles/test.out.dir
 
 # All Build rule for target.
-CMakeFiles/nvt.out.dir/all: src/utility/CMakeFiles/utilityGPU.dir/all
-CMakeFiles/nvt.out.dir/all: src/utility/CMakeFiles/utility.dir/all
-CMakeFiles/nvt.out.dir/all: src/simulation/CMakeFiles/simulation.dir/all
-CMakeFiles/nvt.out.dir/all: src/updaters/CMakeFiles/updatersGPU.dir/all
-CMakeFiles/nvt.out.dir/all: src/updaters/CMakeFiles/updaters.dir/all
-CMakeFiles/nvt.out.dir/all: src/models/CMakeFiles/modelGPU.dir/all
-CMakeFiles/nvt.out.dir/all: src/models/CMakeFiles/model.dir/all
-CMakeFiles/nvt.out.dir/all: src/analysis/CMakeFiles/analysis.dir/all
-CMakeFiles/nvt.out.dir/all: src/databases/CMakeFiles/database.dir/all
-	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/depend
-	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=34,35 "Built target nvt.out"
-.PHONY : CMakeFiles/nvt.out.dir/all
+CMakeFiles/test.out.dir/all: src/models/CMakeFiles/modelGPU.dir/all
+CMakeFiles/test.out.dir/all: src/models/CMakeFiles/model.dir/all
+CMakeFiles/test.out.dir/all: src/analysis/CMakeFiles/analysis.dir/all
+CMakeFiles/test.out.dir/all: src/databases/CMakeFiles/database.dir/all
+CMakeFiles/test.out.dir/all: src/utility/CMakeFiles/utilityGPU.dir/all
+CMakeFiles/test.out.dir/all: src/utility/CMakeFiles/utility.dir/all
+CMakeFiles/test.out.dir/all: src/simulation/CMakeFiles/simulation.dir/all
+CMakeFiles/test.out.dir/all: src/updaters/CMakeFiles/updatersGPU.dir/all
+CMakeFiles/test.out.dir/all: src/updaters/CMakeFiles/updaters.dir/all
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/depend
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=36,37 "Built target test.out"
+.PHONY : CMakeFiles/test.out.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/nvt.out.dir/rule: cmake_check_build_system
+CMakeFiles/test.out.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 68
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/nvt.out.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test.out.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 0
-.PHONY : CMakeFiles/nvt.out.dir/rule
+.PHONY : CMakeFiles/test.out.dir/rule
 
 # Convenience name for target.
-nvt.out: CMakeFiles/nvt.out.dir/rule
+test.out: CMakeFiles/test.out.dir/rule
 
-.PHONY : nvt.out
+.PHONY : test.out
 
 # clean rule for target.
-CMakeFiles/nvt.out.dir/clean:
-	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/clean
-.PHONY : CMakeFiles/nvt.out.dir/clean
+CMakeFiles/test.out.dir/clean:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/clean
+.PHONY : CMakeFiles/test.out.dir/clean
 
 #=============================================================================
 # Target rules for target src/utility/CMakeFiles/utilityGPU.dir
@@ -312,7 +312,7 @@ src/utility/CMakeFiles/utility.dir/clean:
 src/simulation/CMakeFiles/simulation.dir/all:
 	$(MAKE) -f src/simulation/CMakeFiles/simulation.dir/build.make src/simulation/CMakeFiles/simulation.dir/depend
 	$(MAKE) -f src/simulation/CMakeFiles/simulation.dir/build.make src/simulation/CMakeFiles/simulation.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=36,37 "Built target simulation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=34,35 "Built target simulation"
 .PHONY : src/simulation/CMakeFiles/simulation.dir/all
 
 # Build rule for subdir invocation for target.
