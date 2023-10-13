@@ -36,6 +36,9 @@ void GlassyDynModelDatabase::SetDimVar()
     //Set the variables
     //posVar              = File.add_var("position",       ncDouble,recDim, dofDim);
     d2EdgammadgammaVar  = File.add_var("d2Edgammadgamma",     ncDouble,recDim, unitDim);
+    sigmaVar  = File.add_var("sigma",     ncDouble,recDim, unitDim);
+    energyVar  = File.add_var("energy",     ncDouble,recDim, unitDim);
+    BoxMatrixVar    = File.add_var("BoxMatrix",     ncDouble,recDim, boxDim);
     }
 
 void GlassyDynModelDatabase::GetDimVar()
@@ -51,10 +54,12 @@ void GlassyDynModelDatabase::GetDimVar()
     // velVar = File.get_var("velocity");
     // typeVar = File.get_var("type");
     // additionalDataVar = File.get_var("additionalData");
-    // BoxMatrixVar = File.get_var("BoxMatrix");
+    BoxMatrixVar = File.get_var("BoxMatrix");
     // timeVar = File.get_var("time");
     // meanqVar = File.get_var("meanQ");
     d2EdgammadgammaVar = File.get_var("d2Edgammadgamma");
+    sigmaVar = File.get_var("sigma");
+    energyVar = File.get_var("energy");
     // d2EidgammadgammaVar = File.get_var("d2Eidgammadgamma");
     // overlapVar = File.get_var("overlap");
 
@@ -108,6 +113,8 @@ void GlassyDynModelDatabase::writeState(STATE c, double time, int rec)
 
     // double meanq = s->reportq();
     double d2Edgammadgammadat = s->getd2Edgammadgamma();
+    double sigmadat = s->getSigmaXY();
+    double energydat = s->computeEnergy();
     // double overlap = dynFeat.computeOverlapFunction(s->returnPositions());
 
     //Write all the data
@@ -117,9 +124,11 @@ void GlassyDynModelDatabase::writeState(STATE c, double time, int rec)
     // additionalDataVar->put_rec(&additionaldat[0],rec);
     // typeVar          ->put_rec(&typedat[0],      rec);
     // timeVar          ->put_rec(&time,            rec);
-    // BoxMatrixVar     ->put_rec(&boxdat[0],       rec);
+    BoxMatrixVar     ->put_rec(&boxdat[0],       rec);
     // overlapVar       ->put_rec(&overlap,         rec);
     d2EdgammadgammaVar  ->put_rec(&d2Edgammadgammadat, rec);
+    sigmaVar  ->put_rec(&sigmadat, rec);
+    energyVar  ->put_rec(&energydat, rec);
     //d2EidgammadgammaVar ->put_rec(&d2Eidgammadgammadat[0], rec);
     File.sync();
     }

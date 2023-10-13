@@ -75,36 +75,17 @@ int main(int argc, char*argv[])
         initializeGPU = false;
 
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
-    logEquilibrationStateWriter lewriter(0.001);
     char dataname[256];
     double equilibrationTime = dt*initSteps;
-    sprintf(dataname,"./testData/test_N%i_p%.5f_T%.8f_time%i.nc",numpts,p0,T,tSteps);
+    sprintf(dataname,"./testData/preliminary_N%i_p%.3f_T%.3f_time%i.nc",numpts,p0,T,tSteps);
     shared_ptr<GlassyDynModelDatabase> ncdat=make_shared<GlassyDynModelDatabase>(numpts,dataname,NcFile::Replace);
 
 
-    cout << "initializing a system of " << numpts << " cells at temperature " << T << endl;
     shared_ptr<NoseHooverChainNVT> nvt = make_shared<NoseHooverChainNVT>(numpts,Nchain,initializeGPU);
 
     //define a voronoi configuration with a quadratic energy functional
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,a0,p0,reproducible,initializeGPU);
 
-    vector<double2> MixedPre; // Vector to store double2 elements
-
-    //set the system to be 50:50 mixed and a0/a1=4/3
-    for (int i = 0; i < numpts; ++i) {
-        if (i < numpts/2) {
-            double2 element1;
-            element1.x = 1.0;
-            element1.y = p0 * 1.0;
-            MixedPre.push_back(element1);
-        } else {
-            double2 element2;
-            element2.x = 0.75;
-            element2.y = p0 * sqrt(0.75);
-            MixedPre.push_back(element2);
-        }
-    }
-    voronoiModel->setCellPreferences(MixedPre);
     //voronoiModel->setCellPreferencesWithRandomAreas(p0,0.8,1.2);
 
     voronoiModel->setCellVelocitiesMaxwellBoltzmann(T);
@@ -129,19 +110,12 @@ int main(int argc, char*argv[])
     sim->setReproducible(reproducible);
 
     //run for a few initialization timesteps
-    printf("starting initialization case %i\n", id);
-    for(long long int ii = 0; ii < initSteps; ++ii)
-        {
-        sim->performTimestep();
-        };
-    printf("Finished with initialization\n");
-    cout << "current q = " << voronoiModel->reportq() << endl;
+
     //the reporting of the force should yield a number that is numerically close to zero.
     voronoiModel->reportMeanCellForce(false);
 
     //run for additional timesteps, compute dynamical features, and record timing information
     dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
-    t1=clock();
 //    cudaProfilerStart();
     for(long long int ii = 0; ii < tSteps; ++ii)
         {
@@ -155,10 +129,6 @@ int main(int argc, char*argv[])
         sim->performTimestep();
         };
 //    cudaProfilerStop();
-    t2=clock();
-    printf("final state:\t\t energy %f \t msd %f \t overlap %f\n",voronoiModel->computeEnergy(),dynFeat.computeMSD(voronoiModel->returnPositions()),dynFeat.computeOverlapFunction(voronoiModel->returnPositions()));
-    double steptime = (t2-t1)/(double)CLOCKS_PER_SEC/tSteps;
-    cout << "timestep ~ " << steptime << " per frame; " << endl;
 
     if(initializeGPU)
         cudaDeviceReset();

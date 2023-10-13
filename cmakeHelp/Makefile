@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test.out
+# Target rules for targets named nvt.out
 
 # Build rule for target.
-test.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test.out
-.PHONY : test.out
+nvt.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nvt.out
+.PHONY : nvt.out
 
 # fast build rule for target.
-test.out/fast:
-	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/build
-.PHONY : test.out/fast
+nvt.out/fast:
+	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/build
+.PHONY : nvt.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -240,32 +240,32 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-test.o: test.cpp.o
+nvt.o: nvt.cpp.o
 
-.PHONY : test.o
+.PHONY : nvt.o
 
 # target to build an object file
-test.cpp.o:
-	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/test.cpp.o
-.PHONY : test.cpp.o
+nvt.cpp.o:
+	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/nvt.cpp.o
+.PHONY : nvt.cpp.o
 
-test.i: test.cpp.i
+nvt.i: nvt.cpp.i
 
-.PHONY : test.i
+.PHONY : nvt.i
 
 # target to preprocess a source file
-test.cpp.i:
-	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/test.cpp.i
-.PHONY : test.cpp.i
+nvt.cpp.i:
+	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/nvt.cpp.i
+.PHONY : nvt.cpp.i
 
-test.s: test.cpp.s
+nvt.s: nvt.cpp.s
 
-.PHONY : test.s
+.PHONY : nvt.s
 
 # target to generate assembly for a file
-test.cpp.s:
-	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/test.cpp.s
-.PHONY : test.cpp.s
+nvt.cpp.s:
+	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/nvt.cpp.s
+.PHONY : nvt.cpp.s
 
 # Help Target
 help:
@@ -275,7 +275,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... test.out"
+	@echo "... nvt.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -285,9 +285,9 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
+	@echo "... nvt.o"
+	@echo "... nvt.i"
+	@echo "... nvt.s"
 .PHONY : help
 
 
