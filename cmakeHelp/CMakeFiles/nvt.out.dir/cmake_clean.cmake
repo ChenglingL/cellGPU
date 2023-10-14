@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/nvt.out.dir/nvt.cpp.o"
+  "CMakeFiles/nvt.out.dir/nvt.cpp.o.d"
   "nvt.out"
   "nvt.out.pdb"
 )

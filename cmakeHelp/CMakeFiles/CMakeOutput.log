@@ -3690,3 +3690,1120 @@ int main(void)
   return 0;
 }
 
+The system is: Linux - 4.18.0-477.27.1.el8_8.x86_64 - x86_64
+Checking whether the CUDA compiler is NVIDIA using "" matched "nvcc: NVIDIA \(R\) Cuda compiler driver":
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2022 NVIDIA Corporation
+Built on Thu_Feb_10_18:23:41_PST_2022
+Cuda compilation tools, release 11.6, V11.6.112
+Build cuda_11.6.r11.6/compiler.30978841_0
+Compiling the CUDA compiler identification source file "CMakeCUDACompilerId.cu" succeeded.
+Compiler: /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/nvcc 
+Build flags: 
+Id flags: --keep;--keep-dir;tmp -v
+
+The output was:
+0
+#$ _NVVM_BRANCH_=nvvm
+#$ _SPACE_= 
+#$ _CUDART_=cudart
+#$ _HERE_=/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin
+#$ _THERE_=/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin
+#$ _TARGET_SIZE_=
+#$ _TARGET_DIR_=
+#$ _TARGET_DIR_=targets/x86_64-linux
+#$ TOP=/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/..
+#$ NVVMIR_LIBRARY_DIR=/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../nvvm/libdevice
+#$ LD_LIBRARY_PATH=/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../lib:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib:/u/cli6/.local/lib:/u/cli6/.local/lib:/u/cli6/.local/lib:/u/cli6/.local/lib:/u/cli6/.local/lib:/u/cli6/.local/lib
+#$ PATH=/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../nvvm/bin:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin:/u/cli6/.vscode-server/bin/5e805b79fcb6ba4c2d23712967df89a089da575b/bin/remote-cli:/sw/external/python/anaconda3_cpu/bin:/sw/external/python/anaconda3_cpu/condabin:/u/cli6/.local/bin:/u/cli6/bin:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/bin:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/bin:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin:/sw/user/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ddn/ime/bin:/opt/puppetlabs/bin:/u/cli6/.local/bin:/u/cli6/.local/bin:/opt/ddn/ime/bin:/u/cli6/.local/bin:/u/cli6/.local/bin:/opt/ddn/ime/bin:/u/cli6/.local/bin:/u/cli6/.local/bin
+#$ INCLUDES="-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"  
+#$ LIBRARIES=  "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib"
+#$ CUDAFE_FLAGS=
+#$ PTXAS_FLAGS=
+#$ rm tmp/a_dlink.reg.c
+#$ gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=6 -D__CUDACC_VER_BUILD__=112 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=6 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp1.ii" 
+#$ cicc --c++17 --gnu_version=110200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/3.20.2/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed   -arch compute_52 -m64 --no-version-ident -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"
+#$ ptxas -arch=sm_52 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_52.cubin" 
+#$ fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " "--image3=kind=elf,sm=52,file=tmp/CMakeCUDACompilerId.sm_52.cubin" "--image3=kind=ptx,sm=52,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" 
+#$ gcc -D__CUDA_ARCH_LIST__=520 -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=6 -D__CUDACC_VER_BUILD__=112 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=6 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp4.ii" 
+#$ cudafe++ --c++17 --gnu_version=110200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/3.20.2/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" 
+#$ gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"   -m64 "tmp/CMakeCUDACompilerId.cudafe1.cpp" -o "tmp/CMakeCUDACompilerId.o" 
+#$ nvlink -m64 --arch=sm_52 --register-link-binaries="tmp/a_dlink.reg.c"    "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib" -cpu-arch=X86_64 "tmp/CMakeCUDACompilerId.o"  -lcudadevrt  -o "tmp/a_dlink.sm_52.cubin"
+#$ fatbinary --create="tmp/a_dlink.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " -link "--image3=kind=elf,sm=52,file=tmp/a_dlink.sm_52.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" 
+#$ gcc -D__CUDA_ARCH_LIST__=520 -c -x c++ -DFATBINFILE="\"tmp/a_dlink.fatbin.c\"" -DREGISTERLINKBINARYFILE="\"tmp/a_dlink.reg.c\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION= -D__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__  "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=6 -D__CUDACC_VER_BUILD__=112 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=6 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -m64 "/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/crt/link.stub" -o "tmp/a_dlink.o" 
+#$ g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" 
+
+
+Compilation of the CUDA compiler identification source "CMakeCUDACompilerId.cu" produced "a.out"
+
+The CUDA compiler identification is NVIDIA, found in "/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/3.20.2/CompilerIdCUDA/a.out"
+
+Parsed CUDA nvcc implicit link information from above output:
+  found 'PATH=' string: [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../nvvm/bin:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin:/u/cli6/.vscode-server/bin/5e805b79fcb6ba4c2d23712967df89a089da575b/bin/remote-cli:/sw/external/python/anaconda3_cpu/bin:/sw/external/python/anaconda3_cpu/condabin:/u/cli6/.local/bin:/u/cli6/bin:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/bin:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/bin:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin:/sw/user/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ddn/ime/bin:/opt/puppetlabs/bin:/u/cli6/.local/bin:/u/cli6/.local/bin:/opt/ddn/ime/bin:/u/cli6/.local/bin:/u/cli6/.local/bin:/opt/ddn/ime/bin:/u/cli6/.local/bin:/u/cli6/.local/bin]
+  found 'LIBRARIES=' string: ["-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib"]
+  considering line: [#$ rm tmp/a_dlink.reg.c]
+  considering line: [gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=6 -D__CUDACC_VER_BUILD__=112 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=6 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp1.ii" ]
+  considering line: [cicc --c++17 --gnu_version=110200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/3.20.2/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed   -arch compute_52 -m64 --no-version-ident -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"]
+  considering line: [ptxas -arch=sm_52 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_52.cubin" ]
+  considering line: [fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " "--image3=kind=elf,sm=52,file=tmp/CMakeCUDACompilerId.sm_52.cubin" "--image3=kind=ptx,sm=52,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" ]
+  considering line: [gcc -D__CUDA_ARCH_LIST__=520 -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=6 -D__CUDACC_VER_BUILD__=112 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=6 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [cudafe++ --c++17 --gnu_version=110200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/3.20.2/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"   -m64 "tmp/CMakeCUDACompilerId.cudafe1.cpp" -o "tmp/CMakeCUDACompilerId.o" ]
+  considering line: [nvlink -m64 --arch=sm_52 --register-link-binaries="tmp/a_dlink.reg.c"    "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib" -cpu-arch=X86_64 "tmp/CMakeCUDACompilerId.o"  -lcudadevrt  -o "tmp/a_dlink.sm_52.cubin"]
+    ignoring nvlink line
+  considering line: [fatbinary --create="tmp/a_dlink.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " -link "--image3=kind=elf,sm=52,file=tmp/a_dlink.sm_52.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" ]
+  considering line: [gcc -D__CUDA_ARCH_LIST__=520 -c -x c++ -DFATBINFILE="\"tmp/a_dlink.fatbin.c\"" -DREGISTERLINKBINARYFILE="\"tmp/a_dlink.reg.c\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION= -D__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__  "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=6 -D__CUDACC_VER_BUILD__=112 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=6 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -m64 "/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/crt/link.stub" -o "tmp/a_dlink.o" ]
+  considering line: [g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+    extracted link line: [g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+  considering line: []
+  extracted link launcher name: [g++]
+  found link launcher absolute path: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++]
+
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  link line: [cuda-fake-ld g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+    arg [cuda-fake-ld] ==> ignore
+    arg [g++] ==> ignore
+    arg [-D__CUDA_ARCH_LIST__=520] ==> ignore
+    arg [-m64] ==> ignore
+    arg [-Wl,--start-group] ==> ignore
+    arg [tmp/a_dlink.o] ==> ignore
+    arg [tmp/CMakeCUDACompilerId.o] ==> ignore
+    arg [-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs] ==> dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs]
+    arg [-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib] ==> dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib]
+    arg [-lcudadevrt] ==> lib [cudadevrt]
+    arg [-lcudart_static] ==> lib [cudart_static]
+    arg [-lrt] ==> lib [rt]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ldl] ==> lib [dl]
+    arg [-Wl,--end-group] ==> ignore
+    arg [-o] ==> ignore
+    arg [a.out] ==> ignore
+  collapse library dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs] ==> [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs]
+  collapse library dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib] ==> [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib]
+  implicit libs: [cudadevrt;cudart_static;rt;pthread;dl]
+  implicit objs: []
+  implicit dirs: [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs;/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib]
+  implicit fwks: []
+
+
+Parsed CUDA nvcc include information from above output:
+  found 'PATH=' string: [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../nvvm/bin:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin:/u/cli6/.vscode-server/bin/5e805b79fcb6ba4c2d23712967df89a089da575b/bin/remote-cli:/sw/external/python/anaconda3_cpu/bin:/sw/external/python/anaconda3_cpu/condabin:/u/cli6/.local/bin:/u/cli6/bin:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/bin:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/bin:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin:/sw/user/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ddn/ime/bin:/opt/puppetlabs/bin:/u/cli6/.local/bin:/u/cli6/.local/bin:/opt/ddn/ime/bin:/u/cli6/.local/bin:/u/cli6/.local/bin:/opt/ddn/ime/bin:/u/cli6/.local/bin:/u/cli6/.local/bin]
+  found 'LIBRARIES=' string: ["-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib"]
+  considering line: [#$ rm tmp/a_dlink.reg.c]
+  considering line: [gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=6 -D__CUDACC_VER_BUILD__=112 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=6 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp1.ii" ]
+  considering line: [cicc --c++17 --gnu_version=110200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/3.20.2/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed   -arch compute_52 -m64 --no-version-ident -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"]
+  considering line: [ptxas -arch=sm_52 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_52.cubin" ]
+  considering line: [fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " "--image3=kind=elf,sm=52,file=tmp/CMakeCUDACompilerId.sm_52.cubin" "--image3=kind=ptx,sm=52,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" ]
+  considering line: [gcc -D__CUDA_ARCH_LIST__=520 -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=6 -D__CUDACC_VER_BUILD__=112 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=6 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [cudafe++ --c++17 --gnu_version=110200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/3.20.2/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"   -m64 "tmp/CMakeCUDACompilerId.cudafe1.cpp" -o "tmp/CMakeCUDACompilerId.o" ]
+  considering line: [nvlink -m64 --arch=sm_52 --register-link-binaries="tmp/a_dlink.reg.c"    "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib" -cpu-arch=X86_64 "tmp/CMakeCUDACompilerId.o"  -lcudadevrt  -o "tmp/a_dlink.sm_52.cubin"]
+    ignoring nvlink line
+  considering line: [fatbinary --create="tmp/a_dlink.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " -link "--image3=kind=elf,sm=52,file=tmp/a_dlink.sm_52.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" ]
+  considering line: [gcc -D__CUDA_ARCH_LIST__=520 -c -x c++ -DFATBINFILE="\"tmp/a_dlink.fatbin.c\"" -DREGISTERLINKBINARYFILE="\"tmp/a_dlink.reg.c\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION= -D__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__  "-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=6 -D__CUDACC_VER_BUILD__=112 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=6 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -m64 "/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/crt/link.stub" -o "tmp/a_dlink.o" ]
+  considering line: [g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+    extracted link line: [g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+  considering line: []
+  extracted link launcher name: [g++]
+  found link launcher absolute path: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++]
+  found 'INCLUDES=' string: ["-I/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"  ]
+
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  link line: [cuda-fake-ld g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs" "-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+    arg [cuda-fake-ld] ==> ignore
+    arg [g++] ==> ignore
+    arg [-D__CUDA_ARCH_LIST__=520] ==> ignore
+    arg [-m64] ==> ignore
+    arg [-Wl,--start-group] ==> ignore
+    arg [tmp/a_dlink.o] ==> ignore
+    arg [tmp/CMakeCUDACompilerId.o] ==> ignore
+    arg [-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs] ==> dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs]
+    arg [-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib] ==> dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib]
+    arg [-lcudadevrt] ==> lib [cudadevrt]
+    arg [-lcudart_static] ==> lib [cudart_static]
+    arg [-lrt] ==> lib [rt]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ldl] ==> lib [dl]
+    arg [-Wl,--end-group] ==> ignore
+    arg [-o] ==> ignore
+    arg [a.out] ==> ignore
+  collapse library dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib/stubs] ==> [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs]
+  collapse library dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/lib] ==> [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib]
+  implicit libs: [cudadevrt;cudart_static;rt;pthread;dl]
+  implicit objs: []
+  implicit dirs: [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs;/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib]
+  implicit fwks: []
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/3.20.2/CompilerIdCXX/a.out"
+
+Detecting CUDA compiler ABI info compiled with the following output:
+Change Dir: /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_83650/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_83650.dir/build.make CMakeFiles/cmTC_83650.dir/build
+gmake[1]: Entering directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp'
+Building CUDA object CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o
+/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/nvcc -forward-unknown-to-host-compiler   -Xcompiler=-v -MD -MT CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o -MF CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o.d -x cu -c /usr/share/cmake/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o
+Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs
+COLLECT_GCC=gcc
+Target: x86_64-pc-linux-gnu
+Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c,c++,fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc'
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.2.0 (Spack GCC) 
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=6' '-D' '__CUDACC_VER_BUILD__=112' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=6' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_0002f4f1_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/'
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/cc1plus -E -quiet -v -I /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=520 -D __CUDA_ARCH_LIST__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=11 -D __CUDACC_VER_MINOR__=6 -D __CUDACC_VER_BUILD__=112 -D __CUDA_API_VER_MAJOR__=11 -D __CUDA_API_VER_MINOR__=6 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /usr/share/cmake/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_0002f4f1_00000000-7_CMakeCUDACompilerABI.cpp1.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_0002f4f1_00000000-7_CMakeCUDACompilerABI.cpp1.cu -dumpbase-ext .cu
+ignoring duplicate directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include"
+ignoring nonexistent directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../x86_64-pc-linux-gnu/include"
+ignoring duplicate directory "/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"
+  as it is a non-system directory that duplicates a system directory
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /u/cli6/.local/include
+ /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include
+ /sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include
+ /sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include
+ /usr/local/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed
+ /usr/include
+End of search list.
+COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=6' '-D' '__CUDACC_VER_BUILD__=112' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=6' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_0002f4f1_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_0002f4f1_00000000-7_CMakeCUDACompilerABI.cpp1.'
+Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs
+COLLECT_GCC=gcc
+Target: x86_64-pc-linux-gnu
+Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c,c++,fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc'
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.2.0 (Spack GCC) 
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=6' '-D' '__CUDACC_VER_BUILD__=112' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=6' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_0002f4f1_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/'
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/cc1plus -E -quiet -v -I /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH_LIST__=520 -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=11 -D __CUDACC_VER_MINOR__=6 -D __CUDACC_VER_BUILD__=112 -D __CUDA_API_VER_MAJOR__=11 -D __CUDA_API_VER_MINOR__=6 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /usr/share/cmake/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_0002f4f1_00000000-5_CMakeCUDACompilerABI.cpp4.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_0002f4f1_00000000-5_CMakeCUDACompilerABI.cpp4.cu -dumpbase-ext .cu
+ignoring duplicate directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include"
+ignoring nonexistent directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../x86_64-pc-linux-gnu/include"
+ignoring duplicate directory "/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"
+  as it is a non-system directory that duplicates a system directory
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /u/cli6/.local/include
+ /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include
+ /sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include
+ /sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include
+ /usr/local/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed
+ /usr/include
+End of search list.
+COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=6' '-D' '__CUDACC_VER_BUILD__=112' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=6' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_0002f4f1_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_0002f4f1_00000000-5_CMakeCUDACompilerABI.cpp4.'
+Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs
+COLLECT_GCC=gcc
+Target: x86_64-pc-linux-gnu
+Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c,c++,fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc'
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.2.0 (Spack GCC) 
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_83650.dir/'
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/cc1plus -quiet -v -I /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=520 -D __CUDA_ARCH_LIST__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS /tmp/tmpxft_0002f4f1_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -quiet -dumpdir CMakeFiles/cmTC_83650.dir/ -dumpbase CMakeCUDACompilerABI.cu.cpp -dumpbase-ext .cpp -m64 -mtune=generic -march=x86-64 -version -o /tmp/cca1y85c.s
+GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.1.0, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include"
+ignoring nonexistent directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../x86_64-pc-linux-gnu/include"
+ignoring duplicate directory "/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"
+  as it is a non-system directory that duplicates a system directory
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /u/cli6/.local/include
+ /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include
+ /sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include
+ /sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include
+ /usr/local/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed
+ /usr/include
+End of search list.
+GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.1.0, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: fc54dda9faa52d4df2e12f77c03e4c69
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_83650.dir/'
+ as -v -I /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include --64 -o CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o /tmp/cca1y85c.s
+GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-119.el8
+COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.'
+Linking CUDA executable cmTC_83650
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_83650.dir/link.txt --verbose=1
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++  -v CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o -o cmTC_83650  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs" -L"/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib"
+Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs
+COLLECT_GCC=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++
+COLLECT_LTO_WRAPPER=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c,c++,fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc'
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.2.0 (Spack GCC) 
+COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_83650' '-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs' '-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_83650.'
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/collect2 -plugin /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/liblto_plugin.so -plugin-opt=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnXeH1L.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_83650 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o -L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs -L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64 -L/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib -L/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../.. CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o /lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_83650' '-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs' '-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_83650.'
+gmake[1]: Leaving directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CUDA implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [.]
+    add: [/u/cli6/.local/include]
+    add: [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include]
+    add: [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include]
+    add: [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include]
+    add: [/usr/local/include]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed]
+    add: [/usr/include]
+  end of search list found
+  skipping relative include dir [.]
+  collapse include dir [/u/cli6/.local/include] ==> [/u/cli6/.local/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include] ==> [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include] ==> [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include] ==> [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/backward]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/u/cli6/.local/include;/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include;/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include;/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/backward;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include;/usr/local/include;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed;/usr/include]
+
+
+Parsed CUDA implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_83650/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_83650.dir/build.make CMakeFiles/cmTC_83650.dir/build]
+  ignore line: [gmake[1]: Entering directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp']
+  ignore line: [Building CUDA object CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o]
+  ignore line: [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/nvcc -forward-unknown-to-host-compiler   -Xcompiler=-v -MD -MT CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o -MF CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o.d -x cu -c /usr/share/cmake/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o]
+  ignore line: [Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs]
+  ignore line: [COLLECT_GCC=gcc]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c c++ fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc']
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.2.0 (Spack GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=6' '-D' '__CUDACC_VER_BUILD__=112' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=6' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_0002f4f1_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/']
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/cc1plus -E -quiet -v -I /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=520 -D __CUDA_ARCH_LIST__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=11 -D __CUDACC_VER_MINOR__=6 -D __CUDACC_VER_BUILD__=112 -D __CUDA_API_VER_MAJOR__=11 -D __CUDA_API_VER_MINOR__=6 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /usr/share/cmake/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_0002f4f1_00000000-7_CMakeCUDACompilerABI.cpp1.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_0002f4f1_00000000-7_CMakeCUDACompilerABI.cpp1.cu -dumpbase-ext .cu]
+  ignore line: [ignoring duplicate directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include"]
+  ignore line: [ignoring nonexistent directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [ignoring duplicate directory "/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"]
+  ignore line: [  as it is a non-system directory that duplicates a system directory]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ .]
+  ignore line: [ /u/cli6/.local/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=6' '-D' '__CUDACC_VER_BUILD__=112' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=6' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_0002f4f1_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_0002f4f1_00000000-7_CMakeCUDACompilerABI.cpp1.']
+  ignore line: [Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs]
+  ignore line: [COLLECT_GCC=gcc]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c c++ fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc']
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.2.0 (Spack GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=6' '-D' '__CUDACC_VER_BUILD__=112' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=6' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_0002f4f1_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/']
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/cc1plus -E -quiet -v -I /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH_LIST__=520 -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=11 -D __CUDACC_VER_MINOR__=6 -D __CUDACC_VER_BUILD__=112 -D __CUDA_API_VER_MAJOR__=11 -D __CUDA_API_VER_MINOR__=6 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /usr/share/cmake/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_0002f4f1_00000000-5_CMakeCUDACompilerABI.cpp4.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_0002f4f1_00000000-5_CMakeCUDACompilerABI.cpp4.cu -dumpbase-ext .cu]
+  ignore line: [ignoring duplicate directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include"]
+  ignore line: [ignoring nonexistent directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [ignoring duplicate directory "/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"]
+  ignore line: [  as it is a non-system directory that duplicates a system directory]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ .]
+  ignore line: [ /u/cli6/.local/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=6' '-D' '__CUDACC_VER_BUILD__=112' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=6' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_0002f4f1_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_0002f4f1_00000000-5_CMakeCUDACompilerABI.cpp4.']
+  ignore line: [Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs]
+  ignore line: [COLLECT_GCC=gcc]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c c++ fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc']
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.2.0 (Spack GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_83650.dir/']
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/cc1plus -quiet -v -I /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=520 -D __CUDA_ARCH_LIST__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS /tmp/tmpxft_0002f4f1_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -quiet -dumpdir CMakeFiles/cmTC_83650.dir/ -dumpbase CMakeCUDACompilerABI.cu.cpp -dumpbase-ext .cpp -m64 -mtune=generic -march=x86-64 -version -o /tmp/cca1y85c.s]
+  ignore line: [GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.1.0  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring duplicate directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include"]
+  ignore line: [ignoring nonexistent directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [ignoring duplicate directory "/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include"]
+  ignore line: [  as it is a non-system directory that duplicates a system directory]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ .]
+  ignore line: [ /u/cli6/.local/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.1.0  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: fc54dda9faa52d4df2e12f77c03e4c69]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_83650.dir/']
+  ignore line: [ as -v -I /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include --64 -o CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o /tmp/cca1y85c.s]
+  ignore line: [GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-119.el8]
+  ignore line: [COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.']
+  ignore line: [Linking CUDA executable cmTC_83650]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_83650.dir/link.txt --verbose=1]
+  ignore line: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++  -v CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o -o cmTC_83650  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs" -L"/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib"]
+  ignore line: [Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs]
+  ignore line: [COLLECT_GCC=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c c++ fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc']
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.2.0 (Spack GCC) ]
+  ignore line: [COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_83650' '-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs' '-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_83650.']
+  link line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/collect2 -plugin /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/liblto_plugin.so -plugin-opt=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnXeH1L.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_83650 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o -L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs -L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64 -L/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib -L/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../.. CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o /lib/../lib64/crtn.o]
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccnXeH1L.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_83650] ==> ignore
+    arg [/lib/../lib64/crt1.o] ==> obj [/lib/../lib64/crt1.o]
+    arg [/lib/../lib64/crti.o] ==> obj [/lib/../lib64/crti.o]
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o] ==> obj [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o]
+    arg [-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs] ==> dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs]
+    arg [-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib] ==> dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib]
+    arg [-rpath] ==> ignore
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64] ==> ignore
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64] ==> dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib] ==> dir [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib]
+    arg [-L/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib] ==> dir [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../..] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../..]
+    arg [CMakeFiles/cmTC_83650.dir/CMakeCUDACompilerABI.cu.o] ==> ignore
+    arg [-lcudadevrt] ==> lib [cudadevrt]
+    arg [-lcudart_static] ==> lib [cudart_static]
+    arg [-lrt] ==> lib [rt]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ldl] ==> lib [dl]
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o] ==> obj [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o]
+    arg [/lib/../lib64/crtn.o] ==> obj [/lib/../lib64/crtn.o]
+  collapse obj [/lib/../lib64/crt1.o] ==> [/lib64/crt1.o]
+  collapse obj [/lib/../lib64/crti.o] ==> [/lib64/crti.o]
+  collapse obj [/lib/../lib64/crtn.o] ==> [/lib64/crtn.o]
+  collapse library dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs] ==> [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs]
+  collapse library dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib] ==> [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64] ==> [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib] ==> [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib]
+  collapse library dir [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib] ==> [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../..] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib]
+  implicit libs: [cudadevrt;cudart_static;rt;pthread;dl;stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit objs: [/lib64/crt1.o;/lib64/crti.o;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o;/lib64/crtn.o]
+  implicit dirs: [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib/stubs;/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/targets/x86_64-linux/lib;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64;/u/cli6/.local/lib64;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0;/lib64;/usr/lib64;/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64;/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib;/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib;/u/cli6/.local/lib]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7c1ed/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7c1ed.dir/build.make CMakeFiles/cmTC_7c1ed.dir/build
+gmake[1]: Entering directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++   -v -o CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs
+COLLECT_GCC=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++
+Target: x86_64-pc-linux-gnu
+Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c,c++,fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc'
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.2.0 (Spack GCC) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c1ed.dir/'
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_7c1ed.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/ccPP3l8a.s
+GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.1.0, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include"
+ignoring nonexistent directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../x86_64-pc-linux-gnu/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /u/cli6/.local/include
+ /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include
+ /sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include
+ /sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include
+ /usr/local/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed
+ /usr/include
+End of search list.
+GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.1.0, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: fc54dda9faa52d4df2e12f77c03e4c69
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c1ed.dir/'
+ as -v --64 -o CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccPP3l8a.s
+GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-119.el8
+COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.'
+Linking CXX executable cmTC_7c1ed
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7c1ed.dir/link.txt --verbose=1
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++  -v CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_7c1ed 
+Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs
+COLLECT_GCC=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++
+COLLECT_LTO_WRAPPER=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c,c++,fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc'
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.2.0 (Spack GCC) 
+COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7c1ed' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_7c1ed.'
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/collect2 -plugin /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/liblto_plugin.so -plugin-opt=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccyRft5K.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_7c1ed /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64 -L/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib -L/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../.. CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o /lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7c1ed' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_7c1ed.'
+gmake[1]: Leaving directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [.]
+    add: [/u/cli6/.local/include]
+    add: [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include]
+    add: [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include]
+    add: [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include]
+    add: [/usr/local/include]
+    add: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed]
+    add: [/usr/include]
+  end of search list found
+  skipping relative include dir [.]
+  collapse include dir [/u/cli6/.local/include] ==> [/u/cli6/.local/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include] ==> [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include] ==> [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include] ==> [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/backward]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/u/cli6/.local/include;/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include;/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include;/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/backward;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include;/usr/local/include;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7c1ed/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7c1ed.dir/build.make CMakeFiles/cmTC_7c1ed.dir/build]
+  ignore line: [gmake[1]: Entering directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++   -v -o CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs]
+  ignore line: [COLLECT_GCC=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c c++ fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc']
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.2.0 (Spack GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c1ed.dir/']
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/cc1plus -quiet -v -D_GNU_SOURCE /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_7c1ed.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/ccPP3l8a.s]
+  ignore line: [GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.1.0  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring duplicate directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include"]
+  ignore line: [ignoring nonexistent directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ .]
+  ignore line: [ /u/cli6/.local/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.1.0  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: fc54dda9faa52d4df2e12f77c03e4c69]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c1ed.dir/']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccPP3l8a.s]
+  ignore line: [GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-119.el8]
+  ignore line: [COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.']
+  ignore line: [Linking CXX executable cmTC_7c1ed]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7c1ed.dir/link.txt --verbose=1]
+  ignore line: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++  -v CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_7c1ed ]
+  ignore line: [Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs]
+  ignore line: [COLLECT_GCC=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c c++ fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc']
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.2.0 (Spack GCC) ]
+  ignore line: [COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7c1ed' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_7c1ed.']
+  link line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/collect2 -plugin /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/liblto_plugin.so -plugin-opt=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccyRft5K.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_7c1ed /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64 -L/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib -L/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../.. CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o /lib/../lib64/crtn.o]
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccyRft5K.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_7c1ed] ==> ignore
+    arg [/lib/../lib64/crt1.o] ==> obj [/lib/../lib64/crt1.o]
+    arg [/lib/../lib64/crti.o] ==> obj [/lib/../lib64/crti.o]
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o] ==> obj [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o]
+    arg [-rpath] ==> ignore
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64] ==> ignore
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64] ==> dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib] ==> dir [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib]
+    arg [-L/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib] ==> dir [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../..] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../..]
+    arg [CMakeFiles/cmTC_7c1ed.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o] ==> obj [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o]
+    arg [/lib/../lib64/crtn.o] ==> obj [/lib/../lib64/crtn.o]
+  collapse obj [/lib/../lib64/crt1.o] ==> [/lib64/crt1.o]
+  collapse obj [/lib/../lib64/crti.o] ==> [/lib64/crti.o]
+  collapse obj [/lib/../lib64/crtn.o] ==> [/lib64/crtn.o]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64] ==> [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib] ==> [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib]
+  collapse library dir [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib] ==> [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../..] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit objs: [/lib64/crt1.o;/lib64/crti.o;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o;/lib64/crtn.o]
+  implicit dirs: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64;/u/cli6/.local/lib64;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0;/lib64;/usr/lib64;/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64;/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib;/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib;/u/cli6/.local/lib]
+  implicit fwks: []
+
+
+Detecting CXX OpenMP compiler ABI info compiled with the following output:
+Change Dir: /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_69069/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_69069.dir/build.make CMakeFiles/cmTC_69069.dir/build
+gmake[1]: Entering directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++   -fopenmp -v -o CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o -c /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/FindOpenMP/OpenMPTryFlag.cpp
+Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs
+COLLECT_GCC=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++
+Target: x86_64-pc-linux-gnu
+Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c,c++,fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc'
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.2.0 (Spack GCC) 
+COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_69069.dir/'
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/cc1plus -quiet -v -D_GNU_SOURCE -D_REENTRANT /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/FindOpenMP/OpenMPTryFlag.cpp -quiet -dumpdir CMakeFiles/cmTC_69069.dir/ -dumpbase OpenMPTryFlag.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fopenmp -o /tmp/cc5fO0x8.s
+GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.1.0, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include"
+ignoring nonexistent directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../x86_64-pc-linux-gnu/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+ignoring duplicate directory "/u/cli6/.local/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /u/cli6/.local/include
+ /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include
+ /sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include
+ /sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include
+ /usr/local/include
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed
+ /usr/include
+End of search list.
+GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.1.0, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: fc54dda9faa52d4df2e12f77c03e4c69
+COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_69069.dir/'
+ as -v --64 -o CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o /tmp/cc5fO0x8.s
+GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-119.el8
+COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.'
+Linking CXX executable cmTC_69069
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69069.dir/link.txt --verbose=1
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++  -fopenmp -v CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o -o cmTC_69069  -v 
+Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs
+COLLECT_GCC=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++
+COLLECT_LTO_WRAPPER=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c,c++,fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl,-rpath,/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl,-rpath,/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc'
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.2.0 (Spack GCC) 
+COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/
+Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/libgomp.spec
+COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'cmTC_69069' '-v' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread' '-dumpdir' 'cmTC_69069.'
+ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/collect2 -plugin /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/liblto_plugin.so -plugin-opt=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccOTpPeI.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_69069 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64 -L/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib -L/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../.. CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o -lstdc++ -lm -lgomp -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o /lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'cmTC_69069' '-v' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread' '-dumpdir' 'cmTC_69069.'
+gmake[1]: Leaving directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX OpenMP implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_69069/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_69069.dir/build.make CMakeFiles/cmTC_69069.dir/build]
+  ignore line: [gmake[1]: Entering directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o]
+  ignore line: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++   -fopenmp -v -o CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o -c /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/FindOpenMP/OpenMPTryFlag.cpp]
+  ignore line: [Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs]
+  ignore line: [COLLECT_GCC=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c c++ fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc']
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.2.0 (Spack GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_69069.dir/']
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/cc1plus -quiet -v -D_GNU_SOURCE -D_REENTRANT /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/FindOpenMP/OpenMPTryFlag.cpp -quiet -dumpdir CMakeFiles/cmTC_69069.dir/ -dumpbase OpenMPTryFlag.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fopenmp -o /tmp/cc5fO0x8.s]
+  ignore line: [GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.1.0  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring duplicate directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include"]
+  ignore line: [ignoring nonexistent directory "/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [ignoring duplicate directory "/u/cli6/.local/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ .]
+  ignore line: [ /u/cli6/.local/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/x86_64-pc-linux-gnu]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../include/c++/11.2.0/backward]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++17 (Spack GCC) version 11.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.1.0  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: fc54dda9faa52d4df2e12f77c03e4c69]
+  ignore line: [COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_69069.dir/']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o /tmp/cc5fO0x8.s]
+  ignore line: [GNU assembler version 2.30 (x86_64-redhat-linux) using BFD version version 2.30-119.el8]
+  ignore line: [COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.']
+  ignore line: [Linking CXX executable cmTC_69069]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69069.dir/link.txt --verbose=1]
+  ignore line: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++  -fopenmp -v CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o -o cmTC_69069  -v ]
+  ignore line: [Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/specs]
+  ignore line: [COLLECT_GCC=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /tmp/gbauer/spack-stage/spack-stage-gcc-11.2.0-fxgnsyrkqrvnmamt5c35637b64vnfbzw/spack-src/configure --prefix=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr --with-pkgversion='Spack GCC' --with-bugurl=https://github.com/spack/spack/issues --disable-multilib --enable-languages=c c++ fortran --disable-nls --with-system-zlib --with-zstd-include=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/include --with-zstd-lib=/sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib --enable-bootstrap --with-mpfr-include=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/include --with-mpfr-lib=/sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib --with-gmp-include=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/include --with-gmp-lib=/sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib --with-mpc-include=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/include --with-mpc-lib=/sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib --without-isl --with-stage1-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib' --with-boot-ldflags='-Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -Wl -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -Wl -rpath /sw/spack/delta-2022-03/apps/gmp/6.2.1-gcc-8.4.1-quvrcha/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpc/1.1.0-gcc-8.4.1-iqe3ee7/lib -Wl -rpath /sw/spack/delta-2022-03/apps/mpfr/4.1.0-gcc-8.4.1-hl6ufux/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zlib/1.2.11-gcc-8.4.1-l44ubhz/lib -Wl -rpath /sw/spack/delta-2022-03/apps/zstd/1.5.0-gcc-8.4.1-wixphjs/lib -static-libstdc++ -static-libgcc']
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.2.0 (Spack GCC) ]
+  ignore line: [COMPILER_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/u/cli6/.local/lib/../lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64/:/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib/:/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/u/cli6/.local/lib/:/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [Reading specs from /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64/libgomp.spec]
+  ignore line: [COLLECT_GCC_OPTIONS='-fopenmp' '-v' '-o' 'cmTC_69069' '-v' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-pthread' '-dumpdir' 'cmTC_69069.']
+  link line: [ /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/collect2 -plugin /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/liblto_plugin.so -plugin-opt=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccOTpPeI.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_69069 /lib/../lib64/crt1.o /lib/../lib64/crti.o /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o -rpath /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/u/cli6/.local/lib/../lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64 -L/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib -L/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64 -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/u/cli6/.local/lib -L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../.. CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o -lstdc++ -lm -lgomp -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtend.o /lib/../lib64/crtn.o]
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/libexec/gcc/x86_64-pc-linux-gnu/11.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccOTpPeI.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_69069] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64] ==> ignore
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/u/cli6/.local/lib/../lib64] ==> dir [/u/cli6/.local/lib/../lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64] ==> dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib] ==> dir [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib]
+    arg [-L/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib] ==> dir [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/u/cli6/.local/lib] ==> dir [/u/cli6/.local/lib]
+    arg [-L/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../..] ==> dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../..]
+    arg [CMakeFiles/cmTC_69069.dir/OpenMPTryFlag.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgomp] ==> lib [gomp]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64/../lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/../lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/u/cli6/.local/lib/../lib64] ==> [/u/cli6/.local/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../../../lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64] ==> [/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib] ==> [/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib]
+  collapse library dir [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib] ==> [/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/u/cli6/.local/lib] ==> [/u/cli6/.local/lib]
+  collapse library dir [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/../../..] ==> [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib]
+  implicit libs: [stdc++;m;gomp;gcc_s;gcc;pthread;c;gcc_s;gcc]
+  implicit objs: []
+  implicit dirs: [/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib64;/u/cli6/.local/lib64;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0;/lib64;/usr/lib64;/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/lib64;/sw/spack/delta-2022-03/apps/openmpi/4.1.2-gcc-11.2.0-37px7gc/lib;/sw/spack/delta-2022-03/apps/ucx/1.11.2-gcc-11.2.0-pymppfm/lib;/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib;/u/cli6/.local/lib]
+  implicit fwks: []
+
+
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_38ac9/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_38ac9.dir/build.make CMakeFiles/cmTC_38ac9.dir/build
+gmake[1]: Entering directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_38ac9.dir/CheckIncludeFile.cxx.o
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++   -O3 -std=c++17 -DBOOST_MATH_DISABLE_FLOAT128 -fopenmp -frounding-math  -o CMakeFiles/cmTC_38ac9.dir/CheckIncludeFile.cxx.o -c /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+Linking CXX executable cmTC_38ac9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_38ac9.dir/link.txt --verbose=1
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++  -O3 -std=c++17 -DBOOST_MATH_DISABLE_FLOAT128 -fopenmp -frounding-math  CMakeFiles/cmTC_38ac9.dir/CheckIncludeFile.cxx.o -o cmTC_38ac9 
+gmake[1]: Leaving directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp'
+
+
+
+Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d440a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d440a.dir/build.make CMakeFiles/cmTC_d440a.dir/build
+gmake[1]: Entering directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d440a.dir/src.cxx.o
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++ -DCMAKE_HAVE_LIBC_PTHREAD  -O3 -std=c++17 -DBOOST_MATH_DISABLE_FLOAT128 -fopenmp -frounding-math  -o CMakeFiles/cmTC_d440a.dir/src.cxx.o -c /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_d440a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d440a.dir/link.txt --verbose=1
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/bin/g++  -O3 -std=c++17 -DBOOST_MATH_DISABLE_FLOAT128 -fopenmp -frounding-math  CMakeFiles/cmTC_d440a.dir/src.cxx.o -o cmTC_d440a 
+gmake[1]: Leaving directory '/projects/bbtm/cli6/VoroGlassydynamics/cellGPU/cmakeHelp/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+

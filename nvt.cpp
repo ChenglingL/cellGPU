@@ -77,7 +77,7 @@ int main(int argc, char*argv[])
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
     char dataname[256];
     double equilibrationTime = dt*initSteps;
-    sprintf(dataname,"./testData/preliminary_N%i_p%.3f_T%.3f_time%i.nc",numpts,p0,T,tSteps);
+    sprintf(dataname,"./testData/preliminary_N%i_p%.3f_T%.8f_time%i.nc",numpts,p0,T,tSteps);
     shared_ptr<GlassyDynModelDatabase> ncdat=make_shared<GlassyDynModelDatabase>(numpts,dataname,NcFile::Replace);
 
 

@@ -2643,6 +2643,7 @@ CMakeFiles/nvt.out.dir/nvt.cpp.o: ../nvt.cpp \
   ../src/updaters/NoseHooverChainNVT.h \
   ../src/updaters/simpleEquationOfMotion.h \
   ../src/databases/nvtModelDatabase.h \
+  ../src/analysis/dynamicalFeatures.h \
   ../src/databases/DatabaseNetCDF.h \
   /u/cli6/.local/include/netcdfcpp.h \
   /u/cli6/.local/include/ncvalues.h \
@@ -2652,12 +2653,13 @@ CMakeFiles/nvt.out.dir/nvt.cpp.o: ../nvt.cpp \
   ../src/analysis/analysisPackage.h \
   ../src/analysis/autocorrelator.h \
   ../src/analysis/dynamicalFeatures.h \
-  ../src/analysis/structuralFeatures.h
+  ../src/analysis/structuralFeatures.h \
+  ../src/databases/GlassyDynModelDatabase.h
 
+
+../src/databases/GlassyDynModelDatabase.h:
 
 ../src/analysis/structuralFeatures.h:
-
-../src/analysis/dynamicalFeatures.h:
 
 ../src/analysis/autocorrelator.h:
 
@@ -2672,6 +2674,8 @@ CMakeFiles/nvt.out.dir/nvt.cpp.o: ../nvt.cpp \
 /u/cli6/.local/include/netcdfcpp.h:
 
 ../src/databases/DatabaseNetCDF.h:
+
+../src/analysis/dynamicalFeatures.h:
 
 ../src/databases/nvtModelDatabase.h:
 

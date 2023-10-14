@@ -1,7 +1,7 @@
 src/models/CMakeFiles/model.dir/DelaunayCGAL.cpp.o: \
- /u/cli6/Cell_G/cellGPU/src/models/DelaunayCGAL.cpp \
+ /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/src/models/DelaunayCGAL.cpp \
  /usr/include/stdc-predef.h \
- /u/cli6/Cell_G/cellGPU/src/models/DelaunayCGAL.h \
+ /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/src/models/DelaunayCGAL.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
