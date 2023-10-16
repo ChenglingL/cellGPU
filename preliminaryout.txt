@@ -2,230 +2,6 @@ using AMD EPYC 7763 64-Core Processor                     Available threads: 128
 
 using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
 
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
-using AMD EPYC 7763 64-Core Processor                     Available threads: 128     Threads requested: 1
-
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
- disabling gpu memory use
  disabling gpu memory use
  disabling gpu memory use
 resizing delGPU data structures: MaxSize = 12
@@ -243,18 +19,6 @@ Mean force = (0.000000e+00,0.000000e+00)
 resizing potential neighbors from 12 to 13 and re-computing...
 resizing delGPU data structures: MaxSize = 13
 resizing delGPU data structures: MaxSize = 13
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
 resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
@@ -298,32 +62,6 @@ resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
 Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing potential neighbors from 12 to 13 and re-computing...
-resizing delGPU data structures: MaxSize = 13
-resizing delGPU data structures: MaxSize = 13
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing potential neighbors from 12 to 13 and re-computing...
-resizing delGPU data structures: MaxSize = 13
-resizing delGPU data structures: MaxSize = 13
 resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
@@ -399,10 +137,19 @@ resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
 Mean force = (0.000000e+00,0.000000e+00)
+resizing potential neighbors from 12 to 13 and re-computing...
+resizing delGPU data structures: MaxSize = 13
+resizing delGPU data structures: MaxSize = 13
 resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
 Mean force = (0.000000e+00,0.000000e+00)
+resizing potential neighbors from 12 to 13 and re-computing...
+resizing delGPU data structures: MaxSize = 13
+resizing delGPU data structures: MaxSize = 13
+resizing potential neighbors from 13 to 14 and re-computing...
+resizing delGPU data structures: MaxSize = 14
+resizing delGPU data structures: MaxSize = 14
 resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
@@ -414,41 +161,6 @@ Mean force = (0.000000e+00,0.000000e+00)
 resizing potential neighbors from 12 to 13 and re-computing...
 resizing delGPU data structures: MaxSize = 13
 resizing delGPU data structures: MaxSize = 13
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing potential neighbors from 12 to 13 and re-computing...
-resizing delGPU data structures: MaxSize = 13
-resizing delGPU data structures: MaxSize = 13
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
 resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
@@ -476,33 +188,9 @@ resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
 Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
 resizing potential neighbors from 12 to 13 and re-computing...
 resizing delGPU data structures: MaxSize = 13
 resizing delGPU data structures: MaxSize = 13
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
 resizing delGPU data structures: MaxSize = 12
 resizing potential neighbors from 12 to 13 and re-computing...
 resizing delGPU data structures: MaxSize = 13
@@ -558,6 +246,9 @@ resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
 Mean force = (0.000000e+00,0.000000e+00)
+resizing potential neighbors from 12 to 13 and re-computing...
+resizing delGPU data structures: MaxSize = 13
+resizing delGPU data structures: MaxSize = 13
 resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
@@ -583,17 +274,19 @@ resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
 Mean force = (0.000000e+00,0.000000e+00)
 resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
+resizing potential neighbors from 12 to 13 and re-computing...
+resizing delGPU data structures: MaxSize = 13
+resizing delGPU data structures: MaxSize = 13
+resizing delGPU data structures: MaxSize = 13
 requesting 1 CPU threads in the configuration and 1 updaters
 Mean force = (0.000000e+00,0.000000e+00)
 resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
 Mean force = (0.000000e+00,0.000000e+00)
-resizing delGPU data structures: MaxSize = 12
-resizing delGPU data structures: MaxSize = 12
-requesting 1 CPU threads in the configuration and 1 updaters
-Mean force = (0.000000e+00,0.000000e+00)
+resizing potential neighbors from 12 to 13 and re-computing...
+resizing delGPU data structures: MaxSize = 13
+resizing delGPU data structures: MaxSize = 13
 resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
@@ -609,6 +302,18 @@ Mean force = (0.000000e+00,0.000000e+00)
 resizing potential neighbors from 12 to 13 and re-computing...
 resizing delGPU data structures: MaxSize = 13
 resizing delGPU data structures: MaxSize = 13
+resizing delGPU data structures: MaxSize = 12
+resizing delGPU data structures: MaxSize = 12
+requesting 1 CPU threads in the configuration and 1 updaters
+Mean force = (0.000000e+00,0.000000e+00)
+resizing delGPU data structures: MaxSize = 12
+resizing delGPU data structures: MaxSize = 12
+requesting 1 CPU threads in the configuration and 1 updaters
+Mean force = (0.000000e+00,0.000000e+00)
+resizing delGPU data structures: MaxSize = 12
+resizing delGPU data structures: MaxSize = 12
+requesting 1 CPU threads in the configuration and 1 updaters
+Mean force = (0.000000e+00,0.000000e+00)
 resizing delGPU data structures: MaxSize = 12
 resizing delGPU data structures: MaxSize = 12
 requesting 1 CPU threads in the configuration and 1 updaters
