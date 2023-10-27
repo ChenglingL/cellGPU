@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --mem=16g
+#SBATCH --mem=2g
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
@@ -10,4 +10,5 @@
 
 T=$1
 p=$2
-./nvt.out -n 900 -t 5000000 -g -1 -p $p -a 1.0 -v $T
+idx=$3
+./nvt.out -n 1024 -t 5000000 -g -1 -p $p -a 1.0 -v $T -x $idx

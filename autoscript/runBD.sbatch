@@ -10,4 +10,5 @@
 
 T=$1
 p=$2
-./nvt.out -n 900 -t 5000000 -g -1 -p $p -a 1.0 -v $T
+idx=$3
+./bd.out -n 1024 -t 5000000 -g -1 -p $p -a 1.0 -v $T -x $idx

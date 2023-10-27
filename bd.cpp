@@ -5,13 +5,14 @@
 
 
 #include "Simulation.h"
-#include "brownianParticleDynamics.h"
 #include "voronoiQuadraticEnergy.h"
+#include "brownianParticleDynamics.h"
 #include "NoseHooverChainNVT.h"
 #include "nvtModelDatabase.h"
 #include "logEquilibrationStateWriter.h"
 #include "analysisPackage.h"
 #include "periodicBoundaries.h"
+#include "GlassyDynModelDatabase.h"
 
 
 /*!
@@ -24,28 +25,26 @@ move the positions. If you want the forces and the positions to be sync'ed, you 
 Voronoi model's computeForces() funciton right before saving a state.
 */
 
-/*This is the BD test under PBD to verify the results from 2018 anomalous paper using brownian dynamics*/
+/*This is the nose-hoove test under PBD to verify the results from 2018 anomalous paper*/
 int main(int argc, char*argv[])
 {
     //...some default parameters
-    int numpts = 200; //number of cells
+    int numpts = 100; //number of cells
     int USE_GPU = 0; //0 or greater uses a gpu, any negative number runs on the cpu
     int c;
     int tSteps = 5; //number of time steps to run after initialization
-    int initSteps = 1; //number of initialization steps
+    int initSteps = 100; //number of initialization steps
 
     double dt = 0.01; //the time step size
     double p0 = 3.8;  //the preferred perimeter
     double a0 = 1.0;  // the preferred area
     double T = 0.1;  // the temperature
-    double v0 = 0.01; //mobility
-    double Mu = 1.0; 
-    double alpha = 4/3;
-    double dgamma = 0.0025; //the shear strain
+    int Nchain = 4;     //The number of thermostats to chain together
     int id = 0;      //The index of different configuration
+    double Mu = 1.0; 
 
     //The defaults can be overridden from the command line
-    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:d:")) != -1)
+    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:")) != -1)
         switch(c)
         {
             case 'n': numpts = atoi(optarg); break;
@@ -56,10 +55,7 @@ int main(int argc, char*argv[])
             case 'p': p0 = atof(optarg); break;
             case 'a': a0 = atof(optarg); break;
             case 'v': T = atof(optarg); break;
-            case 'r': alpha = atof(optarg); break;
-            case 'y': dgamma = atof(optarg); break;
             case 'm': Mu = atof(optarg); break;
-            //case 'y': v0 = atof(optarg); break;
             case 'x': id = atof(optarg); break; //indentify different simulations
             case '?':
                     if(optopt=='c')
@@ -82,34 +78,20 @@ int main(int argc, char*argv[])
         initializeGPU = false;
 
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
-    logEquilibrationStateWriter lewriter(0.2);
     char dataname[256];
-    double equilibrationTime = dt*initSteps;
-    vector<long long int> offsets;
-    offsets.push_back(0);
-    //offsets.push_back(100);offsets.push_back(1000);offsets.push_back(50);
-    for(int ii = 0; ii < offsets.size(); ++ii)
-        {
-        sprintf(dataname,"bd_N%i_p%.3f_T%.8f_t%.6f_ga%f_%i.nc",numpts,p0,T,tSteps*dt,dgamma,id);
-        shared_ptr<nvtModelDatabase> ncdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
-        lewriter.addDatabase(ncdat,offsets[ii]);
-        }
-    lewriter.identifyNextFrame();
+    sprintf(dataname,"./testData/bd_N%i_p%.3f_T%.8f_%i.nc",numpts,p0,T,id);
+    char overlapname[256];
+    sprintf(overlapname,"./testData/overlapBD_N%i_p%.3f_T%.8f_%i.csv",numpts,p0,T,id);
+    shared_ptr<GlassyDynModelDatabase> ncdat=make_shared<GlassyDynModelDatabase>(numpts,dataname,NcFile::Replace);
 
-
-    cout << "initializing a system of " << numpts << " cells at temperature " << T << endl;
     shared_ptr<brownianParticleDynamics> bd = make_shared<brownianParticleDynamics>(numpts);
     bd->setT(T);
     bd->setMu(Mu);
 
+
     //define a voronoi configuration with a quadratic energy functional
-    shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,4.0,reproducible,initializeGPU);
+    shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,a0,p0,reproducible,initializeGPU);
 
-    //set the cell preferences to uniformly have <A_0> = 1, P_0 = p_0
-
-    //set the system to be 50:50 mixed and a0/a1=4/3
-
-    voronoiModel->setBidisperseCellPreferences(p0,alpha,0.5);
     //voronoiModel->setCellPreferencesWithRandomAreas(p0,0.8,1.2);
 
     voronoiModel->setCellVelocitiesMaxwellBoltzmann(T);
@@ -119,6 +101,7 @@ int main(int argc, char*argv[])
 
     PeriodicBoxPtr newbox = make_shared<periodicBoundaries>(sqrt(numpts),sqrt(numpts));
     sim->setBox(newbox);
+
     sim->setConfiguration(voronoiModel);
     sim->addUpdater(bd,voronoiModel);
     //set the time step size
@@ -132,38 +115,52 @@ int main(int argc, char*argv[])
     sim->setReproducible(reproducible);
 
     //run for a few initialization timesteps
-    printf("starting initialization case %i\n", id);
-    for(long long int ii = 0; ii < initSteps; ++ii)
-        {
-        sim->performTimestep();
-        };
-    voronoiModel->computeGeometry();
-    printf("Finished with initialization\n");
-    cout << "current q = " << voronoiModel->reportq() << endl;
+
     //the reporting of the force should yield a number that is numerically close to zero.
     voronoiModel->reportMeanCellForce(false);
 
-    //run for additional timesteps, compute dynamical features, and record timing information
-    dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
-    t1=clock();
+    //store the overlap function from t=10000 to t=50000
+    std::vector<double> overlapdat(40000);
 //    cudaProfilerStart();
-    for(long long int ii = 0; ii < tSteps; ++ii)
+    for(long long int ii = 0; ii < 1000000; ++ii)
         {
+        //voronoiModel->computeGeometry();
+        //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl;
+        if (ii % 100 == 0){
+            ncdat->writeState(voronoiModel);
+        }
+        sim->performTimestep();
+        };
+    dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
 
-        if (ii == lewriter.nextFrameToSave)
-            {
-            voronoiModel->computeForces();
-            lewriter.writeState(voronoiModel,ii);
-            printf("time_step: %i *0.001 \t energy %f \t msd %f \t overlap %f\n", ii, voronoiModel->computeEnergy(),dynFeat.computeMSD(voronoiModel->returnPositions()),dynFeat.computeOverlapFunction(voronoiModel->returnPositions()));
-            }
-
+    int overlapidx = 0;
+    for(long long int ii = 1000000; ii < tSteps; ++ii)
+        {
+        //voronoiModel->computeGeometry();
+        //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl;
+        if (ii % 100 == 0){
+            ncdat->writeState(voronoiModel);
+            overlapdat[overlapidx] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
+            overlapidx ++;
+        }
         sim->performTimestep();
         };
 //    cudaProfilerStop();
-    t2=clock();
-    printf("final state:\t\t energy %f \t msd %f \t overlap %f\n",voronoiModel->computeEnergy(),dynFeat.computeMSD(voronoiModel->returnPositions()),dynFeat.computeOverlapFunction(voronoiModel->returnPositions()));
-    double steptime = (t2-t1)/(double)CLOCKS_PER_SEC/tSteps;
-    cout << "timestep ~ " << steptime << " per frame; " << endl;
+
+    //save the overlap to a csv file
+    std::ofstream outFile(overlapname);
+    if (outFile.is_open()) {
+        for (int i = 0; i < overlapdat.size(); ++i) {
+            outFile << overlapdat[i];
+            if (i != overlapdat.size() - 1) {
+                outFile << ','; // Add a comma if it's not the last element
+            }
+        }
+        outFile.close();
+        std::cout << "Vector saved to " << overlapname << " successfully." << std::endl;
+    } else {
+        std::cerr << "Unable to open file." << std::endl;
+    }
 
     if(initializeGPU)
         cudaDeviceReset();
