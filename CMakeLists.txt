@@ -16,7 +16,7 @@ set(CUDA_ARCH "30;35;50")
 
 set(CMAKE_CC_FLAGS "${CMAKE_CC_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -DBOOST_MATH_DISABLE_FLOAT128 -fopenmp -frounding-math")
-set(CMAKE_CUDA_FLAGS "${CUDA_NVCC_FLAGS} --expt-relaxed-constexpr -arch=sm_${CUDA_ARCH} -gencode=arch=compute_${CUDA_ARCH},code=sm_${CUDA_ARCH}")
+set(CMAKE_CUDA_FLAGS "${CUDA_NVCC_FLAGS} --expt-relaxed-constexpr")
 set(CMAKE_CUDA_ARCHITECTURES ${CUDA_ARCH})
 
 if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
