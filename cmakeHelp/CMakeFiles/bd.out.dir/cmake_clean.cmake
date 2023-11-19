@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
+  "../executable/bd.out"
+  "../executable/bd.out.pdb"
   "CMakeFiles/bd.out.dir/bd.cpp.o"
-  "CMakeFiles/bd.out.dir/bd.cpp.o.d"
-  "bd.out"
-  "bd.out.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

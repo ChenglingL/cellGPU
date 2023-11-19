@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
+  "../executable/voronoi.out"
+  "../executable/voronoi.out.pdb"
   "CMakeFiles/voronoi.out.dir/voronoi.cpp.o"
-  "voronoi.out"
-  "voronoi.out.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

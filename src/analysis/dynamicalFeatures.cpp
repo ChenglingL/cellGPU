@@ -11,6 +11,12 @@ dynamicalFeatures::dynamicalFeatures(GPUArray<double2> &initialPos, PeriodicBoxP
         N = floor(N*fractionAnalyzed);
     };
 
+dynamicalFeatures::dynamicalFeatures(GPUArray<double2> &initialVel)
+    {
+    copyGPUArrayData(initialVel,iVel);
+    N = iVel.size();
+    };
+
 void dynamicalFeatures::setCageNeighbors(GPUArray<int> &neighbors, GPUArray<int> &neighborNum, Index2D n_idx)
     {
     nIdx = Index2D(n_idx.getW(),n_idx.getH());
@@ -40,7 +46,7 @@ void dynamicalFeatures::computeDisplacements(GPUArray<double2> &currentPos)
         {
         cur = fPos.data[ii];
         init = iPos[ii];
-        Box->minDist(init,cur,disp);
+        Box->minDist(cur,init,disp);
         currentDisplacements[ii] = disp;
         }
     };
@@ -48,6 +54,8 @@ void dynamicalFeatures::computeDisplacements(GPUArray<double2> &currentPos)
 void dynamicalFeatures::computeCageRelativeDisplacements(GPUArray<double2> &currentPos)
     {
     cageRelativeDisplacements.resize(N);
+    cageDisplacements.resize(N);
+    cageEnhancedDisplacements.resize(N);
     //first, compute the vector of current displacements
     computeDisplacements(currentPos);
 
@@ -64,13 +72,60 @@ void dynamicalFeatures::computeCageRelativeDisplacements(GPUArray<double2> &curr
         for(int nn = 0; nn < nNeighs; ++nn)
             {
             int neighborIndex = cageNeighbors[ii][nn];
-            temp.x = temp.x + currentDisplacements[neighborIndex].x/nNeighs;
-            temp.y = temp.y + currentDisplacements[neighborIndex].y/nNeighs;
+            temp.x = temp.x + currentDisplacements[neighborIndex].x;
+            temp.y = temp.y + currentDisplacements[neighborIndex].y;
             }
         cageRelativeDisplacements[ii].x = cur.x - (1./((double) nNeighs))* temp.x;
         cageRelativeDisplacements[ii].y = cur.y - (1./((double) nNeighs))* temp.y;
+        cageEnhancedDisplacements[ii].x = cur.x + (1./((double) nNeighs))* temp.x;
+        cageEnhancedDisplacements[ii].y = cur.y + (1./((double) nNeighs))* temp.y;
+        cageDisplacements[ii].x = (1./((double) nNeighs))* temp.x;
+        cageDisplacements[ii].y = (1./((double) nNeighs))* temp.y;
         };
     };
+
+// a simple (not strictly correct) calculation of velocity auto-correlation function.
+double dynamicalFeatures::computeVelocityCorrelation(GPUArray<double2> &currentVel)
+    {
+    ArrayHandle<double2> fVel(currentVel,access_location::host,access_mode::read);
+    double2 cur,init;
+    double VelocityCorrelation = 0;
+    for (int ii = 0; ii < N; ++ii)
+        {
+        cur = fVel.data[ii];
+        init = iVel[ii];
+        VelocityCorrelation += dot(cur,init);
+        }
+    return VelocityCorrelation/N;
+    };
+
+// This correlation between the velocity of the cage and the cell
+double dynamicalFeatures::computeCageRelativeVelocityCorrelation(GPUArray<double2> &currentVel)
+    {
+    currentCageVelocity.resize(N);
+    ArrayHandle<double2> fVel(currentVel,access_location::host,access_mode::read);
+    double2 cur;
+    double2 temp;
+    double cageRelativeVelocityCorrelation = 0;
+    for(int ii = 0; ii < N; ++ii)
+        {
+        //self term
+        cur = fVel.data[ii];
+        //subtract off net neighbor motion
+        int nNeighs = cageNeighbors[ii].size();
+        temp.x=0;temp.y=0;
+        for(int nn = 0; nn < nNeighs; ++nn)
+            {
+            int neighborIndex = cageNeighbors[ii][nn];
+            temp.x = temp.x + fVel.data[neighborIndex].x / nNeighs;
+            temp.y = temp.y + fVel.data[neighborIndex].y / nNeighs;
+            }
+        cageRelativeVelocityCorrelation += dot(cur,temp);
+        };
+    return cageRelativeVelocityCorrelation/N;
+    };
+
+
 
 double dynamicalFeatures::MSDhelper(vector<double2> &displacements)
     {
@@ -102,6 +157,27 @@ double dynamicalFeatures::computeCageRelativeMSD(GPUArray<double2> &currentPos)
     double result = MSDhelper(cageRelativeDisplacements);
     return result;
     };
+
+double dynamicalFeatures::computeCageMSD(GPUArray<double2> &currentPos)
+    {
+    //call helper function to compute the vector of current cage-relative displacement vectors
+    computeCageRelativeDisplacements(currentPos);
+
+    //then just compute the MSD of that set of vectors..
+    double result = MSDhelper(cageDisplacements);
+    return result;
+    };
+
+double dynamicalFeatures::computeCageEnhancedMSD(GPUArray<double2> &currentPos)
+    {
+    //call helper function to compute the vector of current cage-relative displacement vectors
+    computeCageRelativeDisplacements(currentPos);
+
+    //then just compute the MSD of that set of vectors..
+    double result = MSDhelper(cageEnhancedDisplacements);
+    return result;
+    };
+
 
 /*!
 In d-dimensions, the contribution of the angularly average of <exp(I k.r)> is
@@ -156,7 +232,7 @@ double dynamicalFeatures::computeOverlapFunction(GPUArray<double2> &currentPos, 
         {
         cur = fPos.data[ii];
         init = iPos[ii];
-        Box->minDist(init,cur,disp);
+        Box->minDist(cur,init,disp);
         if(norm(disp) < cutoff)
             overlap += 1;
         };

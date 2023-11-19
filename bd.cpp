@@ -79,9 +79,11 @@ int main(int argc, char*argv[])
 
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
     char dataname[256];
-    sprintf(dataname,"./testData/bd_N%i_p%.3f_T%.8f_%i.nc",numpts,p0,T,id);
+    sprintf(dataname,"../../data/N1024/bd_N%i_p%.3f_T%.8f_%i.nc",numpts,p0,T,id);
     char overlapname[256];
-    sprintf(overlapname,"./testData/overlapBD_N%i_p%.3f_T%.8f_%i.csv",numpts,p0,T,id);
+    char cageRelativeSISFname[256];
+    sprintf(overlapname,"../../data/N1024/overlapBD_N%i_p%.3f_T%.8f_%i.csv",numpts,p0,T,id);
+    sprintf(cageRelativeSISFname,"../../data/N1024/cageRelativeSISFBD_N%i_p%.3f_T%.8f_%i.csv",numpts,p0,T,id);
     shared_ptr<GlassyDynModelDatabase> ncdat=make_shared<GlassyDynModelDatabase>(numpts,dataname,NcFile::Replace);
 
     shared_ptr<brownianParticleDynamics> bd = make_shared<brownianParticleDynamics>(numpts);
@@ -119,10 +121,11 @@ int main(int argc, char*argv[])
     //the reporting of the force should yield a number that is numerically close to zero.
     voronoiModel->reportMeanCellForce(false);
 
-    //store the overlap function from t=10000 to t=50000
-    std::vector<double> overlapdat(40000);
+    //store the overlap function from initSteps to tSteps
+    std::vector<double> overlapdat(tSteps-initSteps);
+    std::vector<double> cageRelativeSISFdat(tSteps-initSteps);
 //    cudaProfilerStart();
-    for(long long int ii = 0; ii < 1000000; ++ii)
+    for(long long int ii = 0; ii < initSteps; ++ii)
         {
         //voronoiModel->computeGeometry();
         //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl;
@@ -132,15 +135,16 @@ int main(int argc, char*argv[])
         sim->performTimestep();
         };
     dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
-
+    dynFeat.setCageNeighbors(voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx);
     int overlapidx = 0;
-    for(long long int ii = 1000000; ii < tSteps; ++ii)
+    for(long long int ii = initSteps; ii < tSteps; ++ii)
         {
         //voronoiModel->computeGeometry();
         //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl;
         if (ii % 100 == 0){
             ncdat->writeState(voronoiModel);
             overlapdat[overlapidx] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
+            cageRelativeSISFdat[overlapidx] = dynFeat.computeCageRelativeSISF(voronoiModel->returnPositions());
             overlapidx ++;
         }
         sim->performTimestep();
@@ -148,16 +152,30 @@ int main(int argc, char*argv[])
 //    cudaProfilerStop();
 
     //save the overlap to a csv file
-    std::ofstream outFile(overlapname);
-    if (outFile.is_open()) {
+    std::ofstream outFile1(overlapname);
+    if (outFile1.is_open()) {
         for (int i = 0; i < overlapdat.size(); ++i) {
-            outFile << overlapdat[i];
+            outFile1 << overlapdat[i];
             if (i != overlapdat.size() - 1) {
-                outFile << ','; // Add a comma if it's not the last element
+                outFile1 << ','; // Add a comma if it's not the last element
             }
         }
-        outFile.close();
+        outFile1.close();
         std::cout << "Vector saved to " << overlapname << " successfully." << std::endl;
+    } else {
+        std::cerr << "Unable to open file." << std::endl;
+    };
+
+    std::ofstream outFile2(cageRelativeSISFname);
+    if (outFile2.is_open()) {
+        for (int i = 0; i < cageRelativeSISFdat.size(); ++i) {
+            outFile2 << cageRelativeSISFdat[i];
+            if (i != cageRelativeSISFdat.size() - 1) {
+                outFile2 << ','; // Add a comma if it's not the last element
+            }
+        }
+        outFile2.close();
+        std::cout << "Vector saved to " << cageRelativeSISFname << " successfully." << std::endl;
     } else {
         std::cerr << "Unable to open file." << std::endl;
     }

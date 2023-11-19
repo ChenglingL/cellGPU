@@ -412,6 +412,7 @@ by actually deforming the box a bit and recomputing the geometry.
 */
 double VoronoiQuadraticEnergy::getSigmaXY()
     {
+    computeGeometry();
     double sigmaXY = 0.0;
     double Pthreshold = THRESHOLD;
 
@@ -504,6 +505,7 @@ by actually deforming the box a bit and recomputing the geometry.
 */
 double VoronoiQuadraticEnergy::getSigmaXY(vector<double> &sigmai)
     {
+    computeGeometry();
     sigmai.reserve(Ncells);
     double sigmaXY = 0.0;
     double Pthreshold = THRESHOLD;
