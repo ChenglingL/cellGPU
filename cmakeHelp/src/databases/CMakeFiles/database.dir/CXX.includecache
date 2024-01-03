@@ -56,18 +56,6 @@ vectorTypeOperations.h
 
 ../inc/vectorTypeOperations.h
 
-../src/analysis/analysisPackage.h
-autocorrelator.h
-../src/analysis/autocorrelator.h
-dynamicalFeatures.h
-../src/analysis/dynamicalFeatures.h
-structuralFeatures.h
-../src/analysis/structuralFeatures.h
-
-../src/analysis/autocorrelator.h
-std_include.h
-../src/analysis/std_include.h
-
 ../src/analysis/dynamicalFeatures.h
 std_include.h
 ../src/analysis/std_include.h
@@ -77,14 +65,6 @@ periodicBoundaries.h
 ../src/analysis/periodicBoundaries.h
 indexer.h
 ../src/analysis/indexer.h
-
-../src/analysis/structuralFeatures.h
-std_include.h
-../src/analysis/std_include.h
-functions.h
-../src/analysis/functions.h
-periodicBoundaries.h
-../src/analysis/periodicBoundaries.h
 
 ../src/models/DelaunayCGAL.h
 vector_types.h
@@ -313,16 +293,6 @@ dynamicalFeatures.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/dynamicalFeatures.h
 DatabaseNetCDF.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/DatabaseNetCDF.h
-
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/logEquilibrationStateWriter.cpp
-logEquilibrationStateWriter.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/logEquilibrationStateWriter.h
-
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/logEquilibrationStateWriter.h
-BaseDatabase.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/BaseDatabase.h
-analysisPackage.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/analysisPackage.h
 
 /usr/local/cuda-12.2/include/builtin_types.h
 device_types.h

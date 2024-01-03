@@ -34,11 +34,13 @@ void GlassyDynModelDatabase::SetDimVar()
     unitDim = File.add_dim("unit",1);
 
     //Set the variables
-    //posVar              = File.add_var("position",       ncDouble,recDim, dofDim);
+   // posVar              = File.add_var("position",       ncDouble,recDim, dofDim);
     d2EdgammadgammaVar  = File.add_var("d2Edgammadgamma",     ncDouble,recDim, unitDim);
     sigmaVar  = File.add_var("sigma",     ncDouble,recDim, unitDim);
     energyVar  = File.add_var("energy",     ncDouble,recDim, unitDim);
     BoxMatrixVar    = File.add_var("BoxMatrix",     ncDouble,recDim, boxDim);
+    APVar              = File.add_var("AreaPrimeter",       ncDouble,recDim, dofDim);
+    timeVar             = File.add_var("time",     ncDouble,recDim, unitDim);
     }
 
 void GlassyDynModelDatabase::GetDimVar()
@@ -54,12 +56,14 @@ void GlassyDynModelDatabase::GetDimVar()
     // velVar = File.get_var("velocity");
     // typeVar = File.get_var("type");
     // additionalDataVar = File.get_var("additionalData");
+    APVar = File.get_var("AreaPrimeter");
     BoxMatrixVar = File.get_var("BoxMatrix");
     // timeVar = File.get_var("time");
     // meanqVar = File.get_var("meanQ");
     d2EdgammadgammaVar = File.get_var("d2Edgammadgamma");
     sigmaVar = File.get_var("sigma");
     energyVar = File.get_var("energy");
+    timeVar = File.get_var("time");
     // d2EidgammadgammaVar = File.get_var("d2Eidgammadgamma");
     // overlapVar = File.get_var("overlap");
 
@@ -82,33 +86,39 @@ void GlassyDynModelDatabase::writeState(STATE c, double time, int rec)
     std::vector<double> posdat(2*Nv);
     std::vector<double> veldat(2*Nv);
     std::vector<double> additionaldat(2*Nv);
+    std::vector<double> apdat(2*Nv);
     std::vector<int> typedat(Nv);
     std::vector<double> d2Eidgammadgammadat;
     int idx = 0;
-
+    s->computeGeometry();
     ArrayHandle<double2> h_p(s->cellPositions,access_location::host,access_mode::read);
     ArrayHandle<double2> h_v(s->returnVelocities());
     ArrayHandle<double2> h_m(s->returnAreaPeriPreferences());
+    ArrayHandle<double2> h_AP(s->AreaPeri,access_location::host,access_mode::read);
     ArrayHandle<int> h_ct(s->cellType,access_location::host,access_mode::read);
 
-    // for (int ii = 0; ii < Nv; ++ii)
-    //     {
-    //     int pidx = s->tagToIdx[ii];
-    //     double px = h_p.data[pidx].x;
-    //     double py = h_p.data[pidx].y;
-    //     double vx = h_v.data[pidx].x;
-    //     double vy = h_v.data[pidx].y;
-    //     double ma = h_m.data[pidx].x;
-    //     double mb = h_m.data[pidx].y;
-    //     posdat[(2*idx)] = px;
-    //     posdat[(2*idx)+1] = py;
-    //     veldat[(2*idx)] = vx;
-    //     veldat[(2*idx)+1] = vy;
-    //     additionaldat[(2*idx)] = ma;
-    //     additionaldat[(2*idx)+1] = mb;
-    //     typedat[ii] = h_ct.data[pidx];
-    //     idx +=1;
-    //     };
+    for (int ii = 0; ii < Nv; ++ii)
+        {
+        int pidx = s->tagToIdx[ii];
+        double px = h_p.data[pidx].x;
+        double py = h_p.data[pidx].y;
+        double vx = h_v.data[pidx].x;
+        double vy = h_v.data[pidx].y;
+        double ma = h_m.data[pidx].x;
+        double mb = h_m.data[pidx].y;
+        double ca = h_AP.data[pidx].x;
+        double cb = h_AP.data[pidx].y;
+        posdat[(2*idx)] = px;
+        posdat[(2*idx)+1] = py;
+        // veldat[(2*idx)] = vx;
+        // veldat[(2*idx)+1] = vy;
+        // additionaldat[(2*idx)] = ma;
+        // additionaldat[(2*idx)+1] = mb;
+        apdat[(2*idx)] = ca;
+        apdat[(2*idx)+1] = cb;
+        // typedat[ii] = h_ct.data[pidx];
+        idx +=1;
+        };
     // dynamicalFeatures dynFeat(s->returnPositions(),s->Box);
 
     // double meanq = s->reportq();
@@ -122,8 +132,9 @@ void GlassyDynModelDatabase::writeState(STATE c, double time, int rec)
     // meanqVar         ->put_rec(&meanq,           rec);
     // velVar           ->put_rec(&veldat[0],       rec);
     // additionalDataVar->put_rec(&additionaldat[0],rec);
+    APVar->put_rec(&apdat[0],rec);
     // typeVar          ->put_rec(&typedat[0],      rec);
-    // timeVar          ->put_rec(&time,            rec);
+    timeVar          ->put_rec(&time,            rec);
     BoxMatrixVar     ->put_rec(&boxdat[0],       rec);
     // overlapVar       ->put_rec(&overlap,         rec);
     d2EdgammadgammaVar  ->put_rec(&d2Edgammadgammadat, rec);
