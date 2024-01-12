@@ -1,0 +1,1 @@
+This folded contains everything we need to generate equalibrated configurations for futher use.
