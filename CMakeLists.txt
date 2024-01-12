@@ -66,7 +66,7 @@ set(HEADERS
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/executable)
 # list the names of cpp files corresponding to linked executables you'd like...
 foreach(ARG
-        AreaPriStat
+        nvtLogSpacedwithG
         )
 add_executable("${ARG}.out" "${ARG}.cpp" )
 target_link_libraries("${ARG}.out"

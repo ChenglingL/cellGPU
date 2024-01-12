@@ -32,15 +32,17 @@ void GlassyDynModelDatabase::SetDimVar()
     dofDim = File.add_dim("dof", Nv*2);
     boxDim = File.add_dim("boxdim",4);
     unitDim = File.add_dim("unit",1);
+    neighborDim = File.add_dim("neighbor",Nv*20);
 
     //Set the variables
-   // posVar              = File.add_var("position",       ncDouble,recDim, dofDim);
-    d2EdgammadgammaVar  = File.add_var("d2Edgammadgamma",     ncDouble,recDim, unitDim);
-    sigmaVar  = File.add_var("sigma",     ncDouble,recDim, unitDim);
+    posVar              = File.add_var("position",       ncDouble,recDim, dofDim);
+    d2EdgammadgammaVar  = File.add_var("d2Edgammadgamma",     ncDouble,recDim, dofDim);
+    sigmaVar  = File.add_var("sigma",     ncDouble,recDim, dofDim);
     energyVar  = File.add_var("energy",     ncDouble,recDim, unitDim);
     BoxMatrixVar    = File.add_var("BoxMatrix",     ncDouble,recDim, boxDim);
-    APVar              = File.add_var("AreaPrimeter",       ncDouble,recDim, dofDim);
+    //APVar              = File.add_var("AreaPrimeter",       ncDouble,recDim, dofDim);
     timeVar             = File.add_var("time",     ncDouble,recDim, unitDim);
+    neighborVar         = File.add_var("neighbor",     ncInt,recDim, neighborDim);
     }
 
 void GlassyDynModelDatabase::GetDimVar()
@@ -56,7 +58,7 @@ void GlassyDynModelDatabase::GetDimVar()
     // velVar = File.get_var("velocity");
     // typeVar = File.get_var("type");
     // additionalDataVar = File.get_var("additionalData");
-    APVar = File.get_var("AreaPrimeter");
+    //APVar = File.get_var("AreaPrimeter");
     BoxMatrixVar = File.get_var("BoxMatrix");
     // timeVar = File.get_var("time");
     // meanqVar = File.get_var("meanQ");
@@ -89,6 +91,7 @@ void GlassyDynModelDatabase::writeState(STATE c, double time, int rec)
     std::vector<double> apdat(2*Nv);
     std::vector<int> typedat(Nv);
     std::vector<double> d2Eidgammadgammadat;
+    std::vector<double> sigmaidat;
     int idx = 0;
     s->computeGeometry();
     ArrayHandle<double2> h_p(s->cellPositions,access_location::host,access_mode::read);
@@ -96,6 +99,8 @@ void GlassyDynModelDatabase::writeState(STATE c, double time, int rec)
     ArrayHandle<double2> h_m(s->returnAreaPeriPreferences());
     ArrayHandle<double2> h_AP(s->AreaPeri,access_location::host,access_mode::read);
     ArrayHandle<int> h_ct(s->cellType,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(s->neighborNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_n(s->neighbors,access_location::host,access_mode::read);
 
     for (int ii = 0; ii < Nv; ++ii)
         {
@@ -119,27 +124,52 @@ void GlassyDynModelDatabase::writeState(STATE c, double time, int rec)
         // typedat[ii] = h_ct.data[pidx];
         idx +=1;
         };
+    int neighborListLength = 0;
+    int maxcount = 0;
     // dynamicalFeatures dynFeat(s->returnPositions(),s->Box);
+    Index2D nidx=s->n_idx;
+    for (int ii = 0; ii < Nv; ++ii)
+        {
+            if (maxcount < h_nn.data[ii])
+            {
+                maxcount = h_nn.data[ii];
+            }
+            for (int j = 0; j < h_nn.data[ii]; j++)
+            {
+                neighborListLength++;
+            }
+        
+        };
 
+    std::vector<int> neighbordat(20*Nv,-1);
+    for (int ii = 0; ii < Nv; ++ii)
+        {
+            for (int j = 0; j < h_nn.data[ii]; j++)
+            {
+                neighbordat[ii * maxcount + j] = h_n.data[nidx(j,ii)];
+            }
+        
+        };
     // double meanq = s->reportq();
-    double d2Edgammadgammadat = s->getd2Edgammadgamma();
-    double sigmadat = s->getSigmaXY();
+    double d2Edgammadgammadat = s->getd2Edgammadgamma(d2Eidgammadgammadat);
+    double sigmadat = s->getSigmaXY(sigmaidat);
     double energydat = s->computeEnergy();
     // double overlap = dynFeat.computeOverlapFunction(s->returnPositions());
 
     //Write all the data
-    //posVar           ->put_rec(&posdat[0],       rec);
+    posVar           ->put_rec(&posdat[0],       rec);
     // meanqVar         ->put_rec(&meanq,           rec);
     // velVar           ->put_rec(&veldat[0],       rec);
     // additionalDataVar->put_rec(&additionaldat[0],rec);
-    APVar->put_rec(&apdat[0],rec);
+    //APVar->put_rec(&apdat[0],rec);
     // typeVar          ->put_rec(&typedat[0],      rec);
     timeVar          ->put_rec(&time,            rec);
     BoxMatrixVar     ->put_rec(&boxdat[0],       rec);
     // overlapVar       ->put_rec(&overlap,         rec);
-    d2EdgammadgammaVar  ->put_rec(&d2Edgammadgammadat, rec);
-    sigmaVar  ->put_rec(&sigmadat, rec);
+    d2EdgammadgammaVar  ->put_rec(&d2Eidgammadgammadat[0], rec);
+    sigmaVar  ->put_rec(&sigmaidat[0], rec);
     energyVar  ->put_rec(&energydat, rec);
+    neighborVar      ->put_rec(&neighbordat[0], rec);
     //d2EidgammadgammaVar ->put_rec(&d2Eidgammadgammadat[0], rec);
     File.sync();
     }
@@ -161,13 +191,13 @@ void GlassyDynModelDatabase::readState(STATE c, int rec,bool geometry)
     // t->Box->setGeneral(boxdata[0],boxdata[1],boxdata[2],boxdata[3]);
 
     //get the positions and velocities
-    //posVar-> set_cur(rec);
+    posVar-> set_cur(rec);
     // velVar-> set_cur(rec);
     // additionalDataVar-> set_cur(rec);
     std::vector<double> posdata(2*Nv,0.0);
     std::vector<double> veldata(2*Nv,0.0);
     std::vector<double> additionaldata(2*Nv,0.0);
-    //posVar->get(&posdata[0],1, dofDim->size());
+    posVar->get(&posdata[0],1, dofDim->size());
     // velVar->get(&veldata[0],1, dofDim->size());
     // additionalDataVar->get(&additionaldata[0],1,dofDim->size());
 

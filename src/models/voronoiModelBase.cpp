@@ -426,7 +426,7 @@ void voronoiModelBase::enforceTopology()
 
 
     delGPU.testAndRepairDelaunayTriangulation(cellPositions,neighbors,neighborNum);
-//    globalTriangulationDelGPU();
+    //globalTriangulationDelGPU();
 
     //global rescue if needed
     if(NeighIdxNum != 6* Ncells)

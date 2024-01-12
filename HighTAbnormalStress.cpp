@@ -70,7 +70,7 @@ int main(int argc, char*argv[])
 
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
     char dataname[256];
-    sprintf(dataname,"/home/chengling/Research/Project/Cell/AnalyticalG/data/N%i/derivativeTest/nvt_N%i_p%.3f_T%.8f_%i.nc",numpts,numpts,p0,T,id);
+    sprintf(dataname,"/home/chengling/Research/Project/Cell/AnalyticalG/data/N%i/nvt_HTAS_neighbors_enforceTopology_N%i_p%.3f_T%.8f_%i.nc",numpts,numpts,p0,T,id);
     shared_ptr<GlassyDynModelDatabase> ncdat=make_shared<GlassyDynModelDatabase>(numpts,dataname,NcFile::Replace);
 
 
@@ -118,17 +118,15 @@ int main(int argc, char*argv[])
         };
     dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
     //write state after equlibrition
-    for(long long int ii = 0; ii < tSteps; ++ii)
+    voronoiModel->enforceTopology();
+    while(voronoiModel->getSigmaXY()<10)
         {
         //voronoiModel->computeGeometry();
-        //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl;
-        if (ii % 100 == 0){
-            voronoiModel->enforceTopology();
-            ncdat->writeState(voronoiModel);
-        }
-        
+        //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl
         sim->performTimestep();
+        voronoiModel->enforceTopology();
         };
+    ncdat->writeState(voronoiModel);
     
 //    cudaProfilerStop();
     t2=clock();

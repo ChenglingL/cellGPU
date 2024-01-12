@@ -218,6 +218,14 @@ std_include.h
 functions.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/functions.h
 
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiModelBase.cpp
+cuda_runtime.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/cuda_runtime.h
+voronoiModelBase.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiModelBase.h
+voronoiModelBase.cuh
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiModelBase.cuh
+
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiModelBase.cuh
 cuda_runtime.h
 -
@@ -243,30 +251,6 @@ structures.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/structures.h
 voronoiModelBase.cuh
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiModelBase.cuh
-
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiQuadraticEnergy.cpp
-voronoiQuadraticEnergy.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiQuadraticEnergy.h
-voronoiQuadraticEnergy.cuh
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiQuadraticEnergy.cuh
-cuda_profiler_api.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/cuda_profiler_api.h
-
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiQuadraticEnergy.cuh
-std_include.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/std_include.h
-cuda_runtime.h
--
-indexer.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/indexer.h
-periodicBoundaries.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/periodicBoundaries.h
-
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiQuadraticEnergy.h
-voronoiModelBase.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiModelBase.h
-voronoiQuadraticEnergy.cuh
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiQuadraticEnergy.cuh
 
 /usr/local/cuda-12.2/include/builtin_types.h
 device_types.h
@@ -2255,10 +2239,6 @@ utility
 -
 cstring
 -
-
-/usr/local/cuda-12.2/include/cuda_profiler_api.h
-driver_types.h
-/usr/local/cuda-12.2/include/driver_types.h
 
 /usr/local/cuda-12.2/include/cuda_runtime.h
 crt/host_config.h

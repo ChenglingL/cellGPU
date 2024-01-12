@@ -60,7 +60,7 @@ int main(int argc, char*argv[])
                        abort();
         };
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
-    logEquilibrationStateWriter lewriter(0.2);
+    logEquilibrationStateWriter lewriter(0.05);
     
     clock_t t1,t2; //clocks for timing information
     bool reproducible = false; // if you want random numbers with a more random seed each run, set this to false
@@ -71,11 +71,11 @@ int main(int argc, char*argv[])
         initializeGPU = false;
 
     char dataname[256];
-    sprintf(dataname,"/home/chengling/Research/Project/Cell/AnalyticalG/data/N%i/nvt_N%i_p%.3f_T%.8f_t%i_%i.nc",numpts,numpts,p0,T,tSteps,id);
+    sprintf(dataname,"/home/chengling/Research/Project/Cell/AnalyticalG/data/N%i/enforceTopology/nvt_N%i_p%.3f_T%.8f_t%i_%i.nc",numpts,numpts,p0,T,tSteps,id);
     char stressname[256];
-    sprintf(stressname,"/home/chengling/Research/Project/Cell/AnalyticalG/data/N%i/stressNVT_N%i_p%.3f_T%.8f_t%i_%i.csv",numpts,numpts,p0,T,tSteps,id);
+    sprintf(stressname,"/home/chengling/Research/Project/Cell/AnalyticalG/data/N%i/enforceTopology/stressNVT_N%i_p%.3f_T%.8f_t%i_%i.csv",numpts,numpts,p0,T,tSteps,id);
     char insGname[256];
-    sprintf(insGname,"/home/chengling/Research/Project/Cell/AnalyticalG/data/N%i/insGNVT_N%i_p%.3f_T%.8f_t%i_%i.csv",numpts,numpts,p0,T,tSteps,id);
+    sprintf(insGname,"/home/chengling/Research/Project/Cell/AnalyticalG/data/N%i/enforceTopology/insGNVT_N%i_p%.3f_T%.8f_t%i_%i.csv",numpts,numpts,p0,T,tSteps,id);
 
     shared_ptr<nvtModelDatabase> ncdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
     lewriter.addDatabase(ncdat,0);
@@ -133,12 +133,14 @@ int main(int argc, char*argv[])
         //voronoiModel->computeGeometry();
         //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl;
         if (ii % 100 == 0){
+            voronoiModel->enforceTopology();
             stressdat[stessidx] = voronoiModel->getSigmaXY();
             insGdat[stessidx] = voronoiModel->getd2Edgammadgamma();
             stessidx ++;
         }
         if (ii == lewriter.nextFrameToSave)
             {
+            voronoiModel->enforceTopology();
             lewriter.writeState(voronoiModel,ii);
             }
         sim->performTimestep();

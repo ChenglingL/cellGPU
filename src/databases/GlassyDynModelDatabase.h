@@ -17,10 +17,10 @@ class GlassyDynModelDatabase : public BaseDatabaseNetCDF
 private:
     typedef shared_ptr<Simple2DCell> STATE;
     int Nv; //!< number of vertices in delaunay triangulation
-    NcDim *recDim, *NvDim, *dofDim, *boxDim, *unitDim; //!< NcDims we'll use
+    NcDim *recDim, *NvDim, *dofDim, *boxDim, *unitDim, *neighborDim; //!< NcDims we'll use
     //!Currently using "additionalData" to hold target a_0 and p_0 information
-    NcVar *d2EdgammadgammaVar, *sigmaVar, *energyVar, *BoxMatrixVar, *APVar, *timeVar; //!<NcVars we'll use 
-    //*posVar
+    NcVar *d2EdgammadgammaVar, *sigmaVar, *energyVar, *BoxMatrixVar, *posVar, *timeVar, *neighborVar; //!<NcVars we'll use 
+    //*posVar *APVar, *timeVar
     int Current;    //!< keeps track of the current record when in write mode
 
 
