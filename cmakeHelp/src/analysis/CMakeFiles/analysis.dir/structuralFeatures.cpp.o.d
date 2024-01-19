@@ -1,8 +1,8 @@
 src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: \
- /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/src/analysis/structuralFeatures.cpp \
+ /u/cli6/cellGPU/src/analysis/structuralFeatures.cpp \
  /usr/include/stdc-predef.h \
- /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/src/analysis/structuralFeatures.h \
- /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/inc/std_include.h \
+ /u/cli6/cellGPU/src/analysis/structuralFeatures.h \
+ /u/cli6/cellGPU/inc/std_include.h \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/cmath \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/c++config.h \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -261,10 +261,10 @@ src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
- /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/inc/vectorTypeOperations.h \
- /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/src/utility/functions.h \
- /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/src/utility/Matrix.h \
- /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/src/utility/gpuarray.h \
+ /u/cli6/cellGPU/inc/vectorTypeOperations.h \
+ /u/cli6/cellGPU/src/utility/functions.h \
+ /u/cli6/cellGPU/src/utility/Matrix.h \
+ /u/cli6/cellGPU/src/utility/gpuarray.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h \
  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h \
@@ -275,4 +275,4 @@ src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_tree.h \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_set.h \
  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_multiset.h \
- /projects/bbtm/cli6/VoroGlassydynamics/cellGPU/src/utility/periodicBoundaries.h
+ /u/cli6/cellGPU/src/utility/periodicBoundaries.h

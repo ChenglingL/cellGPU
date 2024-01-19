@@ -21,7 +21,7 @@ int main(int argc, char*argv[])
     int numpts = 200; //number of cells
     int USE_GPU = 0; //0 or greater uses a gpu, any negative number runs on the cpu
     int c;
-    int tSteps = 5; //number of time steps to run after initialization
+    int tSteps = 200000; //number of time steps to run after initialization
     int initSteps = 100000; //number of initialization steps 1000\tau
 
     double dt = 0.01; //the time step size

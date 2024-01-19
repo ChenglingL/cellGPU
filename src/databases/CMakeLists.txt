@@ -24,5 +24,7 @@ add_library(database
     vectorValueDatabase.cpp
     nvtModelDatabase.cpp
     GlassyDynModelDatabase.cpp
+    logSACWritter.cpp
+    twoValuesDatabase.cpp
     )
 

@@ -136,3 +136,4 @@ void autocorrelator::evaluate(bool normalize)
                 correlator.push_back(make_double2(time,autocorr));
                 };
     };
+    
