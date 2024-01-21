@@ -5,11 +5,7 @@
 *_store
 callgrind*
 *.dsym
-*.sh
 doc/html/*
 doc/latex/*
-build/*
 debug/*
 data/*
-script/*
-submit/*
