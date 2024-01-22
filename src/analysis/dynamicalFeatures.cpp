@@ -222,6 +222,113 @@ double dynamicalFeatures::computeCageRelativeSISF(GPUArray<double2> &currentPos,
     return result;
     };
 
+/*!
+returns <F_s^2(q,t)> for a set of displacements
+*/
+double dynamicalFeatures::chi4Helper(vector<double2> &displacements, double k)
+    {
+    double2 disp,disp2,totalDisp, relativeDisp;
+    double kr;
+
+    double chi4Contribution = 0.0;
+    //self contribution
+    chi4Contribution = 1.0*N;
+    //relative contributions
+    for(int ii = 0; ii < N-1; ++ii)
+        {
+        disp = displacements[ii];
+        for (int jj = ii+1; jj < N; ++jj)
+            {
+            disp2 = displacements[jj];
+            relativeDisp.x=disp.x-disp2.x;
+            relativeDisp.y=disp.y-disp2.y;
+            kr = k*sqrt(dot(relativeDisp,relativeDisp));
+            chi4Contribution += 2*std::cyl_bessel_j((double) 0.0, (double) kr);
+            };
+        }
+
+    return (chi4Contribution / (N*N));
+    }
+
+double2 dynamicalFeatures::computeFsChi4(GPUArray<double2> &currentPos, double k)
+    {
+    double2 ans; ans.x=0;ans.y=0;
+    double meanFs= computeSISF(currentPos,k);
+    double fsSquared = chi4Helper(currentDisplacements,k);
+
+    ans.x=meanFs;
+    ans.y=N*(fsSquared - meanFs*meanFs);
+    return ans;
+    };
+
+double2 dynamicalFeatures::computeCageRelativeFsChi4(GPUArray<double2> &currentPos, double k)
+    {
+    double2 ans; ans.x=0;ans.y=0;
+    double meanFs= computeCageRelativeSISF(currentPos,k);
+
+    double fsSquared = chi4Helper(cageRelativeDisplacements,k);
+    ans.x=meanFs;
+    ans.y=N*(fsSquared - meanFs*meanFs);
+    return ans;
+
+    };
+
+double2 dynamicalFeatures::computeOrientationalCorrelationFunction(GPUArray<double2> &currentPos,GPUArray<int> &currentNeighbors, GPUArray<int> &currentNeighborNum, Index2D n_idx, int n)
+    {
+    double2 ans; ans.x=0; ans.y=0;
+
+    double2 disp,p1,p2;
+    int neighborIndex;
+    double theta;
+    if(!initialBondOrderComputed)
+        {
+        initialBondOrderComputed = true;
+        initialConjugateBondOrder.resize(currentPos.getNumElements());
+
+        for(int ii = 0; ii < N; ++ii)
+            {
+            double2 localPsi; localPsi.x=0;localPsi.y=0;
+            int neighs = cageNeighbors[ii].size();
+            p1 = iPos[ii];
+            for (int nn = 0; nn < neighs; ++nn)
+                {
+                neighborIndex = cageNeighbors[ii][nn];
+                p2 = iPos[neighborIndex];
+                Box->minDist(p2,p1,disp);
+                theta = atan2(disp.y,disp.x);
+                localPsi.x += cos(n*theta)/neighs;
+                localPsi.y += sin(n*theta)/neighs;
+                };
+            initialConjugateBondOrder[ii].x = localPsi.x;
+            initialConjugateBondOrder[ii].y = -localPsi.y;
+            }
+        };
+
+    ArrayHandle<int> h_nn(currentNeighborNum,access_location::host,access_mode::read);
+    ArrayHandle<int> h_n(currentNeighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_p(currentPos,access_location::host,access_mode::read);
+
+    for(int ii = 0; ii < N; ++ii)
+        {
+        double2 localPsi; localPsi.x=0;localPsi.y=0;
+        int neighs = h_nn.data[ii];
+        p1 = h_p.data[ii];
+        for (int nn = 0; nn < neighs; ++nn)
+            {
+            neighborIndex = h_n.data[n_idx(nn,ii)];
+            p2 = h_p.data[neighborIndex];
+            Box->minDist(p2,p1,disp);
+            theta = atan2(disp.y,disp.x);
+            localPsi.x += cos(n*theta)/neighs;
+            localPsi.y += sin(n*theta)/neighs;
+            }
+        ans.x+= localPsi.x*initialConjugateBondOrder[ii].x+localPsi.y*initialConjugateBondOrder[ii].y;
+        ans.y+= localPsi.y*initialConjugateBondOrder[ii].x - localPsi.x*initialConjugateBondOrder[ii].y;
+        };
+
+    return ans;
+    };
+
 
 double dynamicalFeatures::computeOverlapFunction(GPUArray<double2> &currentPos, double cutoff)
     {

@@ -33,6 +33,13 @@ class dynamicalFeatures
         double computeCageRelativeMSD(GPUArray<double2> &currentPos);
         //!compute cage relative SISF with 2D angular averaging
         double computeCageRelativeSISF(GPUArray<double2> &currentPos, double k = 6.28319);
+        //!compute chi_4 and F_s (result.x = Fs, result.y=chi_4)
+        double2 computeFsChi4(GPUArray<double2> &currentPos, double k = 6.28319);
+        //!compute cage-relative verions of above function
+        double2 computeCageRelativeFsChi4(GPUArray<double2> &currentPos, double k = 6.28319);
+
+        //!compute *un-normalized* flenner-Szamel psi_6 bond correlation decay (i.e., without the average |\psi_6|^2) that would make the function 1 at t=0. return.x is real, return.y is imaginary part
+        double2 computeOrientationalCorrelationFunction(GPUArray<double2> &currentPos,GPUArray<int> &currentNeighbors, GPUArray<int> &currentNeighborNum, Index2D n_idx, int n=6);
         //!compute cage MSD
         double computeCageMSD(GPUArray<double2> &currentPos);
         //!compute cage enhanced MSD
@@ -52,6 +59,9 @@ class dynamicalFeatures
         double angularAverageSISF(vector<double2> &displacements, double k);
         //!helper function that computes the mean dot product of a vector of double2's
         double MSDhelper(vector<double2> &displacements);
+
+        //!helper function that computes the angular average of <F_s^2(q,t)>
+        double chi4Helper(vector<double2> &displacements, double k);
     protected:
         //!the box defining the periodic domain
         PeriodicBoxPtr Box;
@@ -69,6 +79,8 @@ class dynamicalFeatures
         vector<double2> cageEnhancedDisplacements;
         //!the vector of cage relative velocity correlations
         vector<double2> currentCageVelocity;
+        bool initialBondOrderComputed = false;
+        vector<double2> initialConjugateBondOrder;
 
         //!the number of double2's
         int N;
