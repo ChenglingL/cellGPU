@@ -63,12 +63,12 @@ set(SOURCES
 set(HEADERS
     )
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/glassyDnamicsProject/)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/localTest/executable)
 # list the names of cpp files corresponding to linked executables you'd like...
 foreach(ARG
-        voronoiGlassyDynamics
+        overlapCRSISF
         )
-add_executable("${ARG}.out" "./glassyDnamicsProject/${ARG}.cpp" )
+add_executable("${ARG}.out" "./localTest/${ARG}.cpp" )
 target_link_libraries("${ARG}.out"
     ${CUDA_LIBRARIES}
     ${myLibs}
