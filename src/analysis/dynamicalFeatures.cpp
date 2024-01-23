@@ -346,3 +346,16 @@ double dynamicalFeatures::computeOverlapFunction(GPUArray<double2> &currentPos, 
     overlap = overlap / N;
     return overlap;
     }
+
+double dynamicalFeatures::computeCageRelativeOverlapFunction(GPUArray<double2> &currentPos, double cutoff)
+    {
+    double overlap = 0.0;
+    computeCageRelativeDisplacements(currentPos);
+    for (int ii = 0; ii < N; ++ii)
+        {
+        if(norm(cageRelativeDisplacements[ii]) < cutoff)
+            overlap += 1;
+        };
+    overlap = overlap / N;
+    return overlap;
+    }

@@ -17,13 +17,7 @@
 
 
 /*!
-This file compiles to produce an executable that can be used to reproduce the timing information
-in the main cellGPU paper. It sets up a simulation that takes control of a voronoi model and a simple
-model of active motility
-NOTE that in the output, the forces and the positions are not, by default, synchronized! The NcFile
-records the force from the last time "computeForces()" was called, and generally the equations of motion will 
-move the positions. If you want the forces and the positions to be sync'ed, you should call the
-Voronoi model's computeForces() funciton right before saving a state.
+This is for chi4 and cage-relative chi4 calculation
 */
 
 /*This is the nose-hoove test under PBD to verify the results from 2018 anomalous paper*/
@@ -46,6 +40,7 @@ int main(int argc, char*argv[])
     int recordIndex =0; // which element of the database to load the configuration from
     int Nchain = 4;     //The number of thermostats to chain together
     double statesSavedPerDecadeOfTime = 15.;
+    double ks=6.50; // the k position of first peak in the S(k)
 
     //The defaults can be overridden from the command line
     while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:")) != -1)
@@ -60,6 +55,7 @@ int main(int argc, char*argv[])
             case 'v': T = atof(optarg); break;
             case 'l': T0 = atof(optarg); break;
             case 'p': p0 = atof(optarg); break;
+            case 'k': ks = atof(optarg); break;
             case 's': statesSavedPerDecadeOfTime = atof(optarg); break;
             case 'r': recordIndex = atoi(optarg); break;
             case '?':
@@ -105,7 +101,7 @@ int main(int argc, char*argv[])
     for(int ii = 0; ii < offsets.size(); ++ii)
         {
         sprintf(loaddataname,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/glassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
-        sprintf(saveDataName,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/overlapCRSISF_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
+        sprintf(saveDataName,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/chi4_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
 
         shared_ptr<twoValuesDatabase> overlapCRSISF=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);
         nvtModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
@@ -117,7 +113,7 @@ int main(int argc, char*argv[])
         for(int rec=0;rec<fluidConfigurations.GetNumRecs();rec++){
             fluidConfigurations.readState(voronoiModel,rec,false);
             //overlapdatNVT[rec] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
-            overlapCRSISF->writeValues(dynFeat.computeOverlapFunction(voronoiModel->returnPositions()), dynFeat.computeCageRelativeSISF(voronoiModel->returnPositions()));        
+            overlapCRSISF->writeValues(dynFeat.computeFsChi4(voronoiModel->returnPositions(),ks), dynFeat.computeCageRelativeFsChi4(voronoiModel->returnPositions(),ks));        
         };   
         
 

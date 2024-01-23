@@ -26,6 +26,8 @@ class dynamicalFeatures
 
         //!compute the overlap function
         double computeOverlapFunction(GPUArray<double2> &currentPos, double cutoff = 0.5);
+        //!compute the overlap function
+        double computeCageRelativeOverlapFunction(GPUArray<double2> &currentPos, double cutoff = 0.5);
         //!compute cage relative SISF with 2D angular averaging
         double computeSISF(GPUArray<double2> &currentPos, double k = 6.28319);
 

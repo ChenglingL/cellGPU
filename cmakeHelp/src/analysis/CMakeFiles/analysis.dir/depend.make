@@ -85,6 +85,7 @@ src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: ../inc/vectorType
 src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: ../src/utility/Matrix.h
 src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: ../src/utility/functions.h
 src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: ../src/utility/gpuarray.h
+src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: ../src/utility/indexer.h
 src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: ../src/utility/periodicBoundaries.h
 src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: ../src/analysis/structuralFeatures.cpp
 src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: ../src/analysis/structuralFeatures.h

@@ -86,6 +86,7 @@ src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o
  ../src/utility/Matrix.h
  ../src/utility/functions.h
  ../src/utility/gpuarray.h
+ ../src/utility/indexer.h
  ../src/utility/periodicBoundaries.h
  /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/structuralFeatures.cpp
  /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/structuralFeatures.h
