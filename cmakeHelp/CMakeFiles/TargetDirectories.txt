@@ -1,6 +1,10 @@
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/rebuild_cache.dir
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/edit_cache.dir
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/overlapCRSISF.out.dir
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/SACtest.out.dir
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/SISF.out.dir
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/overlap.out.dir
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/orientationalCorrelation.out.dir
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/chi4.out.dir
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/CMakeFiles/rebuild_cache.dir
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/CMakeFiles/edit_cache.dir
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/utility/CMakeFiles/rebuild_cache.dir

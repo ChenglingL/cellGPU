@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "../executable/overlap.out"
-  "../executable/overlap.out.pdb"
-  "CMakeFiles/overlap.out.dir/overlap.cpp.o"
+  "../localTest/executable/overlap.out"
+  "../localTest/executable/overlap.out.pdb"
+  "CMakeFiles/overlap.out.dir/localTest/overlap.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

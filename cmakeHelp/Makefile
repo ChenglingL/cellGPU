@@ -111,17 +111,69 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named overlapCRSISF.out
+# Target rules for targets named SACtest.out
 
 # Build rule for target.
-overlapCRSISF.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 overlapCRSISF.out
-.PHONY : overlapCRSISF.out
+SACtest.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 SACtest.out
+.PHONY : SACtest.out
 
 # fast build rule for target.
-overlapCRSISF.out/fast:
-	$(MAKE) -f CMakeFiles/overlapCRSISF.out.dir/build.make CMakeFiles/overlapCRSISF.out.dir/build
-.PHONY : overlapCRSISF.out/fast
+SACtest.out/fast:
+	$(MAKE) -f CMakeFiles/SACtest.out.dir/build.make CMakeFiles/SACtest.out.dir/build
+.PHONY : SACtest.out/fast
+
+#=============================================================================
+# Target rules for targets named SISF.out
+
+# Build rule for target.
+SISF.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 SISF.out
+.PHONY : SISF.out
+
+# fast build rule for target.
+SISF.out/fast:
+	$(MAKE) -f CMakeFiles/SISF.out.dir/build.make CMakeFiles/SISF.out.dir/build
+.PHONY : SISF.out/fast
+
+#=============================================================================
+# Target rules for targets named overlap.out
+
+# Build rule for target.
+overlap.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 overlap.out
+.PHONY : overlap.out
+
+# fast build rule for target.
+overlap.out/fast:
+	$(MAKE) -f CMakeFiles/overlap.out.dir/build.make CMakeFiles/overlap.out.dir/build
+.PHONY : overlap.out/fast
+
+#=============================================================================
+# Target rules for targets named orientationalCorrelation.out
+
+# Build rule for target.
+orientationalCorrelation.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 orientationalCorrelation.out
+.PHONY : orientationalCorrelation.out
+
+# fast build rule for target.
+orientationalCorrelation.out/fast:
+	$(MAKE) -f CMakeFiles/orientationalCorrelation.out.dir/build.make CMakeFiles/orientationalCorrelation.out.dir/build
+.PHONY : orientationalCorrelation.out/fast
+
+#=============================================================================
+# Target rules for targets named chi4.out
+
+# Build rule for target.
+chi4.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 chi4.out
+.PHONY : chi4.out
+
+# fast build rule for target.
+chi4.out/fast:
+	$(MAKE) -f CMakeFiles/chi4.out.dir/build.make CMakeFiles/chi4.out.dir/build
+.PHONY : chi4.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -240,32 +292,140 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-localTest/overlapCRSISF.o: localTest/overlapCRSISF.cpp.o
+localTest/SACtest.o: localTest/SACtest.cpp.o
 
-.PHONY : localTest/overlapCRSISF.o
+.PHONY : localTest/SACtest.o
 
 # target to build an object file
-localTest/overlapCRSISF.cpp.o:
-	$(MAKE) -f CMakeFiles/overlapCRSISF.out.dir/build.make CMakeFiles/overlapCRSISF.out.dir/localTest/overlapCRSISF.cpp.o
-.PHONY : localTest/overlapCRSISF.cpp.o
+localTest/SACtest.cpp.o:
+	$(MAKE) -f CMakeFiles/SACtest.out.dir/build.make CMakeFiles/SACtest.out.dir/localTest/SACtest.cpp.o
+.PHONY : localTest/SACtest.cpp.o
 
-localTest/overlapCRSISF.i: localTest/overlapCRSISF.cpp.i
+localTest/SACtest.i: localTest/SACtest.cpp.i
 
-.PHONY : localTest/overlapCRSISF.i
+.PHONY : localTest/SACtest.i
 
 # target to preprocess a source file
-localTest/overlapCRSISF.cpp.i:
-	$(MAKE) -f CMakeFiles/overlapCRSISF.out.dir/build.make CMakeFiles/overlapCRSISF.out.dir/localTest/overlapCRSISF.cpp.i
-.PHONY : localTest/overlapCRSISF.cpp.i
+localTest/SACtest.cpp.i:
+	$(MAKE) -f CMakeFiles/SACtest.out.dir/build.make CMakeFiles/SACtest.out.dir/localTest/SACtest.cpp.i
+.PHONY : localTest/SACtest.cpp.i
 
-localTest/overlapCRSISF.s: localTest/overlapCRSISF.cpp.s
+localTest/SACtest.s: localTest/SACtest.cpp.s
 
-.PHONY : localTest/overlapCRSISF.s
+.PHONY : localTest/SACtest.s
 
 # target to generate assembly for a file
-localTest/overlapCRSISF.cpp.s:
-	$(MAKE) -f CMakeFiles/overlapCRSISF.out.dir/build.make CMakeFiles/overlapCRSISF.out.dir/localTest/overlapCRSISF.cpp.s
-.PHONY : localTest/overlapCRSISF.cpp.s
+localTest/SACtest.cpp.s:
+	$(MAKE) -f CMakeFiles/SACtest.out.dir/build.make CMakeFiles/SACtest.out.dir/localTest/SACtest.cpp.s
+.PHONY : localTest/SACtest.cpp.s
+
+localTest/SISF.o: localTest/SISF.cpp.o
+
+.PHONY : localTest/SISF.o
+
+# target to build an object file
+localTest/SISF.cpp.o:
+	$(MAKE) -f CMakeFiles/SISF.out.dir/build.make CMakeFiles/SISF.out.dir/localTest/SISF.cpp.o
+.PHONY : localTest/SISF.cpp.o
+
+localTest/SISF.i: localTest/SISF.cpp.i
+
+.PHONY : localTest/SISF.i
+
+# target to preprocess a source file
+localTest/SISF.cpp.i:
+	$(MAKE) -f CMakeFiles/SISF.out.dir/build.make CMakeFiles/SISF.out.dir/localTest/SISF.cpp.i
+.PHONY : localTest/SISF.cpp.i
+
+localTest/SISF.s: localTest/SISF.cpp.s
+
+.PHONY : localTest/SISF.s
+
+# target to generate assembly for a file
+localTest/SISF.cpp.s:
+	$(MAKE) -f CMakeFiles/SISF.out.dir/build.make CMakeFiles/SISF.out.dir/localTest/SISF.cpp.s
+.PHONY : localTest/SISF.cpp.s
+
+localTest/chi4.o: localTest/chi4.cpp.o
+
+.PHONY : localTest/chi4.o
+
+# target to build an object file
+localTest/chi4.cpp.o:
+	$(MAKE) -f CMakeFiles/chi4.out.dir/build.make CMakeFiles/chi4.out.dir/localTest/chi4.cpp.o
+.PHONY : localTest/chi4.cpp.o
+
+localTest/chi4.i: localTest/chi4.cpp.i
+
+.PHONY : localTest/chi4.i
+
+# target to preprocess a source file
+localTest/chi4.cpp.i:
+	$(MAKE) -f CMakeFiles/chi4.out.dir/build.make CMakeFiles/chi4.out.dir/localTest/chi4.cpp.i
+.PHONY : localTest/chi4.cpp.i
+
+localTest/chi4.s: localTest/chi4.cpp.s
+
+.PHONY : localTest/chi4.s
+
+# target to generate assembly for a file
+localTest/chi4.cpp.s:
+	$(MAKE) -f CMakeFiles/chi4.out.dir/build.make CMakeFiles/chi4.out.dir/localTest/chi4.cpp.s
+.PHONY : localTest/chi4.cpp.s
+
+localTest/orientationalCorrelation.o: localTest/orientationalCorrelation.cpp.o
+
+.PHONY : localTest/orientationalCorrelation.o
+
+# target to build an object file
+localTest/orientationalCorrelation.cpp.o:
+	$(MAKE) -f CMakeFiles/orientationalCorrelation.out.dir/build.make CMakeFiles/orientationalCorrelation.out.dir/localTest/orientationalCorrelation.cpp.o
+.PHONY : localTest/orientationalCorrelation.cpp.o
+
+localTest/orientationalCorrelation.i: localTest/orientationalCorrelation.cpp.i
+
+.PHONY : localTest/orientationalCorrelation.i
+
+# target to preprocess a source file
+localTest/orientationalCorrelation.cpp.i:
+	$(MAKE) -f CMakeFiles/orientationalCorrelation.out.dir/build.make CMakeFiles/orientationalCorrelation.out.dir/localTest/orientationalCorrelation.cpp.i
+.PHONY : localTest/orientationalCorrelation.cpp.i
+
+localTest/orientationalCorrelation.s: localTest/orientationalCorrelation.cpp.s
+
+.PHONY : localTest/orientationalCorrelation.s
+
+# target to generate assembly for a file
+localTest/orientationalCorrelation.cpp.s:
+	$(MAKE) -f CMakeFiles/orientationalCorrelation.out.dir/build.make CMakeFiles/orientationalCorrelation.out.dir/localTest/orientationalCorrelation.cpp.s
+.PHONY : localTest/orientationalCorrelation.cpp.s
+
+localTest/overlap.o: localTest/overlap.cpp.o
+
+.PHONY : localTest/overlap.o
+
+# target to build an object file
+localTest/overlap.cpp.o:
+	$(MAKE) -f CMakeFiles/overlap.out.dir/build.make CMakeFiles/overlap.out.dir/localTest/overlap.cpp.o
+.PHONY : localTest/overlap.cpp.o
+
+localTest/overlap.i: localTest/overlap.cpp.i
+
+.PHONY : localTest/overlap.i
+
+# target to preprocess a source file
+localTest/overlap.cpp.i:
+	$(MAKE) -f CMakeFiles/overlap.out.dir/build.make CMakeFiles/overlap.out.dir/localTest/overlap.cpp.i
+.PHONY : localTest/overlap.cpp.i
+
+localTest/overlap.s: localTest/overlap.cpp.s
+
+.PHONY : localTest/overlap.s
+
+# target to generate assembly for a file
+localTest/overlap.cpp.s:
+	$(MAKE) -f CMakeFiles/overlap.out.dir/build.make CMakeFiles/overlap.out.dir/localTest/overlap.cpp.s
+.PHONY : localTest/overlap.cpp.s
 
 # Help Target
 help:
@@ -275,7 +435,11 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... overlapCRSISF.out"
+	@echo "... SACtest.out"
+	@echo "... SISF.out"
+	@echo "... overlap.out"
+	@echo "... orientationalCorrelation.out"
+	@echo "... chi4.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -285,9 +449,21 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... localTest/overlapCRSISF.o"
-	@echo "... localTest/overlapCRSISF.i"
-	@echo "... localTest/overlapCRSISF.s"
+	@echo "... localTest/SACtest.o"
+	@echo "... localTest/SACtest.i"
+	@echo "... localTest/SACtest.s"
+	@echo "... localTest/SISF.o"
+	@echo "... localTest/SISF.i"
+	@echo "... localTest/SISF.s"
+	@echo "... localTest/chi4.o"
+	@echo "... localTest/chi4.i"
+	@echo "... localTest/chi4.s"
+	@echo "... localTest/orientationalCorrelation.o"
+	@echo "... localTest/orientationalCorrelation.i"
+	@echo "... localTest/orientationalCorrelation.s"
+	@echo "... localTest/overlap.o"
+	@echo "... localTest/overlap.i"
+	@echo "... localTest/overlap.s"
 .PHONY : help
 
 

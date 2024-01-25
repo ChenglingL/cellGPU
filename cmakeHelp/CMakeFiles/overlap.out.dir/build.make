@@ -57,50 +57,50 @@ include CMakeFiles/overlap.out.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/overlap.out.dir/flags.make
 
-CMakeFiles/overlap.out.dir/overlap.cpp.o: CMakeFiles/overlap.out.dir/flags.make
-CMakeFiles/overlap.out.dir/overlap.cpp.o: ../overlap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/overlap.out.dir/overlap.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/overlap.out.dir/overlap.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/overlap.cpp
+CMakeFiles/overlap.out.dir/localTest/overlap.cpp.o: CMakeFiles/overlap.out.dir/flags.make
+CMakeFiles/overlap.out.dir/localTest/overlap.cpp.o: ../localTest/overlap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/overlap.out.dir/localTest/overlap.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/overlap.out.dir/localTest/overlap.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/overlap.cpp
 
-CMakeFiles/overlap.out.dir/overlap.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/overlap.out.dir/overlap.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/overlap.cpp > CMakeFiles/overlap.out.dir/overlap.cpp.i
+CMakeFiles/overlap.out.dir/localTest/overlap.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/overlap.out.dir/localTest/overlap.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/overlap.cpp > CMakeFiles/overlap.out.dir/localTest/overlap.cpp.i
 
-CMakeFiles/overlap.out.dir/overlap.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/overlap.out.dir/overlap.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/overlap.cpp -o CMakeFiles/overlap.out.dir/overlap.cpp.s
+CMakeFiles/overlap.out.dir/localTest/overlap.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/overlap.out.dir/localTest/overlap.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/overlap.cpp -o CMakeFiles/overlap.out.dir/localTest/overlap.cpp.s
 
 # Object files for target overlap.out
 overlap_out_OBJECTS = \
-"CMakeFiles/overlap.out.dir/overlap.cpp.o"
+"CMakeFiles/overlap.out.dir/localTest/overlap.cpp.o"
 
 # External object files for target overlap.out
 overlap_out_EXTERNAL_OBJECTS =
 
-../executable/overlap.out: CMakeFiles/overlap.out.dir/overlap.cpp.o
-../executable/overlap.out: CMakeFiles/overlap.out.dir/build.make
-../executable/overlap.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
-../executable/overlap.out: /usr/lib/x86_64-linux-gnu/librt.so
-../executable/overlap.out: src/models/libmodel.a
-../executable/overlap.out: src/models/libmodelGPU.a
-../executable/overlap.out: src/updaters/libupdaters.a
-../executable/overlap.out: src/updaters/libupdatersGPU.a
-../executable/overlap.out: src/analysis/libanalysis.a
-../executable/overlap.out: src/databases/libdatabase.a
-../executable/overlap.out: src/simulation/libsimulation.a
-../executable/overlap.out: src/utility/libutility.a
-../executable/overlap.out: src/utility/libutilityGPU.a
-../executable/overlap.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
-../executable/overlap.out: /usr/lib/x86_64-linux-gnu/librt.so
-../executable/overlap.out: /usr/lib/x86_64-linux-gnu/libgmpxx.so
-../executable/overlap.out: /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so
-../executable/overlap.out: /usr/lib/x86_64-linux-gnu/libpthread.so
-../executable/overlap.out: CMakeFiles/overlap.out.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../executable/overlap.out"
+../localTest/executable/overlap.out: CMakeFiles/overlap.out.dir/localTest/overlap.cpp.o
+../localTest/executable/overlap.out: CMakeFiles/overlap.out.dir/build.make
+../localTest/executable/overlap.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/overlap.out: /usr/lib/x86_64-linux-gnu/librt.so
+../localTest/executable/overlap.out: src/models/libmodel.a
+../localTest/executable/overlap.out: src/models/libmodelGPU.a
+../localTest/executable/overlap.out: src/updaters/libupdaters.a
+../localTest/executable/overlap.out: src/updaters/libupdatersGPU.a
+../localTest/executable/overlap.out: src/analysis/libanalysis.a
+../localTest/executable/overlap.out: src/databases/libdatabase.a
+../localTest/executable/overlap.out: src/simulation/libsimulation.a
+../localTest/executable/overlap.out: src/utility/libutility.a
+../localTest/executable/overlap.out: src/utility/libutilityGPU.a
+../localTest/executable/overlap.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/overlap.out: /usr/lib/x86_64-linux-gnu/librt.so
+../localTest/executable/overlap.out: /usr/lib/x86_64-linux-gnu/libgmpxx.so
+../localTest/executable/overlap.out: /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so
+../localTest/executable/overlap.out: /usr/lib/x86_64-linux-gnu/libpthread.so
+../localTest/executable/overlap.out: CMakeFiles/overlap.out.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../localTest/executable/overlap.out"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/overlap.out.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/overlap.out.dir/build: ../executable/overlap.out
+CMakeFiles/overlap.out.dir/build: ../localTest/executable/overlap.out
 
 .PHONY : CMakeFiles/overlap.out.dir/build
 

@@ -57,50 +57,50 @@ include CMakeFiles/SISF.out.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/SISF.out.dir/flags.make
 
-CMakeFiles/SISF.out.dir/SISF.cpp.o: CMakeFiles/SISF.out.dir/flags.make
-CMakeFiles/SISF.out.dir/SISF.cpp.o: ../SISF.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SISF.out.dir/SISF.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SISF.out.dir/SISF.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/SISF.cpp
+CMakeFiles/SISF.out.dir/localTest/SISF.cpp.o: CMakeFiles/SISF.out.dir/flags.make
+CMakeFiles/SISF.out.dir/localTest/SISF.cpp.o: ../localTest/SISF.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SISF.out.dir/localTest/SISF.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SISF.out.dir/localTest/SISF.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/SISF.cpp
 
-CMakeFiles/SISF.out.dir/SISF.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SISF.out.dir/SISF.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/SISF.cpp > CMakeFiles/SISF.out.dir/SISF.cpp.i
+CMakeFiles/SISF.out.dir/localTest/SISF.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SISF.out.dir/localTest/SISF.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/SISF.cpp > CMakeFiles/SISF.out.dir/localTest/SISF.cpp.i
 
-CMakeFiles/SISF.out.dir/SISF.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SISF.out.dir/SISF.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/SISF.cpp -o CMakeFiles/SISF.out.dir/SISF.cpp.s
+CMakeFiles/SISF.out.dir/localTest/SISF.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SISF.out.dir/localTest/SISF.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/SISF.cpp -o CMakeFiles/SISF.out.dir/localTest/SISF.cpp.s
 
 # Object files for target SISF.out
 SISF_out_OBJECTS = \
-"CMakeFiles/SISF.out.dir/SISF.cpp.o"
+"CMakeFiles/SISF.out.dir/localTest/SISF.cpp.o"
 
 # External object files for target SISF.out
 SISF_out_EXTERNAL_OBJECTS =
 
-../executable/SISF.out: CMakeFiles/SISF.out.dir/SISF.cpp.o
-../executable/SISF.out: CMakeFiles/SISF.out.dir/build.make
-../executable/SISF.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
-../executable/SISF.out: /usr/lib/x86_64-linux-gnu/librt.so
-../executable/SISF.out: src/models/libmodel.a
-../executable/SISF.out: src/models/libmodelGPU.a
-../executable/SISF.out: src/updaters/libupdaters.a
-../executable/SISF.out: src/updaters/libupdatersGPU.a
-../executable/SISF.out: src/analysis/libanalysis.a
-../executable/SISF.out: src/databases/libdatabase.a
-../executable/SISF.out: src/simulation/libsimulation.a
-../executable/SISF.out: src/utility/libutility.a
-../executable/SISF.out: src/utility/libutilityGPU.a
-../executable/SISF.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
-../executable/SISF.out: /usr/lib/x86_64-linux-gnu/librt.so
-../executable/SISF.out: /usr/lib/x86_64-linux-gnu/libgmpxx.so
-../executable/SISF.out: /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so
-../executable/SISF.out: /usr/lib/x86_64-linux-gnu/libpthread.so
-../executable/SISF.out: CMakeFiles/SISF.out.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../executable/SISF.out"
+../localTest/executable/SISF.out: CMakeFiles/SISF.out.dir/localTest/SISF.cpp.o
+../localTest/executable/SISF.out: CMakeFiles/SISF.out.dir/build.make
+../localTest/executable/SISF.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/SISF.out: /usr/lib/x86_64-linux-gnu/librt.so
+../localTest/executable/SISF.out: src/models/libmodel.a
+../localTest/executable/SISF.out: src/models/libmodelGPU.a
+../localTest/executable/SISF.out: src/updaters/libupdaters.a
+../localTest/executable/SISF.out: src/updaters/libupdatersGPU.a
+../localTest/executable/SISF.out: src/analysis/libanalysis.a
+../localTest/executable/SISF.out: src/databases/libdatabase.a
+../localTest/executable/SISF.out: src/simulation/libsimulation.a
+../localTest/executable/SISF.out: src/utility/libutility.a
+../localTest/executable/SISF.out: src/utility/libutilityGPU.a
+../localTest/executable/SISF.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/SISF.out: /usr/lib/x86_64-linux-gnu/librt.so
+../localTest/executable/SISF.out: /usr/lib/x86_64-linux-gnu/libgmpxx.so
+../localTest/executable/SISF.out: /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so
+../localTest/executable/SISF.out: /usr/lib/x86_64-linux-gnu/libpthread.so
+../localTest/executable/SISF.out: CMakeFiles/SISF.out.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../localTest/executable/SISF.out"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SISF.out.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/SISF.out.dir/build: ../executable/SISF.out
+CMakeFiles/SISF.out.dir/build: ../localTest/executable/SISF.out
 
 .PHONY : CMakeFiles/SISF.out.dir/build
 
