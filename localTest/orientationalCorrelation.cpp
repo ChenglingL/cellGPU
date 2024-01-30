@@ -17,7 +17,7 @@
 
 
 /*!
-This is for chi4 and cage-relative chi4 calculation
+This is for orientational correlation function
 */
 
 /*This is the nose-hoove test under PBD to verify the results from 2018 anomalous paper*/
@@ -79,7 +79,7 @@ int main(int argc, char*argv[])
         initializeGPU = false;
     char loaddataname[256];
     char saveDataName[256];
-    char SISFDataName[256];
+
     //long long int maximumWaitingTimesteps = floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt);    
     long long int maximumWaitingTimesteps = max(floor(10000/dt),floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt));
     long long int maximumTimesteps = maximumWaitingTimesteps+floor((numberOfRelaxationTimes * tauEstimate)/dt);
@@ -95,17 +95,15 @@ int main(int argc, char*argv[])
         lastOffset = floor(pow(10,power)/dt);
         offsets.push_back(lastOffset);
         power+= 0.5;
-        //cout << "reading an offset of " << lastOffset << endl;
+        cout << "reading an offset of " << lastOffset << endl;
         }
 
-    for(int ii = offsets.size()-4; ii < offsets.size(); ++ii)
+    for(int ii = 0; ii < offsets.size(); ++ii)
         {
         sprintf(loaddataname,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/glassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
-        sprintf(saveDataName,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/chi4CRchi4_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
-        sprintf(SISFDataName,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/SISFCRSISF_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
-        cout << "reading an offset of " << offsets[ii]*dt << endl;
-        shared_ptr<twoValuesDatabase> chi4=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);
-        //shared_ptr<twoValuesDatabase> SISF=make_shared<twoValuesDatabase>(SISFDataName,NcFile::Replace);
+        sprintf(saveDataName,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/orientationalCorrelation_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
+
+        shared_ptr<twoValuesDatabase> orientationalCorrelation=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);
         nvtModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
         shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
         fluidConfigurations.readState(voronoiModel,0,true);
@@ -113,12 +111,11 @@ int main(int argc, char*argv[])
         dynFeat.setCageNeighbors(voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx); 
         cout << "reading record from " << loaddataname << endl;
         for(int rec=0;rec<fluidConfigurations.GetNumRecs();rec++){
-            fluidConfigurations.readState(voronoiModel,rec,false);
-            double2 FsChi4, CRFsChi4;
-            FsChi4=dynFeat.computeFsChi4(voronoiModel->returnPositions(),ks);
-            CRFsChi4=dynFeat.computeCageRelativeFsChi4(voronoiModel->returnPositions(),ks);
-            chi4->writeValues(FsChi4.y,CRFsChi4.y);       
-            //SISF->writeValues(FsChi4.x,CRFsChi4.x);     
+            fluidConfigurations.readState(voronoiModel,rec,true);
+            //overlapdatNVT[rec] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
+            double2 psi;
+            psi=dynFeat.computeOrientationalCorrelationFunction(voronoiModel->returnPositions(),voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx);
+            orientationalCorrelation->writeValues(psi.x,psi.y);        
         };   
         
 

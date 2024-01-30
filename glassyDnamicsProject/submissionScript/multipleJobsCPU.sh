@@ -8,9 +8,10 @@ p=3.8
 eqWaitMultiple=100.
 nRelaxations=10.
 
-tauEstimate=(10. 21.54 46.41 100. 215.44 464.15 1000.)
-temperatures=(0.08868 0.05586 0.03756 0.02652 0.01945 0.01471 0.01141)
+ tauEstimate=(10. 21.54 46.41 100. 215.44 464.15 1000.)
+# temperatures=(0.08868 0.05586 0.03756 0.02652 0.01945 0.01471 0.01141)
 
+temperatures=(0.05409 0.03105 0.01782 0.01023 0.005873 0.003371 0.001935)
 
 records=(0 1 2)
 
@@ -19,7 +20,7 @@ for recordIdx in ${records[@]}; do
         tauEst=${tauEstimate[$i]}
         temp=${temperatures[$i]}
         echo ${number} ${p} ${temp} ${tauEst} ${eqWaitMultiple} ${nRelaxations}  ${recordIdx}
-        sbatch /u/cli6/cellGPU/glassyDnamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${tauEst} ${eqWaitMultiple} ${nRelaxations} ${recordIdx}
+        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${tauEst} ${eqWaitMultiple} ${nRelaxations} ${recordIdx}
     done
 done
 
