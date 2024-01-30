@@ -15,10 +15,11 @@ class logSACWritter
 
     public:
         logSACWritter(){};
-        void addDatabase(shared_ptr<twoValuesDatabase> db, shared_ptr<autocorrelator> ac, int firstFrameToSave);
+        void addDatabase(shared_ptr<twoValuesDatabase> db, shared_ptr<autocorrelator> ac, int firstFrameToSave, long long int limit);
         void addData(double stress, long long int frame);
         void writeSAC();
 
+        long long int uplimit;
         vector<shared_ptr<twoValuesDatabase>> databases;
         vector<shared_ptr<autocorrelator>> SACs;
         vector<int> saveOffsets;

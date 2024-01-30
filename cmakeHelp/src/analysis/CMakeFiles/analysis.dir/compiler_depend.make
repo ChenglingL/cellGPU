@@ -958,7 +958,8 @@ src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: ../src/analysis/s
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_tree.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_set.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_multiset.h \
-  ../src/utility/periodicBoundaries.h
+  ../src/utility/periodicBoundaries.h \
+  ../src/utility/indexer.h
 
 
 ../src/analysis/structuralFeatures.h:

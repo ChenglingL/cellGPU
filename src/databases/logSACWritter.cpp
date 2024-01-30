@@ -1,8 +1,9 @@
 #include "logSACWritter.h"
 
 
-void logSACWritter::addDatabase(shared_ptr<twoValuesDatabase> db, shared_ptr<autocorrelator> ac, int firstFrameToSave)
+void logSACWritter::addDatabase(shared_ptr<twoValuesDatabase> db, shared_ptr<autocorrelator> ac, int firstFrameToSave , long long int limit)
     {
+    uplimit=limit;
     SACs.push_back(ac);
     databases.push_back(db);
     saveOffsets.push_back(firstFrameToSave);
@@ -14,7 +15,7 @@ void logSACWritter::addData(double stress, long long int frame)
     for (int ii = 0; ii < databases.size(); ++ii)
         {
 //            cout << frame << "\t" << ii << endl;
-        if(frame > saveOffsets[ii])
+        if(frame > saveOffsets[ii] && frame < uplimit)
             {
                 SACs[ii]->add(stress,0);
             }
