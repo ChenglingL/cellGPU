@@ -57,49 +57,50 @@ include CMakeFiles/test.out.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test.out.dir/flags.make
 
-CMakeFiles/test.out.dir/test.cpp.o: CMakeFiles/test.out.dir/flags.make
-CMakeFiles/test.out.dir/test.cpp.o: ../test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test.out.dir/test.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.out.dir/test.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/test.cpp
+CMakeFiles/test.out.dir/localTest/test.cpp.o: CMakeFiles/test.out.dir/flags.make
+CMakeFiles/test.out.dir/localTest/test.cpp.o: ../localTest/test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test.out.dir/localTest/test.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.out.dir/localTest/test.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/test.cpp
 
-CMakeFiles/test.out.dir/test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.out.dir/test.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/test.cpp > CMakeFiles/test.out.dir/test.cpp.i
+CMakeFiles/test.out.dir/localTest/test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.out.dir/localTest/test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/test.cpp > CMakeFiles/test.out.dir/localTest/test.cpp.i
 
-CMakeFiles/test.out.dir/test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.out.dir/test.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/test.cpp -o CMakeFiles/test.out.dir/test.cpp.s
+CMakeFiles/test.out.dir/localTest/test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.out.dir/localTest/test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/test.cpp -o CMakeFiles/test.out.dir/localTest/test.cpp.s
 
 # Object files for target test.out
 test_out_OBJECTS = \
-"CMakeFiles/test.out.dir/test.cpp.o"
+"CMakeFiles/test.out.dir/localTest/test.cpp.o"
 
 # External object files for target test.out
 test_out_EXTERNAL_OBJECTS =
 
-test.out: CMakeFiles/test.out.dir/test.cpp.o
-test.out: CMakeFiles/test.out.dir/build.make
-test.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
-test.out: /usr/lib/x86_64-linux-gnu/librt.so
-test.out: src/models/libmodel.a
-test.out: src/models/libmodelGPU.a
-test.out: src/updaters/libupdaters.a
-test.out: src/updaters/libupdatersGPU.a
-test.out: src/analysis/libanalysis.a
-test.out: src/databases/libdatabase.a
-test.out: src/simulation/libsimulation.a
-test.out: src/utility/libutility.a
-test.out: src/utility/libutilityGPU.a
-test.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
-test.out: /usr/lib/x86_64-linux-gnu/librt.so
-test.out: /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so
-test.out: /usr/lib/x86_64-linux-gnu/libpthread.so
-test.out: CMakeFiles/test.out.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test.out"
+../localTest/executable/test.out: CMakeFiles/test.out.dir/localTest/test.cpp.o
+../localTest/executable/test.out: CMakeFiles/test.out.dir/build.make
+../localTest/executable/test.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/test.out: /usr/lib/x86_64-linux-gnu/librt.so
+../localTest/executable/test.out: src/models/libmodel.a
+../localTest/executable/test.out: src/models/libmodelGPU.a
+../localTest/executable/test.out: src/updaters/libupdaters.a
+../localTest/executable/test.out: src/updaters/libupdatersGPU.a
+../localTest/executable/test.out: src/analysis/libanalysis.a
+../localTest/executable/test.out: src/databases/libdatabase.a
+../localTest/executable/test.out: src/simulation/libsimulation.a
+../localTest/executable/test.out: src/utility/libutility.a
+../localTest/executable/test.out: src/utility/libutilityGPU.a
+../localTest/executable/test.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/test.out: /usr/lib/x86_64-linux-gnu/librt.so
+../localTest/executable/test.out: /usr/lib/x86_64-linux-gnu/libgmpxx.so
+../localTest/executable/test.out: /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so
+../localTest/executable/test.out: /usr/lib/x86_64-linux-gnu/libpthread.so
+../localTest/executable/test.out: CMakeFiles/test.out.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../localTest/executable/test.out"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.out.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/test.out.dir/build: test.out
+CMakeFiles/test.out.dir/build: ../localTest/executable/test.out
 
 .PHONY : CMakeFiles/test.out.dir/build
 

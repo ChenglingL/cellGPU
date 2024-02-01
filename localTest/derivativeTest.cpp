@@ -12,6 +12,7 @@
 #include "analysisPackage.h"
 #include "periodicBoundaries.h"
 #include "GlassyDynModelDatabase.h"
+#include "GlassyDynModelDatabase.h"
 
 
 /*!

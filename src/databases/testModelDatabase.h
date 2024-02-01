@@ -1,18 +1,18 @@
-#ifndef DATABASE_nvt_H
-#define DATABASE_nvt_H
+#ifndef DATABASE_test_H
+#define DATABASE_test_H
 
 #include "voronoiQuadraticEnergy.h"
 #include "dynamicalFeatures.h"
 #include "DatabaseNetCDF.h"
 
-/*! \file nvtModelDatabase.h */
+/*! \file testModelDatabase.h */
 //!Simple databse for reading/writing 2d spv states
 /*!
 Class for a state database for a 2d delaunay triangulation
 the box dimensions are stored, the 2d unwrapped coordinate of the delaunay vertices,
 and the shape index parameter for each vertex
 */
-class nvtModelDatabase : public BaseDatabaseNetCDF
+class testModelDatabase : public BaseDatabaseNetCDF
 {
 private:
     typedef shared_ptr<Simple2DCell> STATE;
@@ -24,8 +24,8 @@ private:
 
 
 public:
-    nvtModelDatabase(int np, string fn="temp.nc", NcFile::FileMode mode=NcFile::ReadOnly);
-    ~nvtModelDatabase(){File.close();};
+    testModelDatabase(int np, string fn="temp.nc", NcFile::FileMode mode=NcFile::ReadOnly);
+    ~testModelDatabase(){File.close();};
 
 protected:
     void SetDimVar();

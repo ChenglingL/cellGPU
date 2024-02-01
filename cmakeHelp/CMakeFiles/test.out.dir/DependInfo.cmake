@@ -4,12 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/test.cpp" "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/test.out.dir/test.cpp.o"
+  "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/test.cpp" "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/test.out.dir/localTest/test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
+  "CGAL_USE_GMPXX=1"
   "ENABLE_CUDA"
   )
 

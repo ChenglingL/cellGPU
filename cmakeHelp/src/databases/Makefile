@@ -341,6 +341,33 @@ nvtModelDatabase.cpp.s:
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/nvtModelDatabase.cpp.s
 .PHONY : nvtModelDatabase.cpp.s
 
+testModelDatabase.o: testModelDatabase.cpp.o
+
+.PHONY : testModelDatabase.o
+
+# target to build an object file
+testModelDatabase.cpp.o:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/testModelDatabase.cpp.o
+.PHONY : testModelDatabase.cpp.o
+
+testModelDatabase.i: testModelDatabase.cpp.i
+
+.PHONY : testModelDatabase.i
+
+# target to preprocess a source file
+testModelDatabase.cpp.i:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/testModelDatabase.cpp.i
+.PHONY : testModelDatabase.cpp.i
+
+testModelDatabase.s: testModelDatabase.cpp.s
+
+.PHONY : testModelDatabase.s
+
+# target to generate assembly for a file
+testModelDatabase.cpp.s:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/testModelDatabase.cpp.s
+.PHONY : testModelDatabase.cpp.s
+
 twoValuesDatabase.o: twoValuesDatabase.cpp.o
 
 .PHONY : twoValuesDatabase.o
@@ -428,6 +455,9 @@ help:
 	@echo "... nvtModelDatabase.o"
 	@echo "... nvtModelDatabase.i"
 	@echo "... nvtModelDatabase.s"
+	@echo "... testModelDatabase.o"
+	@echo "... testModelDatabase.i"
+	@echo "... testModelDatabase.s"
 	@echo "... twoValuesDatabase.o"
 	@echo "... twoValuesDatabase.i"
 	@echo "... twoValuesDatabase.s"

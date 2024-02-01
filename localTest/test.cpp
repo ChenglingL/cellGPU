@@ -12,6 +12,7 @@
 #include "analysisPackage.h"
 #include "periodicBoundaries.h"
 #include "GlassyDynModelDatabase.h"
+#include "testModelDatabase.h"
 
 
 /*!
@@ -76,8 +77,8 @@ int main(int argc, char*argv[])
 
     char dataname[256];
     double equilibrationTime = dt*initSteps;
-    sprintf(dataname,"./testData/testDiscrepancy_N%i_p%.5f_T%.8f_id%i.nc",numpts,p0,T,id);
-    shared_ptr<nvtModelDatabase> ncdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
+    sprintf(dataname,"/home/chengling/Research/Project/Cell/AnalyticalG/data/N%i/derivativeTest/CPUtest_N%i_p%.3f_T%.8f_%i.nc",numpts,numpts,p0,T,id);
+    shared_ptr<testModelDatabase> ncdat=make_shared<testModelDatabase>(numpts,dataname,NcFile::Replace);
 
 
     cout << "initializing a system of " << numpts << " cells at temperature " << T << endl;

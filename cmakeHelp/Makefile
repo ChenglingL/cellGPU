@@ -111,30 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named SISF.out
+# Target rules for targets named test.out
 
 # Build rule for target.
-SISF.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 SISF.out
-.PHONY : SISF.out
+test.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test.out
+.PHONY : test.out
 
 # fast build rule for target.
-SISF.out/fast:
-	$(MAKE) -f CMakeFiles/SISF.out.dir/build.make CMakeFiles/SISF.out.dir/build
-.PHONY : SISF.out/fast
-
-#=============================================================================
-# Target rules for targets named overlap.out
-
-# Build rule for target.
-overlap.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 overlap.out
-.PHONY : overlap.out
-
-# fast build rule for target.
-overlap.out/fast:
-	$(MAKE) -f CMakeFiles/overlap.out.dir/build.make CMakeFiles/overlap.out.dir/build
-.PHONY : overlap.out/fast
+test.out/fast:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/build
+.PHONY : test.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -253,59 +240,32 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-localTest/SISF.o: localTest/SISF.cpp.o
+localTest/test.o: localTest/test.cpp.o
 
-.PHONY : localTest/SISF.o
-
-# target to build an object file
-localTest/SISF.cpp.o:
-	$(MAKE) -f CMakeFiles/SISF.out.dir/build.make CMakeFiles/SISF.out.dir/localTest/SISF.cpp.o
-.PHONY : localTest/SISF.cpp.o
-
-localTest/SISF.i: localTest/SISF.cpp.i
-
-.PHONY : localTest/SISF.i
-
-# target to preprocess a source file
-localTest/SISF.cpp.i:
-	$(MAKE) -f CMakeFiles/SISF.out.dir/build.make CMakeFiles/SISF.out.dir/localTest/SISF.cpp.i
-.PHONY : localTest/SISF.cpp.i
-
-localTest/SISF.s: localTest/SISF.cpp.s
-
-.PHONY : localTest/SISF.s
-
-# target to generate assembly for a file
-localTest/SISF.cpp.s:
-	$(MAKE) -f CMakeFiles/SISF.out.dir/build.make CMakeFiles/SISF.out.dir/localTest/SISF.cpp.s
-.PHONY : localTest/SISF.cpp.s
-
-localTest/overlap.o: localTest/overlap.cpp.o
-
-.PHONY : localTest/overlap.o
+.PHONY : localTest/test.o
 
 # target to build an object file
-localTest/overlap.cpp.o:
-	$(MAKE) -f CMakeFiles/overlap.out.dir/build.make CMakeFiles/overlap.out.dir/localTest/overlap.cpp.o
-.PHONY : localTest/overlap.cpp.o
+localTest/test.cpp.o:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/localTest/test.cpp.o
+.PHONY : localTest/test.cpp.o
 
-localTest/overlap.i: localTest/overlap.cpp.i
+localTest/test.i: localTest/test.cpp.i
 
-.PHONY : localTest/overlap.i
+.PHONY : localTest/test.i
 
 # target to preprocess a source file
-localTest/overlap.cpp.i:
-	$(MAKE) -f CMakeFiles/overlap.out.dir/build.make CMakeFiles/overlap.out.dir/localTest/overlap.cpp.i
-.PHONY : localTest/overlap.cpp.i
+localTest/test.cpp.i:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/localTest/test.cpp.i
+.PHONY : localTest/test.cpp.i
 
-localTest/overlap.s: localTest/overlap.cpp.s
+localTest/test.s: localTest/test.cpp.s
 
-.PHONY : localTest/overlap.s
+.PHONY : localTest/test.s
 
 # target to generate assembly for a file
-localTest/overlap.cpp.s:
-	$(MAKE) -f CMakeFiles/overlap.out.dir/build.make CMakeFiles/overlap.out.dir/localTest/overlap.cpp.s
-.PHONY : localTest/overlap.cpp.s
+localTest/test.cpp.s:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/localTest/test.cpp.s
+.PHONY : localTest/test.cpp.s
 
 # Help Target
 help:
@@ -315,8 +275,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... SISF.out"
-	@echo "... overlap.out"
+	@echo "... test.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -326,12 +285,9 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... localTest/SISF.o"
-	@echo "... localTest/SISF.i"
-	@echo "... localTest/SISF.s"
-	@echo "... localTest/overlap.o"
-	@echo "... localTest/overlap.i"
-	@echo "... localTest/overlap.s"
+	@echo "... localTest/test.o"
+	@echo "... localTest/test.i"
+	@echo "... localTest/test.s"
 .PHONY : help
 
 

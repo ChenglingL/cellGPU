@@ -161,9 +161,22 @@ src/databases/CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.s"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/GlassyDynModelDatabase.cpp -o CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.s
 
+src/databases/CMakeFiles/database.dir/testModelDatabase.cpp.o: src/databases/CMakeFiles/database.dir/flags.make
+src/databases/CMakeFiles/database.dir/testModelDatabase.cpp.o: ../src/databases/testModelDatabase.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/databases/CMakeFiles/database.dir/testModelDatabase.cpp.o"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/database.dir/testModelDatabase.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/testModelDatabase.cpp
+
+src/databases/CMakeFiles/database.dir/testModelDatabase.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/database.dir/testModelDatabase.cpp.i"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/testModelDatabase.cpp > CMakeFiles/database.dir/testModelDatabase.cpp.i
+
+src/databases/CMakeFiles/database.dir/testModelDatabase.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/database.dir/testModelDatabase.cpp.s"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/testModelDatabase.cpp -o CMakeFiles/database.dir/testModelDatabase.cpp.s
+
 src/databases/CMakeFiles/database.dir/logSACWritter.cpp.o: src/databases/CMakeFiles/database.dir/flags.make
 src/databases/CMakeFiles/database.dir/logSACWritter.cpp.o: ../src/databases/logSACWritter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/databases/CMakeFiles/database.dir/logSACWritter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/databases/CMakeFiles/database.dir/logSACWritter.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/database.dir/logSACWritter.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/logSACWritter.cpp
 
 src/databases/CMakeFiles/database.dir/logSACWritter.cpp.i: cmake_force
@@ -176,7 +189,7 @@ src/databases/CMakeFiles/database.dir/logSACWritter.cpp.s: cmake_force
 
 src/databases/CMakeFiles/database.dir/twoValuesDatabase.cpp.o: src/databases/CMakeFiles/database.dir/flags.make
 src/databases/CMakeFiles/database.dir/twoValuesDatabase.cpp.o: ../src/databases/twoValuesDatabase.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/databases/CMakeFiles/database.dir/twoValuesDatabase.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/databases/CMakeFiles/database.dir/twoValuesDatabase.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/database.dir/twoValuesDatabase.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/twoValuesDatabase.cpp
 
 src/databases/CMakeFiles/database.dir/twoValuesDatabase.cpp.i: cmake_force
@@ -197,6 +210,7 @@ database_OBJECTS = \
 "CMakeFiles/database.dir/vectorValueDatabase.cpp.o" \
 "CMakeFiles/database.dir/nvtModelDatabase.cpp.o" \
 "CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.o" \
+"CMakeFiles/database.dir/testModelDatabase.cpp.o" \
 "CMakeFiles/database.dir/logSACWritter.cpp.o" \
 "CMakeFiles/database.dir/twoValuesDatabase.cpp.o"
 
@@ -211,11 +225,12 @@ src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/DatabaseTextV
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/vectorValueDatabase.cpp.o
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/nvtModelDatabase.cpp.o
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.o
+src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/testModelDatabase.cpp.o
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/logSACWritter.cpp.o
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/twoValuesDatabase.cpp.o
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/build.make
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library libdatabase.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libdatabase.a"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && $(CMAKE_COMMAND) -P CMakeFiles/database.dir/cmake_clean_target.cmake
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/database.dir/link.txt --verbose=$(VERBOSE)
 

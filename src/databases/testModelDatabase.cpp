@@ -1,7 +1,7 @@
-#include "nvtModelDatabase.h"
-/*! \file nvtModelDatabase.cpp */
+#include "testModelDatabase.h"
+/*! \file testModelDatabase.cpp */
 
-nvtModelDatabase::nvtModelDatabase(int np, string fn, NcFile::FileMode mode)
+testModelDatabase::testModelDatabase(int np, string fn, NcFile::FileMode mode)
     : BaseDatabaseNetCDF(fn,mode),
       Nv(np),
       Current(0)
@@ -24,7 +24,7 @@ nvtModelDatabase::nvtModelDatabase(int np, string fn, NcFile::FileMode mode)
         };
     }
 
-void nvtModelDatabase::SetDimVar()
+void testModelDatabase::SetDimVar()
     {
     //Set the dimensions
     recDim = File.add_dim("rec");
@@ -50,7 +50,7 @@ void nvtModelDatabase::SetDimVar()
     neighborVar         = File.add_var("neighbor",     ncInt,recDim, neighborDim);
     }
 
-void nvtModelDatabase::GetDimVar()
+void testModelDatabase::GetDimVar()
     {
     
     //Get the dimensions
@@ -74,7 +74,7 @@ void nvtModelDatabase::GetDimVar()
     sigmaiVar = File.get_var("sigmai");
     }
 
-void nvtModelDatabase::writeState(STATE c, double time, int rec)
+void testModelDatabase::writeState(STATE c, double time, int rec)
     {
     shared_ptr<VoronoiQuadraticEnergy> s = dynamic_pointer_cast<VoronoiQuadraticEnergy>(c);
     if(rec<0)   rec = recDim->size();
@@ -171,7 +171,7 @@ void nvtModelDatabase::writeState(STATE c, double time, int rec)
     File.sync();
     }
 
-void nvtModelDatabase::readState(STATE c, int rec,bool geometry)
+void testModelDatabase::readState(STATE c, int rec,bool geometry)
     {
     shared_ptr<VoronoiQuadraticEnergy> t = dynamic_pointer_cast<VoronoiQuadraticEnergy>(c);
     //initialize the NetCDF dimensions and variables
@@ -186,7 +186,6 @@ void nvtModelDatabase::readState(STATE c, int rec,bool geometry)
     std::vector<double> boxdata(4,0.0);
     BoxMatrixVar->get(&boxdata[0],1, boxDim->size());
     t->Box->setGeneral(boxdata[0],boxdata[1],boxdata[2],boxdata[3]);
-
     //get the positions and velocities
     posVar-> set_cur(rec);
     velVar-> set_cur(rec);
@@ -197,7 +196,6 @@ void nvtModelDatabase::readState(STATE c, int rec,bool geometry)
     posVar->get(&posdata[0],1, dofDim->size());
     velVar->get(&veldata[0],1, dofDim->size());
     additionalDataVar->get(&additionaldata[0],1,dofDim->size());
-
     ArrayHandle<double2> h_p(t->cellPositions,access_location::host,access_mode::overwrite);
     ArrayHandle<double2> h_v(t->returnVelocities(),access_location::host,access_mode::overwrite);
     ArrayHandle<double2> h_m(t->returnAreaPeriPreferences(),access_location::host,access_mode::overwrite);
@@ -222,22 +220,19 @@ void nvtModelDatabase::readState(STATE c, int rec,bool geometry)
     std::vector<int> ctdata(Nv,0.0);
     typeVar->get(&ctdata[0],1, NvDim->size());
     ArrayHandle<int> h_ct(t->cellType,access_location::host,access_mode::overwrite);
-
     for (int idx = 0; idx < Nv; ++idx)
         {
         h_ct.data[idx]=ctdata[idx];;
         };
 
     //by default, compute the triangulation and geometrical information
-    if(geometry)
-        {
-        t->globalTriangulationDelGPU();
-        t->resetLists();
-        if(t->GPUcompute)
-            t->computeGeometryGPU();
-        else
-            t->computeGeometryCPU();
-        };
+    // if(geometry)
+    //     {
+    //     t->globalTriangulationDelGPU();
+    //     t->resetLists();
+    //     if(t->GPUcompute)
+    //         t->computeGeometryGPU();
+    //     else
+    //         t->computeGeometryCPU();
+    //     };
     }
-
-
