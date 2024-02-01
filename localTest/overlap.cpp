@@ -14,6 +14,7 @@
 #include "analysisPackage.h"
 #include "periodicBoundaries.h"
 #include "GlassyDynModelDatabase.h"
+#include <filesystem>
 
 
 /*!
@@ -79,6 +80,9 @@ int main(int argc, char*argv[])
         initializeGPU = false;
     char loaddataname[256];
     char saveDataName[256];
+    char savefolder[256];
+    sprintf(savefolder,"/home/chengling/Research/Project/Cell/glassyDynamics/longtimeSimulation/N%i/",numpts);
+    namespace fs = std::filesystem;
 
     //long long int maximumWaitingTimesteps = floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt);    
     long long int maximumWaitingTimesteps = max(floor(10000/dt),floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt));
@@ -100,10 +104,15 @@ int main(int argc, char*argv[])
 
     for(int ii = 0; ii < offsets.size(); ++ii)
         {
-        sprintf(loaddataname,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/glassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
-        sprintf(saveDataName,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/overlap_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
-
-        shared_ptr<twoValuesDatabase> overlapCRSISF=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);
+        sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",savefolder,numpts,p0,T,offsets[ii]*dt,recordIndex);
+        sprintf(saveDataName,"%soverlap_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",savefolder,numpts,p0,T,offsets[ii]*dt,recordIndex);
+        if (fs::exists(loaddataname)) {
+            cout << "reading record from " << loaddataname << endl;
+        } else {
+            std::cout <<loaddataname<< " does not exist." << std::endl;
+            continue;
+        }
+        shared_ptr<twoValuesDatabase> overlap=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);
         nvtModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
         shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
         fluidConfigurations.readState(voronoiModel,0,true);
@@ -113,7 +122,7 @@ int main(int argc, char*argv[])
         for(int rec=0;rec<fluidConfigurations.GetNumRecs();rec++){
             fluidConfigurations.readState(voronoiModel,rec,false);
             //overlapdatNVT[rec] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
-            overlapCRSISF->writeValues(dynFeat.computeOverlapFunction(voronoiModel->returnPositions()), dynFeat.computeCageRelativeOverlapFunction(voronoiModel->returnPositions()));        
+            overlap->writeValues(dynFeat.computeOverlapFunction(voronoiModel->returnPositions()), dynFeat.computeCageRelativeOverlapFunction(voronoiModel->returnPositions()));        
         };   
         
 
