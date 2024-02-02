@@ -220,6 +220,7 @@ src/utility/clean: src/utility/CMakeFiles/utility.dir/clean
 # Target rules for target CMakeFiles/test.out.dir
 
 # All Build rule for target.
+CMakeFiles/test.out.dir/all: src/databases/CMakeFiles/database.dir/all
 CMakeFiles/test.out.dir/all: src/utility/CMakeFiles/utilityGPU.dir/all
 CMakeFiles/test.out.dir/all: src/utility/CMakeFiles/utility.dir/all
 CMakeFiles/test.out.dir/all: src/simulation/CMakeFiles/simulation.dir/all
@@ -228,7 +229,6 @@ CMakeFiles/test.out.dir/all: src/updaters/CMakeFiles/updaters.dir/all
 CMakeFiles/test.out.dir/all: src/models/CMakeFiles/modelGPU.dir/all
 CMakeFiles/test.out.dir/all: src/models/CMakeFiles/model.dir/all
 CMakeFiles/test.out.dir/all: src/analysis/CMakeFiles/analysis.dir/all
-CMakeFiles/test.out.dir/all: src/databases/CMakeFiles/database.dir/all
 	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/depend
 	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=39,40 "Built target test.out"
