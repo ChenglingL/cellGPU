@@ -117,13 +117,13 @@ int main(int argc, char*argv[])
     vector<long long int> offsets;
     offsets.push_back(0);
     int lastOffset=0;
-    double power = 2;
-    while(lastOffset < maximumWaitingTimesteps)
+    double power = 5;
+    while(lastOffset < 10000*10/dt)
         {
-        lastOffset = floor(pow(10,power)/dt);
+        lastOffset = power*10000/dt;
         if(lastOffset < maximumWaitingTimesteps){
             offsets.push_back(lastOffset);
-            power+= 0.5;
+            power+= 1;
             cout << "initializing an offset of " << lastOffset << endl;
             }
         }
