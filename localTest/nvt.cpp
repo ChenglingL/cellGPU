@@ -74,14 +74,16 @@ int main(int argc, char*argv[])
     if (!gpu)
         initializeGPU = false;
 
+    logEquilibrationStateWriter lewriter(0.05);
+    char saveDirName[256];
+    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/chi4Test/N%i/",numpts);
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
     char dataname[256];
-    sprintf(dataname,"./testData/nvt_N%i_p%.3f_T%.8f_%i.nc",numpts,p0,T,id);
-    char overlapname[256];
-    sprintf(overlapname,"./testData/overlapNVT_N%i_p%.3f_T%.8f_%i.csv",numpts,p0,T,id);
-    shared_ptr<GlassyDynModelDatabase> ncdat=make_shared<GlassyDynModelDatabase>(numpts,dataname,NcFile::Replace);
-
-
+    sprintf(dataname,"%schi4Test_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
+    shared_ptr<nvtModelDatabase> ncdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
+    cout<<"Chi4 test at p0="<<p0<<" T="<<T<<" for configuration "<<id<<endl;
+    lewriter.addDatabase(ncdat,0);
+    lewriter.identifyNextFrame();
     shared_ptr<NoseHooverChainNVT> nvt = make_shared<NoseHooverChainNVT>(numpts,Nchain,initializeGPU);
 
     //define a voronoi configuration with a quadratic energy functional
@@ -115,49 +117,27 @@ int main(int argc, char*argv[])
     //the reporting of the force should yield a number that is numerically close to zero.
     voronoiModel->reportMeanCellForce(false);
 
-    //store the overlap function from t=10000 to t=50000
-    std::vector<double> overlapdat(40000);
 //    cudaProfilerStart();
     t1=clock();
-    for(long long int ii = 0; ii < 1000000; ++ii)
+    for(long long int ii = 0; ii < initSteps; ++ii)
         {
-        //voronoiModel->computeGeometry();
-        //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl;
-        if (ii % 100 == 0){
-            ncdat->writeState(voronoiModel);
-        }
         sim->performTimestep();
         };
     dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
 
-    int overlapidx = 0;
-    for(long long int ii = 1000000; ii < tSteps; ++ii)
+    for(long long int ii = 0; ii < tSteps; ++ii)
         {
         //voronoiModel->computeGeometry();
         //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl;
-        if (ii % 100 == 0){
-            ncdat->writeState(voronoiModel);
-            overlapdat[overlapidx] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
-            overlapidx ++;
-        }
+        if (ii == lewriter.nextFrameToSave)
+            {
+            voronoiModel->enforceTopology();
+            lewriter.writeState(voronoiModel,ii);
+            }
         sim->performTimestep();
         };
 //    cudaProfilerStop();
     t2=clock();
-    //save the overlap to a csv file
-    std::ofstream outFile(overlapname);
-    if (outFile.is_open()) {
-        for (int i = 0; i < overlapdat.size(); ++i) {
-            outFile << overlapdat[i];
-            if (i != overlapdat.size() - 1) {
-                outFile << ','; // Add a comma if it's not the last element
-            }
-        }
-        outFile.close();
-    } else {
-        std::cerr << "Unable to open file." << std::endl;
-    }
-
     if(initializeGPU)
         cudaDeviceReset();
     return 0;

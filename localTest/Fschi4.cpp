@@ -32,6 +32,7 @@ int main(int argc, char*argv[])
     double equilibrationWaitingTimeMultiple = 100.0;
     double numberOfRelaxationTimes =10.0;
     int numberofDerivatives = 50000;
+    int id=0;
 
     double dt = 0.01; //the time step size
     double T = 0.01;  // the target temperature
@@ -40,7 +41,8 @@ int main(int argc, char*argv[])
     int recordIndex =0; // which element of the database to load the configuration from
     int Nchain = 4;     //The number of thermostats to chain together
     double statesSavedPerDecadeOfTime = 15.;
-    double ks=6.50; // the k position of first peak in the S(k)
+    double ks=6.28319; // the k position of first peak in the S(k)
+    long long int offsets=100000;
 
     //The defaults can be overridden from the command line
     while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:")) != -1)
@@ -56,6 +58,7 @@ int main(int argc, char*argv[])
             case 'l': T0 = atof(optarg); break;
             case 'p': p0 = atof(optarg); break;
             case 'k': ks = atof(optarg); break;
+            case 'x': id = atof(optarg); break;
             case 's': statesSavedPerDecadeOfTime = atof(optarg); break;
             case 'r': recordIndex = atoi(optarg); break;
             case '?':
@@ -83,46 +86,32 @@ int main(int argc, char*argv[])
     //long long int maximumWaitingTimesteps = floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt);    
     long long int maximumWaitingTimesteps = max(floor(10000/dt),floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt));
     long long int maximumTimesteps = maximumWaitingTimesteps+floor((numberOfRelaxationTimes * tauEstimate)/dt);
-    cout << "tauAlpha estimate is " << tauEstimate << " and the system will be run for a maximum waiting time of " << equilibrationWaitingTimeMultiple << " multiples of that estimate." << endl;
-    cout << "maximum waiting timesteps = " << maximumWaitingTimesteps << ", Total timesteps = " << maximumTimesteps << endl;
+    char saveDirName[256];
+    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/chi4Test/N%i/",numpts);
 
-    vector<long long int> offsets;
-    offsets.push_back(0);
-    int lastOffset=0;
-    double power = -1;
-    while(lastOffset < maximumWaitingTimesteps)
-        {
-        lastOffset = floor(pow(10,power)/dt);
-        offsets.push_back(lastOffset);
-        power+= 0.5;
-        //cout << "reading an offset of " << lastOffset << endl;
-        }
 
-    for(int ii = offsets.size()-4; ii < offsets.size(); ++ii)
-        {
-        sprintf(loaddataname,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/glassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
-        sprintf(saveDataName,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/chi4CRchi4_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
-        sprintf(SISFDataName,"/home/chengling/Research/Project/Cell/glassyDynamics/N4096/SISFCRSISF_N%i_p%.4f_T%.8f_waitingTime%.6f_idx%i.nc",numpts,p0,T,offsets[ii]*dt,recordIndex);
-        cout << "reading an offset of " << offsets[ii]*dt << endl;
-        shared_ptr<twoValuesDatabase> chi4=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);
-        //shared_ptr<twoValuesDatabase> SISF=make_shared<twoValuesDatabase>(SISFDataName,NcFile::Replace);
-        nvtModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
-        shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
-        fluidConfigurations.readState(voronoiModel,0,true);
-        dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
-        dynFeat.setCageNeighbors(voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx); 
-        cout << "reading record from " << loaddataname << endl;
-        for(int rec=0;rec<fluidConfigurations.GetNumRecs();rec++){
-            fluidConfigurations.readState(voronoiModel,rec,false);
-            double2 FsChi4, CRFsChi4;
-            FsChi4=dynFeat.computeFsChi4(voronoiModel->returnPositions(),ks);
-            CRFsChi4=dynFeat.computeCageRelativeFsChi4(voronoiModel->returnPositions(),ks);
-            chi4->writeValues(FsChi4.y,CRFsChi4.y);       
-            //SISF->writeValues(FsChi4.x,CRFsChi4.x);     
-        };   
-        
+    sprintf(loaddataname,"%schi4Test_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
+    sprintf(saveDataName,"%sCRFsCRchi4_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
+    //sprintf(SISFDataName,"%sSISFCRSISF_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
+    shared_ptr<twoValuesDatabase> chi4=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);
+    //shared_ptr<twoValuesDatabase> SISF=make_shared<twoValuesDatabase>(SISFDataName,NcFile::Replace);
+    nvtModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
+    shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
+    fluidConfigurations.readState(voronoiModel,0,true);
+    dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
+    dynFeat.setCageNeighbors(voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx); 
+    cout << "reading record from " << loaddataname << endl;
+    for(int rec=0;rec<fluidConfigurations.GetNumRecs();rec++){
+        fluidConfigurations.readState(voronoiModel,rec,false);
+        double2 FsChi4, CRFsChi4;
+        //FsChi4=dynFeat.computeFsChi4(voronoiModel->returnPositions(),ks);
+        CRFsChi4=dynFeat.computeCageRelativeFsChi4(voronoiModel->returnPositions(),ks);
+        chi4->writeValues(CRFsChi4.x,CRFsChi4.y);       
+        //SISF->writeValues(FsChi4.x,CRFsChi4.x);     
 
-        }
+    }
+
+    
 
     if(initializeGPU)
         cudaDeviceReset();

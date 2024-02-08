@@ -40,7 +40,7 @@ int main(int argc, char*argv[])
     int recordIndex =0; // which element of the database to load the configuration from
     int Nchain = 4;     //The number of thermostats to chain together
     double statesSavedPerDecadeOfTime = 15.;
-    double ks=6.50; // the k position of first peak in the S(k)
+    double ks=6.28319; // the k position of first peak in the S(k)
 
     //The defaults can be overridden from the command line
     while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:")) != -1)
@@ -80,7 +80,7 @@ int main(int argc, char*argv[])
     char loaddataname[256];
     char saveDataName[256];
     char savefolder[256];
-    sprintf(savefolder,"/home/chengling/Research/Project/Cell/glassyDynamics/longtimeSimulation/N%i/",numpts);
+    sprintf(savefolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/",numpts);
     namespace fs = std::filesystem;
     //long long int maximumWaitingTimesteps = floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt);    
     long long int maximumWaitingTimesteps = max(floor(10000/dt),floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt));

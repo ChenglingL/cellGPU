@@ -39,6 +39,11 @@ class dynamicalFeatures
         double2 computeFsChi4(GPUArray<double2> &currentPos, double k = 6.28319);
         //!compute cage-relative verions of above function
         double2 computeCageRelativeFsChi4(GPUArray<double2> &currentPos, double k = 6.28319);
+        //!compute cage-relative overlap function and chi4 from overlapfunction (result.x = overlap function, result.y=chi_4)
+        double2 computeCageRelativeOverlapChi4(GPUArray<double2> &currentPos, double cutoff);
+        //!compute a mobility correlation function
+        double computeCageRelativeMobilityCorrelation(GPUArray<double2> &currentPos);
+
 
         //!compute *un-normalized* flenner-Szamel psi_6 bond correlation decay (i.e., without the average |\psi_6|^2) that would make the function 1 at t=0. return.x is real, return.y is imaginary part
         double2 computeOrientationalCorrelationFunction(GPUArray<double2> &currentPos,GPUArray<int> &currentNeighbors, GPUArray<int> &currentNeighborNum, Index2D n_idx, int n=6);
@@ -64,6 +69,8 @@ class dynamicalFeatures
 
         //!helper function that computes the angular average of <F_s^2(q,t)>
         double chi4Helper(vector<double2> &displacements, double k);
+        //!helper function that computes the average of <Q^2(t)>
+        double overlapChi4Helper(vector<double2> &displacements, double cutoff);
     protected:
         //!the box defining the periodic domain
         PeriodicBoxPtr Box;

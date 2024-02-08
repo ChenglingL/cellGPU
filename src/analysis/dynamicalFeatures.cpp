@@ -250,6 +250,36 @@ double dynamicalFeatures::chi4Helper(vector<double2> &displacements, double k)
     return (chi4Contribution / (N*N));
     }
 
+/*!
+returns <Q(t)^2> for a set of displacements
+*/
+double dynamicalFeatures::overlapChi4Helper(vector<double2> &displacements, double cutoff)
+    {
+    double2 disp,disp2;
+    double chi4Contribution = 0.0;
+    //self contribution
+    for (int ii = 0; ii < N; ++ii)
+        {
+        disp = displacements[ii];
+        if(norm(disp) < cutoff)
+            chi4Contribution += 1;
+        };
+    //relative contributions
+    for(int ii = 0; ii < N-1; ++ii)
+        {
+        disp = displacements[ii];
+        for (int jj = ii+1; jj < N; ++jj)
+            {
+            disp2 = displacements[jj];
+            if(norm(disp) < cutoff&&norm(disp2) < cutoff)
+                chi4Contribution += 2;
+            };
+        };
+
+    return (chi4Contribution / (N*N));
+    }
+
+
 double2 dynamicalFeatures::computeFsChi4(GPUArray<double2> &currentPos, double k)
     {
     double2 ans; ans.x=0;ans.y=0;
@@ -272,6 +302,49 @@ double2 dynamicalFeatures::computeCageRelativeFsChi4(GPUArray<double2> &currentP
     return ans;
 
     };
+
+double dynamicalFeatures::computeCageRelativeMobilityCorrelation(GPUArray<double2> &currentPos)
+    {
+    double2 disp,disp2;
+    double correlation = 0.0;
+    double2 averageDisplacement;
+    averageDisplacement.x=0.0; 
+    averageDisplacement.y=0.0;
+    computeCageRelativeDisplacements(currentPos);
+    //self contribution
+    for (int ii = 0; ii < N; ++ii)
+        {
+        disp = cageRelativeDisplacements[ii];
+        correlation += dot(disp,disp);
+        averageDisplacement.x += disp.x; 
+        averageDisplacement.y += disp.y;
+        };
+    //relative contributions
+    for(int ii = 0; ii < N-1; ++ii)
+        {
+        disp = cageRelativeDisplacements[ii];
+        for (int jj = ii+1; jj < N; ++jj)
+            {
+            disp2 = cageRelativeDisplacements[jj];
+            correlation += 2 * dot(disp2,disp);
+        };
+        }
+
+    return (correlation/N);
+    }
+
+double2 dynamicalFeatures::computeCageRelativeOverlapChi4(GPUArray<double2> &currentPos, double cutoff)
+    {
+    double2 ans; ans.x=0;ans.y=0;
+    double meanOverlap= computeCageRelativeOverlapFunction(currentPos,cutoff);
+
+    double overlapSquared = overlapChi4Helper(cageRelativeDisplacements,cutoff);
+    ans.x=meanOverlap;
+    ans.y=N*(overlapSquared - meanOverlap*meanOverlap);
+    return ans;
+
+    };
+
 
 double2 dynamicalFeatures::computeOrientationalCorrelationFunction(GPUArray<double2> &currentPos,GPUArray<int> &currentNeighbors, GPUArray<int> &currentNeighborNum, Index2D n_idx, int n)
     {

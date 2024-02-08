@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/nvt.out.dir/nvt.cpp.o"
-  "CMakeFiles/nvt.out.dir/nvt.cpp.o.d"
-  "nvt.out"
-  "nvt.out.pdb"
+  "../localTest/executable/nvt.out"
+  "../localTest/executable/nvt.out.pdb"
+  "CMakeFiles/nvt.out.dir/localTest/nvt.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.
