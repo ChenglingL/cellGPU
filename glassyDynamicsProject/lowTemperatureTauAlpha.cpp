@@ -47,7 +47,7 @@ int main(int argc, char*argv[])
     double p0 = 3.8; // the base p0 of the database to load from
     int recordIndex =0; // which element of the database to load the configuration from
     int Nchain = 4;     //The number of thermostats to chain together
-    double statesSavedPerDecadeOfTime = 15.;
+    double statesSavedPerDecadeOfTime = 20.;
 
     //The defaults can be overridden from the command line
     while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:")) != -1)
@@ -95,7 +95,7 @@ int main(int argc, char*argv[])
     //long long int maximumTimesteps = maximumWaitingTimesteps+floor((numberOfRelaxationTimes * tauEstimate)/dt);
 
     //set the max time to be 20000000 so the simulation can run 48h in the NCSADelta
-    long long int maximumWaitingTimesteps = 20000000;
+    long long int maximumWaitingTimesteps = 10000000;
     long long int maximumTimesteps = 20000000;
     
     int spacingofDerivative = maximumTimesteps/(numberofDerivatives);
