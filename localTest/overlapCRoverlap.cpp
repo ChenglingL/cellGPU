@@ -90,6 +90,7 @@ int main(int argc, char*argv[])
         cout << "reading record from " << loaddataname << endl;
     } else {
         std::cout <<loaddataname<< " does not exist." << std::endl;
+        abort();
     }
     shared_ptr<twoValuesDatabase> overlapCRoverlap=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);
     nvtModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);

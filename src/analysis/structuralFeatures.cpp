@@ -144,3 +144,18 @@ double2 structuralFeatures::computeBondOrderParameter(GPUArray<double2> &points,
     ans.y = ans.y/N;
     return ans;
     };
+
+double structuralFeatures::computeTranslationalOrderParameter(vector<double2> &points, double k)
+    {
+    int N = points.size();
+    double2 position;
+    double psi = 0.0;
+    double kr;
+    for (int ii = 0; ii < N; ++ii)
+        {
+        position = points[ii];
+        kr = k*sqrt(dot(position,position));
+        psi += std::cyl_bessel_j((double) 0.0, (double) kr);
+        };
+    return psi;
+    };

@@ -90,8 +90,9 @@ int main(int argc, char*argv[])
         cout << "reading record from " << loaddataname << endl;
     } else {
         std::cout <<loaddataname<< " does not exist." << std::endl;
+        abort();
     }
-    shared_ptr<twoValuesDatabase> overlapCRSISF=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);
+    shared_ptr<twoValuesDatabase> SISFCRSISF=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);
     nvtModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
     fluidConfigurations.readState(voronoiModel,0,true);
@@ -101,7 +102,7 @@ int main(int argc, char*argv[])
     for(int rec=0;rec<fluidConfigurations.GetNumRecs();rec++){
         fluidConfigurations.readState(voronoiModel,rec,false);
         //overlapdatNVT[rec] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
-        overlapCRSISF->writeValues(dynFeat.computeSISF(voronoiModel->returnPositions()), dynFeat.computeCageRelativeSISF(voronoiModel->returnPositions(),ks));        
+        SISFCRSISF->writeValues(dynFeat.computeSISF(voronoiModel->returnPositions()), dynFeat.computeCageRelativeSISF(voronoiModel->returnPositions(),ks));        
     };   
         
 
