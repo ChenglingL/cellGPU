@@ -12,6 +12,7 @@
 #include "analysisPackage.h"
 #include "periodicBoundaries.h"
 #include "GlassyDynModelDatabase.h"
+#include "twoValuesDatabase.h"
 
 
 /*!
@@ -27,7 +28,7 @@ int main(int argc, char*argv[])
     int numpts = 100; //number of cells
     int USE_GPU = 0; //0 or greater uses a gpu, any negative number runs on the cpu
     int c;
-    int tSteps = 5; //number of time steps to run after initialization
+    int tSteps = 1000000; //number of time steps to run after initialization
     int initSteps = 100; //number of initialization steps
     double tauEstimate = 100.; //number of initialization steps
 
@@ -72,16 +73,16 @@ int main(int argc, char*argv[])
     if (!gpu)
         initializeGPU = false;
 
+    initSteps=max(1000/dt,floor(10*tauEstimate/dt));
     char saveDirName[256];
     sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/2DmeltingPhase/N%i/",numpts);
     char orientationDataname[256];
-    char structureFactorDataname[256];
+    char translationDataname[256];
     sprintf(orientationDataname,"%sorientationReIm_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
-    sprintf(structureFactorDataname,"%sorientationReIm_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
-    shared_ptr<nvtModelDatabase> ncdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
-    cout<<"Chi4 test at p0="<<p0<<" T="<<T<<" for configuration "<<id<<endl;
-    lewriter.addDatabase(ncdat,0);
-    lewriter.identifyNextFrame();
+    sprintf(translationDataname,"%stimeTranslation_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
+    shared_ptr<twoValuesDatabase> orientational=make_shared<twoValuesDatabase>(orientationDataname,NcFile::Replace);
+    shared_ptr<twoValuesDatabase> translational=make_shared<twoValuesDatabase>(translationDataname,NcFile::Replace);
+    cout<<"Order parameters at p0="<<p0<<" T="<<T<<" for configuration "<<id<<endl;
     shared_ptr<NoseHooverChainNVT> nvt = make_shared<NoseHooverChainNVT>(numpts,Nchain,initializeGPU);
 
     //define a voronoi configuration with a quadratic energy functional
@@ -91,6 +92,7 @@ int main(int argc, char*argv[])
 
     voronoiModel->setCellVelocitiesMaxwellBoltzmann(T);
     nvt->setT(T);
+
 
     //combine the equation of motion and the cell configuration in a "Simulation"
     SimulationPtr sim = make_shared<Simulation>();
@@ -121,16 +123,29 @@ int main(int argc, char*argv[])
         {
         sim->performTimestep();
         };
-    dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
+    structuralFeatures strucFeat(voronoiModel->Box);
 
     for(long long int ii = 0; ii < tSteps; ++ii)
         {
         //voronoiModel->computeGeometry();
         //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl;
-        if (ii == lewriter.nextFrameToSave)
+        if (ii % 100 == 0)
             {
             voronoiModel->enforceTopology();
-            lewriter.writeState(voronoiModel,ii);
+            double2 psi;
+            psi=strucFeat.computeBondOrderParameter(voronoiModel->returnPositions(),voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx);
+            std::vector<double2> posdat(numpts);
+            ArrayHandle<double2> h_p(voronoiModel->returnPositions());
+            for (int ii = 0; ii < numpts; ++ii)
+            {
+                int pidx = voronoiModel->tagToIdx[ii];
+                double px = h_p.data[pidx].x;
+                double py = h_p.data[pidx].y;
+                posdat[ii].x = px;
+                posdat[ii].y = py;
+            }
+            translational->writeValues(voronoiModel->currentTime,strucFeat.computeTranslationalOrderParameter(posdat));
+            orientational->writeValues(psi.x,psi.y);
             }
         sim->performTimestep();
         };

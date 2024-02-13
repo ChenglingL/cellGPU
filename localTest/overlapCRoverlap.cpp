@@ -102,7 +102,7 @@ int main(int argc, char*argv[])
     for(int rec=0;rec<fluidConfigurations.GetNumRecs();rec++){
         fluidConfigurations.readState(voronoiModel,rec,false);
         //overlapdatNVT[rec] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
-        overlapCRoverlap->writeValues(dynFeat.computeOverlapFunction(voronoiModel->returnPositions()), dynFeat.computeCageRelativeOverlapFunction(voronoiModel->returnPositions(),ks));        
+        overlapCRoverlap->writeValues(dynFeat.computeOverlapFunction(voronoiModel->returnPositions()), dynFeat.computeCageRelativeOverlapFunction(voronoiModel->returnPositions()));        
     };   
         
 

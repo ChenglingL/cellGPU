@@ -157,5 +157,5 @@ double structuralFeatures::computeTranslationalOrderParameter(vector<double2> &p
         kr = k*sqrt(dot(position,position));
         psi += std::cyl_bessel_j((double) 0.0, (double) kr);
         };
-    return psi;
+    return psi/N;
     };
