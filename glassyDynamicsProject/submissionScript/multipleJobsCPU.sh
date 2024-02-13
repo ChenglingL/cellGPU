@@ -4,6 +4,7 @@
 #jobs on the CPU -- for n=32768, I estimate that if tau_alpha <= 10^(7/3) then it will finish within the 48 hour maxJobTime
 number=4096
 p=3.8
+numberofWaitingTimes=3
 
 temperatures=(0.063 0.039 0.03105 0.025 0.016 0.01 0.008 0.0063 0.005 0.00385 0.0031 0.0028 0.0025 0.0022 0.002 0.0018)
 records=(0 1 2)
@@ -15,7 +16,7 @@ for recordIdx in ${records[@]}; do
         tauEst=${tauEstimate[$i]}
         temp=${temperatures[$i]}
         echo ${number} ${p} ${temp} ${recordIdx} ${tauEst}
-        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst}
+        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst} ${numberofWaitingTimes}
     done
 done
 
@@ -32,7 +33,7 @@ for recordIdx in ${records[@]}; do
         tauEst=${tauEstimate[$i]}
         temp=${temperatures[$i]}
         echo ${number} ${p} ${temp} ${recordIdx} ${tauEst}
-        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst}
+        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst} ${numberofWaitingTimes}
     done
 done
 
@@ -48,6 +49,6 @@ for recordIdx in ${records[@]}; do
         tauEst=${tauEstimate[$i]}
         temp=${temperatures[$i]}
         echo ${number} ${p} ${temp} ${recordIdx} ${tauEst}
-        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst}
+        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst} ${numberofWaitingTimes}
     done
 done

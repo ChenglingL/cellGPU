@@ -40,6 +40,7 @@ int main(int argc, char*argv[])
     double equilibrationWaitingTimeMultiple = 100.0;
     double numberOfRelaxationTimes =100.0;
     int numberofDerivatives = 50000;
+    int numberofWaitingtime = 5;
 
     double dt = 0.01; //the time step size
     double T = 0.01;  // the target temperature
@@ -50,7 +51,7 @@ int main(int argc, char*argv[])
     double statesSavedPerDecadeOfTime = 20.;
 
     //The defaults can be overridden from the command line
-    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:")) != -1)
+    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:w:")) != -1)
         switch(c)
         {
             case 'n': numpts = atoi(optarg); break;
@@ -62,6 +63,7 @@ int main(int argc, char*argv[])
             case 'v': T = atof(optarg); break;
             case 'l': T0 = atof(optarg); break;
             case 'p': p0 = atof(optarg); break;
+            case 'w': numberofWaitingtime = atof(optarg); break;
             case 's': statesSavedPerDecadeOfTime = atof(optarg); break;
             case 'r': recordIndex = atoi(optarg); break;
             case '?':
@@ -118,7 +120,7 @@ int main(int argc, char*argv[])
     vector<long long int> offsets;
     offsets.push_back(0);
     int lastOffset=0;
-    double power = 5;
+    int power =11-numberofWaitingtime;
     while(lastOffset < maximumWaitingTimesteps)
         {
         lastOffset = power*maximumWaitingTimesteps/10;
