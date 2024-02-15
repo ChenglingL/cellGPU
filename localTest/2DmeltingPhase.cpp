@@ -75,11 +75,11 @@ int main(int argc, char*argv[])
 
     initSteps=max(1000/dt,floor(10*tauEstimate/dt));
     char saveDirName[256];
-    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/2DmeltingPhase/N%i/",numpts);
+    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/2DmeltingPhase/N%i/p%.0f/",numpts,100*p0);
     char orientationDataname[256];
     char translationDataname[256];
     sprintf(orientationDataname,"%sorientationReIm_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
-    sprintf(translationDataname,"%stimeTranslation_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
+    sprintf(translationDataname,"%sotranslationReIm_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
     shared_ptr<twoValuesDatabase> orientational=make_shared<twoValuesDatabase>(orientationDataname,NcFile::Replace);
     shared_ptr<twoValuesDatabase> translational=make_shared<twoValuesDatabase>(translationDataname,NcFile::Replace);
     cout<<"Order parameters at p0="<<p0<<" T="<<T<<" for configuration "<<id<<endl;
@@ -132,8 +132,8 @@ int main(int argc, char*argv[])
         if (ii % 100 == 0)
             {
             voronoiModel->enforceTopology();
-            double2 psi;
-            psi=strucFeat.computeBondOrderParameter(voronoiModel->returnPositions(),voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx);
+            double2 ori;
+            ori=strucFeat.computeBondOrderParameter(voronoiModel->returnPositions(),voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx);
             std::vector<double2> posdat(numpts);
             ArrayHandle<double2> h_p(voronoiModel->returnPositions());
             for (int ii = 0; ii < numpts; ++ii)
@@ -144,8 +144,11 @@ int main(int argc, char*argv[])
                 posdat[ii].x = px;
                 posdat[ii].y = py;
             }
-            translational->writeValues(voronoiModel->currentTime,strucFeat.computeTranslationalOrderParameter(posdat));
-            orientational->writeValues(psi.x,psi.y);
+            double2 trans,k;
+            k.x=6.28319,k.y=0;//Just pick the
+            trans=strucFeat.computeTranslationalOrderParameter(posdat,k);
+            translational->writeValues(trans.x,trans.y);
+            orientational->writeValues(ori.x,ori.y);
             }
         sim->performTimestep();
         };

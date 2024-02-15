@@ -618,6 +618,34 @@ Matrix2x2 voronoiModelBase::dHdri(double2 ri, double2 rj, double2 rk)
     };
 
 /*!
+\param ri The position of cell i
+\param rj The position of cell j
+\param rk The position of cell k
+Returns the derivative of the voronoi vertex shared by cells i, j , and k with respect to changing the position of cell i and the shear DOF gamma
+the (row, column) format specifies d2H_{row}/dr_{i,column}dgamma
+*/
+
+Matrix2x2 voronoiModelBase::d2Hdridgamma(double2 ri, double2 rj, double2 rk)
+    {
+    Matrix2x2 answer;
+    double r2x,r2y,r3x,r3y;
+    double2 r12,r13;
+    
+    Box->minDist(rj,ri,r12);
+    Box->minDist(rk,ri,r13);
+    r2x = r12.x;
+    r2y = r12.y;
+    r3x = r13.x;
+    r3y = r13.y;
+
+    answer.x11 = -((r2y*(r2x - r3x)*(r2y - r3y)*r3y)/pow(-(r2y*r3x) + r2x*r3y,2));
+    answer.x12 = -((r2y*(r2x - r3x)*(-r2x + r3x)*r3y)/pow(-(r2y*r3x) + r2x*r3y,2)) + (-(r2x*r2y) + r3x*r3y)/(-(r2y*r3x) + r2x*r3y);
+    answer.x21 = (r2x*r2y - r3x*r3y)/(-(r2y*r3x) + r2x*r3y) - ((r2y - r3y)*(-2*r2x*r2y*r3x + r2y*pow(r3x,2) - pow(r2x,2)*r3y - pow(r2y,2)*r3y + 2*r2x*r3x*r3y + r2y*pow(r3y,2)))/(2.*pow(-(r2y*r3x) + r2x*r3y,2));
+    answer.x22 = (pow(r2x,2) + pow(r2y,2) - pow(r3x,2) - pow(r3y,2))/(2.*(-(r2y*r3x) + r2x*r3y)) - ((-r2x + r3x)*(-2*r2x*r2y*r3x + r2y*pow(r3x,2) - pow(r2x,2)*r3y - pow(r2y,2)*r3y + 2*r2x*r3x*r3y + r2y*pow(r3y,2)))/(2.*pow(-(r2y*r3x) + r2x*r3y,2));
+    return answer;
+    };
+
+/*!
 \param i The index of cell i
 \param j The index of cell j
 \pre Requires that computeGeometry is current

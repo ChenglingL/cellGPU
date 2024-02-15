@@ -80,6 +80,7 @@
         "stop_token": "cpp",
         "ranges": "cpp",
         "span": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "slist": "cpp"
     }
 }

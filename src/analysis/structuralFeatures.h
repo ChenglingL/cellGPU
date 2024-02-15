@@ -24,7 +24,7 @@ class structuralFeatures
         //!Compute the (isotropic) structure factor out to some maximum value of k
         void computeStructureFactor(vector<double2> &points, vector<double2> &SofK, double intKMax = 1.0,double dk = 0.5);
         //!Compute the translational order parameter assuming isotropic
-        double computeTranslationalOrderParameter(vector<double2> &points, double k = 6.28319);
+        double2 computeTranslationalOrderParameter(vector<double2> &points, double2 k);
 
         //!Compute the angular bond order parameter. default to hexatic. result.x is real part, result.y is imaginary
         double2 computeBondOrderParameter(GPUArray<double2> &points, GPUArray<int> &neighbors, GPUArray<int> &neighborNum, Index2D n_idx, int n = 6);

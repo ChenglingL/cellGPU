@@ -12,6 +12,8 @@ CMakeFiles/nvt.out.dir/localTest/nvt.cpp.o: ../src/databases/DatabaseNetCDF.h
 CMakeFiles/nvt.out.dir/localTest/nvt.cpp.o: ../src/databases/GlassyDynModelDatabase.h
 CMakeFiles/nvt.out.dir/localTest/nvt.cpp.o: ../src/databases/logEquilibrationStateWriter.h
 CMakeFiles/nvt.out.dir/localTest/nvt.cpp.o: ../src/databases/nvtModelDatabase.h
+CMakeFiles/nvt.out.dir/localTest/nvt.cpp.o: ../src/databases/testModelDatabase.h
+CMakeFiles/nvt.out.dir/localTest/nvt.cpp.o: ../src/databases/twoValuesDatabase.h
 CMakeFiles/nvt.out.dir/localTest/nvt.cpp.o: ../src/models/DelaunayCGAL.h
 CMakeFiles/nvt.out.dir/localTest/nvt.cpp.o: ../src/models/DelaunayGPU.h
 CMakeFiles/nvt.out.dir/localTest/nvt.cpp.o: ../src/models/Simple2DActiveCell.h

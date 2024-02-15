@@ -10,18 +10,14 @@
 #include "nvtModelDatabase.h"
 #include "logEquilibrationStateWriter.h"
 #include "analysisPackage.h"
+#include "twoValuesDatabase.h"
 #include "periodicBoundaries.h"
+#include "testModelDatabase.h"
 #include "GlassyDynModelDatabase.h"
 
 
 /*!
-This file compiles to produce an executable that can be used to reproduce the timing information
-in the main cellGPU paper. It sets up a simulation that takes control of a voronoi model and a simple
-model of active motility
-NOTE that in the output, the forces and the positions are not, by default, synchronized! The NcFile
-records the force from the last time "computeForces()" was called, and generally the equations of motion will 
-move the positions. If you want the forces and the positions to be sync'ed, you should call the
-Voronoi model's computeForces() funciton right before saving a state.
+This is used for any test 
 */
 
 /*This is the nose-hoove test under PBD to verify the results from 2018 anomalous paper*/
@@ -76,12 +72,16 @@ int main(int argc, char*argv[])
 
     logEquilibrationStateWriter lewriter(0.05);
     char saveDirName[256];
-    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/chi4Test/N%i/",numpts);
+    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/d2edgammadrTest/N%i/",numpts);
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
     char dataname[256];
-    sprintf(dataname,"%schi4Test_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
-    shared_ptr<nvtModelDatabase> ncdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
-    cout<<"Chi4 test at p0="<<p0<<" T="<<T<<" for configuration "<<id<<endl;
+    char derivativeDataname[256];
+    sprintf(dataname,"%snvt_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
+    sprintf(derivativeDataname,"%sd2edgammadr_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
+    shared_ptr<testModelDatabase> ncdat=make_shared<testModelDatabase>(numpts,dataname,NcFile::Replace);
+    shared_ptr<twoValuesDatabase> derivativedat=make_shared<twoValuesDatabase>(derivativeDataname,NcFile::Replace);
+    
+    cout<<"d2edgammadr Test at p0="<<p0<<" T="<<T<<" for configuration "<<id<<endl;
     lewriter.addDatabase(ncdat,0);
     lewriter.identifyNextFrame();
     shared_ptr<NoseHooverChainNVT> nvt = make_shared<NoseHooverChainNVT>(numpts,Nchain,initializeGPU);
@@ -133,6 +133,14 @@ int main(int argc, char*argv[])
             {
             voronoiModel->enforceTopology();
             lewriter.writeState(voronoiModel,ii);
+            vector<double2> derivative;
+            voronoiModel->getd2Edgammadr(derivative);
+            for (int i = 0; i < numpts; i++)
+            {
+                derivativedat->writeValues(derivative[i].x,derivative[i].y);
+            }
+            
+            break;//we only need 1 configuration
             }
         sim->performTimestep();
         };

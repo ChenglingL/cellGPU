@@ -115,6 +115,8 @@ class voronoiModelBase : public Simple2DActiveCell
         //Some functions associated with derivates of voronoi vertex positions or cell geometries
         //!The derivative of a voronoi vertex position with respect to change in the first cells position
         Matrix2x2 dHdri(double2 ri, double2 rj, double2 rk);
+        //!The derivative of a voronoi vertex position with respect to change in the first cells position and the shear DOF
+        Matrix2x2 d2Hdridgamma(double2 ri, double2 rj, double2 rk);
         //!Derivative of the area of cell i with respect to the position of cell j
         double2 dAidrj(int i, int j);
         //!Derivative of the perimeter of cell i with respect to the position of cell j

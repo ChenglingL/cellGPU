@@ -1404,3 +1404,141 @@ double VoronoiQuadraticEnergy::getd2Edgammadgamma()
 
     return answer;    
     }
+
+void VoronoiQuadraticEnergy::getd2Edgammadr(vector<double2> &d2Edgammadr)
+    {
+    computeGeometry();
+    d2Edgammadr.reserve(Ncells);
+    for (int i = 0; i < Ncells; ++i) {
+        d2Edgammadr[i].x = 0.0;
+        d2Edgammadr[i].y = 0.0;
+    }
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+    Matrix2x2 tempMatrixdHdri(0.0,0.0,0.0,0.0);
+    Matrix2x2 tempMatrixd2eidHndHj(0.0,0.0,0.0,0.0);
+    Matrix2x2 tempMatrixd2Hdridgamma(0.0,0.0,0.0,0.0);
+    // for (int cell = 0; cell < Ncells; ++cell)
+    //     {
+    //         cout<<"Cell "<<cell<<" number of vertices "<<h_cvn.data[cell]<<endl;
+    //         for (int i = 0; i < h_cvn.data[cell]; i++)
+    //         {
+    //             cout<<"n_idx(i,cell): "<<n_idx(i,cell)<<endl;
+    //             cout<<"Cell "<<cell<<" Vetex"<<i<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+1]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+2]<<endl;
+    //         }
+    //     }
+
+    //Loop over all the cells
+    for (int cell = 0; cell < Ncells; ++cell)
+        {
+        
+        // First we calculate the self term for ri dEcelldgammadrcell
+        for (int i = 0; i < h_nn.data[cell]; i++)
+        {
+            //all the cells that are neighbors of vertex i
+            double2 ri1,ri2,ri3; 
+            // index of the 3rd cell center that is neighbour of vertex i.
+            // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+            int ilast = i - 1;
+            if(ilast == -1){
+                ilast = h_nn.data[cell] - 1;
+            }
+
+            ri1=h_p.data[cell];
+            ri2=h_p.data[h_n.data[n_idx(i,cell)]];
+            ri3=h_p.data[h_n.data[n_idx(ilast,cell)]];
+
+
+            for(int j = 0; j < h_nn.data[cell]; j++)
+            {
+
+                double2 rj1,rj2,rj3; 
+                // index of the 3rd cell center that is neighbour of vertex i.
+                // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+                int jlast = j - 1;
+                if(jlast == -1){
+                    jlast = h_nn.data[cell] - 1;
+                }
+
+                rj1=h_p.data[cell];
+                rj2=h_p.data[h_n.data[n_idx(j,cell)]];
+                rj3=h_p.data[h_n.data[n_idx(jlast,cell)]];
+                tempMatrixd2eidHndHj=d2eidHndHj(cell, i, j);
+                tempMatrixdHdri=dHdri(rj1,rj2,rj3);
+                tempMatrixd2eidHndHj.transpose();
+                tempMatrixdHdri.transpose();
+                d2Edgammadr[cell] = d2Edgammadr[cell] + tempMatrixdHdri * (tempMatrixd2eidHndHj * dHdgamma(ri1,ri2,ri3));
+            }
+            tempMatrixd2Hdridgamma=d2Hdridgamma(ri1,ri2,ri3);
+            tempMatrixd2Hdridgamma.transpose();              
+            d2Edgammadr[cell] = d2Edgammadr[cell] + tempMatrixd2Hdridgamma * deidHn(cell,i) ;
+        }
+        // Second we calculate the term for the neighbors of cell n dEidgammadrn
+        for (int i = 0; i < h_nn.data[cell]; i++)
+        {
+            //all the cells that are neighbors of vertex i
+            double2 ri1,ri2,ri3; 
+            // index of the 3rd cell center that is neighbour of vertex i.
+            // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+            int ilast = i - 1;
+            if(ilast == -1){
+                ilast = h_nn.data[cell] - 1;
+            }
+
+            ri1=h_p.data[cell];
+            ri2=h_p.data[h_n.data[n_idx(i,cell)]];
+            ri3=h_p.data[h_n.data[n_idx(ilast,cell)]];
+
+            // only the verteces shared by both cell cell and cell n contribute to the derivatives
+            for(int j = 0; j < h_nn.data[cell]; j++)
+            {
+
+                double2 rj1,rj2,rj3,rj4,rj5; 
+                // index of the 3rd cell center that is neighbour of vertex i.
+                // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+                // rj4 is the next neighbot after rj2, rj5 is the last neighbot before rj3
+                int jlast = j - 1;
+                if(jlast == -1){
+                    jlast = h_nn.data[cell] - 1;
+                }
+                int jlastlast = jlast - 1;
+                if(jlastlast == -1){
+                    jlastlast = h_nn.data[cell] - 1;
+                }
+                int jnext = j + 1;
+                if(jnext == h_nn.data[cell]){
+                    jnext = 0;
+                }
+
+                rj1=h_p.data[cell];
+                rj2=h_p.data[h_n.data[n_idx(j,cell)]];
+                rj3=h_p.data[h_n.data[n_idx(jlast,cell)]];
+                rj4=h_p.data[h_n.data[n_idx(jnext,cell)]];
+                rj5=h_p.data[h_n.data[n_idx(jlastlast,cell)]];
+                // only the verteces shared by both cell cell and cell n contribute to the derivatives
+                tempMatrixd2eidHndHj=d2eidHndHj(cell, i, j);
+                tempMatrixdHdri=dHdri(rj3,rj1,rj2);
+                tempMatrixd2eidHndHj.transpose();
+                tempMatrixdHdri.transpose();
+                d2Edgammadr[h_n.data[n_idx(jlast,cell)]] = d2Edgammadr[h_n.data[n_idx(jlast,cell)]] + tempMatrixdHdri * (tempMatrixd2eidHndHj * dHdgamma(ri1,ri2,ri3));
+                tempMatrixd2eidHndHj=d2eidHndHj(cell, i, j);
+                tempMatrixdHdri=dHdri(rj2,rj1,rj3);
+                tempMatrixd2eidHndHj.transpose();
+                tempMatrixdHdri.transpose();               
+                d2Edgammadr[h_n.data[n_idx(j,cell)]] = d2Edgammadr[h_n.data[n_idx(j,cell)]] + tempMatrixdHdri * (tempMatrixd2eidHndHj * dHdgamma(ri1,ri2,ri3)) ;
+            }      
+            tempMatrixd2Hdridgamma=d2Hdridgamma(ri3,ri1,ri2);
+            tempMatrixd2Hdridgamma.transpose();             
+            d2Edgammadr[h_n.data[n_idx(ilast,cell)]] = d2Edgammadr[h_n.data[n_idx(ilast,cell)]] + tempMatrixd2Hdridgamma * deidHn(cell,i) ;
+            tempMatrixd2Hdridgamma=d2Hdridgamma(ri2,ri1,ri3);
+            tempMatrixd2Hdridgamma.transpose();  
+            d2Edgammadr[h_n.data[n_idx(i,cell)]] = d2Edgammadr[h_n.data[n_idx(i,cell)]] + tempMatrixd2Hdridgamma * deidHn(cell,i) ;
+        }
+
+        };
+
+
+    }
