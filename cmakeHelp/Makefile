@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named nvt.out
+# Target rules for targets named inherentShearModulus.out
 
 # Build rule for target.
-nvt.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 nvt.out
-.PHONY : nvt.out
+inherentShearModulus.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 inherentShearModulus.out
+.PHONY : inherentShearModulus.out
 
 # fast build rule for target.
-nvt.out/fast:
-	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/build
-.PHONY : nvt.out/fast
+inherentShearModulus.out/fast:
+	$(MAKE) -f CMakeFiles/inherentShearModulus.out.dir/build.make CMakeFiles/inherentShearModulus.out.dir/build
+.PHONY : inherentShearModulus.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -240,32 +240,32 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-localTest/nvt.o: localTest/nvt.cpp.o
+localTest/inherentShearModulus.o: localTest/inherentShearModulus.cpp.o
 
-.PHONY : localTest/nvt.o
+.PHONY : localTest/inherentShearModulus.o
 
 # target to build an object file
-localTest/nvt.cpp.o:
-	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/localTest/nvt.cpp.o
-.PHONY : localTest/nvt.cpp.o
+localTest/inherentShearModulus.cpp.o:
+	$(MAKE) -f CMakeFiles/inherentShearModulus.out.dir/build.make CMakeFiles/inherentShearModulus.out.dir/localTest/inherentShearModulus.cpp.o
+.PHONY : localTest/inherentShearModulus.cpp.o
 
-localTest/nvt.i: localTest/nvt.cpp.i
+localTest/inherentShearModulus.i: localTest/inherentShearModulus.cpp.i
 
-.PHONY : localTest/nvt.i
+.PHONY : localTest/inherentShearModulus.i
 
 # target to preprocess a source file
-localTest/nvt.cpp.i:
-	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/localTest/nvt.cpp.i
-.PHONY : localTest/nvt.cpp.i
+localTest/inherentShearModulus.cpp.i:
+	$(MAKE) -f CMakeFiles/inherentShearModulus.out.dir/build.make CMakeFiles/inherentShearModulus.out.dir/localTest/inherentShearModulus.cpp.i
+.PHONY : localTest/inherentShearModulus.cpp.i
 
-localTest/nvt.s: localTest/nvt.cpp.s
+localTest/inherentShearModulus.s: localTest/inherentShearModulus.cpp.s
 
-.PHONY : localTest/nvt.s
+.PHONY : localTest/inherentShearModulus.s
 
 # target to generate assembly for a file
-localTest/nvt.cpp.s:
-	$(MAKE) -f CMakeFiles/nvt.out.dir/build.make CMakeFiles/nvt.out.dir/localTest/nvt.cpp.s
-.PHONY : localTest/nvt.cpp.s
+localTest/inherentShearModulus.cpp.s:
+	$(MAKE) -f CMakeFiles/inherentShearModulus.out.dir/build.make CMakeFiles/inherentShearModulus.out.dir/localTest/inherentShearModulus.cpp.s
+.PHONY : localTest/inherentShearModulus.cpp.s
 
 # Help Target
 help:
@@ -275,7 +275,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... nvt.out"
+	@echo "... inherentShearModulus.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -285,9 +285,9 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... localTest/nvt.o"
-	@echo "... localTest/nvt.i"
-	@echo "... localTest/nvt.s"
+	@echo "... localTest/inherentShearModulus.o"
+	@echo "... localTest/inherentShearModulus.i"
+	@echo "... localTest/inherentShearModulus.s"
 .PHONY : help
 
 
