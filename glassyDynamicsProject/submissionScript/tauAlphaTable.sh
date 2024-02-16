@@ -3,7 +3,7 @@
 #jobs on the CPU -- for n=4096, I estimate that if tau_alpha <= 10^(10/3) then it will finish within the 48 hour maxJobTime
 #jobs on the CPU -- for n=32768, I estimate that if tau_alpha <= 10^(7/3) then it will finish within the 48 hour maxJobTime
 number=4096
-
+numberofWaitingTimes=3
 p=3.85
 
 temperatures=(0.00025 0.00018 0.00014 0.00011 0.0001 0.000087 0.000077)
