@@ -83,7 +83,7 @@ int main(int argc, char*argv[])
     clock_t t1,t2;
     bool reproducible = false;
     bool initializeGPU = true;
-    cout<<initializeGPU<<endl;
+
     if (USE_GPU >= 0)
         {
         bool gpu = chooseGPU(USE_GPU);
@@ -93,17 +93,14 @@ int main(int argc, char*argv[])
     else
         initializeGPU = false;
 
-    cout<<initializeGPU<<endl;
-
+    char saveDirName[256];
+    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/inherentg/N%i/",numpts);
+    //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
+    char inherentgDataname[256];
+    sprintf(inherentgDataname,"%sinherentgAffineG_N%i_p%.3f_KA%f.4.nc",saveDirName,numpts,p0,KA);
+    shared_ptr<twoValuesDatabase> inherentgDat=make_shared<twoValuesDatabase>(inherentgDataname,NcFile::Replace);
     for (int idx = 0; idx < Nconfigurations; idx++)
     {
-    
-        char saveDirName[256];
-        sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/inherentg/N%i/",numpts);
-        //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
-        char inherentgDataname[256];
-        sprintf(inherentgDataname,"%sinherentgNumberEigenV_N%i_p%.3f_%i.nc",saveDirName,numpts,p0,idx);
-        shared_ptr<twoValuesDatabase> inherentgDat=make_shared<twoValuesDatabase>(inherentgDataname,NcFile::Replace);
 
         //the voronoi model set up is just as before
         shared_ptr<VoronoiQuadraticEnergy> spv = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
@@ -171,28 +168,34 @@ int main(int argc, char*argv[])
             };
 
         D.SASolve();
+        //cout<<"D.solve"<<endl;
 
         //calculate the non-affine relaxation
         double nonaffine = 0.0;
         vector<double2> derivative;
         spv->getd2Edgammadr(derivative);
+        //cout<<"getd2Edgammadr"<<endl;
         for (int i = 0; i < D.eigenvalues.size(); i++)
         {
+            //cout<<"eigen value"<<D.eigenvalues[i]<<endl;
             if (D.eigenvalues[i]>thresh)
             {
+                vector<double> localEigenVector;
+                D.getEvec(i,localEigenVector);
                 double localnonA = 0.0;
                 for (int ii = 0; ii < numpts; ++ii)
                 {
-                    localnonA += derivative[ii].x * D.eigenvectors[i][2*ii];
-                    localnonA += derivative[ii].y * D.eigenvectors[i][2*ii+1];
+                    localnonA += derivative[ii].x * localEigenVector[2*ii];
+                    localnonA += derivative[ii].y * localEigenVector[2*ii+1];
                 };
                 nonaffine += 1.0/D.eigenvalues[i] * localnonA * localnonA;
             }
 
         }
-
-        double g = spv->getd2Edgammadgamma() - nonaffine;
-        inherentgDat->writeValues(g,D.eigenvalues.size());
+        double d2edg2=spv->getd2Edgammadgamma();
+        double g = (d2edg2 - nonaffine)/numpts;
+        cout<<"the affine shear modulus is "<<d2edg2<<" and the non-affine shear modulus is "<<g<<endl;
+        inherentgDat->writeValues(g,d2edg2);
     }
     
 
