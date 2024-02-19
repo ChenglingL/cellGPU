@@ -21,21 +21,21 @@ for recordIdx in ${records[@]}; do
     done
 done
 
-p=3.825
+# p=3.825
 
-temperatures=(0.063 0.039 0.03105 0.025 0.016 0.01 0.008 0.0063 0.005 0.00385 0.0031 0.0028 0.0025 0.0022 0.002 0.0018 0.001 0.00067 0.0005 0.0004 0.00033)
-records=(0 1 2)
+# temperatures=(0.063 0.039 0.03105 0.025 0.016 0.01 0.008 0.0063 0.005 0.00385 0.0031 0.0028 0.0025 0.0022 0.002 0.0018 0.001 0.00067 0.0005 0.0004 0.00033)
+# records=(0 1 2)
 
-tauEstimate=(1.18 2.46 3.87 5.57 11.92 33.81 54.58 107.30 216.97 565.32 800. 800. 800. 800. 800. 2000. 2000. 2000. 2000. 2000. 2000.)
+# tauEstimate=(1.18 2.46 3.87 5.57 11.92 33.81 54.58 107.30 216.97 565.32 800. 800. 800. 800. 800. 2000. 2000. 2000. 2000. 2000. 2000.)
 
-for recordIdx in ${records[@]}; do
-    for i in ${!temperatures[@]}; do
-        tauEst=${tauEstimate[$i]}
-        temp=${temperatures[$i]}
-        echo ${number} ${p} ${temp} ${recordIdx} ${tauEst}
-        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst} ${numberofWaitingTimes}
-    done
-done
+# for recordIdx in ${records[@]}; do
+#     for i in ${!temperatures[@]}; do
+#         tauEst=${tauEstimate[$i]}
+#         temp=${temperatures[$i]}
+#         echo ${number} ${p} ${temp} ${recordIdx} ${tauEst}
+#         sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst} ${numberofWaitingTimes}
+#     done
+# done
 
 
 
