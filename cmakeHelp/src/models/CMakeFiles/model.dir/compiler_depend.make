@@ -4,14 +4,14 @@
 src/models/CMakeFiles/model.dir/DelaunayCGAL.cpp.o: ../src/models/DelaunayCGAL.cpp \
   /usr/include/stdc-predef.h \
   ../src/models/DelaunayCGAL.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/builtin_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/device_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_defines.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/builtin_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/device_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/limits.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/syslimits.h \
   /usr/include/limits.h \
@@ -29,10 +29,10 @@ src/models/CMakeFiles/model.dir/DelaunayCGAL.cpp.o: ../src/models/DelaunayCGAL.c
   /usr/include/bits/xopen_lim.h \
   /usr/include/bits/uio_lim.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/stddef.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/surface_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/surface_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/texture_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_device_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.hpp \
   /u/cli6/.local/include/CGAL/Exact_predicates_inexact_constructions_kernel.h \
   /u/cli6/.local/include/CGAL/Simple_cartesian.h \
   /u/cli6/.local/include/CGAL/Cartesian/Cartesian_base.h \
@@ -2866,14 +2866,14 @@ src/models/CMakeFiles/model.dir/DelaunayGPU.cpp.o: ../src/models/DelaunayGPU.cpp
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/ratio \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/parse_numbers.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/cpuid.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/builtin_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/device_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_defines.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/builtin_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/device_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/limits.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/syslimits.h \
   /usr/include/limits.h \
@@ -2883,17 +2883,17 @@ src/models/CMakeFiles/model.dir/DelaunayGPU.cpp.o: ../src/models/DelaunayGPU.cpp
   /usr/include/bits/posix2_lim.h \
   /usr/include/bits/xopen_lim.h \
   /usr/include/bits/uio_lim.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/surface_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/surface_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/texture_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_device_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.hpp \
   ../inc/vectorTypeOperations.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/channel_descriptor.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_config.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/library_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/channel_descriptor.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
   ../src/utility/periodicBoundaries.h \
   ../src/utility/cellListGPU.h \
   ../src/utility/periodicBoundaries.h \
@@ -3197,14 +3197,14 @@ src/models/CMakeFiles/model.dir/Simple2DActiveCell.cpp.o: ../src/models/Simple2D
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/ratio \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/parse_numbers.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/cpuid.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/builtin_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/device_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_defines.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/builtin_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/device_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/limits.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/syslimits.h \
   /usr/include/limits.h \
@@ -3214,43 +3214,43 @@ src/models/CMakeFiles/model.dir/Simple2DActiveCell.cpp.o: ../src/models/Simple2D
   /usr/include/bits/posix2_lim.h \
   /usr/include/bits/xopen_lim.h \
   /usr/include/bits/uio_lim.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/surface_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/surface_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/texture_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_device_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.hpp \
   ../inc/vectorTypeOperations.h \
   ../src/utility/gpuarray.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/channel_descriptor.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_config.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/library_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/channel_descriptor.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
   ../src/utility/indexer.h \
   ../src/utility/periodicBoundaries.h \
   ../src/utility/HilbertSort.h \
   ../src/utility/hilbert_curve.hpp \
   ../src/utility/noiseSource.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_kernel.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/math.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_precalc.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mrg32k3a.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32_kernel.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_precalc.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mrg32k3a.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/stdlib.h \
   /usr/include/memory.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_philox4x32_x.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_globals.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_uniform.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal_static.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_lognormal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_poisson.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete2.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_philox4x32_x.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_globals.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_uniform.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal_static.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_lognormal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_poisson.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete2.h \
   ../src/utility/gpuarray.h \
   ../src/utility/noiseSource.cuh \
   ../src/utility/functions.h \
@@ -3550,14 +3550,14 @@ src/models/CMakeFiles/model.dir/Simple2DCell.cpp.o: ../src/models/Simple2DCell.c
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/ratio \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/parse_numbers.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/cpuid.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/builtin_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/device_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_defines.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/builtin_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/device_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/limits.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/syslimits.h \
   /usr/include/limits.h \
@@ -3567,43 +3567,43 @@ src/models/CMakeFiles/model.dir/Simple2DCell.cpp.o: ../src/models/Simple2DCell.c
   /usr/include/bits/posix2_lim.h \
   /usr/include/bits/xopen_lim.h \
   /usr/include/bits/uio_lim.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/surface_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/surface_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/texture_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_device_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.hpp \
   ../inc/vectorTypeOperations.h \
   ../src/utility/gpuarray.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/channel_descriptor.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_config.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/library_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/channel_descriptor.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
   ../src/utility/indexer.h \
   ../src/utility/periodicBoundaries.h \
   ../src/utility/HilbertSort.h \
   ../src/utility/hilbert_curve.hpp \
   ../src/utility/noiseSource.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_kernel.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/math.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_precalc.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mrg32k3a.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32_kernel.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_precalc.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mrg32k3a.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/stdlib.h \
   /usr/include/memory.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_philox4x32_x.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_globals.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_uniform.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal_static.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_lognormal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_poisson.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete2.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_philox4x32_x.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_globals.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_uniform.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal_static.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_lognormal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_poisson.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete2.h \
   ../src/utility/gpuarray.h \
   ../src/utility/noiseSource.cuh \
   ../src/utility/functions.h \
@@ -3904,14 +3904,14 @@ src/models/CMakeFiles/model.dir/vertexModelBase.cpp.o: ../src/models/vertexModel
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/ratio \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/parse_numbers.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/cpuid.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/builtin_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/device_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_defines.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/builtin_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/device_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/limits.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/syslimits.h \
   /usr/include/limits.h \
@@ -3921,43 +3921,43 @@ src/models/CMakeFiles/model.dir/vertexModelBase.cpp.o: ../src/models/vertexModel
   /usr/include/bits/posix2_lim.h \
   /usr/include/bits/xopen_lim.h \
   /usr/include/bits/uio_lim.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/surface_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/surface_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/texture_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_device_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.hpp \
   ../inc/vectorTypeOperations.h \
   ../src/utility/gpuarray.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/channel_descriptor.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_config.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/library_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/channel_descriptor.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
   ../src/utility/indexer.h \
   ../src/utility/periodicBoundaries.h \
   ../src/utility/HilbertSort.h \
   ../src/utility/hilbert_curve.hpp \
   ../src/utility/noiseSource.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_kernel.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/math.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_precalc.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mrg32k3a.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32_kernel.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_precalc.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mrg32k3a.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/stdlib.h \
   /usr/include/memory.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_philox4x32_x.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_globals.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_uniform.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal_static.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_lognormal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_poisson.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete2.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_philox4x32_x.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_globals.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_uniform.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal_static.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_lognormal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_poisson.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete2.h \
   ../src/utility/gpuarray.h \
   ../src/utility/noiseSource.cuh \
   ../src/utility/functions.h \
@@ -6552,14 +6552,14 @@ src/models/CMakeFiles/model.dir/vertexQuadraticEnergy.cpp.o: ../src/models/verte
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/ratio \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/parse_numbers.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/cpuid.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/builtin_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/device_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_defines.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/builtin_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/device_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/limits.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/syslimits.h \
   /usr/include/limits.h \
@@ -6569,43 +6569,43 @@ src/models/CMakeFiles/model.dir/vertexQuadraticEnergy.cpp.o: ../src/models/verte
   /usr/include/bits/posix2_lim.h \
   /usr/include/bits/xopen_lim.h \
   /usr/include/bits/uio_lim.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/surface_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/surface_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/texture_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_device_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.hpp \
   ../inc/vectorTypeOperations.h \
   ../src/utility/gpuarray.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/channel_descriptor.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_config.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/library_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/channel_descriptor.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
   ../src/utility/indexer.h \
   ../src/utility/periodicBoundaries.h \
   ../src/utility/HilbertSort.h \
   ../src/utility/hilbert_curve.hpp \
   ../src/utility/noiseSource.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_kernel.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/math.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_precalc.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mrg32k3a.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32_kernel.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_precalc.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mrg32k3a.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/stdlib.h \
   /usr/include/memory.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_philox4x32_x.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_globals.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_uniform.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal_static.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_lognormal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_poisson.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete2.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_philox4x32_x.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_globals.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_uniform.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal_static.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_lognormal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_poisson.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete2.h \
   ../src/utility/gpuarray.h \
   ../src/utility/noiseSource.cuh \
   ../src/utility/functions.h \
@@ -9201,14 +9201,14 @@ src/models/CMakeFiles/model.dir/vertexQuadraticEnergyWithTension.cpp.o: ../src/m
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/ratio \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/parse_numbers.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/cpuid.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/builtin_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/device_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_defines.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/builtin_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/device_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/limits.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/syslimits.h \
   /usr/include/limits.h \
@@ -9218,43 +9218,43 @@ src/models/CMakeFiles/model.dir/vertexQuadraticEnergyWithTension.cpp.o: ../src/m
   /usr/include/bits/posix2_lim.h \
   /usr/include/bits/xopen_lim.h \
   /usr/include/bits/uio_lim.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/surface_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/surface_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/texture_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_device_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.hpp \
   ../inc/vectorTypeOperations.h \
   ../src/utility/gpuarray.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/channel_descriptor.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_config.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/library_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/channel_descriptor.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
   ../src/utility/indexer.h \
   ../src/utility/periodicBoundaries.h \
   ../src/utility/HilbertSort.h \
   ../src/utility/hilbert_curve.hpp \
   ../src/utility/noiseSource.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_kernel.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/math.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_precalc.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mrg32k3a.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32_kernel.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_precalc.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mrg32k3a.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/stdlib.h \
   /usr/include/memory.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_philox4x32_x.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_globals.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_uniform.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal_static.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_lognormal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_poisson.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete2.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_philox4x32_x.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_globals.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_uniform.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal_static.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_lognormal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_poisson.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete2.h \
   ../src/utility/gpuarray.h \
   ../src/utility/noiseSource.cuh \
   ../src/utility/functions.h \
@@ -9280,13 +9280,13 @@ src/models/CMakeFiles/model.dir/vertexQuadraticEnergyWithTension.cpp.o: ../src/m
 
 src/models/CMakeFiles/model.dir/voronoiModelBase.cpp.o: ../src/models/voronoiModelBase.cpp \
   /usr/include/stdc-predef.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/builtin_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/device_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_config.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/builtin_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/device_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_defines.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/limits.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/syslimits.h \
   /usr/include/limits.h \
@@ -9304,25 +9304,31 @@ src/models/CMakeFiles/model.dir/voronoiModelBase.cpp.o: ../src/models/voronoiMod
   /usr/include/bits/xopen_lim.h \
   /usr/include/bits/uio_lim.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/stddef.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/surface_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/channel_descriptor.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/surface_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/texture_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/library_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/channel_descriptor.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_device_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.hpp \
+  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/utility \
+  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/c++config.h \
+  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/os_defines.h \
+  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/cpu_defines.h \
+  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/pstl/pstl_config.h \
+  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_relops.h \
+  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_pair.h \
+  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/move.h \
+  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/type_traits \
+  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/initializer_list \
   ../src/models/voronoiModelBase.h \
   ../src/models/Simple2DActiveCell.h \
   ../src/models/Simple2DCell.h \
   ../src/models/Simple2DModel.h \
   ../inc/std_include.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/cmath \
-  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/c++config.h \
-  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/os_defines.h \
-  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/cpu_defines.h \
-  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/pstl/pstl_config.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/cpp_type_traits.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/ext/type_traits.h \
   /usr/include/math.h \
@@ -9373,9 +9379,6 @@ src/models/CMakeFiles/model.dir/voronoiModelBase.cpp.o: ../src/models/voronoiMod
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/functexcept.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/exception_defines.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/ext/numeric_traits.h \
-  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_pair.h \
-  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/move.h \
-  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/type_traits \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_iterator_base_types.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_iterator_base_funcs.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/concept_check.h \
@@ -9398,9 +9401,6 @@ src/models/CMakeFiles/model.dir/voronoiModelBase.cpp.o: ../src/models/voronoiMod
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/tr1/poly_laguerre.tcc \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/tr1/riemann_zeta.tcc \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/algorithm \
-  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/utility \
-  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_relops.h \
-  /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/initializer_list \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_algo.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/cstdlib \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/algorithmfwd.h \
@@ -9593,8 +9593,8 @@ src/models/CMakeFiles/model.dir/voronoiModelBase.cpp.o: ../src/models/voronoiMod
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/ratio \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/parse_numbers.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/cpuid.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
   ../inc/vectorTypeOperations.h \
   ../src/utility/gpuarray.h \
   ../src/utility/indexer.h \
@@ -9602,26 +9602,26 @@ src/models/CMakeFiles/model.dir/voronoiModelBase.cpp.o: ../src/models/voronoiMod
   ../src/utility/HilbertSort.h \
   ../src/utility/hilbert_curve.hpp \
   ../src/utility/noiseSource.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_kernel.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/math.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_precalc.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mrg32k3a.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32_kernel.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_precalc.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mrg32k3a.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/stdlib.h \
   /usr/include/memory.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_philox4x32_x.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_globals.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_uniform.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal_static.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_lognormal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_poisson.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete2.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_philox4x32_x.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_globals.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_uniform.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal_static.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_lognormal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_poisson.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete2.h \
   ../src/utility/gpuarray.h \
   ../src/utility/noiseSource.cuh \
   ../src/utility/functions.h \
@@ -12201,14 +12201,14 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergy.cpp.o: ../src/models/voro
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/ratio \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/parse_numbers.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/cpuid.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/builtin_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/device_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_defines.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/builtin_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/device_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/limits.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/syslimits.h \
   /usr/include/limits.h \
@@ -12218,43 +12218,43 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergy.cpp.o: ../src/models/voro
   /usr/include/bits/posix2_lim.h \
   /usr/include/bits/xopen_lim.h \
   /usr/include/bits/uio_lim.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/surface_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/surface_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/texture_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_device_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.hpp \
   ../inc/vectorTypeOperations.h \
   ../src/utility/gpuarray.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/channel_descriptor.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_config.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/library_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/channel_descriptor.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
   ../src/utility/indexer.h \
   ../src/utility/periodicBoundaries.h \
   ../src/utility/HilbertSort.h \
   ../src/utility/hilbert_curve.hpp \
   ../src/utility/noiseSource.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_kernel.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/math.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_precalc.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mrg32k3a.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32_kernel.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_precalc.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mrg32k3a.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/stdlib.h \
   /usr/include/memory.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_philox4x32_x.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_globals.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_uniform.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal_static.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_lognormal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_poisson.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete2.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_philox4x32_x.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_globals.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_uniform.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal_static.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_lognormal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_poisson.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete2.h \
   ../src/utility/gpuarray.h \
   ../src/utility/noiseSource.cuh \
   ../src/utility/functions.h \
@@ -14543,7 +14543,7 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergy.cpp.o: ../src/models/voro
   ../src/models/structures.h \
   ../src/models/voronoiModelBase.cuh \
   ../src/models/voronoiQuadraticEnergy.cuh \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_profiler_api.h
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_profiler_api.h
 
 src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/models/voronoiQuadraticEnergyWithTension.cpp \
   /usr/include/stdc-predef.h \
@@ -14837,14 +14837,14 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/ratio \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/parse_numbers.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/cpuid.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/builtin_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/device_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_defines.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/builtin_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/device_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/limits.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/syslimits.h \
   /usr/include/limits.h \
@@ -14854,43 +14854,43 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
   /usr/include/bits/posix2_lim.h \
   /usr/include/bits/xopen_lim.h \
   /usr/include/bits/uio_lim.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/surface_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/surface_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/texture_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_device_runtime_api.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.hpp \
   ../inc/vectorTypeOperations.h \
   ../src/utility/gpuarray.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/channel_descriptor.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_functions.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_config.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/library_types.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/channel_descriptor.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_functions.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h \
   ../src/utility/indexer.h \
   ../src/utility/periodicBoundaries.h \
   ../src/utility/HilbertSort.h \
   ../src/utility/hilbert_curve.hpp \
   ../src/utility/noiseSource.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_kernel.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/math.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_precalc.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mrg32k3a.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32_kernel.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_precalc.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mrg32k3a.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32_kernel.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda.h \
   /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/stdlib.h \
   /usr/include/memory.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_philox4x32_x.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_globals.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_uniform.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal_static.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_lognormal.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_poisson.h \
-  /sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete2.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_philox4x32_x.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_globals.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_uniform.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal_static.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_lognormal.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_poisson.h \
+  /sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete2.h \
   ../src/utility/gpuarray.h \
   ../src/utility/noiseSource.cuh \
   ../src/utility/functions.h \
@@ -17208,17 +17208,21 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 ../src/utility/noiseSource.cuh:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_lognormal.h:
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete2.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_globals.h:
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_poisson.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32.h:
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_lognormal.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mtgp32_kernel.h:
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal_static.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_mrg32k3a.h:
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_uniform.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand.h:
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32_kernel.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_discrete.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_kernel.h:
 
 ../src/utility/HilbertSort.h:
 
@@ -17231,6 +17235,12 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 ../src/utility/cellListGPU.h:
 
 ../src/utility/periodicBoundaries.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_functions.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/channel_descriptor.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime.h:
 
 ../inc/vectorTypeOperations.h:
 
@@ -17313,6 +17323,10 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/fusion/adapted/mpl/detail/category_of_impl.hpp:
 
 /u/cli6/.local/include/boost/fusion/adapted/mpl/detail/at_impl.hpp:
+
+/u/cli6/.local/include/boost/fusion/adapted/mpl/detail/value_at_impl.hpp:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_precalc.h:
 
 /u/cli6/.local/include/boost/fusion/adapted/mpl/detail/is_sequence_impl.hpp:
 
@@ -17423,8 +17437,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/fusion/container/list/detail/value_of_impl.hpp:
 
 /u/cli6/.local/include/boost/fusion/sequence/intrinsic/detail/segmented_end.hpp:
-
-/u/cli6/.local/include/boost/fusion/iterator/detail/segmented_next_impl.hpp:
 
 /u/cli6/.local/include/boost/fusion/iterator/detail/segmented_equal_to.hpp:
 
@@ -17546,8 +17558,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/CGAL/Hash_map/internal/chained_map.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_uniform.h:
-
 /u/cli6/.local/include/CGAL/Handle_hash_function.h:
 
 /u/cli6/.local/include/CGAL/Unique_hash_map.h:
@@ -17571,6 +17581,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/noncopyable.hpp:
 
 /u/cli6/.local/include/boost/foreach.hpp:
+
+/u/cli6/.local/include/CGAL/tuple.h:
 
 /u/cli6/.local/include/CGAL/Iterator_range.h:
 
@@ -17611,8 +17623,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/type_traits/is_member_object_pointer.hpp:
 
 /u/cli6/.local/include/boost/type_traits/is_final.hpp:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete.h:
 
 /u/cli6/.local/include/boost/type_traits/is_fundamental.hpp:
 
@@ -17737,6 +17747,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/random.tcc:
 
 /u/cli6/.local/include/boost/math/special_functions/detail/polygamma.hpp:
+
+/u/cli6/.local/include/boost/math/special_functions/polygamma.hpp:
 
 /u/cli6/.local/include/boost/fusion/mpl/detail/clear.hpp:
 
@@ -18056,13 +18068,13 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/CGAL/Homogeneous/DirectionH2.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_discrete2.h:
-
 /u/cli6/.local/include/CGAL/Homogeneous/Homogeneous_base.h:
 
 /u/cli6/.local/include/CGAL/Exact_kernel_selector.h:
 
 /u/cli6/.local/include/boost/mpl/aux_/preprocessed/gcc/vector.hpp:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/library_types.h:
 
 /u/cli6/.local/include/boost/mpl/vector/aux_/preprocessed/typeof_based/vector20.hpp:
 
@@ -18135,6 +18147,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/CGAL/Intersections_3/internal/Segment_3_Tetrahedron_3_intersection.h:
 
 /u/cli6/.local/include/CGAL/Intersections_3/internal/Segment_3_Tetrahedron_3_do_intersect.h:
+
+/u/cli6/.local/include/CGAL/Intersections_3/internal/Segment_3_Segment_3_intersection.h:
 
 /u/cli6/.local/include/CGAL/Intersections_3/internal/Segment_3_Segment_3_do_intersect.h:
 
@@ -18298,6 +18312,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/CGAL/Intersections_3/internal/Iso_cuboid_3_Ray_3_do_intersect.h:
 
+/u/cli6/.local/include/CGAL/Intersections_3/Iso_cuboid_3_Ray_3.h:
+
 /u/cli6/.local/include/boost/math/special_functions/erf.hpp:
 
 /u/cli6/.local/include/CGAL/Intersections_3/internal/Iso_cuboid_3_Line_3_intersection.h:
@@ -18420,8 +18436,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/CGAL/Distance_3/Ray_3_Ray_3.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal_static.h:
-
 /u/cli6/.local/include/CGAL/Intersections_3/internal/Plane_3_Triangle_3_intersection.h:
 
 /u/cli6/.local/include/CGAL/Distance_3/Segment_3_Ray_3.h:
@@ -18435,6 +18449,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/CGAL/Distance_3/Point_3_Plane_3.h:
 
 /u/cli6/.local/include/CGAL/Distance_3/Point_3_Triangle_3.h:
+
+/u/cli6/.local/include/CGAL/Distance_3/Point_3_Line_3.h:
 
 /u/cli6/.local/include/CGAL/Distance_3/Point_3_Ray_3.h:
 
@@ -18588,6 +18604,10 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/random/lognormal_distribution.hpp:
 
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/avx5124fmapsintrin.h:
+
+/u/cli6/.local/include/boost/preprocessor/seq/for_each_i.hpp:
+
 /u/cli6/.local/include/boost/type_traits/conversion_traits.hpp:
 
 ../src/models/voronoiQuadraticEnergy.cuh:
@@ -18650,6 +18670,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/mpl/void.hpp:
 
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_defines.h:
+
 /u/cli6/.local/include/CGAL/Periodic_2_triangulation_dummy_12.h:
 
 /u/cli6/.local/include/boost/mpl/quote.hpp:
@@ -18658,8 +18680,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/mpl/aux_/preprocessed/gcc/bind_fwd.hpp:
 
-/u/cli6/.local/include/boost/variant/detail/forced_return.hpp:
-
 /u/cli6/.local/include/boost/fusion/iterator/segmented_iterator.hpp:
 
 /u/cli6/.local/include/CGAL/Default.h:
@@ -18667,6 +18687,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/CGAL/Sphere_3.h:
 
 /u/cli6/.local/include/boost/mpl/bind.hpp:
+
+/u/cli6/.local/include/boost/mpl/lambda.hpp:
 
 /u/cli6/.local/include/boost/mpl/aux_/preprocessed/gcc/apply_wrap.hpp:
 
@@ -18695,8 +18717,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/mpl/limits/vector.hpp:
 
 /usr/include/bits/libc-header-start.h:
-
-/u/cli6/.local/include/boost/detail/select_type.hpp:
 
 /u/cli6/.local/include/boost/math/special_functions/asinh.hpp:
 
@@ -18775,6 +18795,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/math/tools/rational.hpp:
 
 /u/cli6/.local/include/boost/mpl/arg.hpp:
+
+/u/cli6/.local/include/boost/mpl/if.hpp:
 
 /u/cli6/.local/include/CGAL/Intersections_3/internal/Point_3_Sphere_3_intersection.h:
 
@@ -18858,8 +18880,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/mpl/aux_/config/eti.hpp:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_poisson.h:
-
 /u/cli6/.local/include/boost/preprocessor/arithmetic/detail/is_maximum_number.hpp:
 
 /u/cli6/.local/include/boost/mpl/next.hpp:
@@ -18892,17 +18912,11 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/CGAL/long_long.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_kernel.h:
-
 /u/cli6/.local/include/boost/fusion/support/is_iterator.hpp:
 
 /u/cli6/.local/include/boost/math/special_functions/acosh.hpp:
 
 /u/cli6/.local/include/boost/config/detail/select_platform_config.hpp:
-
-/u/cli6/.local/include/boost/type_traits/remove_all_extents.hpp:
-
-/u/cli6/.local/include/boost/preprocessor/list/adt.hpp:
 
 /u/cli6/.local/include/boost/preprocessor/logical/not.hpp:
 
@@ -18926,10 +18940,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/preprocessor/empty.hpp:
 
-/u/cli6/.local/include/boost/mpl/aux_/preprocessed/gcc/and.hpp:
-
-/u/cli6/.local/include/boost/preprocessor/logical/bitand.hpp:
-
 /u/cli6/.local/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h:
 
 /u/cli6/.local/include/boost/mp11/detail/mp_fold.hpp:
@@ -18951,6 +18961,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/range/detail/sfinae.hpp:
 
 /u/cli6/.local/include/boost/preprocessor/detail/limits/auto_rec_256.hpp:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_philox4x32_x.h:
 
 /u/cli6/.local/include/boost/mpl/aux_/preprocessed/gcc/apply.hpp:
 
@@ -19125,8 +19137,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/codecvt.h:
 
 /usr/include/bits/timex.h:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_functions.h:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/ostream.tcc:
 
@@ -19342,12 +19352,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/CGAL/constant.h:
 
-/u/cli6/.local/include/boost/predef/hardware/simd/x86_amd.h:
-
-/u/cli6/.local/include/boost/fusion/support/detail/access.hpp:
-
-/u/cli6/.local/include/boost/mpl/aux_/joint_iter.hpp:
-
 /usr/include/bits/types/struct_tm.h:
 
 /u/cli6/.local/include/CGAL/Homogeneous/VectorH3.h:
@@ -19372,16 +19376,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /usr/include/gnu/stubs.h:
 
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_list.h:
-
-/u/cli6/.local/include/boost/predef/compiler/sgi_mipspro.h:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/c++io.h:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/waitpkgintrin.h:
-
-/u/cli6/.local/include/CGAL/Triangle_3.h:
-
 /u/cli6/.local/include/boost/predef/platform/windows_desktop.h:
 
 /u/cli6/.local/include/boost/mpl/int_fwd.hpp:
@@ -19391,8 +19385,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/mp11/detail/mp_min_element.hpp:
 
 /u/cli6/.local/include/boost/preprocessor/tuple/detail/is_single_return.hpp:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime.h:
 
 /u/cli6/.local/include/eigen3/Eigen/src/Core/StlIterators.h:
 
@@ -19504,6 +19496,16 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h:
 
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/c++io.h:
+
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/waitpkgintrin.h:
+
+/u/cli6/.local/include/CGAL/Triangle_3.h:
+
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_list.h:
+
+/u/cli6/.local/include/boost/predef/compiler/sgi_mipspro.h:
+
 /u/cli6/.local/include/boost/iterator/detail/config_def.hpp:
 
 /u/cli6/.local/include/CGAL/Intersections_2/Line_2_Point_2.h:
@@ -19552,6 +19554,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/predef/make.h:
 
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mtgp32.h:
+
 /u/cli6/.local/include/boost/math/special_functions/sign.hpp:
 
 /u/cli6/.local/include/boost/multiprecision/detail/generic_interconvert.hpp:
@@ -19573,6 +19577,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h:
 
 /u/cli6/.local/include/boost/predef/language.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda.h:
 
 /u/cli6/.local/include/boost/random/detail/signed_unsigned_tools.hpp:
 
@@ -19726,37 +19732,35 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/exception_ptr.h:
 
-/u/cli6/.local/include/CGAL/Intersections_3/Iso_cuboid_3_Ray_3.h:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/builtin_types.h:
-
-/u/cli6/.local/include/CGAL/Cartesian/basic_constructions_3.h:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/atomic_lockfree_defines.h:
-
 /u/cli6/.local/include/boost/predef/architecture/ia64.h:
 
 /u/cli6/.local/include/CGAL/Intersections_3/internal/Line_3_Ray_3_intersection.h:
 
 /u/cli6/.local/include/boost/mpl/aux_/config/gcc.hpp:
 
-/u/cli6/.local/include/CGAL/Exact_predicates_inexact_constructions_kernel.h:
+/u/cli6/.local/include/boost/mpl/aux_/na_fwd.hpp:
 
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/clocale:
+/u/cli6/.local/include/boost/type_traits/detail/has_postfix_operator.hpp:
 
-/u/cli6/.local/include/boost/predef/compiler.h:
+/usr/include/bits/types/struct_timeval.h:
 
-/usr/include/bits/floatn.h:
+/u/cli6/.local/include/boost/predef/os/bsd.h:
 
-/u/cli6/.local/include/CGAL/tuple.h:
+/u/cli6/.local/include/CGAL/Intersections_3/internal/Plane_3_Tetrahedron_3_intersection.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/surface_types.h:
+/u/cli6/.local/include/boost/predef/hardware/simd/ppc/versions.h:
 
-/u/cli6/.local/include/CGAL/Intersections_3/Point_3_Segment_3.h:
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/tr1/hypergeometric.tcc:
 
-/u/cli6/.local/include/CGAL/Distance_2/Line_2_Triangle_2.h:
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/surface_types.h:
 
-/usr/include/features.h:
+/usr/include/unistd.h:
+
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/typeinfo:
+
+/u/cli6/.local/include/boost/fusion/view/single_view/detail/deref_impl.hpp:
+
+/u/cli6/.local/include/CGAL/Direction_3.h:
 
 /u/cli6/.local/include/CGAL/Intersections_3/Segment_3_Tetrahedron_3.h:
 
@@ -19767,6 +19771,12 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/preprocessor/arithmetic/limits/dec_256.hpp:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/c++locale.h:
+
+/u/cli6/.local/include/boost/predef/library/std/modena.h:
+
+/u/cli6/.local/include/boost/predef/compiler/tendra.h:
+
+/u/cli6/.local/include/boost/variant/detail/cast_storage.hpp:
 
 /u/cli6/.local/include/boost/preprocessor/facilities/expand.hpp:
 
@@ -19800,6 +19810,24 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /usr/include/bits/posix1_lim.h:
 
+/u/cli6/.local/include/CGAL/Exact_predicates_inexact_constructions_kernel.h:
+
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/clocale:
+
+/u/cli6/.local/include/boost/predef/compiler.h:
+
+/usr/include/bits/floatn.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_device_runtime_api.h:
+
+/u/cli6/.local/include/boost/mp11/bind.hpp:
+
+/u/cli6/.local/include/CGAL/Intersections_3/Point_3_Segment_3.h:
+
+/u/cli6/.local/include/CGAL/Distance_2/Line_2_Triangle_2.h:
+
+/usr/include/features.h:
+
 /u/cli6/.local/include/boost/predef/compiler/hp_acc.h:
 
 /u/cli6/.local/include/boost/move/adl_move_swap.hpp:
@@ -19807,10 +19835,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/xtestintrin.h:
 
 /u/cli6/.local/include/boost/range/concepts.hpp:
-
-/u/cli6/.local/include/boost/fusion/adapted/mpl/detail/value_at_impl.hpp:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_defines.h:
 
 /u/cli6/.local/include/boost/mpl/less.hpp:
 
@@ -19832,20 +19856,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /usr/include/bits/wordsize.h:
 
-/u/cli6/.local/include/boost/mpl/if.hpp:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.h:
-
-/u/cli6/.local/include/CGAL/Intersections_3/Segment_3_Triangle_3.h:
-
-/u/cli6/.local/include/boost/predef/library/c/gnu.h:
-
-/u/cli6/.local/include/boost/mpl/aux_/preprocessed/gcc/or.hpp:
-
-/usr/include/bits/fp-fast.h:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/memory:
-
 /u/cli6/.local/include/boost/range/detail/implementation_help.hpp:
 
 /u/cli6/.local/include/boost/predef/compiler/nvcc.h:
@@ -19862,9 +19872,45 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h:
 
+/u/cli6/.local/include/CGAL/Cartesian/basic_constructions_3.h:
+
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/atomic_lockfree_defines.h:
+
+/u/cli6/.local/include/boost/predef/hardware/simd/x86_amd.h:
+
+/u/cli6/.local/include/boost/fusion/support/detail/access.hpp:
+
+/u/cli6/.local/include/boost/mpl/aux_/joint_iter.hpp:
+
+/u/cli6/.local/include/CGAL/Cartesian/Cartesian_base.h:
+
+/u/cli6/.local/include/boost/predef/hardware/simd/arm.h:
+
+/u/cli6/.local/include/eigen3/Eigen/src/Core/arch/Default/BFloat16.h:
+
+/usr/include/sys/cdefs.h:
+
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/hashtable.h:
+
+/u/cli6/.local/include/boost/preprocessor/logical/bitand.hpp:
+
+/u/cli6/.local/include/boost/mpl/aux_/preprocessed/gcc/and.hpp:
+
+/u/cli6/.local/include/boost/variant/detail/forced_return.hpp:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/builtin_types.h:
+
+/u/cli6/.local/include/boost/config/pragma_message.hpp:
+
+/u/cli6/.local/include/boost/mpl/aux_/config/arrays.hpp:
+
+/u/cli6/.local/include/boost/predef/platform/ios.h:
+
 /usr/include/strings.h:
 
 /usr/include/bits/types/cookie_io_functions_t.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand.h:
 
 /u/cli6/.local/include/boost/random/piecewise_constant_distribution.hpp:
 
@@ -19879,6 +19925,14 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/eigen3/Eigen/Core:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/pstl/pstl_config.h:
+
+/u/cli6/.local/include/CGAL/Intersections_3/Segment_3_Triangle_3.h:
+
+/u/cli6/.local/include/boost/predef/library/c/gnu.h:
+
+/u/cli6/.local/include/boost/mpl/aux_/preprocessed/gcc/or.hpp:
+
+/usr/include/bits/fp-fast.h:
 
 /u/cli6/.local/include/boost/fusion/view/iterator_range/detail/segments_impl.hpp:
 
@@ -19908,6 +19962,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/array:
 
+/u/cli6/.local/include/boost/predef/architecture/x86.h:
+
 /u/cli6/.local/include/boost/fusion/container/list/detail/at_impl.hpp:
 
 /u/cli6/.local/include/boost/smart_ptr/detail/yield_k.hpp:
@@ -19922,6 +19978,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/quoted_string.h:
 
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/iosfwd:
+
 ../src/models/voronoiModelBase.h:
 
 /u/cli6/.local/include/CGAL/Intersections_3/Triangle_3_Triangle_3.h:
@@ -19932,15 +19990,19 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/type_traits/add_volatile.hpp:
 
-/u/cli6/.local/include/boost/predef/architecture/x86.h:
+/u/cli6/.local/include/boost/range/range_fwd.hpp:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_runtime_api.h:
+/u/cli6/.local/include/CGAL/Homogeneous/basic_constructionsH3.h:
 
-/u/cli6/.local/include/boost/math/tools/throw_exception.hpp:
+/usr/include/asm-generic/errno-base.h:
 
-/u/cli6/.local/include/CGAL/Distance_3/Point_3_Line_3.h:
+/u/cli6/.local/include/boost/container_hash/detail/hash_mix.hpp:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/driver_types.h:
+/u/cli6/.local/include/eigen3/Eigen/src/Core/AssignEvaluator.h:
+
+/u/cli6/.local/include/boost/variant/detail/visitation_impl.hpp:
+
+/u/cli6/.local/include/eigen3/Eigen/src/Core/Array.h:
 
 /u/cli6/.local/include/CGAL/Cartesian/Triangle_3.h:
 
@@ -19960,12 +20022,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/preprocessor/repetition/detail/for.hpp:
 
-/u/cli6/.local/include/boost/type_traits.hpp:
-
-/u/cli6/.local/include/boost/predef/platform/windows_store.h:
-
-/u/cli6/.local/include/boost/container_hash/detail/hash_range.hpp:
-
 /u/cli6/.local/include/boost/mpl/identity.hpp:
 
 /u/cli6/.local/include/boost/preprocessor/list/detail/limits/fold_right_256.hpp:
@@ -19973,6 +20029,10 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/multiprecision/detail/functions/trig.hpp:
 
 /u/cli6/.local/include/boost/lexical_cast/detail/converter_lexical_streams.hpp:
+
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/cpu_defines.h:
+
+/u/cli6/.local/include/boost/predef/architecture/superh.h:
 
 /u/cli6/.local/include/CGAL/enable_warnings.h:
 
@@ -20014,6 +20074,14 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/type_traits/aligned_storage.hpp:
 
+/u/cli6/.local/include/boost/type_traits/remove_all_extents.hpp:
+
+/u/cli6/.local/include/boost/preprocessor/list/adt.hpp:
+
+/u/cli6/.local/include/boost/detail/select_type.hpp:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_types.h:
+
 /u/cli6/.local/include/boost/predef/compiler/compaq.h:
 
 /u/cli6/.local/include/CGAL/Hilbert_sort_median_d.h:
@@ -20032,19 +20100,7 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include-fixed/syslimits.h:
 
-/u/cli6/.local/include/CGAL/Cartesian/Cartesian_base.h:
-
-/u/cli6/.local/include/boost/predef/hardware/simd/arm.h:
-
-/u/cli6/.local/include/eigen3/Eigen/src/Core/arch/Default/BFloat16.h:
-
-/usr/include/sys/cdefs.h:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/hashtable.h:
-
 /u/cli6/.local/include/boost/predef/hardware/simd/x86_amd/versions.h:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_functions.hpp:
 
 /u/cli6/.local/include/boost/mpl/aux_/erase_impl.hpp:
 
@@ -20055,24 +20111,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/CGAL/Distance_3/Point_3_Weighted_point_3.h:
 
 /usr/include/bits/endian.h:
-
-/u/cli6/.local/include/boost/predef.h:
-
-/u/cli6/.local/include/boost/mpl/void_fwd.hpp:
-
-/u/cli6/.local/include/CGAL/Filtered_kernel/internal/Static_filters/Static_filters.h:
-
-/u/cli6/.local/include/boost/random/detail/int_float_pair.hpp:
-
-../src/updaters/updaterWithNoise.h:
-
-/u/cli6/.local/include/boost/type_traits/add_rvalue_reference.hpp:
-
-/u/cli6/.local/include/boost/algorithm/clamp.hpp:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/uses_allocator.h:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_algobase.h:
 
 /u/cli6/.local/include/CGAL/Kernel_23/internal/Has_boolean_tags.h:
 
@@ -20090,25 +20128,9 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/os_defines.h:
 
-/u/cli6/.local/include/boost/range/range_fwd.hpp:
-
-/u/cli6/.local/include/CGAL/Homogeneous/basic_constructionsH3.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/u/cli6/.local/include/boost/container_hash/detail/hash_mix.hpp:
-
-/u/cli6/.local/include/boost/predef/architecture/superh.h:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/cpu_defines.h:
-
-/u/cli6/.local/include/eigen3/Eigen/src/Core/AssignEvaluator.h:
-
-/u/cli6/.local/include/boost/variant/detail/visitation_impl.hpp:
-
-/u/cli6/.local/include/eigen3/Eigen/src/Core/Array.h:
-
 /u/cli6/.local/include/boost/predef/architecture.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_profiler_api.h:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/memoryfwd.h:
 
@@ -20134,12 +20156,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/config/stdlib/libstdcpp3.hpp:
 
-/u/cli6/.local/include/boost/mpl/lambda.hpp:
-
-/u/cli6/.local/include/CGAL/Intersections_3/internal/Segment_3_Segment_3_intersection.h:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/vector_types.h:
-
 /u/cli6/.local/include/boost/predef/compiler/iar.h:
 
 /u/cli6/.local/include/boost/move/detail/std_ns_begin.hpp:
@@ -20149,14 +20165,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/predef/compiler/visualc.h:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/unordered_map:
-
-/usr/include/unistd.h:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/typeinfo:
-
-/u/cli6/.local/include/boost/fusion/view/single_view/detail/deref_impl.hpp:
-
-/u/cli6/.local/include/CGAL/Direction_3.h:
 
 /u/cli6/.local/include/boost/fusion/support/is_sequence.hpp:
 
@@ -20168,6 +20176,16 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/integer/integer_log2.hpp:
 
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_algobase.h:
+
+/u/cli6/.local/include/boost/algorithm/clamp.hpp:
+
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/uses_allocator.h:
+
+/u/cli6/.local/include/boost/fusion/iterator/detail/segmented_next_impl.hpp:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/texture_types.h:
+
 /usr/include/endian.h:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/move.h:
@@ -20177,14 +20195,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/math/special_functions/detail/lanczos_sse2.hpp:
 
 /u/cli6/.local/include/CGAL/utils.h:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/hashtable_policy.h:
-
-/u/cli6/.local/include/CGAL/Intersections_3/internal/Line_3_Segment_3_do_intersect.h:
-
-/u/cli6/.local/include/boost/mpl/aux_/config/lambda.hpp:
-
-/u/cli6/.local/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h:
 
 /u/cli6/.local/include/CGAL/basic.h:
 
@@ -20196,13 +20206,19 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/move/detail/meta_utils.hpp:
 
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/hashtable_policy.h:
+
+/u/cli6/.local/include/CGAL/Intersections_3/internal/Line_3_Segment_3_do_intersect.h:
+
+/u/cli6/.local/include/boost/mpl/aux_/config/lambda.hpp:
+
+/u/cli6/.local/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/cuda_runtime_api.h:
+
 /u/cli6/.local/include/eigen3/Eigen/src/Core/ReturnByValue.h:
 
 /usr/include/bits/typesizes.h:
-
-/u/cli6/.local/include/boost/type_traits/is_constructible.hpp:
-
-/u/cli6/.local/include/boost/predef/os/hpux.h:
 
 /u/cli6/.local/include/CGAL/Distance_3/Segment_3_Line_3.h:
 
@@ -20213,6 +20229,10 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/core/ref.hpp:
 
 /usr/include/asm-generic/errno.h:
+
+/u/cli6/.local/include/boost/mpl/bind_fwd.hpp:
+
+/u/cli6/.local/include/boost/mpl/aux_/preprocessed/gcc/equal_to.hpp:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/avx512vp2intersectvlintrin.h:
 
@@ -20268,11 +20288,27 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/predef/architecture/pyramid.h:
 
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/iosfwd:
-
 /u/cli6/.local/include/boost/fusion/view/iterator_range.hpp:
 
 /u/cli6/.local/include/boost/predef/hardware/simd/arm/versions.h:
+
+/u/cli6/.local/include/boost/predef/compiler/greenhills.h:
+
+/u/cli6/.local/include/boost/type_traits/detail/is_member_function_pointer_cxx_11.hpp:
+
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/localefwd.h:
+
+/u/cli6/.local/include/boost/predef.h:
+
+../src/updaters/updaterWithNoise.h:
+
+/u/cli6/.local/include/boost/type_traits/add_rvalue_reference.hpp:
+
+/u/cli6/.local/include/boost/mpl/void_fwd.hpp:
+
+/u/cli6/.local/include/CGAL/Filtered_kernel/internal/Static_filters/Static_filters.h:
+
+/u/cli6/.local/include/boost/random/detail/int_float_pair.hpp:
 
 /u/cli6/.local/include/boost/fusion/adapted/boost_tuple/detail/at_impl.hpp:
 
@@ -20290,42 +20326,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/CGAL/license.h:
 
-/u/cli6/.local/include/boost/predef/compiler/tendra.h:
-
-/u/cli6/.local/include/boost/variant/detail/cast_storage.hpp:
-
-/u/cli6/.local/include/boost/predef/compiler/greenhills.h:
-
-/u/cli6/.local/include/boost/type_traits/detail/is_member_function_pointer_cxx_11.hpp:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/localefwd.h:
-
-/u/cli6/.local/include/boost/mpl/aux_/na_fwd.hpp:
-
-/u/cli6/.local/include/boost/type_traits/detail/has_postfix_operator.hpp:
-
-/usr/include/bits/types/struct_timeval.h:
-
-/u/cli6/.local/include/boost/predef/os/bsd.h:
-
-/u/cli6/.local/include/boost/type_traits/is_object.hpp:
-
-/u/cli6/.local/include/boost/predef/library/std/vacpp.h:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/version:
-
-/u/cli6/.local/include/boost/type_traits/add_cv.hpp:
-
-/u/cli6/.local/include/boost/mpl/vector/aux_/include_preprocessed.hpp:
-
-/usr/include/bits/byteswap.h:
-
-/u/cli6/.local/include/CGAL/Intersections_3/internal/Plane_3_Tetrahedron_3_intersection.h:
-
-/u/cli6/.local/include/boost/predef/hardware/simd/ppc/versions.h:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/tr1/hypergeometric.tcc:
-
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/fxsrintrin.h:
 
 /u/cli6/.local/include/boost/preprocessor/logical/compl.hpp:
@@ -20338,8 +20338,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/eigen3/Eigen/src/Core/util/IntegralConstant.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_device_runtime_api.h:
-
 /u/cli6/.local/include/boost/fusion/algorithm/transformation/pop_back.hpp:
 
 /usr/include/bits/setjmp.h:
@@ -20351,6 +20349,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/exception:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/cstddef:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/driver_types.h:
 
 /u/cli6/.local/include/boost/iterator/iterator_facade.hpp:
 
@@ -20391,6 +20391,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/type_traits/add_const.hpp:
 
 /u/cli6/.local/include/boost/predef/architecture/riscv.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.hpp:
 
 /usr/include/bits/wctype-wchar.h:
 
@@ -20454,6 +20456,10 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/eigen3/Eigen/src/Core/NoAlias.h:
 
+/u/cli6/.local/include/boost/lexical_cast/detail/lcast_unsigned_converters.hpp:
+
+/u/cli6/.local/include/boost/predef/library/std/cxx.h:
+
 /u/cli6/.local/include/boost/preprocessor/tuple/eat.hpp:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_pair.h:
@@ -20462,7 +20468,9 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/predef/library/std/dinkumware.h:
 
-/u/cli6/.local/include/boost/predef/library/std/modena.h:
+/u/cli6/.local/include/boost/type_traits/is_object.hpp:
+
+/u/cli6/.local/include/boost/predef/library/std/vacpp.h:
 
 /u/cli6/.local/include/boost/predef/os.h:
 
@@ -20491,14 +20499,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/preprocessor/tuple/rem.hpp:
 
 /u/cli6/.local/include/boost/numeric/conversion/detail/meta.hpp:
-
-/u/cli6/.local/include/boost/math/special_functions/polygamma.hpp:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/device_types.h:
-
-/u/cli6/.local/include/boost/predef/hardware/simd/ppc.h:
-
-/u/cli6/.local/include/eigen3/Eigen/src/Core/Swap.h:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/shared_ptr.h:
 
@@ -20533,6 +20533,10 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/predef/os/cygwin.h:
 
 /u/cli6/.local/include/boost/range/detail/misc_concept.hpp:
+
+/u/cli6/.local/include/boost/predef/hardware/simd/ppc.h:
+
+/u/cli6/.local/include/eigen3/Eigen/src/Core/Swap.h:
 
 /u/cli6/.local/include/boost/type_traits/has_virtual_destructor.hpp:
 
@@ -20610,10 +20614,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/predef/detail/os_detected.h:
 
-/usr/include/bits/types/__FILE.h:
-
-/u/cli6/.local/include/boost/numeric/conversion/detail/is_subranged.hpp:
-
 /u/cli6/.local/include/boost/predef/os/os400.h:
 
 /u/cli6/.local/include/boost/mpl/fold.hpp:
@@ -20623,6 +20623,20 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/assert.hpp:
 
 /usr/include/bits/types/wint_t.h:
+
+/u/cli6/.local/include/boost/mpl/vector/aux_/include_preprocessed.hpp:
+
+/usr/include/bits/byteswap.h:
+
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/version:
+
+/u/cli6/.local/include/boost/type_traits/add_cv.hpp:
+
+/u/cli6/.local/include/boost/numeric/conversion/detail/is_subranged.hpp:
+
+/usr/include/bits/types/__FILE.h:
+
+/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/memory:
 
 /u/cli6/.local/include/boost/predef/os/unix.h:
 
@@ -20635,6 +20649,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /usr/include/bits/mathcalls-helper-functions.h:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/x86_64-pc-linux-gnu/bits/c++config.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_globals.h:
 
 ../src/models/Simple2DActiveCell.cpp:
 
@@ -20678,6 +20694,12 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/predef/platform/windows_phone.h:
 
+/u/cli6/.local/include/boost/type_traits.hpp:
+
+/u/cli6/.local/include/boost/predef/platform/windows_store.h:
+
+/u/cli6/.local/include/boost/container_hash/detail/hash_range.hpp:
+
 ../src/models/vertexQuadraticEnergyWithTension.h:
 
 /u/cli6/.local/include/boost/predef/platform/windows_runtime.h:
@@ -20687,12 +20709,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/mpl/aux_/lambda_spec.hpp:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_heap.h:
-
-/u/cli6/.local/include/boost/config/pragma_message.hpp:
-
-/u/cli6/.local/include/boost/mpl/aux_/config/arrays.hpp:
-
-/u/cli6/.local/include/boost/predef/platform/ios.h:
 
 /u/cli6/.local/include/boost/fusion/container/list/cons.hpp:
 
@@ -20734,11 +20750,7 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /usr/include/wchar.h:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda_profiler_api.h:
-
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stream_iterator.h:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_normal.h:
 
 /u/cli6/.local/include/boost/math/special_functions/sin_pi.hpp:
 
@@ -20836,13 +20848,9 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/type_traits/has_minus_assign.hpp:
 
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/device_types.h:
+
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/cwchar:
-
-/sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/avx5124fmapsintrin.h:
-
-/u/cli6/.local/include/boost/preprocessor/seq/for_each_i.hpp:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/texture_types.h:
 
 /usr/include/bits/wchar.h:
 
@@ -20965,8 +20973,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/CGAL/Distance_2/Ray_2_Ray_2.h:
 
 /u/cli6/.local/include/boost/core/snprintf.hpp:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/channel_descriptor.h:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/smmintrin.h:
 
@@ -21114,10 +21120,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/variant/detail/apply_visitor_binary.hpp:
 
-/u/cli6/.local/include/boost/mpl/bind_fwd.hpp:
-
-/u/cli6/.local/include/boost/mpl/aux_/preprocessed/gcc/equal_to.hpp:
-
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/stl_vector.h:
 
 /u/cli6/.local/include/boost/numeric/conversion/detail/int_float_mixture.hpp:
@@ -21234,8 +21236,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/integer_traits.hpp:
 
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/library_types.h:
-
 /u/cli6/.local/include/boost/lexical_cast/detail/widest_char.hpp:
 
 /u/cli6/.local/include/CGAL/Conic_2.h:
@@ -21243,8 +21243,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/array.hpp:
 
 /u/cli6/.local/include/boost/core/swap.hpp:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/crt/host_config.h:
 
 /u/cli6/.local/include/boost/container/container_fwd.hpp:
 
@@ -21255,10 +21253,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/container/detail/std_fwd.hpp:
 
 /u/cli6/.local/include/boost/lexical_cast/detail/lcast_char_constants.hpp:
-
-/u/cli6/.local/include/boost/predef/library/std/cxx.h:
-
-/u/cli6/.local/include/boost/lexical_cast/detail/lcast_unsigned_converters.hpp:
 
 /u/cli6/.local/include/boost/lexical_cast/detail/inf_nan.hpp:
 
@@ -21348,6 +21342,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/CGAL/array.h:
 
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_normal.h:
+
 /u/cli6/.local/include/boost/container_hash/detail/requires_cxx11.hpp:
 
 /u/cli6/.local/include/boost/fusion/mpl/insert.hpp:
@@ -21419,8 +21415,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/predef/os/bsd/free.h:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/typeindex:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_precalc.h:
 
 /u/cli6/.local/include/boost/type_traits/is_function.hpp:
 
@@ -21528,6 +21522,10 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/type_traits/is_copy_constructible.hpp:
 
+/u/cli6/.local/include/boost/predef/os/hpux.h:
+
+/u/cli6/.local/include/boost/type_traits/is_constructible.hpp:
+
 /u/cli6/.local/include/boost/type_traits/is_destructible.hpp:
 
 /u/cli6/.local/include/boost/variant/recursive_wrapper.hpp:
@@ -21551,8 +21549,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/math/special_functions/trunc.hpp:
 
 /u/cli6/.local/include/boost/move/detail/config_end.hpp:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/curand_philox4x32_x.h:
 
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/lib/gcc/x86_64-pc-linux-gnu/11.2.0/include/sgxintrin.h:
 
@@ -21587,6 +21583,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/CGAL/Intersections_2/Segment_2_Triangle_2.h:
 
 /u/cli6/.local/include/boost/mpl/aux_/preprocessed/gcc/iter_fold_impl.hpp:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/vector_functions.h:
 
 /u/cli6/.local/include/boost/mpl/deref.hpp:
 
@@ -21784,6 +21782,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/mpl/aux_/front_impl.hpp:
 
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/crt/host_config.h:
+
 /u/cli6/.local/include/boost/mpl/aux_/insert_range_impl.hpp:
 
 /u/cli6/.local/include/boost/predef/architecture/parisc.h:
@@ -21874,6 +21874,10 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/describe/modifiers.hpp:
 
+/u/cli6/.local/include/boost/optional/detail/optional_relops.hpp:
+
+/u/cli6/.local/include/boost/preprocessor/slot/slot.hpp:
+
 /u/cli6/.local/include/boost/mpl/vector/aux_/tag.hpp:
 
 /u/cli6/.local/include/boost/mpl/equal.hpp:
@@ -21895,10 +21899,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/multiprecision/traits/is_backend.hpp:
 
 /u/cli6/.local/include/boost/optional/detail/optional_hash.hpp:
-
-/u/cli6/.local/include/boost/preprocessor/slot/slot.hpp:
-
-/u/cli6/.local/include/boost/optional/detail/optional_relops.hpp:
 
 /u/cli6/.local/include/boost/optional/detail/optional_swap.hpp:
 
@@ -21933,8 +21933,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /sw/spack/delta-2022-03/apps/gcc/11.2.0-gcc-8.4.1-fxgnsyr/include/c++/11.2.0/bits/ostream_insert.h:
 
 /u/cli6/.local/include/CGAL/Bbox_2.h:
-
-/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include/cuda.h:
 
 /u/cli6/.local/include/boost/mpl/aux_/config/nttp.hpp:
 
@@ -22210,6 +22208,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 
 /u/cli6/.local/include/boost/math/tools/assert.hpp:
 
+/u/cli6/.local/include/boost/math/tools/throw_exception.hpp:
+
 /u/cli6/.local/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h:
 
 /u/cli6/.local/include/boost/math/special_functions/detail/fp_traits.hpp:
@@ -22251,6 +22251,8 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/preprocessor/seq/limits/size_256.hpp:
 
 /u/cli6/.local/include/CGAL/Weighted_point_3.h:
+
+/sw/spack/deltas11-2023-03/apps/linux-rhel8-zen3/gcc-11.4.0/cuda-11.8.0-vfixfmc/include/curand_mrg32k3a.h:
 
 /u/cli6/.local/include/boost/iterator/counting_iterator.hpp:
 
@@ -22335,8 +22337,6 @@ src/models/CMakeFiles/model.dir/voronoiQuadraticEnergyWithTension.cpp.o: ../src/
 /u/cli6/.local/include/boost/mp11/detail/mp_map_find.hpp:
 
 /u/cli6/.local/include/boost/describe/detail/cx_streq.hpp:
-
-/u/cli6/.local/include/boost/mp11/bind.hpp:
 
 /u/cli6/.local/include/boost/container_hash/is_tuple_like.hpp:
 
