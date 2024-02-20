@@ -42,6 +42,7 @@ int main(int argc, char*argv[])
     int numberofDerivatives = 50000;
     int numberofWaitingtime = 5;
     int numberofWaitingtimeSAC = 3;
+    int timeLimitofSAC = 50000;
 
     double dt = 0.01; //the time step size
     double T = 0.01;  // the target temperature
@@ -131,7 +132,7 @@ int main(int argc, char*argv[])
 
     for(int ii = 0; ii < offsets.size(); ++ii)
         {
-        sprintf(dataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.2f_idx%i.nc",saveDirName,numpts,p0,T,offsets[ii]*dt,recordIndex);
+        sprintf(dataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",saveDirName,numpts,p0,T,offsets[ii]*dt,recordIndex);
         cout << "initializing an offset of " << offsets[ii]*dt << endl;
         shared_ptr<nvtModelDatabase> ncdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
         lewriter.addDatabase(ncdat,offsets[ii]);
@@ -149,10 +150,11 @@ int main(int argc, char*argv[])
         }
     for(int ii = 0; ii < offsetsSAC.size(); ++ii)
         {
-        sprintf(SACname,"%sSACtime_N%i_p%.4f_T%.8f_waitingTime%i_idx%i.nc",saveDirName,numpts,p0,T,lastOffsetSAC,recordIndex);
+        sprintf(SACname,"%sSACtime_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",saveDirName,numpts,p0,T,offsetsSAC[ii]*dt,recordIndex);
+        cout << "initializing an offset of " << offsetsSAC[ii]*dt <<" for SAC"<< endl;
         shared_ptr<twoValuesDatabase> SACtime=make_shared<twoValuesDatabase>(SACname,NcFile::Replace);
         shared_ptr<autocorrelator> acdat = make_shared<autocorrelator>(16,2,dt);
-        lsacwriter.addDatabase(SACtime,acdat,offsetsSAC[ii],10000000);//set the long time limmit to be 10^5tau
+        lsacwriter.addDatabase(SACtime,acdat,offsetsSAC[ii],20000000);//set the long time limmit to be 10^5tau
         }
     lewriter.identifyNextFrame();
 
@@ -221,6 +223,10 @@ int main(int argc, char*argv[])
             nvtProfiler.start();
             lewriter.writeState(voronoiModel,ii);
             nvtProfiler.end();
+            }
+        if (ii > maximumWaitingTimesteps + timeLimitofSAC)
+            {
+            lsacwriter.writeSAC();
             }
         //advance the simulationcd
         timeStepProfiler.start();

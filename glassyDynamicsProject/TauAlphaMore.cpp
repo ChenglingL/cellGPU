@@ -17,7 +17,13 @@
 
 
 /*!
-This is to generate more data with known tauE
+This file compiles to produce an executable that can be used to reproduce the timing information
+in the main cellGPU paper. It sets up a simulation that takes control of a voronoi model and a simple
+model of active motility
+NOTE that in the output, the forces and the positions are not, by default, synchronized! The NcFile
+records the force from the last time "computeForces()" was called, and generally the equations of motion will 
+move the positions. If you want the forces and the positions to be sync'ed, you should call the
+Voronoi model's computeForces() funciton right before saving a state.
 */
 
 /*There will three output files. One is using the nvtModelBase and saves the log-spaced configurations; one 
@@ -36,6 +42,7 @@ int main(int argc, char*argv[])
     int numberofDerivatives = 50000;
     int numberofWaitingtime = 5;
     int numberofWaitingtimeSAC = 3;
+    int timeLimitofSAC = 50000;
 
     double dt = 0.01; //the time step size
     double T = 0.01;  // the target temperature
@@ -89,7 +96,7 @@ int main(int argc, char*argv[])
 
     //set the max time to be 20000000 so the simulation can run 48h in the NCSADelta
     long long int maximumWaitingTimesteps = max(floor(10000/dt),floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt));
-    if (maximumWaitingTimesteps>10000/dt){maximumWaitingTimesteps=100000/dt;};
+    if (maximumWaitingTimesteps>100000/dt){maximumWaitingTimesteps=100000/dt;};
     long long int maximumTimesteps = min(floor(200000/dt), maximumWaitingTimesteps+max(floor((numberOfRelaxationTimes * tauEstimate)/dt),1000/dt));
     cout << "tauAlpha estimate is " << tauEstimate << " and the system will be run for a maximum waiting time of " << equilibrationWaitingTimeMultiple << " multiples of that estimate." << endl;
     cout << "maximum waiting timesteps = " << maximumWaitingTimesteps << ", Total timesteps = " << maximumTimesteps << endl;
@@ -125,7 +132,7 @@ int main(int argc, char*argv[])
 
     for(int ii = 0; ii < offsets.size(); ++ii)
         {
-        sprintf(dataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.2f_idx%i.nc",saveDirName,numpts,p0,T,offsets[ii]*dt,recordIndex);
+        sprintf(dataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",saveDirName,numpts,p0,T,offsets[ii]*dt,recordIndex);
         cout << "initializing an offset of " << offsets[ii]*dt << endl;
         shared_ptr<nvtModelDatabase> ncdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
         lewriter.addDatabase(ncdat,offsets[ii]);
@@ -143,10 +150,11 @@ int main(int argc, char*argv[])
         }
     for(int ii = 0; ii < offsetsSAC.size(); ++ii)
         {
-        sprintf(SACname,"%sSACtime_N%i_p%.4f_T%.8f_waitingTime%i_idx%i.nc",saveDirName,numpts,p0,T,lastOffsetSAC,recordIndex);
+        sprintf(SACname,"%sSACtime_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",saveDirName,numpts,p0,T,offsetsSAC[ii]*dt,recordIndex);
+        cout << "initializing an offset of " << offsetsSAC[ii]*dt <<" for SAC"<< endl;
         shared_ptr<twoValuesDatabase> SACtime=make_shared<twoValuesDatabase>(SACname,NcFile::Replace);
         shared_ptr<autocorrelator> acdat = make_shared<autocorrelator>(16,2,dt);
-        lsacwriter.addDatabase(SACtime,acdat,offsetsSAC[ii],10000000);//set the long time limmit to be 10^5tau
+        lsacwriter.addDatabase(SACtime,acdat,offsetsSAC[ii],20000000);//set the long time limmit to be 10^5tau
         }
     lewriter.identifyNextFrame();
 
@@ -215,6 +223,10 @@ int main(int argc, char*argv[])
             nvtProfiler.start();
             lewriter.writeState(voronoiModel,ii);
             nvtProfiler.end();
+            }
+        if (ii > maximumWaitingTimesteps + timeLimitofSAC/dt)
+            {
+            lsacwriter.writeSAC();
             }
         //advance the simulationcd
         timeStepProfiler.start();
