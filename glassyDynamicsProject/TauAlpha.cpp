@@ -41,6 +41,7 @@ int main(int argc, char*argv[])
     double numberOfRelaxationTimes =100.0;
     int numberofDerivatives = 50000;
     int numberofWaitingtime = 5;
+    int numberofWaitingtimeSAC = 3;
 
     double dt = 0.01; //the time step size
     double T = 0.01;  // the target temperature
@@ -137,22 +138,21 @@ int main(int argc, char*argv[])
         }
 
     vector<long long int> offsetsSAC;
-    int lastOffsetSAC=maximumTimesteps/4;
-    int NwaitTauSAC=1;
-    while(lastOffsetSAC < maximumTimesteps)
-        {
-        offsetsSAC.push_back(lastOffsetSAC);
-        cout << "save stress auto correlation function with an offset of " << lastOffsetSAC << endl;
-        NwaitTauSAC++;
-        lastOffsetSAC = NwaitTauSAC*maximumTimesteps/4;
-        }
 
+    int lastOffsetSAC;
+    int powerSAC =11-numberofWaitingtimeSAC;
+    while(lastOffsetSAC < maximumWaitingTimesteps)
+        {
+        lastOffsetSAC = powerSAC*maximumWaitingTimesteps/10;
+        offsetsSAC.push_back(lastOffsetSAC);
+        powerSAC+= 1;
+        }
     for(int ii = 0; ii < offsetsSAC.size(); ++ii)
         {
         sprintf(SACname,"%sSACtime_N%i_p%.4f_T%.8f_waitingTime%i_idx%i.nc",saveDirName,numpts,p0,T,lastOffsetSAC,recordIndex);
         shared_ptr<twoValuesDatabase> SACtime=make_shared<twoValuesDatabase>(SACname,NcFile::Replace);
         shared_ptr<autocorrelator> acdat = make_shared<autocorrelator>(16,2,dt);
-        lsacwriter.addDatabase(SACtime,acdat,offsetsSAC[ii],2000000);//set the long time limmit to be 2*10^4tau
+        lsacwriter.addDatabase(SACtime,acdat,offsetsSAC[ii],10000000);//set the long time limmit to be 10^5tau
         }
     lewriter.identifyNextFrame();
 

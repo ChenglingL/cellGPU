@@ -15,7 +15,7 @@ void logSACWritter::addData(double stress, long long int frame)
     for (int ii = 0; ii < databases.size(); ++ii)
         {
 //            cout << frame << "\t" << ii << endl;
-        if(frame > saveOffsets[ii] && frame < uplimit)
+        if(frame > saveOffsets[ii] && frame - saveOffsets[ii] < uplimit)
             {
                 SACs[ii]->add(stress,0);
             }
