@@ -75,6 +75,18 @@ class VoronoiQuadraticEnergy : public voronoiModelBase
         //!calculate the current d2Edgammadgamma for each cell and return the global d2Edgammadgamma
         virtual double getd2Edgammadgamma(vector<double> &d2Eidgammadgamma);
 
+        //!calculate the current d2Edgammadgamma for each cell and return the global d2Edgammadgamma
+        //! Using the method to reproduce 2018 no jamming transition paper
+        virtual double getd2EdgammadgammaOldPaper();
+
+        //!calculate the current global d2Edgammadr for the shear modulus of inherent states
+        //! Using the method to reproduce 2018 no jamming transition paper and this is the corrected one
+        virtual void getd2EdgammadrOldPaper(vector<double2> &d2Edgammadr);
+
+        //!calculate the current global d2Edgammadr for the shear modulus of inherent states
+        //! Using the method to reproduce 2018 no jamming transition paper
+        virtual void getd2EdgammadrOldPaperWrong(vector<double2> &d2Edgammadr);
+
     protected:
         //! Second derivative of the energy w/r/t cell positions...for getting dynMat info
         Matrix2x2 d2Edridrj(int i, int j, neighborType neighbor,double unstress = 1.0, double stress = 1.0);
@@ -84,6 +96,9 @@ class VoronoiQuadraticEnergy : public voronoiModelBase
 
         //! Second derivative of the energy of cell i w/r/t the position of nth vertex of cell i and the position of jth vertex of cell i
         Matrix2x2 d2eidHndHj(int i,int nn, int j);
+
+        //calculate the derivative of energy i w.r.t positions of cell j and k
+        Matrix2x2 d2Eidrjdrk(int i, int j, int k);
 
     //be friends with the associated Database class so it can access data to store or read
     friend class SPVDatabaseNetCDF;

@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
-  "../glassyDnamicsProject/monodisperseVoronoi_equilibrium.out"
-  "../glassyDnamicsProject/monodisperseVoronoi_equilibrium.out.pdb"
-  "CMakeFiles/monodisperseVoronoi_equilibrium.out.dir/agingProject/monodisperseVoronoi_equilibrium.cpp.o"
-  "CMakeFiles/monodisperseVoronoi_equilibrium.out.dir/agingProject/monodisperseVoronoi_equilibrium.cpp.o.d"
+  "../localTest/executable/monodisperseVoronoi_equilibrium.out"
+  "../localTest/executable/monodisperseVoronoi_equilibrium.out.pdb"
+  "CMakeFiles/monodisperseVoronoi_equilibrium.out.dir/localTest/monodisperseVoronoi_equilibrium.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

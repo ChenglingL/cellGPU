@@ -1542,3 +1542,301 @@ void VoronoiQuadraticEnergy::getd2Edgammadr(vector<double2> &d2Edgammadr)
 
 
     }
+
+Matrix2x2 VoronoiQuadraticEnergy::d2Eidrjdrk(int i, int j, int k)
+    {
+    computeGeometry();
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+    Matrix2x2 answer(0.0,0.0,0.0,0.0);
+    Matrix2x2 tempMatrixd2EidHldHm(0.0,0.0,0.0,0.0);
+    Matrix2x2 tempMatrixProduct(0.0,0.0,0.0,0.0);
+    Matrix2x2 tempMatrixdhldHldrj(0.0,0.0,0.0,0.0);
+    Matrix2x2 tempMatrixdhldHmdrk(0.0,0.0,0.0,0.0);
+    Matrix2x2 tempMatrixd2Hldrjdrkx(0.0,0.0,0.0,0.0);
+    Matrix2x2 tempMatrixd2Hldrjdrky(0.0,0.0,0.0,0.0);
+
+    for (int l = 0; l< h_nn.data[i]; l++)
+    {
+        //all the cells that are neighbors of vertex i
+        double2 rl1,rl2,rl3; 
+        // index of the 3rd cell center that is neighbour of vertex i.
+        // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+        int llast = l - 1;
+        if(llast == -1){
+            llast = h_nn.data[i] - 1;
+        }
+
+        rl1=h_p.data[i];
+        rl2=h_p.data[h_n.data[n_idx(l,i)]];
+        rl3=h_p.data[h_n.data[n_idx(llast,i)]];
+
+        if(j!=i&&j!=h_n.data[n_idx(l,i)]&&j!=h_n.data[n_idx(llast,i)]) continue;
+        //cout<<j<<"is the neighbor of "<<"i";
+
+        double2 dEidhl;
+        dEidhl=deidHn(i,l);
+
+        for(int m = 0; m < h_nn.data[i]; m++)
+        {
+
+            double2 rm1,rm2,rm3; 
+            // index of the 3rd cell center that is neighbour of vertex i.
+            // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+            int mlast = m - 1;
+            if(mlast == -1){
+                mlast = h_nn.data[i] - 1;
+            }
+
+            rm1=h_p.data[i];
+            rm2=h_p.data[h_n.data[n_idx(m,i)]];
+            rm3=h_p.data[h_n.data[n_idx(mlast,i)]];
+            if(k!=i&&k!=h_n.data[n_idx(m,i)]&&k!=h_n.data[n_idx(mlast,i)])continue;
+            //cout<<k<<"is the neighbor of "<<i<<" ";
+
+            tempMatrixd2EidHldHm=d2eidHndHj(i,l,m);
+            //cout<<"tempMatrixd2EidHldHm "<<tempMatrixd2EidHldHm.x11<<" "<<tempMatrixd2EidHldHm.x12<<" "<<tempMatrixd2EidHldHm.x21<<" "<<tempMatrixd2EidHldHm.x22<<endl;
+
+            if(j==i){
+                tempMatrixdhldHldrj=dHdri(rl1,rl2,rl3);
+            }else if(j==h_n.data[n_idx(l,i)]){
+                tempMatrixdhldHldrj=dHdri(rl2,rl1,rl3);
+            }else if(j==h_n.data[n_idx(llast,i)]){
+                tempMatrixdhldHldrj=dHdri(rl3,rl2,rl1);
+            };
+            //cout<<"tempMatrixdhldHldrj "<<tempMatrixdhldHldrj.x11<<" "<<tempMatrixdhldHldrj.x12<<" "<<tempMatrixdhldHldrj.x21<<" "<<tempMatrixdhldHldrj.x22<<endl;
+            //tempMatrixdhldHldrj.transpose();
+
+            if(k==i){
+                tempMatrixdhldHmdrk=dHdri(rm1,rm2,rm3);
+            }else if(k==h_n.data[n_idx(m,i)]){
+                tempMatrixdhldHmdrk=dHdri(rm2,rm1,rm3);
+            }else if(k==h_n.data[n_idx(mlast,i)]){
+                tempMatrixdhldHmdrk=dHdri(rm3,rm2,rm1);
+            };
+            //cout<<"tempMatrixdhldHmdrk "<<tempMatrixdhldHmdrk.x11<<" "<<tempMatrixdhldHmdrk.x12<<" "<<tempMatrixdhldHmdrk.x21<<" "<<tempMatrixdhldHmdrk.x22<<endl;
+            tempMatrixProduct = tempMatrixd2EidHldHm * tempMatrixdhldHmdrk;
+            tempMatrixProduct.transpose();
+            tempMatrixProduct = tempMatrixProduct * tempMatrixdhldHldrj;
+            tempMatrixProduct.transpose();
+            answer += tempMatrixProduct;
+            //cout<<answer.x11<<" "<<answer.x12<<" "<<answer.x21<<" "<<answer.x22<<endl;
+        }
+
+        if(j==i&&k==i){
+            d2Hdridrj(rl1,rl2,rl3,true,tempMatrixd2Hldrjdrkx,tempMatrixd2Hldrjdrky);
+            answer += dEidhl.x * tempMatrixd2Hldrjdrkx + dEidhl.y * tempMatrixd2Hldrjdrky;
+        }else if(j==i&&k==h_n.data[n_idx(l,i)]){
+            d2Hdridrj(rl1,rl2,rl3,false,tempMatrixd2Hldrjdrkx,tempMatrixd2Hldrjdrky);
+            answer += dEidhl.x * tempMatrixd2Hldrjdrkx + dEidhl.y * tempMatrixd2Hldrjdrky;
+        }else if(j==i&&k==h_n.data[n_idx(llast,i)]){
+            d2Hdridrj(rl1,rl3,rl2,false,tempMatrixd2Hldrjdrkx,tempMatrixd2Hldrjdrky);
+            answer += dEidhl.x * tempMatrixd2Hldrjdrkx + dEidhl.y * tempMatrixd2Hldrjdrky;
+        }else if(j==h_n.data[n_idx(l,i)]&&k==i){
+            d2Hdridrj(rl2,rl1,rl3,false,tempMatrixd2Hldrjdrkx,tempMatrixd2Hldrjdrky);
+            answer += dEidhl.x * tempMatrixd2Hldrjdrkx + dEidhl.y * tempMatrixd2Hldrjdrky;
+        }else if(j==h_n.data[n_idx(l,i)]&&k==h_n.data[n_idx(l,i)]){
+            d2Hdridrj(rl2,rl1,rl3,true,tempMatrixd2Hldrjdrkx,tempMatrixd2Hldrjdrky);
+            answer += dEidhl.x * tempMatrixd2Hldrjdrkx + dEidhl.y * tempMatrixd2Hldrjdrky;
+        }else if(j==h_n.data[n_idx(l,i)]&&k==h_n.data[n_idx(llast,i)]){
+            d2Hdridrj(rl2,rl3,rl1,false,tempMatrixd2Hldrjdrkx,tempMatrixd2Hldrjdrky);
+            answer += dEidhl.x * tempMatrixd2Hldrjdrkx + dEidhl.y * tempMatrixd2Hldrjdrky;
+        }else if(j==h_n.data[n_idx(llast,i)]&&k==i){
+            d2Hdridrj(rl3,rl1,rl2,false,tempMatrixd2Hldrjdrkx,tempMatrixd2Hldrjdrky);
+            answer += dEidhl.x * tempMatrixd2Hldrjdrkx + dEidhl.y * tempMatrixd2Hldrjdrky;
+        }else if(j==h_n.data[n_idx(llast,i)]&&k==h_n.data[n_idx(l,i)]){
+            d2Hdridrj(rl3,rl2,rl1,false,tempMatrixd2Hldrjdrkx,tempMatrixd2Hldrjdrky);
+            answer += dEidhl.x * tempMatrixd2Hldrjdrkx + dEidhl.y * tempMatrixd2Hldrjdrky;
+        }else if(j==h_n.data[n_idx(llast,i)]&&k==h_n.data[n_idx(llast,i)]){
+            d2Hdridrj(rl3,rl2,rl1,true,tempMatrixd2Hldrjdrkx,tempMatrixd2Hldrjdrky);
+            answer += dEidhl.x * tempMatrixd2Hldrjdrkx + dEidhl.y * tempMatrixd2Hldrjdrky;
+        }
+        //cout<<"tempMatrixd2Hldrjdrkx "<<tempMatrixd2Hldrjdrkx.x11<<" "<<tempMatrixd2Hldrjdrkx.x12<<" "<<tempMatrixd2Hldrjdrkx.x21<<" "<<tempMatrixd2Hldrjdrkx.x22<<endl;
+    }
+    return answer;
+    }
+
+double VoronoiQuadraticEnergy::getd2EdgammadgammaOldPaper()
+    {
+    computeGeometry();
+    double answer = 0.0;
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+
+    // for (int cell = 0; cell < Ncells; ++cell)
+    //     {
+    //         cout<<"Cell "<<cell<<" number of vertices "<<h_cvn.data[cell]<<endl;
+    //         for (int i = 0; i < h_cvn.data[cell]; i++)
+    //         {
+    //             cout<<"n_idx(i,cell): "<<n_idx(i,cell)<<endl;
+    //             cout<<"Cell "<<cell<<" Vetex"<<i<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+1]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+2]<<endl;
+    //         }
+    //     }
+
+    //Loop over all the cells
+    double b1,b2,b3,b4;
+    Box->getBoxDims(b1,b2,b3,b4);
+    for (int cell = 0; cell < Ncells; ++cell)
+        {
+        for (int i = 0; i < h_nn.data[cell]; i++)
+        {
+            int2 periodicitycelli;
+            double2 rcell, ri;
+            rcell = h_p.data[cell];
+            ri = h_p.data[h_n.data[n_idx(i,cell)]];
+            Box->periodicity(ri,rcell,periodicitycelli);
+            for(int j = 0; j < h_nn.data[cell]; j++)
+            {
+                int2 periodicitycellj;
+                double2 rj;
+                rj = h_p.data[h_n.data[n_idx(j,cell)]];
+                Box->periodicity(rj,rcell,periodicitycellj);
+                if(periodicitycellj.y!=0&&periodicitycelli.y!=0){
+                    Matrix2x2 d2Ecelldridrj;
+                    d2Ecelldridrj = d2Eidrjdrk(cell, h_n.data[n_idx(i,cell)] ,h_n.data[n_idx(j,cell)]);
+                    answer += b4*b4 * periodicitycellj.y *periodicitycelli.y * d2Ecelldridrj.x11;
+                }
+            }                
+        }
+        };
+
+
+    return answer;    
+    }
+
+void VoronoiQuadraticEnergy::getd2EdgammadrOldPaper(vector<double2> &d2Edgammadr)
+    {
+    computeGeometry();
+    double answer = 0.0;
+    d2Edgammadr.reserve(Ncells);
+    for (int i = 0; i < Ncells; ++i) {
+        d2Edgammadr[i].x = 0.0;
+        d2Edgammadr[i].y = 0.0;
+    }
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+
+    // for (int cell = 0; cell < Ncells; ++cell)
+    //     {
+    //         cout<<"Cell "<<cell<<" number of vertices "<<h_cvn.data[cell]<<endl;
+    //         for (int i = 0; i < h_cvn.data[cell]; i++)
+    //         {
+    //             cout<<"n_idx(i,cell): "<<n_idx(i,cell)<<endl;
+    //             cout<<"Cell "<<cell<<" Vetex"<<i<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+1]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+2]<<endl;
+    //         }
+    //     }
+
+    //Loop over all the cells
+    double b1,b2,b3,b4;
+    Box->getBoxDims(b1,b2,b3,b4);
+    for (int cellj = 0; cellj < Ncells; ++cellj){
+        //first term
+        for (int cell = 0; cell < Ncells; ++cell)
+            {
+            for (int i = 0; i < h_nn.data[cell]; i++)
+            {
+                int2 periodicitycelli;
+                double2 rcell, ri;
+                rcell = h_p.data[cell];
+                ri = h_p.data[h_n.data[n_idx(i,cell)]];
+                Box->periodicity(ri,rcell,periodicitycelli);
+                if(periodicitycelli.y!=0){
+                    Matrix2x2 d2Ecelldridrcellj;
+                    d2Ecelldridrcellj=d2Eidrjdrk(cell,h_n.data[n_idx(i,cell)],cellj);
+                    d2Edgammadr[cellj].x += b4 * periodicitycelli.y * d2Ecelldridrcellj.x11;
+                    d2Edgammadr[cellj].y += b4 * periodicitycelli.y * d2Ecelldridrcellj.x12;
+                }
+            }
+            }
+
+    }
+    
+
+
+    }
+
+void VoronoiQuadraticEnergy::getd2EdgammadrOldPaperWrong(vector<double2> &d2Edgammadr)
+    {
+    computeGeometry();
+    double answer = 0.0;
+    d2Edgammadr.reserve(Ncells);
+    for (int i = 0; i < Ncells; ++i) {
+        d2Edgammadr[i].x = 0.0;
+        d2Edgammadr[i].y = 0.0;
+    }
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+
+    // for (int cell = 0; cell < Ncells; ++cell)
+    //     {
+    //         cout<<"Cell "<<cell<<" number of vertices "<<h_cvn.data[cell]<<endl;
+    //         for (int i = 0; i < h_cvn.data[cell]; i++)
+    //         {
+    //             cout<<"n_idx(i,cell): "<<n_idx(i,cell)<<endl;
+    //             cout<<"Cell "<<cell<<" Vetex"<<i<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+1]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+2]<<endl;
+    //         }
+    //     }
+
+    //Loop over all the cells
+    double b1,b2,b3,b4;
+    Box->getBoxDims(b1,b2,b3,b4);
+    for (int cellj = 0; cellj < Ncells; ++cellj){
+        //first term
+        for (int cell = 0; cell < Ncells; ++cell)
+            {
+            for (int i = 0; i < h_nn.data[cell]; i++)
+            {
+                int2 periodicitycelli;
+                double2 rcell, ri;
+                rcell = h_p.data[cell];
+                ri = h_p.data[h_n.data[n_idx(i,cell)]];
+                Box->periodicity(ri,rcell,periodicitycelli);
+                if(periodicitycelli.y!=0){
+                    Matrix2x2 d2Ecelldridrcellj;
+                    d2Ecelldridrcellj=d2Eidrjdrk(cell,h_n.data[n_idx(i,cell)],cellj);
+                    d2Edgammadr[cellj].x += b4 * periodicitycelli.y * d2Ecelldridrcellj.x11;
+                    d2Edgammadr[cellj].y += b4 * periodicitycelli.y * d2Ecelldridrcellj.x12;
+                }
+            }
+            }
+
+        // 2nd term
+        for (int k = 0; k < h_nn.data[cellj]; k++)
+        {
+            int2 periodicitycellk;
+            double2 rcellj, rk;
+            rcellj = h_p.data[cellj];
+            rk = h_p.data[h_n.data[n_idx(k,cellj)]];
+            Box->periodicity(rk,rcellj,periodicitycellk);
+            for(int l = 0; l < h_nn.data[cellj]; l++)
+            {
+                int2 periodicitycelll;
+                double2 rl;
+                rl = h_p.data[h_n.data[n_idx(l,cellj)]];
+                Box->periodicity(rl,rcellj,periodicitycelll);
+                if(periodicitycellk.y!=0){
+                    Matrix2x2 d2Ecelljdrldrk;
+                    d2Ecelljdrldrk=d2Eidrjdrk(cellj,h_n.data[n_idx(k,cellj)],h_n.data[n_idx(l,cellj)]);
+                    d2Edgammadr[cellj].x -= b4 * periodicitycellk.y * d2Ecelljdrldrk.x11;
+                    d2Edgammadr[cellj].y -= b4 * periodicitycellk.y * d2Ecelljdrldrk.x12;
+                }
+            }                
+
+            };
+    }
+    
+
+
+    }

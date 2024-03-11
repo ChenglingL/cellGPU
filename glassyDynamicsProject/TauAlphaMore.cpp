@@ -224,7 +224,7 @@ int main(int argc, char*argv[])
             lewriter.writeState(voronoiModel,ii);
             nvtProfiler.end();
             }
-        if (ii > maximumWaitingTimesteps + timeLimitofSAC/dt)
+        if (ii == floor(maximumWaitingTimesteps + timeLimitofSAC/dt))
             {
             lsacwriter.writeSAC();
             }

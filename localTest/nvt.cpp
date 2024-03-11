@@ -72,12 +72,12 @@ int main(int argc, char*argv[])
 
     logEquilibrationStateWriter lewriter(0.05);
     char saveDirName[256];
-    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/d2edgammadrTest/N%i/",numpts);
+    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/d2EidrjdrkTest/N%i/",numpts);
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
     char dataname[256];
     char derivativeDataname[256];
-    sprintf(dataname,"%snvt_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
-    sprintf(derivativeDataname,"%sd2edgammadr_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
+    sprintf(dataname,"%snvt_d2EdgammadrOldPaper_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
+    sprintf(derivativeDataname,"%sd2EdgammadrOldPaper_N%i_p%.3f_T%.8f_%i.nc",saveDirName,numpts,p0,T,id);
     shared_ptr<testModelDatabase> ncdat=make_shared<testModelDatabase>(numpts,dataname,NcFile::Replace);
     shared_ptr<twoValuesDatabase> derivativedat=make_shared<twoValuesDatabase>(derivativeDataname,NcFile::Replace);
     
@@ -133,12 +133,27 @@ int main(int argc, char*argv[])
             {
             voronoiModel->enforceTopology();
             lewriter.writeState(voronoiModel,ii);
-            vector<double2> derivative;
-            voronoiModel->getd2Edgammadr(derivative);
+            vector<double2> temp;
+            voronoiModel->getd2EdgammadrOldPaper(temp);
             for (int i = 0; i < numpts; i++)
             {
-                derivativedat->writeValues(derivative[i].x,derivative[i].y);
+                derivativedat->writeValues(temp[i].x,temp[i].y);
             }
+            
+            //derivativedat->writeValues(voronoiModel->getd2EdgammadgammaOldPaper(),0.0);
+            // for (int i = 0; i < numpts; i++)
+            // {
+            //     for (int j = 0; j < numpts; j++){
+            //         Matrix2x2 tempd2Edridrj(0.0,0.0,0.0,0.0);
+            //         tempd2Edridrj=voronoiModel->getd2Eidrjdrk(1,i,j);
+            //         if(abs(tempd2Edridrj.x11)>0){
+            //             cout<<i<<" "<<j<<endl;
+            //             cout<<tempd2Edridrj.x11<<" "<<tempd2Edridrj.x12<<""<<tempd2Edridrj.x21<<" "<<tempd2Edridrj.x22<<endl;
+            //             }
+            //         derivativedat->writeValues(tempd2Edridrj.x11,tempd2Edridrj.x12);
+            //         derivativedat->writeValues(tempd2Edridrj.x21,tempd2Edridrj.x22);
+            //     }
+            // }
             
             break;//we only need 1 configuration
             }

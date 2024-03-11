@@ -646,6 +646,52 @@ Matrix2x2 voronoiModelBase::d2Hdridgamma(double2 ri, double2 rj, double2 rk)
     };
 
 /*!
+\param ri The position of cell i
+\param rj The position of cell j
+\param rk The position of cell k
+Returns the derivative of the voronoi vertex shared by cells i, j , and k with respect to changing the positions of cells
+if sameCell is True, the derivative is w.r.t ri and ri; if false, then the derivative is w.r.t ri and rj.
+rk is always the position of cell that we are not differentiating
+anwserx is the (row, column) format specifies d2Hx/dr_{i,column}dr_{j,row}
+anwsery is the (row, column) format specifies d2Hy/dr_{i,column}dr_{j,row}
+*/
+
+void voronoiModelBase::d2Hdridrj(double2 ri, double2 rj, double2 rk, bool sameCell, Matrix2x2 &answerx, Matrix2x2 &answery)
+    {
+    double r2x,r2y,r3x,r3y;
+    double2 r12,r13;
+    
+    Box->minDist(rj,ri,r12);
+    Box->minDist(rk,ri,r13);
+    r2x = r12.x;
+    r2y = r12.y;
+    r3x = r13.x;
+    r3y = r13.y;
+    if(sameCell){
+        answerx.x11 = -(r2y*(r2y - r3y)*r3y*(-2*r2x*r3x - 2*r2y*r3y + pow(r2x,2) + pow(r2y,2) + pow(r3x,2) + pow(r3y,2))*pow(r2y*r3x - r2x*r3y,-3));
+        answerx.x12 = -0.5*((r2y - r3y)*(-(r2y*r3x) - r2x*r3y)*(-2*r2x*r3x - 2*r2y*r3y + pow(r2x,2) + pow(r2y,2) + pow(r3x,2) + pow(r3y,2))*pow(r2y*r3x - r2x*r3y,-3));
+        answerx.x21 = answerx.x12;
+        answerx.x22 = r2x*r3x*(r2y - r3y)*(-2*r2x*r3x - 2*r2y*r3y + pow(r2x,2) + pow(r2y,2) + pow(r3x,2) + pow(r3y,2))*pow(-(r2y*r3x) + r2x*r3y,-3);
+
+        answery.x11 = r2y*(r2x - r3x)*r3y*(-2*r2x*r3x - 2*r2y*r3y + pow(r2x,2) + pow(r2y,2) + pow(r3x,2) + pow(r3y,2))*pow(r2y*r3x - r2x*r3y,-3);
+        answery.x12 = ((r2x - r3x)*(-(r2y*r3x) - r2x*r3y)*(-2*r2x*r3x - 2*r2y*r3y + pow(r2x,2) + pow(r2y,2) + pow(r3x,2) + pow(r3y,2))*pow(r2y*r3x - r2x*r3y,-3))/2;
+        answery.x21 = answery.x12;
+        answery.x22 = r2x*(r2x - r3x)*r3x*(-2*r2x*r3x - 2*r2y*r3y + pow(r2x,2) + pow(r2y,2) + pow(r3x,2) + pow(r3y,2))*pow(r2y*r3x - r2x*r3y,-3);
+        
+    }else{
+        answerx.x11 = r2y*(r2y - r3y)*r3y*(-(r2x*r3x) - r2y*r3y + pow(r3x,2) + pow(r3y,2))*pow(r2y*r3x - r2x*r3y,-3);
+        answerx.x12 = (r3y*(r3x*(r2y - 2*r3y)*pow(r2x,2) + r3y*pow(r2x,3) + r2y*r3x*(-pow(r2y,2) + pow(r3x,2) + pow(r3y,2)) + r2x*(3*r3y*pow(r2y,2) + r3y*(pow(r3x,2) + pow(r3y,2)) - 2*r2y*(pow(r3x,2) + 2*pow(r3y,2))))*pow(r2y*r3x - r2x*r3y,-3))/2.;
+        answerx.x21 = ((r2y - r3y)*(r2y*r3x*(2*r2y - r3y)*r3y + 2*r2x*r2y*pow(r3x,2) - r2y*pow(r3x,3) - r2x*r3y*(pow(r3x,2) + pow(r3y,2)))*pow(r2y*r3x - r2x*r3y,-3))/2.;
+        answerx.x22 = ((-(r3x*r3y*pow(r2x,3)) + pow(r2y,3)*pow(r3x,2) + r2x*r3x*(-3*r3y*pow(r2y,2) - 2*r3y*(pow(r3x,2) + pow(r3y,2)) + r2y*(pow(r3x,2) + 3*pow(r3y,2))) + pow(r2x,2)*(-(r2y*pow(r3x,2)) + 3*r3y*pow(r3x,2) + pow(r3y,3)))*pow(r2y*r3x - r2x*r3y,-3))/2.;
+
+        answery.x11 = ((r3x*r3y*pow(r2y,3) - pow(r2x,3)*pow(r3y,2) - pow(r2y,2)*(pow(r3x,3) - r2x*pow(r3y,2) + 3*r3x*pow(r3y,2)) + r2y*r3y*(3*r3x*pow(r2x,2) + 2*r3x*(pow(r3x,2) + pow(r3y,2)) - r2x*(3*pow(r3x,2) + pow(r3y,2))))*pow(r2y*r3x - r2x*r3y,-3))/2.;
+        answery.x12 = -0.5*((r2x - r3x)*(r2x*r3y*(2*r2x*r3x - pow(r3x,2) - pow(r3y,2)) - r2y*(pow(r3x,3) - 2*r2x*pow(r3y,2) + r3x*pow(r3y,2)))*pow(r2y*r3x - r2x*r3y,-3));
+        answery.x21 = -0.5*(r3x*(3*r2y*r3x*pow(r2x,2) - r3y*pow(r2x,3) + r2y*r3x*(-2*r2y*r3y + pow(r2y,2) + pow(r3x,2) + pow(r3y,2)) + r2x*(r3y*pow(r2y,2) + r3y*(pow(r3x,2) + pow(r3y,2)) - 2*r2y*(2*pow(r3x,2) + pow(r3y,2))))*pow(r2y*r3x - r2x*r3y,-3));
+        answery.x22 = r2x*(r2x - r3x)*r3x*(r2x*r3x + (r2y - r3y)*r3y - pow(r3x,2))*pow(r2y*r3x - r2x*r3y,-3);
+    }
+    };
+
+/*!
 \param i The index of cell i
 \param j The index of cell j
 \pre Requires that computeGeometry is current

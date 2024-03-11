@@ -52,6 +52,8 @@ struct periodicBoundaries
         HOSTDEVICE void invTrans(const double2 p1, double2 &pans);
         //!Calculate the minimum distance between two points
         HOSTDEVICE void minDist(const double2 &p1, const double2 &p2, double2 &pans);
+        //!Calculate the periodicity between two points
+        HOSTDEVICE void periodicity(const double2 &p1, const double2 &p2, int2 &period);
         //!Move p1 by the amount disp, then put it in the box
         HOSTDEVICE void move(double2 &p1, const double2 &disp);
 
@@ -175,6 +177,35 @@ void periodicBoundaries::minDist(const double2 &p1, const double2 &p2, double2 &
         while(disp.y > 0.5) disp.y -=1.0;
 
         Trans(disp,pans);
+        };
+    };
+
+void periodicBoundaries::periodicity(const double2 &p1, const double2 &p2, int2 &period)
+    {
+    double2 pans;
+    if (isSquare)
+        {
+        period.x = 0;period.y = 0;
+        pans.x = p1.x-p2.x;
+        pans.y = p1.y-p2.y;
+        if(pans.x > halfx11) period.x --;
+        if(pans.x < -halfx11) period.x ++;
+        if(pans.y > halfx11) period.y --;
+        if(pans.y < -halfx11) period.y ++;
+        }
+    else
+        {
+        period.x = 0;period.y = 0;
+        double2 vA,vB;
+        invTrans(p1,vA);
+        invTrans(p2,vB);
+        double2 disp= make_double2(vA.x-vB.x,vA.y-vB.y);
+
+        if(disp.x > 0.5) period.x --;
+        if(disp.x < -0.5) period.x ++;
+        if(disp.y > 0.5) period.y --;
+        if(disp.y < -0.5) period.y ++;
+
         };
     };
 

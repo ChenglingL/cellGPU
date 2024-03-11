@@ -188,18 +188,6 @@ noiseSource.cuh
 std_include.h
 ../src/utility/std_include.h
 
-../src/utility/utilities.cuh
-std_include.h
-../src/utility/std_include.h
-cuda_runtime.h
--
-gpuarray.h
-../src/utility/gpuarray.h
-
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayCGAL.cpp
-DelaunayCGAL.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayCGAL.h
-
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayCGAL.h
 vector_types.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vector_types.h
@@ -221,26 +209,6 @@ CGAL/Triangulation_2.h
 -
 CGAL/Delaunay_triangulation_2.h
 -
-
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayGPU.cpp
-DelaunayGPU.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayGPU.h
-DelaunayGPU.cuh
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayGPU.cuh
-cellListGPU.cuh
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/cellListGPU.cuh
-utilities.cuh
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/utilities.cuh
-
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayGPU.cuh
-cuda_runtime.h
--
-std_include.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/std_include.h
-indexer.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/indexer.h
-periodicBoundaries.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/periodicBoundaries.h
 
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayGPU.h
 gpuarray.h

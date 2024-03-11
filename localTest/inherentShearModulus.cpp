@@ -46,7 +46,7 @@ int main(int argc, char*argv[])
     double p0 = 4.0;
     double pf = 4.0;
     double a0 = 1.0;
-    double v0 = 0.1;
+    double v0 = 4.0/3.0;
     double KA = 1.0;
     double thresh = 1e-12;
 
@@ -95,20 +95,24 @@ int main(int argc, char*argv[])
 
     char saveDirName[256];
     sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/inherentg/N%i/",numpts);
-    //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
     char inherentgDataname[256];
-    sprintf(inherentgDataname,"%sinherentgAffineG_N%i_p%.3f_KA%f.4.nc",saveDirName,numpts,p0,KA);
+    sprintf(inherentgDataname,"%sinherentgAffineG_Bi_NoNormalization_N%i_p%.3f_KA%.4f_alpha%.4f.nc",saveDirName,numpts,p0,KA,v0);
+    char eigenValueDataname[256];
+    sprintf(eigenValueDataname,"%seigenValue_Bi_NoNormalization_N%i_p%.3f_KA%.4f_alpha%.4f.nc",saveDirName,numpts,p0,KA,v0);
     shared_ptr<twoValuesDatabase> inherentgDat=make_shared<twoValuesDatabase>(inherentgDataname,NcFile::Replace);
+    shared_ptr<twoValuesDatabase> eigenValueDat=make_shared<twoValuesDatabase>(eigenValueDataname,NcFile::Replace);
     for (int idx = 0; idx < Nconfigurations; idx++)
     {
 
         //the voronoi model set up is just as before
         shared_ptr<VoronoiQuadraticEnergy> spv = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
         //..and instead of a self-propelled cell equation of motion, we use a FIRE minimizer
-        cout<<"ready for initialize firs"<<endl;
+        cout<<"ready for initialize fire"<<endl;
         shared_ptr<EnergyMinimizerFIRE> fireMinimizer = make_shared<EnergyMinimizerFIRE>(spv,initializeGPU);
 
-        spv->setCellPreferencesUniform(1.0,p0);
+        spv->setBidisperseCellPreferencesWithoutNormalizing(p0,v0,0.5);
+
+        // spv->setCellPreferencesUniform(1.0,p0);
         spv->setModuliUniform(KA,1.0);
         printf("initializing with KA = %f\t p_0 = %f\n",KA,p0);
 
@@ -128,18 +132,24 @@ int main(int argc, char*argv[])
         t1=clock();
 
         //minimize to tolerance
-        double mf;
-        for (int ii = 0; ii < initSteps; ++ii)
+        double mf=1.0;
+        int Nfire=0;
+        while (mf > thresh)
             {
-            fireMinimizer->setMaximumIterations((tSteps)*(1+ii));
+            fireMinimizer->setMaximumIterations(tSteps);
             sim->performTimestep();
             spv->computeGeometryCPU();
             spv->computeForces();
             mf = spv->getMaxForce();
             printf("maxForce = %g\n",mf);
+            Nfire++;
             if (mf < thresh)
                 break;
+            if (Nfire > initSteps)
+                break;
             };
+        if (Nfire > initSteps)
+            continue;
 
         t2=clock();
         double steptime = (t2-t1)/(double)CLOCKS_PER_SEC;
@@ -177,6 +187,7 @@ int main(int argc, char*argv[])
         //cout<<"getd2Edgammadr"<<endl;
         for (int i = 0; i < D.eigenvalues.size(); i++)
         {
+            eigenValueDat->writeValues(D.eigenvalues[i],0);
             //cout<<"eigen value"<<D.eigenvalues[i]<<endl;
             if (D.eigenvalues[i]>thresh)
             {
@@ -194,8 +205,8 @@ int main(int argc, char*argv[])
         }
         double d2edg2=spv->getd2Edgammadgamma();
         double g = (d2edg2 - nonaffine)/numpts;
-        cout<<"the affine shear modulus is "<<d2edg2<<" and the non-affine shear modulus is "<<g<<endl;
-        inherentgDat->writeValues(g,d2edg2);
+        cout<<"the affine shear modulus is "<<d2edg2/numpts<<" and the non-affine shear modulus is "<<g<<endl;
+        inherentgDat->writeValues(g,d2edg2/numpts);
     }
     
 

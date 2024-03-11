@@ -75,6 +75,9 @@ class Simple2DCell : public Simple2DModel
         //!Set bidisperse cell area and perimeter preferences
         void setBidisperseCellPreferences(double q0, double alpha, double fraction);
 
+        //!Set bidisperse cell area and perimeter preferences without normalizing
+        void setBidisperseCellPreferencesWithoutNormalizing(double q0, double alpha, double fraction);
+
         //!Set random cell positions, and set the periodic box to a square with average cell area=1
         void setCellPositionsRandomly();
 
