@@ -154,7 +154,7 @@ int main(int argc, char*argv[])
         cout << "initializing an offset of " << offsetsSAC[ii]*dt <<" for SAC"<< endl;
         shared_ptr<twoValuesDatabase> SACtime=make_shared<twoValuesDatabase>(SACname,NcFile::Replace);
         shared_ptr<autocorrelator> acdat = make_shared<autocorrelator>(16,2,dt);
-        lsacwriter.addDatabase(SACtime,acdat,offsetsSAC[ii],20000000);//set the long time limmit to be 10^5tau
+        lsacwriter.addDatabase(SACtime,acdat,offsetsSAC[ii],10000000);//set the long time limmit to be 10^5tau
         }
     lewriter.identifyNextFrame();
 
