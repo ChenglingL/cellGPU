@@ -81,10 +81,13 @@ int main(int argc, char*argv[])
     char loaddataname[256];
     char saveDataName[256];
     char savefolder[256];
-    sprintf(savefolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/p%.0f/",numpts,p0*100);
+    char loadfolder[256];
+    sprintf(savefolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/tauAlphaData/p%.0f/",numpts,p0*100);
+    sprintf(loadfolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/p%.0f/",numpts,p0*100);
+
     namespace fs = std::filesystem;
 
-    sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.2f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);
+    sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.2f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
     sprintf(saveDataName,"%soverlapCRoverlap_N%i_p%.4f_T%.8f_waitingTime%.2f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);
     if (fs::exists(loaddataname)) {
         cout << "reading record from " << loaddataname << endl;

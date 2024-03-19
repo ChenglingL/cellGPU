@@ -84,6 +84,14 @@ cuda_runtime.h
 std_include.h
 ../src/utility/std_include.h
 
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/autocorrelator.cpp
+autocorrelator.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/autocorrelator.h
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/autocorrelator.h
+std_include.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/std_include.h
+
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/dynamicalFeatures.cpp
 dynamicalFeatures.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/dynamicalFeatures.h
