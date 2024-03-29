@@ -7,6 +7,7 @@ CMakeFiles/inherentShearModulus.out.dir/localTest/inherentShearModulus.cpp.o
  ../src/databases/BaseDatabase.h
  ../src/databases/DatabaseNetCDF.h
  ../src/databases/DatabaseNetCDFSPV.h
+ ../src/databases/nvtModelDatabase.h
  ../src/databases/twoValuesDatabase.h
  ../src/models/DelaunayCGAL.h
  ../src/models/DelaunayGPU.h

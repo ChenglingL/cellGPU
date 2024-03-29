@@ -10,6 +10,7 @@
 #include "DatabaseNetCDFSPV.h"
 #include "eigenMatrixInterface.h"
 #include "twoValuesDatabase.h"
+#include "nvtModelDatabase.h"
 
 /*!
 This file is used to test the calculation of inherent state g and compare it with "No unjamming transition in a Voronoi model of biological tissue"
@@ -94,11 +95,17 @@ int main(int argc, char*argv[])
         initializeGPU = false;
 
     char saveDirName[256];
-    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/localTest/inherentg/N%i/",numpts);
+    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/inherentGMatthiasTest/data/");
     char inherentgDataname[256];
-    sprintf(inherentgDataname,"%sinherentgAffineG_Bi_NoNormalization_N%i_p%.3f_KA%.4f_alpha%.4f.nc",saveDirName,numpts,p0,KA,v0);
+    sprintf(inherentgDataname,"%sinherentgAffineG_N%i_p%.3f_KA%.4f.nc",saveDirName,numpts,p0,KA);
+    char inherentStatesDataname[256];
+    sprintf(inherentStatesDataname,"%sinherentStates_N%i_p%.3f_KA%.4f.nc",saveDirName,numpts,p0,KA);
+    shared_ptr<nvtModelDatabase> inherentStatesDat=make_shared<nvtModelDatabase>(numpts,inherentStatesDataname,NcFile::Replace);
+    char randomStatesDataname[256];
+    sprintf(randomStatesDataname,"%srandomStates_N%i_p%.3f_KA%.4f.nc",saveDirName,numpts,p0,KA);
+    shared_ptr<nvtModelDatabase> randomStatesDat=make_shared<nvtModelDatabase>(numpts,randomStatesDataname,NcFile::Replace);
     char eigenValueDataname[256];
-    sprintf(eigenValueDataname,"%seigenValue_Bi_NoNormalization_N%i_p%.3f_KA%.4f_alpha%.4f.nc",saveDirName,numpts,p0,KA,v0);
+    sprintf(eigenValueDataname,"%seigenValue_N%i_p%.3f_KA%.4f.nc",saveDirName,numpts,p0,KA);
     shared_ptr<twoValuesDatabase> inherentgDat=make_shared<twoValuesDatabase>(inherentgDataname,NcFile::Replace);
     shared_ptr<twoValuesDatabase> eigenValueDat=make_shared<twoValuesDatabase>(eigenValueDataname,NcFile::Replace);
     for (int idx = 0; idx < Nconfigurations; idx++)
@@ -110,13 +117,14 @@ int main(int argc, char*argv[])
         cout<<"ready for initialize fire"<<endl;
         shared_ptr<EnergyMinimizerFIRE> fireMinimizer = make_shared<EnergyMinimizerFIRE>(spv,initializeGPU);
 
-        spv->setBidisperseCellPreferencesWithoutNormalizing(p0,v0,0.5);
+        //spv->setBidisperseCellPreferencesWithoutNormalizing(p0,v0,0.5);
 
-        // spv->setCellPreferencesUniform(1.0,p0);
+        spv->setCellPreferencesUniform(1.0,p0);
         spv->setModuliUniform(KA,1.0);
         printf("initializing with KA = %f\t p_0 = %f\n",KA,p0);
-
+        randomStatesDat->writeState(spv);
         SimulationPtr sim = make_shared<Simulation>();
+
         sim->setConfiguration(spv);
         sim->addUpdater(fireMinimizer,spv);
         sim->setCPUOperation(!initializeGPU);
@@ -148,9 +156,11 @@ int main(int argc, char*argv[])
             if (Nfire > initSteps)
                 break;
             };
-        if (Nfire > initSteps)
+        if (Nfire > initSteps){
+            inherentgDat->writeValues(-1,-1);
             continue;
-
+        }
+        inherentStatesDat->writeState(spv);
         t2=clock();
         double steptime = (t2-t1)/(double)CLOCKS_PER_SEC;
         cout << "minimization was ~ " << steptime << endl;

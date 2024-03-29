@@ -29,7 +29,7 @@ int main(int argc, char*argv[])
     int c;
 
     double tauEstimate = 10;
-    double equilibrationWaitingTimeMultiple = 100.0;
+    double equilibrationWaitingTimeMultiple = 10.0;
     double numberOfRelaxationTimes =10.0;
     int numberofDerivatives = 50000;
 
@@ -44,7 +44,7 @@ int main(int argc, char*argv[])
     double ks=6.28319; // the k position of first peak in the S(k)
 
     //The defaults can be overridden from the command line
-    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:")) != -1)
+    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:k:")) != -1)
         switch(c)
         {
             case 'n': numpts = atoi(optarg); break;
@@ -82,12 +82,12 @@ int main(int argc, char*argv[])
     char saveDataName[256];
     char savefolder[256];
     char loadfolder[256];
-    sprintf(savefolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/tauAlphaData/p%.0f/",numpts,p0*100);
-    sprintf(loadfolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/p%.0f/",numpts,p0*100);
+    sprintf(savefolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/tauAlphaData/p%.3f/",numpts,p0);
+    sprintf(loadfolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/productionRuns/p%.3f/",numpts,p0);
     namespace fs = std::filesystem;
-
-    sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.2f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
-    sprintf(saveDataName,"%sSISFCRSISF_N%i_p%.4f_T%.8f_waitingTime%.2f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);
+    waitingtime = max(10000.,(tauEstimate * equilibrationWaitingTimeMultiple));
+    sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
+    sprintf(saveDataName,"%sSISFCRSISF_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);
     if (fs::exists(loaddataname)) {
         cout << "reading record from " << loaddataname << endl;
     } else {
@@ -100,9 +100,14 @@ int main(int argc, char*argv[])
     fluidConfigurations.readState(voronoiModel,0,true);
     dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
     dynFeat.setCageNeighbors(voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx); 
-    cout << "reading record from " << loaddataname << endl;
+    if (fluidConfigurations.GetNumRecs()<20) {
+        cout << "Congiguration is less than 20. Job abort!" <<endl;
+        abort();
+    };
     for(int rec=0;rec<fluidConfigurations.GetNumRecs();rec++){
         fluidConfigurations.readState(voronoiModel,rec,false);
+        double time =voronoiModel->currentTime;
+        if(rec>10&&time<1e-12) break;
         //overlapdatNVT[rec] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
         SISFCRSISF->writeValues(dynFeat.computeSISF(voronoiModel->returnPositions()), dynFeat.computeCageRelativeSISF(voronoiModel->returnPositions(),ks));        
     };   
