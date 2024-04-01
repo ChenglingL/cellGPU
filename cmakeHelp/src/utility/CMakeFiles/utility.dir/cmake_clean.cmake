@@ -1,12 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/utility.dir/cellListGPU.cpp.o"
-  "CMakeFiles/utility.dir/cellListGPU.cpp.o.d"
   "CMakeFiles/utility.dir/eigenMatrixInterface.cpp.o"
-  "CMakeFiles/utility.dir/eigenMatrixInterface.cpp.o.d"
   "CMakeFiles/utility.dir/hilbert_curve.cpp.o"
-  "CMakeFiles/utility.dir/hilbert_curve.cpp.o.d"
   "CMakeFiles/utility.dir/noiseSource.cpp.o"
-  "CMakeFiles/utility.dir/noiseSource.cpp.o.d"
   "libutility.a"
   "libutility.pdb"
 )
