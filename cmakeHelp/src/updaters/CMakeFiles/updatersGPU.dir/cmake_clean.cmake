@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/updatersGPU.dir/updatersGPU_generated_EnergyMinimizerFIRE2D.cu.o"
+  "CMakeFiles/updatersGPU.dir/updatersGPU_generated_EnergyMinimizerGradientDescent.cu.o"
   "CMakeFiles/updatersGPU.dir/updatersGPU_generated_NoseHooverChainNVT.cu.o"
   "CMakeFiles/updatersGPU.dir/updatersGPU_generated_brownianParticleDynamics.cu.o"
   "CMakeFiles/updatersGPU.dir/updatersGPU_generated_langevinDynamics.cu.o"

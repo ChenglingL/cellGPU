@@ -16,6 +16,7 @@ include_directories(
         )
 
 add_library(updaters
+    EnergyMinimizerGradientDescent.cpp
     brownianParticleDynamics.cpp
     EnergyMinimizerFIRE2D.cpp
     MullerPlatheShear.cpp
@@ -28,6 +29,7 @@ add_library(updaters
     langevinDynamics.cpp
     )
 cuda_add_library(updatersGPU
+    EnergyMinimizerGradientDescent.cu
     EnergyMinimizerFIRE2D.cu
     NoseHooverChainNVT.cu
     brownianParticleDynamics.cu

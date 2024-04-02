@@ -19,7 +19,7 @@ for recordIdx in ${records[@]}; do
         for waittime in ${waittimes[@]}; do
             temp=${temperatures[$i]}
             echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
-            /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/SISFCRSISFProbe.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
+            /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/SISFCRSISFProbe.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1 -k 6.80
             /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/overlapCRoverlapProbe.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
         done
     done

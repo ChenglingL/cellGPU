@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/updaters.dir/EnergyMinimizerFIRE2D.cpp.o"
+  "CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.o"
   "CMakeFiles/updaters.dir/MullerPlatheShear.cpp.o"
   "CMakeFiles/updaters.dir/NoseHooverChainNVT.cpp.o"
   "CMakeFiles/updaters.dir/brownianParticleDynamics.cpp.o"

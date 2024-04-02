@@ -7,10 +7,10 @@ numberofWaitingTimes=3
 p=3.90
 
 #temperatures=(0.00025 0.00018 0.00014 0.00011 0.0001 0.000087 0.000077)
-temperatures=(0.039 0.016 0.01 0.005 0.00385 0.0025 0.002 0.001 0.0005 0.00033 0.00025 0.00014 9.1E-05 7.7E-05 5.4E-05 4.5E-05 3.6E-05)
+temperatures=(2.4E-05 1.8E-05 1.6E-05 1.4E-05)
 records=(0)
 
-tauEstimate=(2. 4. 10. 20. 40. 60. 80. 200. 500. 800. 1400. 2500. 4200. 5000. 6000. 8500. 9500.)
+tauEstimate=(3000 6000 8000 10000)
 
 for recordIdx in ${records[@]}; do
     for i in ${!temperatures[@]}; do
@@ -20,6 +20,24 @@ for recordIdx in ${records[@]}; do
         sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst} ${numberofWaitingTimes}
     done
 done
+# number=4096
+# numberofWaitingTimes=3
+# p=3.90
+
+# #temperatures=(0.00025 0.00018 0.00014 0.00011 0.0001 0.000087 0.000077)
+# temperatures=(0.039 0.016 0.01 0.005 0.00385 0.0025 0.002 0.001 0.0005 0.00033 0.00025 0.00014 9.1E-05 7.7E-05 5.4E-05 4.5E-05 3.6E-05)
+# records=(0)
+
+# tauEstimate=(2. 4. 10. 20. 40. 60. 80. 200. 500. 800. 1400. 2500. 4200. 5000. 6000. 8500. 9500.)
+
+# for recordIdx in ${records[@]}; do
+#     for i in ${!temperatures[@]}; do
+#         tauEst=${tauEstimate[$i]}
+#         temp=${temperatures[$i]}
+#         echo ${number} ${p} ${temp} ${recordIdx} ${tauEst}
+#         sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/baseSubmitCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst} ${numberofWaitingTimes}
+#     done
+# done
 
 # number=4096
 # numberofWaitingTimes=3

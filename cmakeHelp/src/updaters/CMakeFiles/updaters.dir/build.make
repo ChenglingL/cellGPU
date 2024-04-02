@@ -57,9 +57,22 @@ include src/updaters/CMakeFiles/updaters.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/updaters/CMakeFiles/updaters.dir/flags.make
 
+src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.o: src/updaters/CMakeFiles/updaters.dir/flags.make
+src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.o: ../src/updaters/EnergyMinimizerGradientDescent.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.o"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/EnergyMinimizerGradientDescent.cpp
+
+src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.i"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/EnergyMinimizerGradientDescent.cpp > CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.i
+
+src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.s"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/EnergyMinimizerGradientDescent.cpp -o CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.s
+
 src/updaters/CMakeFiles/updaters.dir/brownianParticleDynamics.cpp.o: src/updaters/CMakeFiles/updaters.dir/flags.make
 src/updaters/CMakeFiles/updaters.dir/brownianParticleDynamics.cpp.o: ../src/updaters/brownianParticleDynamics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/updaters/CMakeFiles/updaters.dir/brownianParticleDynamics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/updaters/CMakeFiles/updaters.dir/brownianParticleDynamics.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/updaters.dir/brownianParticleDynamics.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/brownianParticleDynamics.cpp
 
 src/updaters/CMakeFiles/updaters.dir/brownianParticleDynamics.cpp.i: cmake_force
@@ -72,7 +85,7 @@ src/updaters/CMakeFiles/updaters.dir/brownianParticleDynamics.cpp.s: cmake_force
 
 src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerFIRE2D.cpp.o: src/updaters/CMakeFiles/updaters.dir/flags.make
 src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerFIRE2D.cpp.o: ../src/updaters/EnergyMinimizerFIRE2D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerFIRE2D.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerFIRE2D.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/updaters.dir/EnergyMinimizerFIRE2D.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/EnergyMinimizerFIRE2D.cpp
 
 src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerFIRE2D.cpp.i: cmake_force
@@ -85,7 +98,7 @@ src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerFIRE2D.cpp.s: cmake_force
 
 src/updaters/CMakeFiles/updaters.dir/MullerPlatheShear.cpp.o: src/updaters/CMakeFiles/updaters.dir/flags.make
 src/updaters/CMakeFiles/updaters.dir/MullerPlatheShear.cpp.o: ../src/updaters/MullerPlatheShear.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/updaters/CMakeFiles/updaters.dir/MullerPlatheShear.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/updaters/CMakeFiles/updaters.dir/MullerPlatheShear.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/updaters.dir/MullerPlatheShear.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/MullerPlatheShear.cpp
 
 src/updaters/CMakeFiles/updaters.dir/MullerPlatheShear.cpp.i: cmake_force
@@ -98,7 +111,7 @@ src/updaters/CMakeFiles/updaters.dir/MullerPlatheShear.cpp.s: cmake_force
 
 src/updaters/CMakeFiles/updaters.dir/NoseHooverChainNVT.cpp.o: src/updaters/CMakeFiles/updaters.dir/flags.make
 src/updaters/CMakeFiles/updaters.dir/NoseHooverChainNVT.cpp.o: ../src/updaters/NoseHooverChainNVT.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/updaters/CMakeFiles/updaters.dir/NoseHooverChainNVT.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/updaters/CMakeFiles/updaters.dir/NoseHooverChainNVT.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/updaters.dir/NoseHooverChainNVT.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/NoseHooverChainNVT.cpp
 
 src/updaters/CMakeFiles/updaters.dir/NoseHooverChainNVT.cpp.i: cmake_force
@@ -111,7 +124,7 @@ src/updaters/CMakeFiles/updaters.dir/NoseHooverChainNVT.cpp.s: cmake_force
 
 src/updaters/CMakeFiles/updaters.dir/selfPropelledAligningParticleDynamics.cpp.o: src/updaters/CMakeFiles/updaters.dir/flags.make
 src/updaters/CMakeFiles/updaters.dir/selfPropelledAligningParticleDynamics.cpp.o: ../src/updaters/selfPropelledAligningParticleDynamics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/updaters/CMakeFiles/updaters.dir/selfPropelledAligningParticleDynamics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/updaters/CMakeFiles/updaters.dir/selfPropelledAligningParticleDynamics.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/updaters.dir/selfPropelledAligningParticleDynamics.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/selfPropelledAligningParticleDynamics.cpp
 
 src/updaters/CMakeFiles/updaters.dir/selfPropelledAligningParticleDynamics.cpp.i: cmake_force
@@ -124,7 +137,7 @@ src/updaters/CMakeFiles/updaters.dir/selfPropelledAligningParticleDynamics.cpp.s
 
 src/updaters/CMakeFiles/updaters.dir/selfPropelledCellVertexDynamics.cpp.o: src/updaters/CMakeFiles/updaters.dir/flags.make
 src/updaters/CMakeFiles/updaters.dir/selfPropelledCellVertexDynamics.cpp.o: ../src/updaters/selfPropelledCellVertexDynamics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/updaters/CMakeFiles/updaters.dir/selfPropelledCellVertexDynamics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/updaters/CMakeFiles/updaters.dir/selfPropelledCellVertexDynamics.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/updaters.dir/selfPropelledCellVertexDynamics.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/selfPropelledCellVertexDynamics.cpp
 
 src/updaters/CMakeFiles/updaters.dir/selfPropelledCellVertexDynamics.cpp.i: cmake_force
@@ -137,7 +150,7 @@ src/updaters/CMakeFiles/updaters.dir/selfPropelledCellVertexDynamics.cpp.s: cmak
 
 src/updaters/CMakeFiles/updaters.dir/selfPropelledParticleDynamics.cpp.o: src/updaters/CMakeFiles/updaters.dir/flags.make
 src/updaters/CMakeFiles/updaters.dir/selfPropelledParticleDynamics.cpp.o: ../src/updaters/selfPropelledParticleDynamics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/updaters/CMakeFiles/updaters.dir/selfPropelledParticleDynamics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/updaters/CMakeFiles/updaters.dir/selfPropelledParticleDynamics.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/updaters.dir/selfPropelledParticleDynamics.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/selfPropelledParticleDynamics.cpp
 
 src/updaters/CMakeFiles/updaters.dir/selfPropelledParticleDynamics.cpp.i: cmake_force
@@ -150,7 +163,7 @@ src/updaters/CMakeFiles/updaters.dir/selfPropelledParticleDynamics.cpp.s: cmake_
 
 src/updaters/CMakeFiles/updaters.dir/selfPropelledVicsekAligningParticleDynamics.cpp.o: src/updaters/CMakeFiles/updaters.dir/flags.make
 src/updaters/CMakeFiles/updaters.dir/selfPropelledVicsekAligningParticleDynamics.cpp.o: ../src/updaters/selfPropelledVicsekAligningParticleDynamics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/updaters/CMakeFiles/updaters.dir/selfPropelledVicsekAligningParticleDynamics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/updaters/CMakeFiles/updaters.dir/selfPropelledVicsekAligningParticleDynamics.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/updaters.dir/selfPropelledVicsekAligningParticleDynamics.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/selfPropelledVicsekAligningParticleDynamics.cpp
 
 src/updaters/CMakeFiles/updaters.dir/selfPropelledVicsekAligningParticleDynamics.cpp.i: cmake_force
@@ -163,7 +176,7 @@ src/updaters/CMakeFiles/updaters.dir/selfPropelledVicsekAligningParticleDynamics
 
 src/updaters/CMakeFiles/updaters.dir/setTotalLinearMomentum.cpp.o: src/updaters/CMakeFiles/updaters.dir/flags.make
 src/updaters/CMakeFiles/updaters.dir/setTotalLinearMomentum.cpp.o: ../src/updaters/setTotalLinearMomentum.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/updaters/CMakeFiles/updaters.dir/setTotalLinearMomentum.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/updaters/CMakeFiles/updaters.dir/setTotalLinearMomentum.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/updaters.dir/setTotalLinearMomentum.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/setTotalLinearMomentum.cpp
 
 src/updaters/CMakeFiles/updaters.dir/setTotalLinearMomentum.cpp.i: cmake_force
@@ -176,7 +189,7 @@ src/updaters/CMakeFiles/updaters.dir/setTotalLinearMomentum.cpp.s: cmake_force
 
 src/updaters/CMakeFiles/updaters.dir/langevinDynamics.cpp.o: src/updaters/CMakeFiles/updaters.dir/flags.make
 src/updaters/CMakeFiles/updaters.dir/langevinDynamics.cpp.o: ../src/updaters/langevinDynamics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/updaters/CMakeFiles/updaters.dir/langevinDynamics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/updaters/CMakeFiles/updaters.dir/langevinDynamics.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/updaters.dir/langevinDynamics.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/langevinDynamics.cpp
 
 src/updaters/CMakeFiles/updaters.dir/langevinDynamics.cpp.i: cmake_force
@@ -189,6 +202,7 @@ src/updaters/CMakeFiles/updaters.dir/langevinDynamics.cpp.s: cmake_force
 
 # Object files for target updaters
 updaters_OBJECTS = \
+"CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.o" \
 "CMakeFiles/updaters.dir/brownianParticleDynamics.cpp.o" \
 "CMakeFiles/updaters.dir/EnergyMinimizerFIRE2D.cpp.o" \
 "CMakeFiles/updaters.dir/MullerPlatheShear.cpp.o" \
@@ -203,6 +217,7 @@ updaters_OBJECTS = \
 # External object files for target updaters
 updaters_EXTERNAL_OBJECTS =
 
+src/updaters/libupdaters.a: src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.o
 src/updaters/libupdaters.a: src/updaters/CMakeFiles/updaters.dir/brownianParticleDynamics.cpp.o
 src/updaters/libupdaters.a: src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerFIRE2D.cpp.o
 src/updaters/libupdaters.a: src/updaters/CMakeFiles/updaters.dir/MullerPlatheShear.cpp.o
@@ -215,7 +230,7 @@ src/updaters/libupdaters.a: src/updaters/CMakeFiles/updaters.dir/setTotalLinearM
 src/updaters/libupdaters.a: src/updaters/CMakeFiles/updaters.dir/langevinDynamics.cpp.o
 src/updaters/libupdaters.a: src/updaters/CMakeFiles/updaters.dir/build.make
 src/updaters/libupdaters.a: src/updaters/CMakeFiles/updaters.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library libupdaters.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libupdaters.a"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && $(CMAKE_COMMAND) -P CMakeFiles/updaters.dir/cmake_clean_target.cmake
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/updaters.dir/link.txt --verbose=$(VERBOSE)
 

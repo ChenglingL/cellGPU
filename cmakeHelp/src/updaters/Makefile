@@ -167,6 +167,33 @@ EnergyMinimizerFIRE2D.cpp.s:
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/updaters/CMakeFiles/updaters.dir/build.make src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerFIRE2D.cpp.s
 .PHONY : EnergyMinimizerFIRE2D.cpp.s
 
+EnergyMinimizerGradientDescent.o: EnergyMinimizerGradientDescent.cpp.o
+
+.PHONY : EnergyMinimizerGradientDescent.o
+
+# target to build an object file
+EnergyMinimizerGradientDescent.cpp.o:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/updaters/CMakeFiles/updaters.dir/build.make src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.o
+.PHONY : EnergyMinimizerGradientDescent.cpp.o
+
+EnergyMinimizerGradientDescent.i: EnergyMinimizerGradientDescent.cpp.i
+
+.PHONY : EnergyMinimizerGradientDescent.i
+
+# target to preprocess a source file
+EnergyMinimizerGradientDescent.cpp.i:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/updaters/CMakeFiles/updaters.dir/build.make src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.i
+.PHONY : EnergyMinimizerGradientDescent.cpp.i
+
+EnergyMinimizerGradientDescent.s: EnergyMinimizerGradientDescent.cpp.s
+
+.PHONY : EnergyMinimizerGradientDescent.s
+
+# target to generate assembly for a file
+EnergyMinimizerGradientDescent.cpp.s:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/updaters/CMakeFiles/updaters.dir/build.make src/updaters/CMakeFiles/updaters.dir/EnergyMinimizerGradientDescent.cpp.s
+.PHONY : EnergyMinimizerGradientDescent.cpp.s
+
 MullerPlatheShear.o: MullerPlatheShear.cpp.o
 
 .PHONY : MullerPlatheShear.o
@@ -423,6 +450,9 @@ help:
 	@echo "... EnergyMinimizerFIRE2D.o"
 	@echo "... EnergyMinimizerFIRE2D.i"
 	@echo "... EnergyMinimizerFIRE2D.s"
+	@echo "... EnergyMinimizerGradientDescent.o"
+	@echo "... EnergyMinimizerGradientDescent.i"
+	@echo "... EnergyMinimizerGradientDescent.s"
 	@echo "... MullerPlatheShear.o"
 	@echo "... MullerPlatheShear.i"
 	@echo "... MullerPlatheShear.s"

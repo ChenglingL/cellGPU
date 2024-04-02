@@ -44,7 +44,7 @@ int main(int argc, char*argv[])
     double ks=6.28319; // the k position of first peak in the S(k)
 
     //The defaults can be overridden from the command line
-    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:")) != -1)
+    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:k:")) != -1)
         switch(c)
         {
             case 'n': numpts = atoi(optarg); break;
@@ -87,7 +87,7 @@ int main(int argc, char*argv[])
     namespace fs = std::filesystem;
 
     sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
-    sprintf(saveDataName,"%sSISFCRSISF_N%i_p%.4f_T%.8f_waitingTime%.2f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);
+    sprintf(saveDataName,"%sSISFCRSISF_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);
     if (fs::exists(loaddataname)) {
         cout << "reading record from " << loaddataname << endl;
     } else {
