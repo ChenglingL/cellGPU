@@ -28,7 +28,7 @@ int main(int argc, char*argv[])
     int numpts = 100; //number of cells
     int USE_GPU = 0; //0 or greater uses a gpu, any negative number runs on the cpu
     int c;
-    int tSteps = 10000000; //number of time steps to run after initialization
+    int tSteps = 4500000; //number of time steps to run after initialization
     double logSpace  = 0.05; //The space for log saving
     double dt = 0.01; //the time step size
     double p0 = 3.8;  //the preferred perimeter
@@ -86,8 +86,8 @@ int main(int argc, char*argv[])
 
     //define a voronoi configuration with a quadratic energy functional
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,a0,p0,reproducible,initializeGPU);
-
-    voronoiModel->setCellPreferencesWithRandomAreas(p0,0.8,1.2);
+    voronoiModel->setCellPreferencesUniform(1.0,p0);
+    //voronoiModel->setCellPreferencesWithRandomAreas(p0,0.8,1.2);
 
     //combine the equation of motion and the cell configuration in a "Simulation"
     SimulationPtr sim = make_shared<Simulation>();
