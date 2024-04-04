@@ -97,15 +97,15 @@ int main(int argc, char*argv[])
     char saveDirName[256];
     sprintf(saveDirName, "/home/chengling/Research/Project/Cell/inherentGMatthiasTest/data/");
     char inherentgDataname[256];
-    sprintf(inherentgDataname,"%sinherentgAffineG_N%i_p%.3f_KA%.4f.nc",saveDirName,numpts,p0,KA);
+    sprintf(inherentgDataname,"%sinherentgAffineG_N%i_p%.3f_KA%.4f_dt%.4fnc",saveDirName,numpts,p0,KA,dt);
     char inherentStatesDataname[256];
-    sprintf(inherentStatesDataname,"%sinherentStates_N%i_p%.3f_KA%.4f.nc",saveDirName,numpts,p0,KA);
+    sprintf(inherentStatesDataname,"%sinherentStates_N%i_p%.3f_KA%.4f_dt%.4f.nc",saveDirName,numpts,p0,KA,dt);
     shared_ptr<nvtModelDatabase> inherentStatesDat=make_shared<nvtModelDatabase>(numpts,inherentStatesDataname,NcFile::Replace);
     char randomStatesDataname[256];
-    sprintf(randomStatesDataname,"%srandomStates_N%i_p%.3f_KA%.4f.nc",saveDirName,numpts,p0,KA);
+    sprintf(randomStatesDataname,"%srandomStates_N%i_p%.3f_KA%.4f_dt%.4f.nc",saveDirName,numpts,p0,KA,dt);
     shared_ptr<nvtModelDatabase> randomStatesDat=make_shared<nvtModelDatabase>(numpts,randomStatesDataname,NcFile::Replace);
     char eigenValueDataname[256];
-    sprintf(eigenValueDataname,"%seigenValue_N%i_p%.3f_KA%.4f.nc",saveDirName,numpts,p0,KA);
+    sprintf(eigenValueDataname,"%seigenValue_N%i_p%.3f_KA%.4f_dt%.4f.nc",saveDirName,numpts,p0,KA,dt);
     shared_ptr<twoValuesDatabase> inherentgDat=make_shared<twoValuesDatabase>(inherentgDataname,NcFile::Replace);
     shared_ptr<twoValuesDatabase> eigenValueDat=make_shared<twoValuesDatabase>(eigenValueDataname,NcFile::Replace);
     for (int idx = 0; idx < Nconfigurations; idx++)
