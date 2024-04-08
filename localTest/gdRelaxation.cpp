@@ -37,9 +37,10 @@ int main(int argc, char*argv[])
     int id = 0;      //The index of different configuration
     double Mu = 1.0; // the learning rate
     double forceThresh = 1e-12;
+    double KA=0.0 ;// stiffness of area
 
     //The defaults can be overridden from the command line
-    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:f")) != -1)
+    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:f:k:")) != -1)
         switch(c)
         {
             case 'n': numpts = atoi(optarg); break;
@@ -50,6 +51,7 @@ int main(int argc, char*argv[])
             case 'p': p0 = atof(optarg); break;
             case 'a': a0 = atof(optarg); break;
             case 'm': Mu = atof(optarg); break;
+            case 'k': KA = atof(optarg); break;
             case 'i': logSpace = atof(optarg); break;
             case 'x': id = atof(optarg); break; //indentify different simulations
             case '?':
@@ -87,6 +89,7 @@ int main(int argc, char*argv[])
     //define a voronoi configuration with a quadratic energy functional
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,a0,p0,reproducible,initializeGPU);
     voronoiModel->setCellPreferencesUniform(1.0,p0);
+    voronoiModel->setModuliUniform(KA,1.0);
     //voronoiModel->setCellPreferencesWithRandomAreas(p0,0.8,1.2);
 
     //combine the equation of motion and the cell configuration in a "Simulation"
@@ -114,7 +117,8 @@ int main(int argc, char*argv[])
     shared_ptr<logSpacedIntegers> lsi = make_shared<logSpacedIntegers>(0,logSpace);
     long long int ii=0;
     double mf = 999.0;
-    while(ii<tSteps && mf>forceThresh)
+    double currentE = 999.9;
+    while(ii<tSteps && mf>forceThresh && currentE>forceThresh)
         {
         //voronoiModel->computeGeometry();
         //cout <<"d2Edg2"<< voronoiModel->getd2Edgammadgamma()<<endl;
@@ -123,11 +127,12 @@ int main(int argc, char*argv[])
         voronoiModel->enforceTopology();
         voronoiModel->computeGeometry();
         mf=voronoiModel->getMaxForce();
+        currentE=voronoiModel->computeEnergy();
         if(ii==nextFrameToSave){
-            energydat->writeValues(voronoiModel->currentTime,voronoiModel->computeEnergy());
+            energydat->writeValues(voronoiModel->currentTime,currentE);
             lsi->update();
             nextFrameToSave=lsi->nextSave;
-            cout<<"Max Force: "<<mf<<", energy: "<<voronoiModel->computeEnergy()<<",  next frame to save: "<<nextFrameToSave<<endl;
+            cout<<"Max Force: "<<mf<<", energy: "<<currentE<<",  next frame to save: "<<nextFrameToSave<<endl;
         }
         ii++;
         };

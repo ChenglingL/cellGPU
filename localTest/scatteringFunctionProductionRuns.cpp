@@ -99,7 +99,7 @@ int main(int argc, char*argv[])
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
     fluidConfigurations.readState(voronoiModel,0,true);
     structuralFeatures strucFeat(voronoiModel->Box);
-    int rec = rec<fluidConfigurations.GetNumRecs() - 1;
+    int rec = rec<fluidConfigurations.GetNumRecs() - 3;
     shared_ptr<twoValuesDatabase> Sk=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);    
     fluidConfigurations.readState(voronoiModel,rec,false);
     vector<double2> SofK;
