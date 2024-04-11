@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "../executable/derivativeTest.out"
-  "../executable/derivativeTest.out.pdb"
-  "CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.o"
+  "../localTest/executable/derivativeTest.out"
+  "../localTest/executable/derivativeTest.out.pdb"
+  "CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

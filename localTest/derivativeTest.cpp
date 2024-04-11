@@ -71,7 +71,7 @@ int main(int argc, char*argv[])
 
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
     char dataname[256];
-    sprintf(dataname,"/home/chengling/Research/Project/Cell/AnalyticalG/data/N%i/derivativeTest/nvt_N%i_p%.3f_T%.8f_%i.nc",numpts,numpts,p0,T,id);
+    sprintf(dataname,"/home/chengling/Research/Project/Cell/AnalyticalG/data/N%i/derivativeTest/nvt_stress_tensor_N%i_p%.3f_T%.8f_%i.nc",numpts,numpts,p0,T,id);
     shared_ptr<GlassyDynModelDatabase> ncdat=make_shared<GlassyDynModelDatabase>(numpts,dataname,NcFile::Replace);
 
 
@@ -104,11 +104,11 @@ int main(int argc, char*argv[])
     sim->setReproducible(reproducible);
 
     //run for a few initialization timesteps
-
+    voronoiModel->enforceTopology();
     //the reporting of the force should yield a number that is numerically close to zero.
-    voronoiModel->reportMeanCellForce(false);
+    //voronoiModel->reportMeanCellForce(false);
 
-
+    //cout<<"sigmaXX: "<<voronoiModel->getSigmaXX()<<"; sigmaYY: "<<voronoiModel->getSigmaYY()<<endl;
 //    cudaProfilerStart();
     t1=clock();
     for(long long int ii = 0; ii < initSteps; ++ii)
@@ -126,6 +126,7 @@ int main(int argc, char*argv[])
         if (ii % 100 == 0){
             voronoiModel->enforceTopology();
             ncdat->writeState(voronoiModel);
+            cout<<"sigmaXX: "<<voronoiModel->getSigmaXX()<<"; sigmaYY: "<<voronoiModel->getSigmaYY()<<endl;
         }
         
         sim->performTimestep();

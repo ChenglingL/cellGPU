@@ -57,50 +57,50 @@ include CMakeFiles/derivativeTest.out.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/derivativeTest.out.dir/flags.make
 
-CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.o: CMakeFiles/derivativeTest.out.dir/flags.make
-CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.o: ../derivativeTest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/derivativeTest.cpp
+CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.o: CMakeFiles/derivativeTest.out.dir/flags.make
+CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.o: ../localTest/derivativeTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/derivativeTest.cpp
 
-CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/derivativeTest.cpp > CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.i
+CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/derivativeTest.cpp > CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.i
 
-CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/derivativeTest.cpp -o CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.s
+CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/derivativeTest.cpp -o CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.s
 
 # Object files for target derivativeTest.out
 derivativeTest_out_OBJECTS = \
-"CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.o"
+"CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.o"
 
 # External object files for target derivativeTest.out
 derivativeTest_out_EXTERNAL_OBJECTS =
 
-../executable/derivativeTest.out: CMakeFiles/derivativeTest.out.dir/derivativeTest.cpp.o
-../executable/derivativeTest.out: CMakeFiles/derivativeTest.out.dir/build.make
-../executable/derivativeTest.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
-../executable/derivativeTest.out: /usr/lib/x86_64-linux-gnu/librt.so
-../executable/derivativeTest.out: src/models/libmodel.a
-../executable/derivativeTest.out: src/models/libmodelGPU.a
-../executable/derivativeTest.out: src/updaters/libupdaters.a
-../executable/derivativeTest.out: src/updaters/libupdatersGPU.a
-../executable/derivativeTest.out: src/analysis/libanalysis.a
-../executable/derivativeTest.out: src/databases/libdatabase.a
-../executable/derivativeTest.out: src/simulation/libsimulation.a
-../executable/derivativeTest.out: src/utility/libutility.a
-../executable/derivativeTest.out: src/utility/libutilityGPU.a
-../executable/derivativeTest.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
-../executable/derivativeTest.out: /usr/lib/x86_64-linux-gnu/librt.so
-../executable/derivativeTest.out: /usr/lib/x86_64-linux-gnu/libgmpxx.so
-../executable/derivativeTest.out: /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so
-../executable/derivativeTest.out: /usr/lib/x86_64-linux-gnu/libpthread.so
-../executable/derivativeTest.out: CMakeFiles/derivativeTest.out.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../executable/derivativeTest.out"
+../localTest/executable/derivativeTest.out: CMakeFiles/derivativeTest.out.dir/localTest/derivativeTest.cpp.o
+../localTest/executable/derivativeTest.out: CMakeFiles/derivativeTest.out.dir/build.make
+../localTest/executable/derivativeTest.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/derivativeTest.out: /usr/lib/x86_64-linux-gnu/librt.so
+../localTest/executable/derivativeTest.out: src/models/libmodel.a
+../localTest/executable/derivativeTest.out: src/models/libmodelGPU.a
+../localTest/executable/derivativeTest.out: src/updaters/libupdaters.a
+../localTest/executable/derivativeTest.out: src/updaters/libupdatersGPU.a
+../localTest/executable/derivativeTest.out: src/analysis/libanalysis.a
+../localTest/executable/derivativeTest.out: src/databases/libdatabase.a
+../localTest/executable/derivativeTest.out: src/simulation/libsimulation.a
+../localTest/executable/derivativeTest.out: src/utility/libutility.a
+../localTest/executable/derivativeTest.out: src/utility/libutilityGPU.a
+../localTest/executable/derivativeTest.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/derivativeTest.out: /usr/lib/x86_64-linux-gnu/librt.so
+../localTest/executable/derivativeTest.out: /usr/lib/x86_64-linux-gnu/libgmpxx.so
+../localTest/executable/derivativeTest.out: /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so
+../localTest/executable/derivativeTest.out: /usr/lib/x86_64-linux-gnu/libpthread.so
+../localTest/executable/derivativeTest.out: CMakeFiles/derivativeTest.out.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../localTest/executable/derivativeTest.out"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/derivativeTest.out.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/derivativeTest.out.dir/build: ../executable/derivativeTest.out
+CMakeFiles/derivativeTest.out.dir/build: ../localTest/executable/derivativeTest.out
 
 .PHONY : CMakeFiles/derivativeTest.out.dir/build
 

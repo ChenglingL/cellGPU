@@ -63,6 +63,12 @@ class VoronoiQuadraticEnergy : public voronoiModelBase
         //!calculate the current global off-diagonal stress
         virtual double getSigmaXY();
 
+        //!calculate the current global diagonal stress in x direction
+        virtual double getSigmaXX();
+
+        //!calculate the current global diagonal stress in y direction
+        virtual double getSigmaYY();
+
         //!calculate the current global off-diagonal stress for each cell
         virtual double getSigmaXY(vector<double> &sigmai);
 

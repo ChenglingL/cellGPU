@@ -1267,6 +1267,107 @@ Matrix2x2 VoronoiQuadraticEnergy::d2eidHndHj(int i, int nn, int j)
     }
 
 
+double VoronoiQuadraticEnergy::getSigmaXX()
+    {
+    computeGeometry();
+    double answer = 0.0;
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+
+    // for (int cell = 0; cell < Ncells; ++cell)
+    //     {
+    //         cout<<"Cell "<<cell<<" number of vertices "<<h_cvn.data[cell]<<endl;
+    //         for (int i = 0; i < h_cvn.data[cell]; i++)
+    //         {
+    //             cout<<"n_idx(i,cell): "<<n_idx(i,cell)<<endl;
+    //             cout<<"Cell "<<cell<<" Vetex"<<i<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+1]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+2]<<endl;
+    //         }
+    //     }
+
+    //Loop over all the cells
+    for (int cell = 0; cell < Ncells; ++cell)
+        {
+        for (int i = 0; i < h_nn.data[cell]; i++)
+        {
+            //all the cells that are neighbors of vertex i
+            double2 ri1,ri2,ri3; 
+            // index of the 3rd cell center that is neighbour of vertex i.
+            // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+            int ilast = i - 1;
+            if(ilast == -1){
+                ilast = h_nn.data[cell] - 1;
+            }
+
+            ri1=h_p.data[cell];
+            ri2=h_p.data[h_n.data[n_idx(i,cell)]];
+            ri3=h_p.data[h_n.data[n_idx(ilast,cell)]];
+            // double2 circumcent;
+            // Circumcenter(ri2-ri1,ri3-ri1,circumcent);
+            // cout<<"cencumcenter:( "<<circumcent.x<<", "<<circumcent.y<<" and vorocur: ("<<h_v.data[n_idx(i,cell)].x<<", "<<h_v.data[n_idx(i,cell)].y<<endl;
+            // break;
+           
+            answer += dot(deidHn(cell,i), dHdex(ri1,ri2,ri3));
+        }
+        };
+
+
+    return answer;    
+    }
+
+double VoronoiQuadraticEnergy::getSigmaYY()
+    {
+    computeGeometry();
+    double answer = 0.0;
+    //read in the needed data
+    ArrayHandle<double2> h_p(cellPositions,access_location::host,access_mode::read);
+    ArrayHandle<int> h_nn(neighborNum,access_location::host, access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_v(voroCur,access_location::host,access_mode::read);
+
+    // for (int cell = 0; cell < Ncells; ++cell)
+    //     {
+    //         cout<<"Cell "<<cell<<" number of vertices "<<h_cvn.data[cell]<<endl;
+    //         for (int i = 0; i < h_cvn.data[cell]; i++)
+    //         {
+    //             cout<<"n_idx(i,cell): "<<n_idx(i,cell)<<endl;
+    //             cout<<"Cell "<<cell<<" Vetex"<<i<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+1]<<" "<<h_vcn.data[3*h_cv.data[n_idx(i,cell)]+2]<<endl;
+    //         }
+    //     }
+
+    //Loop over all the cells
+    for (int cell = 0; cell < Ncells; ++cell)
+        {
+        for (int i = 0; i < h_nn.data[cell]; i++)
+        {
+            //all the cells that are neighbors of vertex i
+            double2 ri1,ri2,ri3; 
+            // index of the 3rd cell center that is neighbour of vertex i.
+            // The 1st cell center is cell cell, and the second one is h_n.data[n_idx(i,cell)]
+            int ilast = i - 1;
+            if(ilast == -1){
+                ilast = h_nn.data[cell] - 1;
+            }
+
+            ri1=h_p.data[cell];
+            ri2=h_p.data[h_n.data[n_idx(i,cell)]];
+            ri3=h_p.data[h_n.data[n_idx(ilast,cell)]];
+            // double2 circumcent;
+            // Circumcenter(ri2-ri1,ri3-ri1,circumcent);
+            // cout<<"cencumcenter:( "<<circumcent.x<<", "<<circumcent.y<<" and vorocur: ("<<h_v.data[n_idx(i,cell)].x<<", "<<h_v.data[n_idx(i,cell)].y<<endl;
+            // break;
+           
+            answer += dot(deidHn(cell,i), dHdey(ri1,ri2,ri3));
+        }
+        };
+
+
+    return answer;    
+    }
+
+
 double VoronoiQuadraticEnergy::getd2Edgammadgamma(vector<double> &d2Eidgammadgamma)
     {
     double answer = 0.0;

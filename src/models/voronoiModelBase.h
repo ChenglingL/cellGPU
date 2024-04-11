@@ -133,7 +133,10 @@ class voronoiModelBase : public Simple2DActiveCell
         double2 dHdgamma(double2 r1, double2 r2, double2 r3);
         //!Second derivative of voronoi vertex with respect to shear strain gamma
         double2 d2Hdgamma2(double2 r1, double2 r2, double2 r3);
-
+        //!First derivative of voronoi vertex with respect to strain epsilon x
+        double2 dHdex(double2 r1, double2 r2, double2 r3);        
+        //!First derivative of voronoi vertex with respect to strain epsilon y
+        double2 dHdey(double2 r1, double2 r2, double2 r3);
     //public member variables
     public:
         //!The class' local Delaunay tester/updater
