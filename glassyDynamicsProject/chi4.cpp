@@ -14,17 +14,22 @@
 #include "profiler.h"
 #include "autocorrelator.h"
 #include "logSACWritter.h"
-
+/*This is to save 10 trajactories for each run. The simulations will be run for 30 *1000 tau: 10 for equilibruition, 20 to record 
+data. This .cpp should only be used for tau_alpha <1000.*/
 
 /*!
-This file is for production runs. For known preliminary estimates tau_alpha, we equlibrate for 10 tau_alpha
-and run for another 10 tau_alpha. Sevral files will be saved:
-SigmaSecD_.nc saves the sigma and second derivative of E wrt gamma. numberofDerivatives data points will be saved and the spacing is determined by the total duration of simulation.
-glassyDynamics_.nc saves the log-sapced nvt database.
-SACtime_.nc saves the stress-autocorrelation function with the correspongding time.
-instantaneousStates_.nc saves 10 snapshots after every tau_alpha.
+This file compiles to produce an executable that can be used to reproduce the timing information
+in the main cellGPU paper. It sets up a simulation that takes control of a voronoi model and a simple
+model of active motility
+NOTE that in the output, the forces and the positions are not, by default, synchronized! The NcFile
+records the force from the last time "computeForces()" was called, and generally the equations of motion will 
+move the positions. If you want the forces and the positions to be sync'ed, you should call the
+Voronoi model's computeForces() funciton right before saving a state.
 */
 
+/*There will three output files. One is using the nvtModelBase and saves the log-spaced configurations; one 
+is used to save data points of de/dgamma and d2e/dgamma2 with equalispaced time; the other one is to save the
+stress autocorrelation function.*/
 int main(int argc, char*argv[])
 {
     //...some default parameters
@@ -32,12 +37,13 @@ int main(int argc, char*argv[])
     int USE_GPU = 0; //0 or greater uses a gpu, any negative number runs on the cpu
     int c;
 
-    double tauEstimate = 10;
-    double equilibrationWaitingTimeMultiple = 10.0;
-    double numberOfRelaxationTimes =10.0;
-    int numberofDerivatives = 50000;
+    double tauEstimate = 1000.0;
+    double equilibrationMultiple = 10.0; // how many tau_alpha for equilibration
+    double numberOfRelaxationTimes =20.0;// how many tau_alpha for data recording
 
+    int numberofWaitingtime = 19;
 
+    int timeLimitofSAC = 50000;
 
     double dt = 0.01; //the time step size
     double T = 0.01;  // the target temperature
@@ -54,12 +60,13 @@ int main(int argc, char*argv[])
             case 'n': numpts = atoi(optarg); break;
             case 'g': USE_GPU = atoi(optarg); break;
             case 't': tauEstimate = atof(optarg); break;
-            case 'i': equilibrationWaitingTimeMultiple = atof(optarg); break;
+            case 'i': equilibrationMultiple = atof(optarg); break;
             case 'm': numberOfRelaxationTimes = atof(optarg); break;
             case 'e': dt = atof(optarg); break;
             case 'v': T = atof(optarg); break;
             case 'l': T0 = atof(optarg); break;
             case 'p': p0 = atof(optarg); break;
+            case 'w': numberofWaitingtime = atof(optarg); break;
             case 's': statesSavedPerDecadeOfTime = atof(optarg); break;
             case 'r': recordIndex = atoi(optarg); break;
             case '?':
@@ -88,48 +95,42 @@ int main(int argc, char*argv[])
     cout << "reading record " << recordIndex << " from " << loadDatabaseName << endl;
     nvtModelDatabase fluidConfigurations(numpts,loadDatabaseName,NcFile::ReadOnly);
 
-    //set the equilibration time to be 1000tau if
-    long long int equilibrationTimesteps = max(floor(10000/dt),floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt));
     //set the max time to be 20000000 so the simulation can run 48h in the NCSADelta
-    long long int runTimesteps = max(floor(10000/dt),floor((tauEstimate * numberOfRelaxationTimes)/ dt));
-    cout << "tauAlpha estimate is " << tauEstimate  << endl;
-    cout << "equilibration timesteps = " << equilibrationTimesteps << ", data collecting timesteps = " << runTimesteps << endl;
+    long long int maximumWaitingTimesteps = max(round(20000/dt),round((tauEstimate * numberOfRelaxationTimes)/ dt));
+    long long int maximumTimesteps = min(round(30000/dt), maximumWaitingTimesteps+max(round((equilibrationMultiple * tauEstimate)/dt),1000/dt));
+    cout << "tauAlpha estimate is " << tauEstimate << " and the system will be run for a maximum waiting time of " << numberOfRelaxationTimes << " multiples of that estimate after equilibration." << endl;
+    cout << "maximum waiting timesteps = " << maximumWaitingTimesteps << ", Total timesteps = " << maximumTimesteps << endl;
 
-    //set the spacing for saving instantaneous states
-    long long int spacingofInstantaneous = floor(runTimesteps/10);
-    int spacingofDerivative = runTimesteps/(numberofDerivatives);
-    if (spacingofDerivative<1){spacingofDerivative=1;};
 
-    cout<<"save the derivatives at every "<<spacingofDerivative*dt<<"tau"<<endl; 
+
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. The arguement will save approximately the correct number of states per decade of time (up to integer rounding in the early decades)
     logEquilibrationStateWriter lewriter((1.0/statesSavedPerDecadeOfTime));
+    logSACWritter lsacwriter;
     char dataname[256];
     char SACname[256];
-    char SACnameHalfTime[256]; // in case the job can not be finished with 48 hours, save SAC at t=50000
     char Derivativename[256];
     char saveDirName[256];
-    char instantaneousName[256];
-    sprintf(saveDirName, "/scratch/bbtm/cli6/glassyDynamics/data/N%i/p%.3f/",numpts,p0);
-    sprintf(Derivativename,"%sSigmaSecD_N%i_p%.4f_T%.8f_spacing%i_idx%i.nc",saveDirName,numpts,p0,T,spacingofDerivative,recordIndex);
-    shared_ptr<twoValuesDatabase> derivativedat=make_shared<twoValuesDatabase>(Derivativename,NcFile::Replace);
-     
-    sprintf(dataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",saveDirName,numpts,p0,T,floor(equilibrationTimesteps*dt),recordIndex);
-    shared_ptr<nvtModelDatabase> glassyDynamicsdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
-    lewriter.addDatabase(glassyDynamicsdat,0);
-    lewriter.identifyNextFrame();
-
-    sprintf(SACname,"%sSACtime_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",saveDirName,numpts,p0,T,floor(equilibrationTimesteps*dt),recordIndex);
-    shared_ptr<twoValuesDatabase> SACtime=make_shared<twoValuesDatabase>(SACname,NcFile::Replace);
-    sprintf(SACnameHalfTime,"%sSACtimeHalfTime_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",saveDirName,numpts,p0,T,floor(equilibrationTimesteps*dt),recordIndex);
-    shared_ptr<twoValuesDatabase> SACtimeHalfTime=make_shared<twoValuesDatabase>(SACnameHalfTime,NcFile::Replace);
-    shared_ptr<autocorrelator> acdat = make_shared<autocorrelator>(16,2,dt);
-
-    sprintf(instantaneousName,"%sinstantaneousStates_N%i_p%.4f_T%.8f_spacing%.i_idx%i.nc",saveDirName,numpts,p0,T,spacingofInstantaneous,recordIndex);
-    shared_ptr<nvtModelDatabase> instantaneousdat=make_shared<nvtModelDatabase>(numpts,instantaneousName,NcFile::Replace);
- 
-
+    sprintf(saveDirName, "/scratch/bbtm/cli6/glassyDynamics/data/N%i/p%.3f/",numpts,p0); 
     cout<<"Data are saved in "<<saveDirName<<endl;
+    //set up a log spaced vector of offsets for the datasaveers
+    vector<long long int> offsets;
+    offsets.push_back(0);
+    for (int power = 0; power < numberofWaitingtime; power++)
+    {
+        long long int lastOffset = power*maximumWaitingTimesteps/20+max(round((equilibrationMultiple * tauEstimate)/dt),1000/dt);
+        offsets.push_back(lastOffset);
+    }
+    
 
+    for(int ii = 0; ii < offsets.size(); ++ii)
+        {
+        sprintf(dataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",saveDirName,numpts,p0,T,offsets[ii]*dt,recordIndex);
+        cout << "initializing an offset of " << offsets[ii]*dt << endl;
+        shared_ptr<nvtModelDatabase> ncdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
+        lewriter.addDatabase(ncdat,offsets[ii]);
+        }
+
+    lewriter.identifyNextFrame();
 
 
     cout << "initializing a system of " << numpts << " cells at temperature " << T << endl;
@@ -168,79 +169,25 @@ int main(int argc, char*argv[])
     if (!gpu)
         sim->setOmpThreads(abs(USE_GPU));
     sim->setReproducible(reproducible);
-
-    printf("starting equilibration run\n");
-    for(long long int ii = 0; ii < equilibrationTimesteps; ++ii)
-        {
-        sim->performTimestep();
-        };
-    voronoiModel->computeGeometry();
-    printf("Finished with initialization\n");
-    cout << "current q = " << voronoiModel->reportq() << endl;
-
-    profiler simulationrunProfiler("simulationrun");
-    profiler addstressProfiler("addstress");
-    profiler SACProfiler("SAC");
-    profiler timeStepProfiler("timeStep");
-    profiler derivativeProfiler("derivitive");
-    profiler nvtProfiler("nvt");
-
     //run for a few initialization timesteps
     printf("starting glassy dynamics run\n");
     //the "+2" is to ensure there are no fence-post problems for the very longest equilibrated state
-    for(long long int ii = 0; ii < runTimesteps+2; ++ii)
+    for(long long int ii = 0; ii < maximumTimesteps+2; ++ii)
         {
-        simulationrunProfiler.start();
-        addstressProfiler.start();
+
         voronoiModel->enforceTopology();
-        double sigma = voronoiModel->getSigmaXY();
-        acdat->add(sigma,0);
-        addstressProfiler.end();
-        //save to one of the databases if needed
-        if (ii % spacingofDerivative == 0){
-            derivativeProfiler.start();
-            derivativedat->writeValues(sigma,voronoiModel->getd2Edgammadgamma());
-            derivativeProfiler.end();
-            }
-        if (ii % spacingofInstantaneous == 0){
-            instantaneousdat->writeState(voronoiModel);
-            }
+
         if (ii == lewriter.nextFrameToSave)
             {
-            nvtProfiler.start();
             lewriter.writeState(voronoiModel,ii);
-            nvtProfiler.end();
             }
-        if (ii == floor(50000/dt))// in case the jod is not completed within 48 hours
-            {
-            acdat->evaluate(false);
-            for(int j = 0; j < acdat->correlator.size(); ++j)
-                {
-                SACtimeHalfTime->writeValues(acdat->correlator[j].y,acdat->correlator[j].x);
-                }
-            }
+
         //advance the simulationcd
-        timeStepProfiler.start();
         sim->performTimestep();
-        timeStepProfiler.end();
-        simulationrunProfiler.end();
         };
     //the reporting of the force should yield a number that is numerically close to zero.
     voronoiModel->reportMeanCellForce(false);
 
-    simulationrunProfiler.print();
-    timeStepProfiler.print();
-    derivativeProfiler.print();
-    nvtProfiler.print();
-    SACProfiler.start();   
-    acdat->evaluate(false);
-        for(int j = 0; j < acdat->correlator.size(); ++j)
-            {
-            SACtime->writeValues(acdat->correlator[j].y,acdat->correlator[j].x);
-            }
-    SACProfiler.end();
-    addstressProfiler.print();
-    SACProfiler.print();
     if(initializeGPU)
         cudaDeviceReset();
     return 0;

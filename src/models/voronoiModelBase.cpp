@@ -1052,7 +1052,7 @@ double2 voronoiModelBase::dHdex(double2 r1, double2 r2, double2 r3)
     double dhydex = (r2x*r3x*(-r2x + r3x))/(-(r2y*r3x) + r2x*r3y);
 
     answer.x=dhxdex;
-    answer.y=dhxdex;
+    answer.y=dhydex;
     //cout<<"dHdgamma correct "<<answer.x<<" "<<answer.y<<endl;
     return answer;
 };
@@ -1080,7 +1080,120 @@ double2 voronoiModelBase::dHdey(double2 r1, double2 r2, double2 r3)
     double dhydey =  (r3x*(r2x*r2x) - r3x*(r2y*r2y) + r2x*(-(r3x*r3x) + r3y*r3y))/(-2*r2y*r3x + 2*r2x*r3y);
 
     answer.x=dhxdey;
-    answer.y=dhxdey;
+    answer.y=dhydey;
+    //cout<<"dHdgamma correct "<<answer.x<<" "<<answer.y<<endl;
+    return answer;
+};
+
+/*!
+\param r1 The position of cell 1 (similar to rj)
+\param r2 The position of cell 2 (similar to rj)
+\param r3 The position of cell 3 (similar to rk)
+Returns the analytical 1st derivative of the position of a voronoi vertex formd by cell 1, 2, and 3 w.r.t. to epsilon x.
+*/
+double2 voronoiModelBase::d2Hdexdex(double2 r1, double2 r2, double2 r3)
+{
+    double2 answer;
+    double r2x,r2y,r3x,r3y;
+    double2 r12,r13;
+    
+    Box->minDist(r2,r1,r12);
+    Box->minDist(r3,r1,r13);
+    r2x = r12.x;
+    r2y = r12.y;
+    r3x = r13.x;
+    r3y = r13.y;
+
+    double d2hxdexdex = (r2y*(r2y - r3y)*r3y)/(-(r2y*r3x) + r2x*r3y);
+    double d2hydexdex = (r2x*r3x*(-r2x + r3x))/(-(r2y*r3x) + r2x*r3y);
+
+    answer.x=d2hxdexdex;
+    answer.y=d2hydexdex;
+    //cout<<"dHdgamma correct "<<answer.x<<" "<<answer.y<<endl;
+    return answer;
+};
+
+/*!
+\param r1 The position of cell 1 (similar to rj)
+\param r2 The position of cell 2 (similar to rj)
+\param r3 The position of cell 3 (similar to rk)
+Returns the analytical 1st derivative of the position of a voronoi vertex formd by cell 1, 2, and 3 w.r.t. to epsilon y.
+*/
+double2 voronoiModelBase::d2Hdeydey(double2 r1, double2 r2, double2 r3)
+{
+    double2 answer;
+    double r2x,r2y,r3x,r3y;
+    double2 r12,r13;
+    
+    Box->minDist(r2,r1,r12);
+    Box->minDist(r3,r1,r13);
+    r2x = r12.x;
+    r2y = r12.y;
+    r3x = r13.x;
+    r3y = r13.y;
+
+    double d2hxdeydey = (r2y*(r2y - r3y)*r3y)/(-(r2y*r3x) + r2x*r3y);
+    double d2hydeydey =  (r2x*r3x*(-r2x + r3x))/(-(r2y*r3x) + r2x*r3y);
+
+    answer.x=d2hxdeydey;
+    answer.y=d2hydeydey;
+    //cout<<"dHdgamma correct "<<answer.x<<" "<<answer.y<<endl;
+    return answer;
+};
+
+/*!
+\param r1 The position of cell 1 (similar to rj)
+\param r2 The position of cell 2 (similar to rj)
+\param r3 The position of cell 3 (similar to rk)
+Returns the analytical 1st derivative of the position of a voronoi vertex formd by cell 1, 2, and 3 w.r.t. to epsilon x.
+*/
+double2 voronoiModelBase::dHdep(double2 r1, double2 r2, double2 r3)
+{
+    double2 answer;
+    double r2x,r2y,r3x,r3y;
+    double2 r12,r13;
+    
+    Box->minDist(r2,r1,r12);
+    Box->minDist(r3,r1,r13);
+    r2x = r12.x;
+    r2y = r12.y;
+    r3x = r13.x;
+    r3y = r13.y;
+
+    double dhxdep = (-(r3y*(r2x*r2x)) + 3*r3y*(r2y*r2y) + r2y*(r3x*r3x) - 3*r2y*(r3y*r3y))/(2*r2y*r3x - 2*r2x*r3y);
+    double dhydep =  (3*r3x*(r2x*r2x) - r3x*(r2y*r2y) - 3*r2x*(r3x*r3x) + r2x*(r3y*r3y))/(2*r2y*r3x - 2*r2x*r3y);
+
+    answer.x=dhxdep;
+    answer.y=dhydep;
+    //cout<<"dHdgamma correct "<<answer.x<<" "<<answer.y<<endl;
+    return answer;
+};
+
+
+/*!
+\param r1 The position of cell 1 (similar to rj)
+\param r2 The position of cell 2 (similar to rj)
+\param r3 The position of cell 3 (similar to rk)
+Returns the analytical 1st derivative of the position of a voronoi vertex formd by cell 1, 2, and 3 w.r.t. to epsilon x.
+*/
+double2 voronoiModelBase::d2Hdepdep(double2 r1, double2 r2, double2 r3)
+{
+    double2 answer;
+    double r2x,r2y,r3x,r3y;
+    double2 r12,r13;
+    
+    Box->minDist(r2,r1,r12);
+    Box->minDist(r3,r1,r13);
+    r2x = r12.x;
+    r2y = r12.y;
+    r3x = r13.x;
+    r3y = r13.y;
+
+    double d2hxdepdep = (6*r2y*(r2y - r3y)*r3y)/(-(r2y*r3x) + r2x*r3y);
+    double d2hydepdep =  (3*r3x*(r2x*r2x) + r3x*(r2y*r2y) - 3*r2x*(r3x*r3x) - r2x*(r3y*r3y))/(r2y*r3x - r2x*r3y);
+
+    answer.x=d2hxdepdep;
+    answer.y=d2hydepdep;
     //cout<<"dHdgamma correct "<<answer.x<<" "<<answer.y<<endl;
     return answer;
 };

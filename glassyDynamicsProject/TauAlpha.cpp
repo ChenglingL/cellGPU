@@ -113,7 +113,7 @@ int main(int argc, char*argv[])
     char SACname[256];
     char Derivativename[256];
     char saveDirName[256];
-    sprintf(saveDirName, "/projects/bbtm/cli6/glassyDynamics/data/N%i/p%.0f/",numpts,p0*100);
+    sprintf(saveDirName, "/scratch/bbtm/cli6/glassyDynamics/data/N%i/p%.3f/",numpts,p0);
     sprintf(Derivativename,"%sSigmaSecD_N%i_p%.4f_T%.8f_Spacing%i_idx%i.nc",saveDirName,numpts,p0,T,spacingofDerivative,recordIndex);
     shared_ptr<twoValuesDatabase> derivativedat=make_shared<twoValuesDatabase>(Derivativename,NcFile::Replace);
      

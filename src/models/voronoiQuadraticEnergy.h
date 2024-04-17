@@ -75,6 +75,18 @@ class VoronoiQuadraticEnergy : public voronoiModelBase
         //!calculate the current global d2Edgammadgamma
         virtual double getd2Edgammadgamma();
 
+        //!calculate the current global getd2Edepsilondepsilon for pure shear
+        virtual double getd2Edepsilondepsilon();
+
+        //!calculate the current global getdEdepsilon for pure shear
+        virtual double getdEdepsilon();
+
+        //!calculate the current global getd2EdepsilonXdepsilonX
+        virtual double getd2EdepsilonXdepsilonX();
+
+        //!calculate the current global getd2EdepsilonYdepsilonY
+        virtual double getd2EdepsilonYdepsilonY();
+
         //!calculate the current global d2Edgammadr for the shear modulus of inherent states
         virtual void getd2Edgammadr(vector<double2> &d2Edgammadr);
 
