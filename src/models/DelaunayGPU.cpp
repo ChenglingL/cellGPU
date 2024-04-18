@@ -87,6 +87,7 @@ void DelaunayGPU::updateList(GPUArray<double2> &points)
         cudaError_t code = cudaGetLastError();
         if(code!=cudaSuccess)
             {
+            cout<<"updateList failed"<<endl;
             printf("cell list computation GPUassert: %s \n", cudaGetErrorString(code));
             throw std::exception();
             };
@@ -717,6 +718,7 @@ void DelaunayGPU::getCircumcirclesCPU(GPUArray<int> &GPUTriangulation, GPUArray<
 
     if((totaln != 6*Ncells || cidx != 2*Ncells))
         {
+        cout<<"getCircumcirclesCPU() failed: "<<cidx<<" "<<2*Ncells<<" "<<totaln<<" "<<6*Ncells<<endl;
         printf("GPU step: getCCs failed, %i out of %i ccs, %i out of %i neighs \n",cidx,2*Ncells,totaln,6*Ncells);
         throw std::exception();
         };

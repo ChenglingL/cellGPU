@@ -101,7 +101,7 @@ int main(int argc, char*argv[])
     char saveDirName[256];
     char energyname[256];
 
-    sprintf(saveDirName, "/scratch/bbtm/cli6/glassyDynamics/data/N%i/p%.3f/",numpts,p0);
+    sprintf(saveDirName, "/scratch/bbtm/cli6/glassyDynamics/data/N%i/pureShear/p%.3f/",numpts,p0);
     sprintf(simpleShearname,"%ssimpleShearDerivatives1st2nd_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
     shared_ptr<twoValuesDatabase> simplesheardat=make_shared<twoValuesDatabase>(simpleShearname,NcFile::Replace);
      
@@ -119,7 +119,7 @@ int main(int argc, char*argv[])
         //specify the name of the database to *load data* from
     char loadDatabaseName[256];
     sprintf(loadDatabaseName,"/projects/bbtm/cli6/glassyDynamics/data/N%i/productionRuns/p%.3f/glassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",numpts,p0,numpts,p0,T,floor(equilibrationTimesteps*dt),recordIndex);
-    cout << "reading record " << recordIndex << " from " << loadDatabaseName << endl;
+    cout << "reading record 0 from " << loadDatabaseName << endl;
     nvtModelDatabase fluidConfigurations(numpts,loadDatabaseName,NcFile::ReadOnly);
 
 
@@ -131,7 +131,18 @@ int main(int argc, char*argv[])
     //define a voronoi configuration and load the relevant record from the database
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
     fluidConfigurations.readState(voronoiModel,0,true);
-    voronoiModel->setRectangularUnitCell(1+epsilon,1/(1-epsilon))
+    cout<<"epsilon: "<<epsilon<<endl;
+    double namda = 1+epsilon;
+    cout<<"namda: "<<namda<<endl;
+    double b1,b2,b3,b4;
+    voronoiModel->Box->getBoxDims(b1,b2,b3,b4);
+    double area = b1*b4;
+    cout<<"area: "<<area<<endl;
+    double l1=b1*namda;
+    double l4=b4/namda;
+    cout<<"new lx ly: "<<l1<<", "<<l4<<endl;
+    voronoiModel->setRectangularUnitCell(l1,l4);
+    //cout<<"The box has been scaled from ("<<b1<<", "<<b4<<") to ("<<l1<<", "<<l4<<") by applying pure shear epsilon "<<epsilon<<endl;
 
     //set the cell preferences to uniformly have A_0 = 1, P_0 = p_0 -- this line was used to generate the states, but now we just load the data
 //    voronoiModel->setCellPreferencesWithRandomAreas(p0,0.8,1.2);
@@ -161,15 +172,12 @@ int main(int argc, char*argv[])
     //the "+2" is to ensure there are no fence-post problems for the very longest equilibrated state
     for(long long int ii = 0; ii < runTimesteps+2; ++ii)
         {
-        simulationrunProfiler.start();
-        addstressProfiler.start();
-        voronoiModel->enforceTopology();
-        double sigma = voronoiModel->getSigmaXY();
-
         //save to one of the databases if needed
         if (ii % spacingofDerivative == 0){
             simpleShearProfiler.start();
-            simplesheardat->writeValues(sigma*numpts,voronoiModel->getd2Edgammadgamma());
+            voronoiModel->enforceTopology();
+            double sigma = voronoiModel->getSigmaXY();
+            simplesheardat->writeValues(sigma*area,voronoiModel->getd2Edgammadgamma());
             simpleShearProfiler.end();
 
             pureShearProfiler.start();

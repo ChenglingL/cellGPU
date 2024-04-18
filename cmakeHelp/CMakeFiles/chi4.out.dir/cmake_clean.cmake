@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
-  "../localTest/executable/chi4.out"
-  "../localTest/executable/chi4.out.pdb"
-  "CMakeFiles/chi4.out.dir/localTest/chi4.cpp.o"
+  "../glassyDynamicsProject/chi4.out"
+  "../glassyDynamicsProject/chi4.out.pdb"
+  "CMakeFiles/chi4.out.dir/glassyDynamicsProject/chi4.cpp.o"
+  "CMakeFiles/chi4.out.dir/glassyDynamicsProject/chi4.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

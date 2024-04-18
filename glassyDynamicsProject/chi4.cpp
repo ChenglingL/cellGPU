@@ -114,7 +114,6 @@ int main(int argc, char*argv[])
     cout<<"Data are saved in "<<saveDirName<<endl;
     //set up a log spaced vector of offsets for the datasaveers
     vector<long long int> offsets;
-    offsets.push_back(0);
     for (int power = 0; power < numberofWaitingtime; power++)
     {
         long long int lastOffset = power*maximumWaitingTimesteps/20+max(round((equilibrationMultiple * tauEstimate)/dt),1000/dt);

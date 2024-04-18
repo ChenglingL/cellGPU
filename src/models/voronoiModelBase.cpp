@@ -192,6 +192,7 @@ void voronoiModelBase::movePoints(GPUArray<double2> &displacements,double scale)
     cudaError_t code = cudaGetLastError();
     if(code!=cudaSuccess)
         {
+        cout<<"movePoints GPUassert"<<endl;
         printf("movePoints GPUassert: %s \n", cudaGetErrorString(code));
         throw std::exception();
         };
@@ -311,6 +312,7 @@ void voronoiModelBase::globalTriangulationCGAL(bool verbose)
 
     if(totaln != 6*Ncells)
         {
+        cout<<"global CPU neighbor failed"<<endl;
         printf("global CPU neighbor failed! NN = %i\n",totaln);
         char fn[256];
         sprintf(fn,"failed.txt");
@@ -424,10 +426,8 @@ void voronoiModelBase::enforceTopology()
     if(neighbors.getNumElements() != Ncells*oldNeighMax)
         resizeAndReset();
 
-
     delGPU.testAndRepairDelaunayTriangulation(cellPositions,neighbors,neighborNum);
     //globalTriangulationDelGPU();
-
     //global rescue if needed
     if(NeighIdxNum != 6* Ncells)
         {
@@ -435,14 +435,12 @@ void voronoiModelBase::enforceTopology()
         globalTriangulationCGAL();
         resizeAndReset();
         }
-
     neighMax = delGPU.MaxSize;
     if(oldNeighMax != neighMax)
         {
         resizeAndReset();
         globalTriangulationDelGPU();
         }
-
     allDelSets();
     };
 
