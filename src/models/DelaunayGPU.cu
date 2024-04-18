@@ -249,7 +249,7 @@ __host__ __device__ inline void test_circumcircle_kernel_function(int idx,
                                               const int* __restrict__ d_cell_idx,
                                               int xsize,
                                               int ysize,
-                                              double boxsize,
+                                              double2 boxsize,
                                               periodicBoundaries Box,
                                               Index2D ci,
                                               Index2D cli
@@ -271,13 +271,14 @@ __host__ __device__ inline void test_circumcircle_kernel_function(int idx,
     Circumcircle(pt1,pt2,Q,currentRadius);
     double2 QinBox = v+Q;
     Box.putInBoxReal(QinBox);
-    cell_x = (int)floor(QinBox.x/boxsize) % xsize;
-    cell_y = (int)floor(QinBox.y/boxsize) % ysize;
+    cell_x = (int)floor(QinBox.x/boxsize.x) % xsize;
+    cell_y = (int)floor(QinBox.y/boxsize.y) % ysize;
 
     //look through cells for other particles...re-use pt1 and pt2 variables below
     bool badParticle = false;
     xOrY = max(xsize,ysize);
-    cell_rad = min((int) ceil(currentRadius/boxsize),xOrY/2);
+    double boxsize_XorY = min(boxsize.x,boxsize.y);
+    cell_rad = min((int) ceil(currentRadius/boxsize_XorY),xOrY/2);
     double rad2 = currentRadius*currentRadius;
 
     cell_rad = (2*cell_rad+1);
@@ -348,7 +349,7 @@ __global__ void gpu_test_circumcircles_kernel(
                                               int Nccs,
                                               int xsize,
                                               int ysize,
-                                              double boxsize,
+                                              double2 boxsize,
                                               periodicBoundaries Box,
                                               Index2D ci,
                                               Index2D cli
@@ -378,7 +379,7 @@ __host__ __device__ inline void virtual_voronoi_calc_function(        int kidx,
                                               int Ncells,
                                               int xsize,
                                               int ysize,
-                                              double boxsize,
+                                              double2 boxsize,
                                               periodicBoundaries Box,
                                               Index2D ci,
                                               Index2D cli,
@@ -389,18 +390,20 @@ __host__ __device__ inline void virtual_voronoi_calc_function(        int kidx,
     int m, n;
     double2 pt1;
     double rr;
-    double Lmax=(xsize*boxsize)*0.5; 
-    double LL=Lmax/1.414213562373095-EPSILON;
+    double LmaxX=(xsize*boxsize.x)*0.5; 
+    double LLX=LmaxX/1.414213562373095-EPSILON;
+    double LmaxY=(ysize*boxsize.y)*0.5; 
+    double LLY=LmaxY/1.414213562373095-EPSILON;
 
     poly_size=4;
-    P[GPU_idx(0, kidx)].x=LL;
-    P[GPU_idx(0, kidx)].y=LL;
-    P[GPU_idx(1, kidx)].x=-LL;
-    P[GPU_idx(1, kidx)].y=LL;
-    P[GPU_idx(2, kidx)].x=-LL;
-    P[GPU_idx(2, kidx)].y=-LL;
-    P[GPU_idx(3, kidx)].x=LL;
-    P[GPU_idx(3, kidx)].y=-LL;
+    P[GPU_idx(0, kidx)].x=LLX;
+    P[GPU_idx(0, kidx)].y=LLY;
+    P[GPU_idx(1, kidx)].x=-LLX;
+    P[GPU_idx(1, kidx)].y=LLY;
+    P[GPU_idx(2, kidx)].x=-LLX;
+    P[GPU_idx(2, kidx)].y=-LLY;
+    P[GPU_idx(3, kidx)].x=LLX;
+    P[GPU_idx(3, kidx)].y=-LLY;
 
 #ifdef DEBUGFLAGUP
 unsigned int t1,t2,t3,t4,t6,t7;
@@ -444,9 +447,11 @@ t1=clock();
         currentRadius = norm(currentQ);
         pt1=v;//+Q[GPU_idx(jj,kidx)]; //absolute position (within box) of circumcenter
         Box.putInBoxReal(pt1);
-        cell_x = (int)floor(pt1.x/boxsize) % xsize;
-        cell_y = (int)floor(pt1.y/boxsize) % ysize;
-        cell_rad = min((int) ceil(currentRadius/boxsize),xsize/2);
+        cell_x = (int)floor(pt1.x/boxsize.x) % xsize;
+        cell_y = (int)floor(pt1.y/boxsize.y) % ysize;
+        int XorY = min(xsize,ysize);
+        double boxsize_XorY = min(boxsize.x,boxsize.y);
+        cell_rad = min((int) ceil(currentRadius/boxsize_XorY),XorY/2);
         cell_rad = (2*cell_rad+1);
         cc = 0;
         dd = 0;
@@ -682,7 +687,7 @@ __global__ void gpu_voronoi_calc_no_sort_kernel(const double2* __restrict__ d_pt
                                               int Ncells,
                                               int xsize,
                                               int ysize,
-                                              double boxsize,
+                                              double2 boxsize,
                                               periodicBoundaries Box,
                                               Index2D ci,
                                               Index2D cli,
@@ -720,7 +725,7 @@ __global__ void gpu_voronoi_calc_global_kernel(const double2* __restrict__ d_pt,
                                               int Ncells,
                                               int xsize,
                                               int ysize,
-                                              double boxsize,
+                                              double2 boxsize,
                                               periodicBoundaries Box,
                                               Index2D ci,
                                               Index2D cli,
@@ -752,7 +757,7 @@ __host__ __device__ inline void get_oneRing_function(int kidx,
                 int Ncells,
                 int xsize,
                 int ysize,
-                double boxsize,
+                double2 boxsize,
                 periodicBoundaries Box,
                 Index2D ci,
                 Index2D cli,
@@ -780,9 +785,11 @@ __host__ __device__ inline void get_oneRing_function(int kidx,
         Box.putInBoxReal(pt1);
 
         //check neighbours of Q's cell inside the circumcircle
-        cell_x = (int)floor(pt1.x/boxsize) % xsize;
-        cell_y = (int)floor(pt1.y/boxsize) % ysize;
-        cell_rad = min((int) ceil(currentRadius/boxsize),xsize/2);
+        cell_x = (int)floor(pt1.x/boxsize.x) % xsize;
+        cell_y = (int)floor(pt1.y/boxsize.y) % ysize;
+        int XorY = max(xsize,ysize);
+        double boxsize_XorY = min(boxsize.x,boxsize.y);
+        cell_rad = min((int) ceil(currentRadius/boxsize_XorY),XorY/2);
         /*cells are currently checked in a spiral search from the central cell to the outermost...
         current algorithm searches CW, with the spiral being {{0,0},{1,0},{1,-1},...,{max,max}}.
         A small optimization could select the spiral used based on the quadrant relative to the
@@ -1027,7 +1034,7 @@ __global__ void gpu_get_neighbors_no_sort_kernel(const double2* __restrict__ d_p
                 int Ncells,
                 int xsize,
                 int ysize,
-                double boxsize,
+                double2 boxsize,
                 periodicBoundaries Box,
                 Index2D ci,
                 Index2D cli,
@@ -1063,7 +1070,7 @@ __global__ void gpu_get_neighbors_global_kernel(const double2* __restrict__ d_pt
                 int Ncells,
                 int xsize,
                 int ysize,
-                double boxsize,
+                double2 boxsize,
                 periodicBoundaries Box,
                 Index2D ci,
                 Index2D cli,
@@ -1118,7 +1125,7 @@ bool gpu_voronoi_calc_no_sort(const double2* d_pt,
                       int Ncells,
                       int xsize,
                       int ysize,
-                      double boxsize,
+                      double2 boxsize,
                       periodicBoundaries Box,
                       Index2D ci,
                       Index2D cli,
@@ -1198,7 +1205,7 @@ bool gpu_voronoi_calc(const double2* d_pt,
                 int Ncells,
                 int xsize,
                 int ysize,
-                double boxsize,
+                double2 boxsize,
                 periodicBoundaries Box,
                 Index2D ci,
                 Index2D cli,
@@ -1257,7 +1264,7 @@ bool gpu_get_neighbors_no_sort(const double2* d_pt, //the point set
                 int Ncells,
                 int xsize,
                 int ysize,
-                double boxsize,
+                double2 boxsize,
                 periodicBoundaries Box,
                 Index2D ci,
                 Index2D cli,
@@ -1324,7 +1331,7 @@ bool gpu_get_neighbors(const double2* d_pt, //the point set
                 int Ncells,
                 int xsize,
                 int ysize,
-                double boxsize,
+                double2 boxsize,
                 periodicBoundaries Box,
                 Index2D ci,
                 Index2D cli,
@@ -1398,7 +1405,7 @@ bool gpu_test_circumcircles(int *d_repair,
                             int Np,
                             int xsize,
                             int ysize,
-                            double boxsize,
+                            double2 boxsize,
                             periodicBoundaries &Box,
                             Index2D &ci,
                             Index2D &cli,

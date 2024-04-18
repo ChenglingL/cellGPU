@@ -188,6 +188,18 @@ noiseSource.cuh
 std_include.h
 ../src/utility/std_include.h
 
+../src/utility/utilities.cuh
+std_include.h
+../src/utility/std_include.h
+cuda_runtime.h
+-
+gpuarray.h
+../src/utility/gpuarray.h
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayCGAL.cpp
+DelaunayCGAL.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayCGAL.h
+
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayCGAL.h
 vector_types.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vector_types.h
@@ -210,6 +222,26 @@ CGAL/Triangulation_2.h
 CGAL/Delaunay_triangulation_2.h
 -
 
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayGPU.cpp
+DelaunayGPU.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayGPU.h
+DelaunayGPU.cuh
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayGPU.cuh
+cellListGPU.cuh
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/cellListGPU.cuh
+utilities.cuh
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/utilities.cuh
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayGPU.cuh
+cuda_runtime.h
+-
+std_include.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/std_include.h
+indexer.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/indexer.h
+periodicBoundaries.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/periodicBoundaries.h
+
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayGPU.h
 gpuarray.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/gpuarray.h
@@ -219,6 +251,14 @@ cellListGPU.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/cellListGPU.h
 multiProfiler.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/multiProfiler.h
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/Simple2DActiveCell.cpp
+Simple2DCell.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/Simple2DCell.h
+Simple2DCell.cuh
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/Simple2DCell.cuh
+Simple2DActiveCell.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/Simple2DActiveCell.h
 
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/Simple2DActiveCell.h
 Simple2DCell.h
@@ -231,6 +271,12 @@ curand.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/curand.h
 curand_kernel.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/curand_kernel.h
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/Simple2DCell.cpp
+Simple2DCell.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/Simple2DCell.h
+Simple2DCell.cuh
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/Simple2DCell.cuh
 
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/Simple2DCell.cuh
 std_include.h
@@ -317,6 +363,24 @@ periodicBoundaries.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vertexQuadraticEnergy.h
 vertexModelBase.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vertexModelBase.h
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vertexQuadraticEnergyWithTension.cpp
+vertexQuadraticEnergyWithTension.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vertexQuadraticEnergyWithTension.h
+vertexQuadraticEnergyWithTension.cuh
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vertexQuadraticEnergyWithTension.cuh
+vertexQuadraticEnergy.cuh
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vertexQuadraticEnergy.cuh
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vertexQuadraticEnergyWithTension.cuh
+functions.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/functions.h
+indexer.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/indexer.h
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vertexQuadraticEnergyWithTension.h
+vertexQuadraticEnergy.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vertexQuadraticEnergy.h
 
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/voronoiModelBase.cpp
 cuda_runtime.h

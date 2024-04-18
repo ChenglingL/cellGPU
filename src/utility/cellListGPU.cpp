@@ -111,7 +111,8 @@ void cellListGPU::setGridSize(double a)
     ysize = (int)floor(b22/a);
     if(ysize%2==1) ysize +=1;
 
-    boxsize = b11/xsize;
+    boxsize.x = b11/xsize;
+    boxsize.y = b22/ysize;
 
     totalCells = xsize*ysize;
     cell_sizes.resize(totalCells); //number of elements in each cell...initialize to zero
@@ -196,8 +197,8 @@ returns the cell index that (x,y) would be contained in for the current cell lis
 int cellListGPU::positionToCellIndex(double x, double y)
     {
     int cell_idx = 0;
-    int binx = max(0,min(xsize-1,(int)floor(x/boxsize)));
-    int biny = max(0,min(ysize-1,(int)floor(y/boxsize)));
+    int binx = max(0,min(xsize-1,(int)floor(x/boxsize.x)));
+    int biny = max(0,min(ysize-1,(int)floor(y/boxsize.y)));
     return cell_indexer(binx,biny);
     };
 
@@ -273,8 +274,8 @@ void cellListGPU::compute()
         for (int nn = 0; nn < Np; ++nn)
             {
             if (recompute) continue;
-            ibin = floor(h_pt.data[nn].x/boxsize);
-            jbin = floor(h_pt.data[nn].y/boxsize);
+            ibin = floor(h_pt.data[nn].x/boxsize.x);
+            jbin = floor(h_pt.data[nn].y/boxsize.y);
             int bin = cell_indexer(ibin,jbin);
             int offset = h_cell_sizes.data[bin];
             if (offset < Nmax)
@@ -319,8 +320,8 @@ void cellListGPU::compute(GPUArray<double2> &points)
         for (int nn = 0; nn < Np; ++nn)
             {
             if (recompute) continue;
-            ibin = floor(h_pt.data[nn].x/boxsize);
-            jbin = floor(h_pt.data[nn].y/boxsize);
+            ibin = floor(h_pt.data[nn].x/boxsize.x);
+            jbin = floor(h_pt.data[nn].y/boxsize.y);
 
             int bin = cell_indexer(ibin,jbin);
             int offset = h_cell_sizes.data[bin];

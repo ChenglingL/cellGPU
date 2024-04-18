@@ -30,7 +30,7 @@ __global__ void gpu_test_circumcenters_kernel(int* __restrict__ d_repair,
                                               int Nccs,
                                               int xsize,
                                               int ysize,
-                                              double boxsize,
+                                              double2 boxsize,
                                               periodicBoundaries Box,
                                               Index2D ci,
                                               Index2D cli,
@@ -46,8 +46,8 @@ __global__ void gpu_test_circumcenters_kernel(int* __restrict__ d_repair,
     int3 i1 = d_circumcircles[idx];
     //the vertex we will take to be the origin, and its cell position
     double2 v = d_pt[i1.x];
-    int ib=Floor(v.x/boxsize);
-    int jb=Floor(v.y/boxsize);
+    int ib=Floor(v.x/boxsize.x);
+    int jb=Floor(v.y/boxsize.y);
 
 
     double2 pt1,pt2;
@@ -61,9 +61,11 @@ __global__ void gpu_test_circumcenters_kernel(int* __restrict__ d_repair,
 
     //look through cells for other particles...re-use pt1 and pt2 variables below
     bool badParticle = false;
-    int wcheck = Ceil(rad/boxsize);
+    double boxsize_XorY = min(boxsize.x,boxsize.y);
+    int wcheck = Ceil(rad/boxsize_XorY);
 
-    if(wcheck > xsize/2) wcheck = xsize/2;
+    int XorY = max(xsize,ysize);
+    if(wcheck > XorY/2) wcheck = XorY/2;
     rad = rad*rad;
     for (int ii = ib-wcheck; ii <= ib+wcheck; ++ii)
         {
@@ -226,7 +228,7 @@ bool gpu_test_circumcenters(int *d_repair,
                             int Np,
                             int xsize,
                             int ysize,
-                            double boxsize,
+                            double2 boxsize,
                             periodicBoundaries &Box,
                             Index2D &ci,
                             Index2D &cli,

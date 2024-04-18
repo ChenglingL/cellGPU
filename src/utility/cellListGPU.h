@@ -44,7 +44,7 @@ class cellListGPU
         //!The number of cells in the y-direction
         int getYsize() {return ysize;};
         //!Returns the length of the square that forms the base grid size
-        double getBoxsize() {return boxsize;};
+        double2 getBoxsize() {return boxsize;};
 
         //!If the grid is already initialized, given a spatial position return the cell index
         int positionToCellIndex(double x,double y);
@@ -109,7 +109,7 @@ class cellListGPU
         //!The number of particles to put in cells
         int Np;
         //! The linear size of each grid cell
-        double boxsize;
+        double2 boxsize;
         //!The number of bins in the x-direction
         int xsize;
         //!the number of bins in the y-direction

@@ -41,7 +41,7 @@ bool gpu_test_circumcenters(
                             int Np,
                             int xsize,
                             int ysize,
-                            double boxsize,
+                            double3 boxsize,
                             periodicBoundaries &Box,
                             Index2D &ci,
                             Index2D &cli,

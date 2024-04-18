@@ -26,7 +26,7 @@ __global__ void gpu_compute_cell_list_kernel(double2 *d_pt,
                                               unsigned int Nmax,
                                               int xsize,
                                               int ysize,
-                                              double boxsize,
+                                              double2 boxsize,
                                               periodicBoundaries Box,
                                               Index2D ci,
                                               Index2D cli
@@ -39,8 +39,8 @@ __global__ void gpu_compute_cell_list_kernel(double2 *d_pt,
 
     double2 pos = d_pt[idx];
 
-    int ibin = max(0,min(xsize-1,(int)floor(pos.x/boxsize)));
-    int jbin = max(0,min(xsize-1,(int)floor(pos.y/boxsize)));
+    int ibin = max(0,min(xsize-1,(int)floor(pos.x/boxsize.x)));
+    int jbin = max(0,min(xsize-1,(int)floor(pos.y/boxsize.y)));
     int bin = ci(ibin,jbin);
 
     unsigned int offset = atomicAdd(&(d_cell_sizes[bin]), 1);
@@ -128,7 +128,7 @@ bool gpu_compute_cell_list(double2 *d_pt,
                                   int &Nmax,
                                   int xsize,
                                   int ysize,
-                                  double boxsize,
+                                  double2 boxsize,
                                   periodicBoundaries &Box,
                                   Index2D &ci,
                                   Index2D &cli,

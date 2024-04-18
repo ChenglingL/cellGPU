@@ -79,7 +79,7 @@ void testModelDatabase::writeState(STATE c, double time, int rec)
     shared_ptr<VoronoiQuadraticEnergy> s = dynamic_pointer_cast<VoronoiQuadraticEnergy>(c);
     if(rec<0)   rec = recDim->size();
     if (time < 0) time = s->currentTime;
-
+    s->computeGeometry();
     std::vector<double> boxdat(4,0.0);
     double x11,x12,x21,x22;
     s->Box->getBoxDims(x11,x12,x21,x22);
@@ -98,7 +98,7 @@ void testModelDatabase::writeState(STATE c, double time, int rec)
 
     ArrayHandle<double2> h_p(s->cellPositions,access_location::host,access_mode::read);
     ArrayHandle<double2> h_v(s->returnVelocities());
-    ArrayHandle<double2> h_m(s->returnAreaPeriPreferences());
+    ArrayHandle<double2> h_m(s->returnAreaPeri(),access_location::host,access_mode::read);
     ArrayHandle<int> h_ct(s->cellType,access_location::host,access_mode::read);
     ArrayHandle<int> h_nn(s->neighborNum,access_location::host, access_mode::read);
     ArrayHandle<int> h_n(s->neighbors,access_location::host,access_mode::read);
@@ -198,7 +198,7 @@ void testModelDatabase::readState(STATE c, int rec,bool geometry)
     additionalDataVar->get(&additionaldata[0],1,dofDim->size());
     ArrayHandle<double2> h_p(t->cellPositions,access_location::host,access_mode::overwrite);
     ArrayHandle<double2> h_v(t->returnVelocities(),access_location::host,access_mode::overwrite);
-    ArrayHandle<double2> h_m(t->returnAreaPeriPreferences(),access_location::host,access_mode::overwrite);
+    ArrayHandle<double2> h_m(t->returnAreaPeri(),access_location::host,access_mode::overwrite);
     for (int idx = 0; idx < Nv; ++idx)
         {
         double px = posdata[(2*idx)];
