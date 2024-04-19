@@ -14,6 +14,7 @@
 #include "profiler.h"
 #include "autocorrelator.h"
 #include "logSACWritter.h"
+#include "testModelDatabase.h"
 
 
 /*!
@@ -100,11 +101,15 @@ int main(int argc, char*argv[])
     char simpleShearname[256];
     char saveDirName[256];
     char energyname[256];
+    char initialConfname[256];
 
     sprintf(saveDirName, "/scratch/bbtm/cli6/glassyDynamics/data/N%i/pureShear/p%.3f/",numpts,p0);
     sprintf(simpleShearname,"%ssimpleShearDerivatives1st2nd_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
     shared_ptr<twoValuesDatabase> simplesheardat=make_shared<twoValuesDatabase>(simpleShearname,NcFile::Replace);
      
+    sprintf(initialConfname,"%spureShearInitialConf_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
+    shared_ptr<testModelDatabase> initialConfdat=make_shared<testModelDatabase>(numpts,initialConfname,NcFile::Replace);
+
 
     sprintf(pureShearname,"%spureShearDerivatives1st2nd_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
     shared_ptr<twoValuesDatabase> puresheardat=make_shared<twoValuesDatabase>(pureShearname,NcFile::Replace);
@@ -142,6 +147,7 @@ int main(int argc, char*argv[])
     double l4=b4/namda;
     cout<<"new lx ly: "<<l1<<", "<<l4<<endl;
     voronoiModel->setRectangularUnitCell(l1,l4);
+    initialConfdat->writeState(voronoiModel);
     //cout<<"The box has been scaled from ("<<b1<<", "<<b4<<") to ("<<l1<<", "<<l4<<") by applying pure shear epsilon "<<epsilon<<endl;
 
     //set the cell preferences to uniformly have A_0 = 1, P_0 = p_0 -- this line was used to generate the states, but now we just load the data

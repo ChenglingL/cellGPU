@@ -2660,7 +2660,9 @@ CMakeFiles/pureShear.out.dir/glassyDynamicsProject/pureShear.cpp.o: ../glassyDyn
   ../src/utility/profiler.h \
   ../src/analysis/autocorrelator.h \
   ../src/databases/logSACWritter.h \
-  ../src/databases/twoValuesDatabase.h
+  ../src/databases/twoValuesDatabase.h \
+  ../src/databases/testModelDatabase.h \
+  ../src/analysis/dynamicalFeatures.h
 
 
 ../src/utility/profiler.h:
@@ -4680,6 +4682,8 @@ CMakeFiles/pureShear.out.dir/glassyDynamicsProject/pureShear.cpp.o: ../glassyDyn
 /u/cli6/.local/include/boost/type_traits/has_trivial_destructor.hpp:
 
 /u/cli6/.local/include/boost/mpl/identity.hpp:
+
+../src/databases/testModelDatabase.h:
 
 /u/cli6/.local/include/boost/preprocessor/list/detail/limits/fold_right_256.hpp:
 

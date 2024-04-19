@@ -19,7 +19,7 @@ private:
     int Nv; //!< number of vertices in delaunay triangulation
     NcDim *recDim, *NvDim, *dofDim, *boxDim, *unitDim, *neighborDim; //!< NcDims we'll use
     //!Currently using "additionalData" to hold target a_0 and p_0 information
-    NcVar *posVar, *velVar, *typeVar, *additionalDataVar, *BoxMatrixVar, *timeVar, *meanqVar, *d2EdgammadgammaVar, *d2EidgammadgammaVar, *overlapVar, *sigmaVar, *sigmaiVar, *neighborVar; //!<NcVars we'll use. The additional data is the current A and O in cell GPU
+    NcVar *posVar, *velVar, *typeVar, *additionalDataVar, *BoxMatrixVar, *timeVar, *meanqVar, *d2EdgammadgammaVar, *d2EidgammadgammaVar, *sigmaVar, *sigmaiVar, *neighborVar; //!<NcVars we'll use. The additional data is the current A and O in cell GPU
     int Current;    //!< keeps track of the current record when in write mode
 
 

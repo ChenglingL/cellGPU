@@ -2601,4 +2601,6 @@ CMakeFiles/pureShear.out.dir/glassyDynamicsProject/pureShear.cpp.o: \
  /u/cli6/cellGPU/src/utility/profiler.h \
  /u/cli6/cellGPU/src/analysis/autocorrelator.h \
  /u/cli6/cellGPU/src/databases/logSACWritter.h \
- /u/cli6/cellGPU/src/databases/twoValuesDatabase.h
+ /u/cli6/cellGPU/src/databases/twoValuesDatabase.h \
+ /u/cli6/cellGPU/src/databases/testModelDatabase.h \
+ /u/cli6/cellGPU/src/analysis/dynamicalFeatures.h

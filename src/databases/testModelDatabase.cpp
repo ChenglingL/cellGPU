@@ -44,7 +44,7 @@ void testModelDatabase::SetDimVar()
     meanqVar            = File.add_var("meanQ",     ncDouble,recDim, unitDim);
     d2EidgammadgammaVar  = File.add_var("d2Eidgammadgamma",     ncDouble,recDim, NvDim);
     d2EdgammadgammaVar  = File.add_var("d2Edgammadgamma",     ncDouble,recDim, unitDim);
-    overlapVar          = File.add_var("overlap",     ncDouble,recDim, unitDim);
+    //overlapVar          = File.add_var("overlap",     ncDouble,recDim, unitDim);
     sigmaVar            = File.add_var("sigma",     ncDouble,recDim, unitDim);
     sigmaiVar           = File.add_var("sigmai",     ncDouble,recDim, NvDim);
     neighborVar         = File.add_var("neighbor",     ncInt,recDim, neighborDim);
@@ -69,7 +69,7 @@ void testModelDatabase::GetDimVar()
     meanqVar = File.get_var("meanQ");
     d2EdgammadgammaVar = File.get_var("d2Edgammadgamma");
     d2EidgammadgammaVar = File.get_var("d2Eidgammadgamma");
-    overlapVar = File.get_var("overlap");
+    //overlapVar = File.get_var("overlap");
     sigmaVar = File.get_var("sigma");
     sigmaiVar = File.get_var("sigmai");
     }
@@ -147,12 +147,12 @@ void testModelDatabase::writeState(STATE c, double time, int rec)
             }
         
         };
-    dynamicalFeatures dynFeat(s->returnPositions(),s->Box);
+    //dynamicalFeatures dynFeat(s->returnPositions(),s->Box);
 
     double meanq = s->reportq();
     double d2Edgammadgammadat = s->getd2Edgammadgamma(d2Eidgammadgammadat);
     double sigma = s->getSigmaXY(sigmaidat);
-    double overlap = dynFeat.computeOverlapFunction(s->returnPositions());
+    //double overlap = dynFeat.computeOverlapFunction(s->returnPositions());
 
     //Write all the data
     posVar           ->put_rec(&posdat[0],       rec);
@@ -162,7 +162,7 @@ void testModelDatabase::writeState(STATE c, double time, int rec)
     typeVar          ->put_rec(&typedat[0],      rec);
     timeVar          ->put_rec(&time,            rec);
     BoxMatrixVar     ->put_rec(&boxdat[0],       rec);
-    overlapVar       ->put_rec(&overlap,         rec);
+    //overlapVar       ->put_rec(&overlap,         rec);
     d2EdgammadgammaVar  ->put_rec(&d2Edgammadgammadat, rec);
     d2EidgammadgammaVar ->put_rec(&d2Eidgammadgammadat[0], rec);
     sigmaVar         ->put_rec(&sigma, rec);
