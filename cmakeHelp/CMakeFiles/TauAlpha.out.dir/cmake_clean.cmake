@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
-  "../glassyDynamicsProject/TauAlpha.out"
-  "../glassyDynamicsProject/TauAlpha.out.pdb"
-  "CMakeFiles/TauAlpha.out.dir/glassyDynamicsProject/TauAlpha.cpp.o"
-  "CMakeFiles/TauAlpha.out.dir/glassyDynamicsProject/TauAlpha.cpp.o.d"
+  "../localTest/executable/TauAlpha.out"
+  "../localTest/executable/TauAlpha.out.pdb"
+  "CMakeFiles/TauAlpha.out.dir/localTest/TauAlpha.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

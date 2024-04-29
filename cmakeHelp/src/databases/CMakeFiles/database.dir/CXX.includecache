@@ -282,11 +282,11 @@ netcdfcpp.h
 BaseDatabase.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/BaseDatabase.h
 
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/testModelDatabase.cpp
-testModelDatabase.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/testModelDatabase.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/derivativeModelDatabase.cpp
+derivativeModelDatabase.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/derivativeModelDatabase.h
 
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/testModelDatabase.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/derivativeModelDatabase.h
 voronoiQuadraticEnergy.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/voronoiQuadraticEnergy.h
 dynamicalFeatures.h

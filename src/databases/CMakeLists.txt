@@ -27,5 +27,6 @@ add_library(database
     testModelDatabase.cpp
     logSACWritter.cpp
     twoValuesDatabase.cpp
+    derivativeModelDatabase.cpp
     )
 
