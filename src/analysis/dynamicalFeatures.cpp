@@ -432,3 +432,41 @@ double dynamicalFeatures::computeCageRelativeOverlapFunction(GPUArray<double2> &
     overlap = overlap / N;
     return overlap;
     }
+
+double dynamicalFeatures::computeNeighborOverlapFunction(GPUArray<int> &neighbors, GPUArray<int> &neighborNum, Index2D n_idx)
+    {
+    nIdx = Index2D(n_idx.getW(),n_idx.getH());
+    ArrayHandle<int> h_nn(neighborNum,access_location::host,access_mode::read);
+    ArrayHandle<int> h_n(neighbors,access_location::host,access_mode::read);
+    double overlap = 0.0;
+
+    for (int ii = 0; ii < N; ++ii)
+        {
+            int neighs = h_nn.data[ii];
+            vector<int> ns(neighs);
+            for (int nn = 0; nn < neighs; ++nn)
+            {
+                ns[nn]=h_n.data[nIdx(nn,ii)];
+            };
+            unordered_set<int> set;
+            int commomNeighbor=0;
+
+            for (int num : ns)
+            {
+                set.insert(num);
+            }
+            for (int num : cageNeighbors[ii]) 
+            {
+            // If element is present in set, it's common
+                if (set.find(num) != set.end())
+                {
+                    commomNeighbor++;
+                }
+            }
+
+            overlap += commomNeighbor/neighs;
+        }
+
+        overlap = overlap / N;
+        return overlap;
+    }

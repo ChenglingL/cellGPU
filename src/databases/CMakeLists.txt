@@ -28,5 +28,6 @@ add_library(database
     logSACWritter.cpp
     twoValuesDatabase.cpp
     derivativeModelDatabase.cpp
+    trajectoryModelDatabase.cpp
     )
 

@@ -395,6 +395,33 @@ testModelDatabase.cpp.s:
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/testModelDatabase.cpp.s
 .PHONY : testModelDatabase.cpp.s
 
+trajectoryModelDatabase.o: trajectoryModelDatabase.cpp.o
+
+.PHONY : trajectoryModelDatabase.o
+
+# target to build an object file
+trajectoryModelDatabase.cpp.o:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/trajectoryModelDatabase.cpp.o
+.PHONY : trajectoryModelDatabase.cpp.o
+
+trajectoryModelDatabase.i: trajectoryModelDatabase.cpp.i
+
+.PHONY : trajectoryModelDatabase.i
+
+# target to preprocess a source file
+trajectoryModelDatabase.cpp.i:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/trajectoryModelDatabase.cpp.i
+.PHONY : trajectoryModelDatabase.cpp.i
+
+trajectoryModelDatabase.s: trajectoryModelDatabase.cpp.s
+
+.PHONY : trajectoryModelDatabase.s
+
+# target to generate assembly for a file
+trajectoryModelDatabase.cpp.s:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/trajectoryModelDatabase.cpp.s
+.PHONY : trajectoryModelDatabase.cpp.s
+
 twoValuesDatabase.o: twoValuesDatabase.cpp.o
 
 .PHONY : twoValuesDatabase.o
@@ -488,6 +515,9 @@ help:
 	@echo "... testModelDatabase.o"
 	@echo "... testModelDatabase.i"
 	@echo "... testModelDatabase.s"
+	@echo "... trajectoryModelDatabase.o"
+	@echo "... trajectoryModelDatabase.i"
+	@echo "... trajectoryModelDatabase.s"
 	@echo "... twoValuesDatabase.o"
 	@echo "... twoValuesDatabase.i"
 	@echo "... twoValuesDatabase.s"

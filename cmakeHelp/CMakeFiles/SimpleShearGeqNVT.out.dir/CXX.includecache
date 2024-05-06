@@ -77,6 +77,8 @@ periodicBoundaries.h
 ../src/analysis/periodicBoundaries.h
 indexer.h
 ../src/analysis/indexer.h
+unordered_set
+-
 
 ../src/analysis/structuralFeatures.h
 std_include.h

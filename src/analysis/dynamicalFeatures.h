@@ -5,7 +5,7 @@
 #include "functions.h"
 #include "periodicBoundaries.h"
 #include "indexer.h"
-
+#include <unordered_set>
 /*! \file dynamicalFeatures.h */
 
 //! A class that calculates various dynamical features for 2D systems
@@ -26,6 +26,8 @@ class dynamicalFeatures
 
         //!compute the overlap function
         double computeOverlapFunction(GPUArray<double2> &currentPos, double cutoff = 0.5);
+        //!compute the overlap function for neighbors
+        double computeNeighborOverlapFunction(GPUArray<int> &neighbors, GPUArray<int> &neighborNum, Index2D n_idx);
         //!compute the overlap function
         double computeCageRelativeOverlapFunction(GPUArray<double2> &currentPos, double cutoff = 0.5);
         //!compute cage relative SISF with 2D angular averaging

@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/database.dir/logSACWritter.cpp.o"
   "CMakeFiles/database.dir/nvtModelDatabase.cpp.o"
   "CMakeFiles/database.dir/testModelDatabase.cpp.o"
+  "CMakeFiles/database.dir/trajectoryModelDatabase.cpp.o"
   "CMakeFiles/database.dir/twoValuesDatabase.cpp.o"
   "CMakeFiles/database.dir/vectorValueDatabase.cpp.o"
   "libdatabase.a"
