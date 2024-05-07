@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named trajectoryDataBaseTest.out
+# Target rules for targets named ScatteringFunctionSmallK.out
 
 # Build rule for target.
-trajectoryDataBaseTest.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 trajectoryDataBaseTest.out
-.PHONY : trajectoryDataBaseTest.out
+ScatteringFunctionSmallK.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ScatteringFunctionSmallK.out
+.PHONY : ScatteringFunctionSmallK.out
 
 # fast build rule for target.
-trajectoryDataBaseTest.out/fast:
-	$(MAKE) -f CMakeFiles/trajectoryDataBaseTest.out.dir/build.make CMakeFiles/trajectoryDataBaseTest.out.dir/build
-.PHONY : trajectoryDataBaseTest.out/fast
+ScatteringFunctionSmallK.out/fast:
+	$(MAKE) -f CMakeFiles/ScatteringFunctionSmallK.out.dir/build.make CMakeFiles/ScatteringFunctionSmallK.out.dir/build
+.PHONY : ScatteringFunctionSmallK.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -240,32 +240,32 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-localTest/trajectoryDataBaseTest.o: localTest/trajectoryDataBaseTest.cpp.o
+localTest/ScatteringFunctionSmallK.o: localTest/ScatteringFunctionSmallK.cpp.o
 
-.PHONY : localTest/trajectoryDataBaseTest.o
+.PHONY : localTest/ScatteringFunctionSmallK.o
 
 # target to build an object file
-localTest/trajectoryDataBaseTest.cpp.o:
-	$(MAKE) -f CMakeFiles/trajectoryDataBaseTest.out.dir/build.make CMakeFiles/trajectoryDataBaseTest.out.dir/localTest/trajectoryDataBaseTest.cpp.o
-.PHONY : localTest/trajectoryDataBaseTest.cpp.o
+localTest/ScatteringFunctionSmallK.cpp.o:
+	$(MAKE) -f CMakeFiles/ScatteringFunctionSmallK.out.dir/build.make CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.o
+.PHONY : localTest/ScatteringFunctionSmallK.cpp.o
 
-localTest/trajectoryDataBaseTest.i: localTest/trajectoryDataBaseTest.cpp.i
+localTest/ScatteringFunctionSmallK.i: localTest/ScatteringFunctionSmallK.cpp.i
 
-.PHONY : localTest/trajectoryDataBaseTest.i
+.PHONY : localTest/ScatteringFunctionSmallK.i
 
 # target to preprocess a source file
-localTest/trajectoryDataBaseTest.cpp.i:
-	$(MAKE) -f CMakeFiles/trajectoryDataBaseTest.out.dir/build.make CMakeFiles/trajectoryDataBaseTest.out.dir/localTest/trajectoryDataBaseTest.cpp.i
-.PHONY : localTest/trajectoryDataBaseTest.cpp.i
+localTest/ScatteringFunctionSmallK.cpp.i:
+	$(MAKE) -f CMakeFiles/ScatteringFunctionSmallK.out.dir/build.make CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.i
+.PHONY : localTest/ScatteringFunctionSmallK.cpp.i
 
-localTest/trajectoryDataBaseTest.s: localTest/trajectoryDataBaseTest.cpp.s
+localTest/ScatteringFunctionSmallK.s: localTest/ScatteringFunctionSmallK.cpp.s
 
-.PHONY : localTest/trajectoryDataBaseTest.s
+.PHONY : localTest/ScatteringFunctionSmallK.s
 
 # target to generate assembly for a file
-localTest/trajectoryDataBaseTest.cpp.s:
-	$(MAKE) -f CMakeFiles/trajectoryDataBaseTest.out.dir/build.make CMakeFiles/trajectoryDataBaseTest.out.dir/localTest/trajectoryDataBaseTest.cpp.s
-.PHONY : localTest/trajectoryDataBaseTest.cpp.s
+localTest/ScatteringFunctionSmallK.cpp.s:
+	$(MAKE) -f CMakeFiles/ScatteringFunctionSmallK.out.dir/build.make CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.s
+.PHONY : localTest/ScatteringFunctionSmallK.cpp.s
 
 # Help Target
 help:
@@ -275,7 +275,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... trajectoryDataBaseTest.out"
+	@echo "... ScatteringFunctionSmallK.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -285,9 +285,9 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... localTest/trajectoryDataBaseTest.o"
-	@echo "... localTest/trajectoryDataBaseTest.i"
-	@echo "... localTest/trajectoryDataBaseTest.s"
+	@echo "... localTest/ScatteringFunctionSmallK.o"
+	@echo "... localTest/ScatteringFunctionSmallK.i"
+	@echo "... localTest/ScatteringFunctionSmallK.s"
 .PHONY : help
 
 
