@@ -15,6 +15,7 @@
 #include "autocorrelator.h"
 #include "logSACWritter.h"
 #include "testModelDatabase.h"
+#include "trajectoryModelDatabase.h"
 
 
 /*!
@@ -48,9 +49,10 @@ int main(int argc, char*argv[])
     int recordIndex =0; // which element of the database to load the configuration from
     int Nchain = 4;     //The number of thermostats to chain together
     double epsilon = 0.0;
+    int initialData = 100; //The initial time when we save derivatives at every dt
 
     //The defaults can be overridden from the command line
-    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:w:")) != -1)
+    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:w:d:")) != -1)
         switch(c)
         {
             case 'n': numpts = atoi(optarg); break;
@@ -64,6 +66,7 @@ int main(int argc, char*argv[])
             case 'p': p0 = atof(optarg); break;
             case 's': epsilon = atof(optarg); break;
             case 'r': recordIndex = atoi(optarg); break;
+            case 'd': initialData = atoi(optarg); break;
             case '?':
                     if(optopt=='c')
                         std::cerr<<"Option -" << optopt << "requires an argument.\n";
@@ -84,10 +87,14 @@ int main(int argc, char*argv[])
     if (!gpu)
         initializeGPU = false;
 
+    bool zeroEp = false;
+    if (abs(epsilon)<1e-12)
+        zeroEp = true;
+
     //set the equilibration time to be 1000tau if
     long long int equilibrationTimesteps = max(floor(10000/dt),floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt));
     //set the max time to be 20000000 so the simulation can run 48h in the NCSADelta
-    long long int runTimesteps = max(floor(10000/dt),floor((tauEstimate * numberOfRelaxationTimes)/ dt));
+    long long int runTimesteps = max(floor(1000/dt),floor((tauEstimate * numberOfRelaxationTimes)/ dt));
     cout << "tauAlpha estimate is " << tauEstimate  << endl;
     
 
@@ -108,7 +115,7 @@ int main(int argc, char*argv[])
     shared_ptr<twoValuesDatabase> simplesheardat=make_shared<twoValuesDatabase>(simpleShearname,NcFile::Replace);
      
     sprintf(initialConfname,"%spureShearInitialConf_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
-    shared_ptr<testModelDatabase> initialConfdat=make_shared<testModelDatabase>(numpts,initialConfname,NcFile::Replace);
+    shared_ptr<trajectoryModelDatabase> initialConfdat=make_shared<trajectoryModelDatabase>(numpts,initialConfname,NcFile::Replace);
 
 
     sprintf(pureShearname,"%spureShearDerivatives1st2nd_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
@@ -117,8 +124,11 @@ int main(int argc, char*argv[])
     sprintf(energyname,"%stimeEnergy_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
     shared_ptr<twoValuesDatabase> energydat=make_shared<twoValuesDatabase>(energyname,NcFile::Replace);
 
+    char pureShearSACname[256];
+    char simpleShearSACname[256];
 
-
+    shared_ptr<autocorrelator> pureShearSacdat = make_shared<autocorrelator>(16,2,dt);
+    shared_ptr<autocorrelator> simpleShearSacdat = make_shared<autocorrelator>(16,2,dt);
     cout<<"Data are saved in "<<saveDirName<<endl;
 
         //specify the name of the database to *load data* from
@@ -178,8 +188,28 @@ int main(int argc, char*argv[])
     //the "+2" is to ensure there are no fence-post problems for the very longest equilibrated state
     for(long long int ii = 0; ii < runTimesteps+2; ++ii)
         {
+
+        if (zeroEp){
+            double sigma = voronoiModel->getSigmaXY();
+            simpleShearSacdat->add(sigma,0);
+            double sigmaPureShear = voronoiModel->getdEdepsilon();
+            pureShearSacdat->add(sigmaPureShear/area,0);
+        }
         //save to one of the databases if needed
-        if (ii % spacingofDerivative == 0){
+        if (ii < floor(initialData/dt)){
+            simpleShearProfiler.start();
+            voronoiModel->enforceTopology();
+            double sigma = voronoiModel->getSigmaXY();
+            simplesheardat->writeValues(sigma*area,voronoiModel->getd2Edgammadgamma());
+            simpleShearProfiler.end();
+
+            pureShearProfiler.start();
+            puresheardat->writeValues(voronoiModel->getdEdepsilon(),voronoiModel->getd2Edepsilondepsilon());
+            pureShearProfiler.end();
+
+            energydat->writeValues(voronoiModel->currentTime,voronoiModel->computeEnergy()); 
+
+            }else if (ii % spacingofDerivative == 0){
             simpleShearProfiler.start();
             voronoiModel->enforceTopology();
             double sigma = voronoiModel->getSigmaXY();
@@ -196,11 +226,29 @@ int main(int argc, char*argv[])
         //advance the simulationcd
         sim->performTimestep();
         };
-    //the reporting of the force should yield a number that is numerically close to zero.
-    voronoiModel->reportMeanCellForce(false);
-
     simpleShearProfiler.print();
     pureShearProfiler.print();
+
+    if (zeroEp){
+        sprintf(pureShearSACname,"%stimePureShearSAC_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
+        shared_ptr<twoValuesDatabase> pureShearSAC=make_shared<twoValuesDatabase>(pureShearSACname,NcFile::Replace);
+        sprintf(simpleShearSACname,"%stimeSimpleShearSAC_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
+        shared_ptr<twoValuesDatabase> simpleShearSAC=make_shared<twoValuesDatabase>(simpleShearSACname,NcFile::Replace);
+        cout<<"SAC for pure shear are saved in "<<pureShearSACname<<endl;
+        cout<<"SAC for simple shear are saved in "<<simpleShearSACname<<endl;
+        simpleShearSacdat->evaluate(false);
+        for(int j = 0; j < simpleShearSacdat->correlator.size(); ++j)
+            {
+            simpleShearSAC->writeValues(simpleShearSacdat->correlator[j].x,simpleShearSacdat->correlator[j].y);
+            }
+        pureShearSacdat->evaluate(false);
+        for(int j = 0; j < pureShearSacdat->correlator.size(); ++j)
+            {
+            pureShearSAC->writeValues(pureShearSacdat->correlator[j].x,pureShearSacdat->correlator[j].y);
+            }    
+    }
+
+
     if(initializeGPU)
         cudaDeviceReset();
     return 0;

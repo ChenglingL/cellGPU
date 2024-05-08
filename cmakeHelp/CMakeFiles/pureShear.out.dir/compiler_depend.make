@@ -2662,8 +2662,11 @@ CMakeFiles/pureShear.out.dir/glassyDynamicsProject/pureShear.cpp.o: ../glassyDyn
   ../src/databases/logSACWritter.h \
   ../src/databases/twoValuesDatabase.h \
   ../src/databases/testModelDatabase.h \
-  ../src/analysis/dynamicalFeatures.h
+  ../src/analysis/dynamicalFeatures.h \
+  ../src/databases/trajectoryModelDatabase.h
 
+
+../src/databases/trajectoryModelDatabase.h:
 
 ../src/utility/profiler.h:
 

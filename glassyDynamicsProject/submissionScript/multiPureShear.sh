@@ -9,7 +9,7 @@ temperatures=(0.063 0.039 0.03105 0.016 0.01 0.008 0.0063 0.005 0.00385 0.0031 0
 records=(10)
 
 tauEstimate=(1. 2. 4. 9. 15. 25. 40. 60. 80. 120. 200. 300. 1000.)
-epsilons=(0.05 -0.05)
+epsilons=(0.05 0 -0.05)
 
 for recordIdx in ${records[@]}; do
     for epsilon in ${epsilons[@]}; do
