@@ -45,7 +45,7 @@ int main(int argc, char*argv[])
     int recordIndex =0; // which element of the database to load the configuration from
     int Nchain = 4;     //The number of thermostats to chain together
 
-    double Mu = 1.0; 
+    double omega = 1.0; 
     long long int timesteps=1000;
     long long int initialSteps=1000;
     int numofInstantaneous = 100;
@@ -58,7 +58,7 @@ int main(int argc, char*argv[])
             case 't': tauEstimate = atof(optarg); break;
             case 'i': initialSteps = atoi(optarg); break;
             case 'w': numofInstantaneous = atoi(optarg); break;
-            case 'm': Mu = atof(optarg); break;
+            case 'm': omega = atof(optarg); break;
             case 'e': dt = atof(optarg); break;
             case 'v': T = atof(optarg); break;
             case 'l': T0 = atof(optarg); break;
@@ -89,7 +89,7 @@ int main(int argc, char*argv[])
     //set the max time to be 20000000 so the simulation can run 48h in the NCSADelta
     long long int runTimesteps = floor(timesteps/dt);
     long long int initialRunTimesteps = floor(initialSteps/dt);
-    cout << "Brownian dynamics is applied with mu= " << Mu  << endl;
+    cout << "NVT dynamics is applied with omega= " << omega  << endl;
     
 
     //set the spacing for saving instantaneous states
@@ -109,18 +109,18 @@ int main(int argc, char*argv[])
     logSACWritter lsacwriter;
 
     sprintf(saveDirName, "/home/chengling/Research/Project/Cell/glassyDynamics/systematicGeq/");
-    sprintf(simpleShearPerCellname,"%ssimpleShearDerivativesPerCell_nvt_N%i_p%.4f_T%.8f_dt%.4f_idx%i.nc",saveDirName,numpts,p0,T,dt,recordIndex);
+    sprintf(simpleShearPerCellname,"%ssimpleShearDerivativesPerCell_nvt_N%i_p%.4f_T%.8f_omega%.4f_idx%i.nc",saveDirName,numpts,p0,T,omega,recordIndex);
     shared_ptr<derivativeModelDatabase> simpleshearPerCelldat=make_shared<derivativeModelDatabase>(numpts, simpleShearPerCellname,NcFile::Replace);
 
-    sprintf(simpleShearname,"%ssimpleShearDerivatives1st2nd_nvt_N%i_p%.4f_T%.8f_dt%.4f_idx%i.nc",saveDirName,numpts,p0,T,dt,recordIndex);
+    sprintf(simpleShearname,"%ssimpleShearDerivatives1st2nd_nvt_N%i_p%.4f_T%.8f_omega%.4f_idx%i.nc",saveDirName,numpts,p0,T,omega,recordIndex);
     shared_ptr<twoValuesDatabase> simplesheardat=make_shared<twoValuesDatabase>(simpleShearname,NcFile::Replace);
     
-    sprintf(SACname,"%sSACtime_nvt_N%i_p%.4f_T%.8f_dt%.4f_idx%i.nc",saveDirName,numpts,p0,T,dt,recordIndex);
+    sprintf(SACname,"%sSACtime_nvt_N%i_p%.4f_T%.8f_omega%.4f_idx%i.nc",saveDirName,numpts,p0,T,omega,recordIndex);
     shared_ptr<twoValuesDatabase> SACtime=make_shared<twoValuesDatabase>(SACname,NcFile::Replace);
     shared_ptr<autocorrelator> acdat = make_shared<autocorrelator>(16,2,dt);
     lsacwriter.addDatabase(SACtime,acdat,0,10000000);
     
-    sprintf(dataname,"%sglassyDynamics_nvt_N%i_p%.4f_T%.8f_dt%.4f_idx%i.nc",saveDirName,numpts,p0,T,dt,recordIndex);
+    sprintf(dataname,"%sglassyDynamics_nvt_N%i_p%.4f_T%.8f_omega%.4f_idx%i.nc",saveDirName,numpts,p0,T,omega,recordIndex);
     shared_ptr<testModelDatabase> glassyDynamicsdat=make_shared<testModelDatabase>(numpts,dataname,NcFile::Replace);
     lewriter.addDatabase(glassyDynamicsdat,0);
     lewriter.identifyNextFrame();
@@ -138,7 +138,7 @@ int main(int argc, char*argv[])
 
     cout << "initializing a system of " << numpts << " cells at temperature " << T << endl;
     shared_ptr<NoseHooverChainNVT> nvt = make_shared<NoseHooverChainNVT>(numpts,Nchain,initializeGPU);
-    nvt->setT(T);
+    nvt->setT(T,omega);
 
     //define a voronoi configuration and load the relevant record from the database
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);

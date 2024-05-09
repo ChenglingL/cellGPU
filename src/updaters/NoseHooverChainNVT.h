@@ -34,7 +34,7 @@ class NoseHooverChainNVT : public simpleEquationOfMotion
         //!Get temperature, T
         double getT(){return Temperature;};
         //!Set temperature, T, and also the bath masses!
-        void setT(double _T);
+        void setT(double _T, double omega = 1.0);
 
         //!Helper structure for GPU branch. A two-component GPU array that contains the total KE and the velocity scale factor
         GPUArray<double> kineticEnergyScaleFactor;

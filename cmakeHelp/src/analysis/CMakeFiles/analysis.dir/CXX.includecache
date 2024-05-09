@@ -84,6 +84,14 @@ cuda_runtime.h
 std_include.h
 ../src/utility/std_include.h
 
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/autocorrelator.cpp
+autocorrelator.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/autocorrelator.h
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/autocorrelator.h
+std_include.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/std_include.h
+
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/dynamicalFeatures.cpp
 dynamicalFeatures.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/dynamicalFeatures.h
@@ -101,6 +109,20 @@ indexer.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/indexer.h
 unordered_set
 -
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/structuralFeatures.cpp
+structuralFeatures.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/structuralFeatures.h
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/structuralFeatures.h
+std_include.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/std_include.h
+functions.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/functions.h
+periodicBoundaries.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/periodicBoundaries.h
+indexer.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/indexer.h
 
 /usr/local/cuda-12.2/include/builtin_types.h
 device_types.h

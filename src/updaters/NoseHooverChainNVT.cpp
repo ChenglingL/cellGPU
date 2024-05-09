@@ -41,14 +41,14 @@ NoseHooverChainNVT::NoseHooverChainNVT(int N, int M, bool useGPU)
 Set the target temperature to the specified value.
 Additionally, use the observation in the Mol Phys paper to set the masses of the chain of thermostats
 */
-void NoseHooverChainNVT::setT(double T)
+void NoseHooverChainNVT::setT(double T, double omega)
     {
     Temperature = T;
     ArrayHandle<double4> h_bv(BathVariables);
-    h_bv.data[0].w = 2.0 * (Ndof-2)*Temperature;
+    h_bv.data[0].w = 2.0 * (Ndof-2)*Temperature / (omega * omega);
     for (int ii = 1; ii < Nchain+1; ++ii)
         {
-        h_bv.data[ii].w = Temperature;
+        h_bv.data[ii].w = Temperature / (omega * omega);
         };
     ArrayHandle<double> kes(kineticEnergyScaleFactor,access_location::host,access_mode::overwrite);
     kes.data[0] = h_bv.data[0].w;
