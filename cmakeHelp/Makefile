@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cma
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named SimpleShearGeqNVT.out
+# Target rules for targets named simulationTime.out
 
 # Build rule for target.
-SimpleShearGeqNVT.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 SimpleShearGeqNVT.out
-.PHONY : SimpleShearGeqNVT.out
+simulationTime.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simulationTime.out
+.PHONY : simulationTime.out
 
 # fast build rule for target.
-SimpleShearGeqNVT.out/fast:
-	$(MAKE) -f CMakeFiles/SimpleShearGeqNVT.out.dir/build.make CMakeFiles/SimpleShearGeqNVT.out.dir/build
-.PHONY : SimpleShearGeqNVT.out/fast
+simulationTime.out/fast:
+	$(MAKE) -f CMakeFiles/simulationTime.out.dir/build.make CMakeFiles/simulationTime.out.dir/build
+.PHONY : simulationTime.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -240,32 +240,32 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-localTest/SimpleShearGeqNVT.o: localTest/SimpleShearGeqNVT.cpp.o
+localTest/simulationTime.o: localTest/simulationTime.cpp.o
 
-.PHONY : localTest/SimpleShearGeqNVT.o
+.PHONY : localTest/simulationTime.o
 
 # target to build an object file
-localTest/SimpleShearGeqNVT.cpp.o:
-	$(MAKE) -f CMakeFiles/SimpleShearGeqNVT.out.dir/build.make CMakeFiles/SimpleShearGeqNVT.out.dir/localTest/SimpleShearGeqNVT.cpp.o
-.PHONY : localTest/SimpleShearGeqNVT.cpp.o
+localTest/simulationTime.cpp.o:
+	$(MAKE) -f CMakeFiles/simulationTime.out.dir/build.make CMakeFiles/simulationTime.out.dir/localTest/simulationTime.cpp.o
+.PHONY : localTest/simulationTime.cpp.o
 
-localTest/SimpleShearGeqNVT.i: localTest/SimpleShearGeqNVT.cpp.i
+localTest/simulationTime.i: localTest/simulationTime.cpp.i
 
-.PHONY : localTest/SimpleShearGeqNVT.i
+.PHONY : localTest/simulationTime.i
 
 # target to preprocess a source file
-localTest/SimpleShearGeqNVT.cpp.i:
-	$(MAKE) -f CMakeFiles/SimpleShearGeqNVT.out.dir/build.make CMakeFiles/SimpleShearGeqNVT.out.dir/localTest/SimpleShearGeqNVT.cpp.i
-.PHONY : localTest/SimpleShearGeqNVT.cpp.i
+localTest/simulationTime.cpp.i:
+	$(MAKE) -f CMakeFiles/simulationTime.out.dir/build.make CMakeFiles/simulationTime.out.dir/localTest/simulationTime.cpp.i
+.PHONY : localTest/simulationTime.cpp.i
 
-localTest/SimpleShearGeqNVT.s: localTest/SimpleShearGeqNVT.cpp.s
+localTest/simulationTime.s: localTest/simulationTime.cpp.s
 
-.PHONY : localTest/SimpleShearGeqNVT.s
+.PHONY : localTest/simulationTime.s
 
 # target to generate assembly for a file
-localTest/SimpleShearGeqNVT.cpp.s:
-	$(MAKE) -f CMakeFiles/SimpleShearGeqNVT.out.dir/build.make CMakeFiles/SimpleShearGeqNVT.out.dir/localTest/SimpleShearGeqNVT.cpp.s
-.PHONY : localTest/SimpleShearGeqNVT.cpp.s
+localTest/simulationTime.cpp.s:
+	$(MAKE) -f CMakeFiles/simulationTime.out.dir/build.make CMakeFiles/simulationTime.out.dir/localTest/simulationTime.cpp.s
+.PHONY : localTest/simulationTime.cpp.s
 
 # Help Target
 help:
@@ -273,9 +273,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... SimpleShearGeqNVT.out"
+	@echo "... rebuild_cache"
+	@echo "... simulationTime.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -285,9 +285,9 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... localTest/SimpleShearGeqNVT.o"
-	@echo "... localTest/SimpleShearGeqNVT.i"
-	@echo "... localTest/SimpleShearGeqNVT.s"
+	@echo "... localTest/simulationTime.o"
+	@echo "... localTest/simulationTime.i"
+	@echo "... localTest/simulationTime.s"
 .PHONY : help
 
 
