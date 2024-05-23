@@ -16,7 +16,7 @@ for recordIdx in ${records[@]}; do
     for i in ${!temperatures[@]}; do
         temp=${temperatures[$i]}
         echo ${number} ${p} ${temp} ${recordIdx}
-        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/MSDProductionRuns.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
+        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/trueMSDProductionRuns.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
     done
 done
 
@@ -34,7 +34,7 @@ for recordIdx in ${records[@]}; do
         temp=${temperatures[$i]}
         waittime=${tauEstimate[$i]}
         echo ${number} ${p} ${temp} ${recordIdx}
-        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/MSDProductionRuns.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
+        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/trueMSDProductionRuns.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
     done
 done
 number=4096
@@ -49,7 +49,7 @@ for recordIdx in ${records[@]}; do
     for i in ${!temperatures[@]}; do
         temp=${temperatures[$i]}
         echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
-        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/MSDProductionRuns.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
+        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/trueMSDProductionRuns.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
     done
 done
 
@@ -65,7 +65,7 @@ for recordIdx in ${records[@]}; do
         temp=${temperatures[$i]}
         waittime=${tauEstimate[$i]}
         echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
-        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/MSDProductionRuns.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
+        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/trueMSDProductionRuns.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
     done
 done
 
@@ -82,7 +82,7 @@ for recordIdx in ${records[@]}; do
         temp=${temperatures[$i]}
         waittime=${tauEstimate[$i]}
         echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
-        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/MSDProductionRuns.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
+        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/trueMSDProductionRuns.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
     done
 done
 

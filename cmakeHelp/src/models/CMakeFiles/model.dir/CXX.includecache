@@ -196,10 +196,6 @@ cuda_runtime.h
 gpuarray.h
 ../src/utility/gpuarray.h
 
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayCGAL.cpp
-DelaunayCGAL.h
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayCGAL.h
-
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/DelaunayCGAL.h
 vector_types.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vector_types.h

@@ -22,7 +22,9 @@ class dynamicalFeatures
         void setCageNeighbors(GPUArray<int> &neighbors, GPUArray<int> &neighborNum, Index2D n_idx);
 
         //!Compute the mean squared displacement of the passed vector from the initial positions
-        double computeMSD(GPUArray<double2> &currentPos);
+        double computeMSD(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox);
+        //a helper function that computes the true (no more PBD) mean squared displacement of the passed vector from the initial positions
+        void computeTrueDisplacements(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox);
 
         //!compute the overlap function
         double computeOverlapFunction(GPUArray<double2> &currentPos, double cutoff = 0.5);
@@ -34,7 +36,9 @@ class dynamicalFeatures
         double computeSISF(GPUArray<double2> &currentPos, double k = 6.28319);
 
         //!compute cage relative MSD
-        double computeCageRelativeMSD(GPUArray<double2> &currentPos);
+        double computeCageRelativeMSD(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox);
+        //a helper function that computes the true (no more PBD) cage relative displacement
+        void computeCageRelativeTrueDisplacements(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox);
         //!compute cage relative SISF with 2D angular averaging
         double computeCageRelativeSISF(GPUArray<double2> &currentPos, double k = 6.28319);
         //!compute chi_4 and F_s (result.x = Fs, result.y=chi_4)
@@ -84,6 +88,10 @@ class dynamicalFeatures
         vector<double2> currentDisplacements;
         //!the vector of current cage releative displacements
         vector<double2> cageRelativeDisplacements;
+        //! a vector of true (no PBD) displacements relative to the initializing positions 
+        vector<double2> currentTrueDisplacements;
+        //!the vector of true (no PBD)current cage releative displacements
+        vector<double2> cageRelativeTrueDisplacements;
         //!the vector of current cage displacements
         vector<double2> cageDisplacements;
         //!the vector of current displacements + the displacemennts of their cages

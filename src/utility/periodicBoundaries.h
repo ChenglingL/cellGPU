@@ -54,6 +54,10 @@ struct periodicBoundaries
         HOSTDEVICE void minDist(const double2 &p1, const double2 &p2, double2 &pans);
         //!Calculate the periodicity between two points
         HOSTDEVICE void periodicity(const double2 &p1, const double2 &p2, int2 &period);
+        //!Calculate which Box the current particle is in
+        HOSTDEVICE void whichBox(const double2 &currentp, const double2 &previousp, const int2 &previouswhichBox, int2 &currentwhichBox);
+        //!Calculate the true distance with the information of which box the particles are in
+        HOSTDEVICE void trueDist(const double2 &p1, const double2 &p2, const int2 &whichBoxp1, const int2 &whichBoxp2, double2 &pans);
         //!Move p1 by the amount disp, then put it in the box
         HOSTDEVICE void move(double2 &p1, const double2 &disp);
 
@@ -208,6 +212,41 @@ void periodicBoundaries::periodicity(const double2 &p1, const double2 &p2, int2 
 
         };
     };
+
+void periodicBoundaries::whichBox(const double2 &currentp, const double2 &previousp, const int2 &previouswhichBox, int2 &currentwhichBox)
+    {
+    double2 pans;
+    currentwhichBox.x = previouswhichBox.x;
+    currentwhichBox.y = previouswhichBox.y;    
+    if (isSquare)
+        {
+        pans.x = currentp.x-previousp.x;
+        pans.y = currentp.y-previousp.y;
+        if(pans.x > halfx11) currentwhichBox.x --;
+        if(pans.x < -halfx11) currentwhichBox.x ++;
+        if(pans.y > halfx11) currentwhichBox.y --;
+        if(pans.y < -halfx11) currentwhichBox.y ++;
+        }
+    else
+        {
+        double2 vA,vB;
+        invTrans(currentp,vA);
+        invTrans(previousp,vB);
+        double2 disp= make_double2(vA.x-vB.x,vA.y-vB.y);
+
+        if(disp.x > 0.5) currentwhichBox.x --;
+        if(disp.x < -0.5) currentwhichBox.x ++;
+        if(disp.y > 0.5) currentwhichBox.y --;
+        if(disp.y < -0.5) currentwhichBox.y ++;
+
+        };
+    };
+
+void periodicBoundaries::trueDist(const double2 &p1, const double2 &p2, const int2 &whichBoxp1, const int2 &whichBoxp2, double2 &pans)
+{
+    pans.x = p1.x - p2.x + (whichBoxp1.x - whichBoxp2.x) * x11;
+    pans.y = p1.y - p2.y + (whichBoxp1.y - whichBoxp2.y) * x22;
+}
 
 void periodicBoundaries::move(double2 &p1, const double2 &disp)
     {//assume real space entries. Moves p1 by disp, and puts it back in box

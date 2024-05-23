@@ -51,6 +51,28 @@ void dynamicalFeatures::computeDisplacements(GPUArray<double2> &currentPos)
         }
     };
 
+void dynamicalFeatures::computeTrueDisplacements(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox)
+    {
+    currentDisplacements.resize(N);
+    //first, compute the vector of current displacements
+    ArrayHandle<double2> fPos(currentPos,access_location::host,access_mode::read);
+    ArrayHandle<double2> sPos(previousPos,access_location::host,access_mode::read);
+    double2 disp,cur,init,prev;
+    int2 curWhichBox, prevWhichBox, initWhichBox;
+    initWhichBox.x = 0,initWhichBox.y = 0;
+    for (int ii = 0; ii < N; ++ii)
+        {
+        prev = sPos.data[ii];
+        cur = fPos.data[ii];
+        init = iPos[ii];
+        prevWhichBox = previousWhichBox[ii];
+        Box->whichBox(cur,prev,prevWhichBox,curWhichBox);
+        previousWhichBox[ii] = curWhichBox;
+        Box->trueDist(cur,init,curWhichBox,initWhichBox,disp);
+        currentDisplacements[ii] = disp;
+        }
+    };
+
 void dynamicalFeatures::computeCageRelativeDisplacements(GPUArray<double2> &currentPos)
     {
     cageRelativeDisplacements.resize(N);
@@ -58,6 +80,39 @@ void dynamicalFeatures::computeCageRelativeDisplacements(GPUArray<double2> &curr
     cageEnhancedDisplacements.resize(N);
     //first, compute the vector of current displacements
     computeDisplacements(currentPos);
+
+    //now, for each particle, compute the cage-relativedisplacement
+    double2 cur;
+    double2 temp;
+    for(int ii = 0; ii < N; ++ii)
+        {
+        //self term
+        cur = currentDisplacements[ii];
+        //subtract off net neighbor motion
+        int nNeighs = cageNeighbors[ii].size();
+        temp.x=0;temp.y=0;
+        for(int nn = 0; nn < nNeighs; ++nn)
+            {
+            int neighborIndex = cageNeighbors[ii][nn];
+            temp.x = temp.x + currentDisplacements[neighborIndex].x;
+            temp.y = temp.y + currentDisplacements[neighborIndex].y;
+            }
+        cageRelativeDisplacements[ii].x = cur.x - (1./((double) nNeighs))* temp.x;
+        cageRelativeDisplacements[ii].y = cur.y - (1./((double) nNeighs))* temp.y;
+        cageEnhancedDisplacements[ii].x = cur.x + (1./((double) nNeighs))* temp.x;
+        cageEnhancedDisplacements[ii].y = cur.y + (1./((double) nNeighs))* temp.y;
+        cageDisplacements[ii].x = (1./((double) nNeighs))* temp.x;
+        cageDisplacements[ii].y = (1./((double) nNeighs))* temp.y;
+        };
+    };
+
+void dynamicalFeatures::computeCageRelativeTrueDisplacements(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox)
+    {
+    cageRelativeDisplacements.resize(N);
+    cageDisplacements.resize(N);
+    cageEnhancedDisplacements.resize(N);
+    //first, compute the vector of current displacements
+    computeTrueDisplacements(currentPos, previousPos, previousWhichBox);
 
     //now, for each particle, compute the cage-relativedisplacement
     double2 cur;
@@ -140,18 +195,18 @@ double dynamicalFeatures::MSDhelper(vector<double2> &displacements)
     return msd;
     };
 
-double dynamicalFeatures::computeMSD(GPUArray<double2> &currentPos)
+double dynamicalFeatures::computeMSD(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox)
     {
     //call helper function to compute vector of current displacements
-    computeDisplacements(currentPos);
+    computeTrueDisplacements(currentPos, previousPos, previousWhichBox);
     double result = MSDhelper(currentDisplacements);
     return result;
     };
 
-double dynamicalFeatures::computeCageRelativeMSD(GPUArray<double2> &currentPos)
+double dynamicalFeatures::computeCageRelativeMSD(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox)
     {
     //call helper function to compute the vector of current cage-relative displacement vectors
-    computeCageRelativeDisplacements(currentPos);
+    computeCageRelativeTrueDisplacements(currentPos,previousPos, previousWhichBox);
 
     //then just compute the MSD of that set of vectors..
     double result = MSDhelper(cageRelativeDisplacements);

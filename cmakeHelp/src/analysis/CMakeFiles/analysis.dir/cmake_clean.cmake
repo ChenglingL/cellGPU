@@ -1,10 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/analysis.dir/autocorrelator.cpp.o"
-  "CMakeFiles/analysis.dir/autocorrelator.cpp.o.d"
   "CMakeFiles/analysis.dir/dynamicalFeatures.cpp.o"
-  "CMakeFiles/analysis.dir/dynamicalFeatures.cpp.o.d"
   "CMakeFiles/analysis.dir/structuralFeatures.cpp.o"
-  "CMakeFiles/analysis.dir/structuralFeatures.cpp.o.d"
   "libanalysis.a"
   "libanalysis.pdb"
 )
