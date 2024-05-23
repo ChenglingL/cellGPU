@@ -101,7 +101,7 @@ int main(int argc, char*argv[])
     sprintf(saveDirName, "/scratch/bbtm/cli6/glassyDynamics/data/N%i/p%.3f/",numpts,p0);
  
      
-    sprintf(dataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",saveDirName,numpts,p0,T,999999,recordIndex);
+    sprintf(dataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%i_idx%i.nc",saveDirName,numpts,p0,T,999999,recordIndex);
     shared_ptr<trajectoryModelDatabase> glassyDynamicsdat=make_shared<trajectoryModelDatabase>(numpts,dataname,NcFile::Replace);
     lewriter.addDatabase(glassyDynamicsdat,0);
     lewriter.identifyNextFrame();

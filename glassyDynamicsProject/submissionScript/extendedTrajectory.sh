@@ -16,7 +16,7 @@ for recordIdx in ${records[@]}; do
         tauEst=${tauEstimate[$i]}
         temp=${temperatures[$i]}
         echo ${number} ${p} ${temp} ${recordIdx} ${tauEst}
-        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/singleProductionRunCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst}
+        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/singleExtendedTrajectory.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst}
     done
 done
 
@@ -34,7 +34,7 @@ for recordIdx in ${records[@]}; do
         tauEst=${tauEstimate[$i]}
         temp=${temperatures[$i]}
         echo ${number} ${p} ${temp} ${recordIdx} ${tauEst}
-        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/singleProductionRunCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst}
+        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/singleExtendedTrajectory.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst}
     done
 done
 
@@ -51,7 +51,7 @@ for recordIdx in ${records[@]}; do
         tauEst=${tauEstimate[$i]}
         temp=${temperatures[$i]}
         echo ${number} ${p} ${temp} ${recordIdx} ${tauEst}
-        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/singleProductionRunCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst}
+        sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/singleExtendedTrajectory.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst}
     done
 done
 

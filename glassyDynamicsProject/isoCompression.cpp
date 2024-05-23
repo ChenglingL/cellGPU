@@ -39,6 +39,8 @@ int main(int argc, char*argv[])
     double equilibrationWaitingTimeMultiple = 10.0;
     double numberOfRelaxationTimes =20.0;
     int numberofDerivatives = 50000;
+    double KA=1.0;
+    double KP=1.0;
 
 
 
@@ -52,7 +54,7 @@ int main(int argc, char*argv[])
     int initialData = 100; //The initial time when we save derivatives at every dt
 
     //The defaults can be overridden from the command line
-    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:w:d:")) != -1)
+    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:w:d:k:")) != -1)
         switch(c)
         {
             case 'n': numpts = atoi(optarg); break;
@@ -65,6 +67,8 @@ int main(int argc, char*argv[])
             case 'l': T0 = atof(optarg); break;
             case 'p': p0 = atof(optarg); break;
             case 's': epsilon = atof(optarg); break;
+            case 'a': KA = atof(optarg); break;
+            case 'k': KP = atof(optarg); break;
             case 'r': recordIndex = atoi(optarg); break;
             case 'd': initialData = atoi(optarg); break;
             case '?':
@@ -101,7 +105,9 @@ int main(int argc, char*argv[])
     cout<<"data collecting timesteps = " << runTimesteps <<"; data will be saved at every "<<spacingofDerivative<<"dt"<< endl;
 
     cout<<"save the derivatives at every "<<spacingofDerivative*dt<<"tau"<<endl; 
-    char isoCompressionname[256]; // in case the job can not be finished with 48 hours, save SAC at t=50000
+    char isoCompressionnameKA[256]; // in case the job can not be finished with 48 hours, save SAC at t=50000
+    char isoCompressionnameKP[256];
+    char isoCompressionname[256];
     char saveDirName[256];
     char energyname[256];
     char initialConfname[256];
@@ -120,12 +126,18 @@ int main(int argc, char*argv[])
     }
 
 
-    sprintf(initialConfname,"%sisoCompressionInitialConf_isoCompression_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
-    shared_ptr<trajectoryModelDatabase> initialConfdat=make_shared<trajectoryModelDatabase>(numpts,initialConfname,NcFile::Replace);
+    // sprintf(initialConfname,"%sisoCompressionInitialConf_isoCompression_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
+    // shared_ptr<trajectoryModelDatabase> initialConfdat=make_shared<trajectoryModelDatabase>(numpts,initialConfname,NcFile::Replace);
 
+    // sprintf(isoCompressionname,"%stimePressue_isoCompression_N%i_p%.4f_T%.8f_epsilon%.8f_KA%.4f_KP%.4f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,KA,KP,recordIndex);
+    // shared_ptr<twoValuesDatabase> isoCompressiondat=make_shared<twoValuesDatabase>(isoCompressionname,NcFile::Replace);
 
-    sprintf(isoCompressionname,"%stimePressue_isoCompression_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
-    shared_ptr<twoValuesDatabase> isoCompressiondat=make_shared<twoValuesDatabase>(isoCompressionname,NcFile::Replace);
+    sprintf(isoCompressionnameKA,"%stimePressue_isoCompression_N%i_p%.4f_T%.8f_epsilon%.8f_KA%.4f_KP%.4f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,KA,0.0,recordIndex);
+    shared_ptr<twoValuesDatabase> isoCompressionKAdat=make_shared<twoValuesDatabase>(isoCompressionnameKA,NcFile::Replace);
+
+    sprintf(isoCompressionnameKP,"%stimePressue_isoCompression_N%i_p%.4f_T%.8f_epsilon%.8f_KA%.4f_KP%.4f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,0.0,KP,recordIndex);
+    shared_ptr<twoValuesDatabase> isoCompressionKPdat=make_shared<twoValuesDatabase>(isoCompressionnameKP,NcFile::Replace);
+
 
     sprintf(energyname,"%stimeEnergy_isoCompression_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
     shared_ptr<twoValuesDatabase> energydat=make_shared<twoValuesDatabase>(energyname,NcFile::Replace);
@@ -147,6 +159,10 @@ int main(int argc, char*argv[])
 
     //define a voronoi configuration and load the relevant record from the database
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
+    if (fluidConfigurations.GetNumRecs()<20) {
+        cout << "Congfiguration is less than 20. Job abort!" <<endl;
+        abort();
+    }
     fluidConfigurations.readState(voronoiModel,0,true);
     cout<<"epsilon: "<<epsilon<<endl;
     double namda = 1+epsilon;
@@ -159,7 +175,7 @@ int main(int argc, char*argv[])
     double l4=b4*namda;
     cout<<"new lx ly: "<<l1<<", "<<l4<<endl;
     voronoiModel->setRectangularUnitCell(l1,l4);
-    initialConfdat->writeState(voronoiModel);
+    //initialConfdat->writeState(voronoiModel);
     //cout<<"The box has been scaled from ("<<b1<<", "<<b4<<") to ("<<l1<<", "<<l4<<") by applying isoCompression epsilon "<<epsilon<<endl;
 
     //set the cell preferences to uniformly have A_0 = 1, P_0 = p_0 -- this line was used to generate the states, but now we just load the data
@@ -192,14 +208,32 @@ int main(int argc, char*argv[])
 
         if (ii % spacingofDerivative == 0){
             voronoiModel->enforceTopology();
-            double sigmaXX = voronoiModel->getSigmaXX();
-            double sigmaYY = voronoiModel->getSigmaYY();
+            double sigmaXX; //= voronoiModel->getSigmaXX();
+            double sigmaYY; //= voronoiModel->getSigmaYY();
 
-            isoCompressionProfiler.start();
-            isoCompressiondat->writeValues(voronoiModel->currentTime,(sigmaXX+sigmaYY)/2);
-            isoCompressionProfiler.end();
+            // isoCompressionProfiler.start();
+            // isoCompressiondat->writeValues(voronoiModel->currentTime,(sigmaXX+sigmaYY)/2);
+            // isoCompressionProfiler.end();
 
             energydat->writeValues(voronoiModel->currentTime,voronoiModel->computeEnergy());
+            voronoiModel->setModuliUniform(KA , 0.0);
+            sigmaXX = voronoiModel->getSigmaXX();
+            sigmaYY = voronoiModel->getSigmaYY();
+
+            isoCompressionProfiler.start();
+            isoCompressionKAdat->writeValues(voronoiModel->currentTime,(sigmaXX+sigmaYY)/2);
+            isoCompressionProfiler.end();
+
+            voronoiModel->setModuliUniform(0.0 , KP);
+            sigmaXX = voronoiModel->getSigmaXX();
+            sigmaYY = voronoiModel->getSigmaYY();
+
+            isoCompressionProfiler.start();
+            isoCompressionKPdat->writeValues(voronoiModel->currentTime,(sigmaXX+sigmaYY)/2);
+            isoCompressionProfiler.end();
+
+            voronoiModel->setModuliUniform(KA , KP);
+
             }
         
         //advance the simulationcd
