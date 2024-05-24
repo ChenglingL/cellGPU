@@ -202,6 +202,16 @@ simpleEquationOfMotion.h
 Simple2DCell.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/Simple2DCell.h
 
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/MullerPlatheShear.cpp
+MullerPlatheShear.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/MullerPlatheShear.h
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/MullerPlatheShear.h
+std_include.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/std_include.h
+updater.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/updater.h
+
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/NoseHooverChainNVT.cpp
 NoseHooverChainNVT.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/NoseHooverChainNVT.h
@@ -333,6 +343,24 @@ simpleEquationOfMotion.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/simpleEquationOfMotion.h
 Simple2DActiveCell.h
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/Simple2DActiveCell.h
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/setTotalLinearMomentum.cpp
+setTotalLinearMomentum.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/setTotalLinearMomentum.h
+setTotalLinearMomentum.cuh
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/setTotalLinearMomentum.cuh
+utilities.cuh
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/utilities.cuh
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/setTotalLinearMomentum.cuh
+std_include.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/std_include.h
+cuda_runtime.h
+-
+
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/setTotalLinearMomentum.h
+updater.h
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/updater.h
 
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters/simpleEquationOfMotion.cuh
 std_include.h
