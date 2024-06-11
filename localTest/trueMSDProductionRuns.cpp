@@ -3,7 +3,7 @@
 #include "cuda_runtime.h"
 #include "cuda_profiler_api.h"
 
-
+#include "trajectoryModelDatabase.h"
 #include "Simulation.h"
 #include "voronoiQuadraticEnergy.h"
 #include "brownianParticleDynamics.h"
@@ -85,7 +85,10 @@ int main(int argc, char*argv[])
     sprintf(savefolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/tauAlphaData/p%.3f/",numpts,p0);
     sprintf(loadfolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/productionRuns/p%.3f/",numpts,p0);
     namespace fs = std::filesystem;
-    waitingtime = max(10000.,(tauEstimate * equilibrationWaitingTimeMultiple));
+    if (waitingtime == 100000) //if waiting time is an input of .cpp then use that one as waitingtime
+    {
+        waitingtime = max(10000.,floor(tauEstimate * equilibrationWaitingTimeMultiple));
+    }
     sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
     sprintf(MSDDataName,"%stimeTrueMSD_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);
     sprintf(CRMSDDataName,"%stimeTrueCRMSD_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);
@@ -98,10 +101,11 @@ int main(int argc, char*argv[])
     cout << "save record in " << MSDDataName << endl;
     shared_ptr<twoValuesDatabase> MSDdat=make_shared<twoValuesDatabase>(MSDDataName,NcFile::Replace);
     shared_ptr<twoValuesDatabase> CRMSDdat=make_shared<twoValuesDatabase>(CRMSDDataName,NcFile::Replace);
-    nvtModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
+    trajectoryModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
     shared_ptr<VoronoiQuadraticEnergy> voronoiModelprevious  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
-    fluidConfigurations.readState(voronoiModel,0,true);
+    fluidConfigurations.readState(voronoiModel,0);
+    voronoiModel->enforceTopology();
     dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
     dynFeat.setCageNeighbors(voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx); 
     std::vector<int2> previousWhichBox(numpts);
@@ -117,8 +121,8 @@ int main(int argc, char*argv[])
         abort();
     };
     for(int rec=1;rec<fluidConfigurations.GetNumRecs();rec++){
-        fluidConfigurations.readState(voronoiModel,rec,false);
-        fluidConfigurations.readState(voronoiModelprevious,rec-1,false);
+        fluidConfigurations.readState(voronoiModel,rec);
+        fluidConfigurations.readState(voronoiModelprevious,rec-1);
         double time =voronoiModel->currentTime;
         if(rec>10&&time<1e-12) break;
         //overlapdatNVT[rec] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());

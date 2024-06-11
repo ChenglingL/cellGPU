@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
-  "../glassyDynamicsProject/ExtendedTrajectory.out"
-  "../glassyDynamicsProject/ExtendedTrajectory.out.pdb"
-  "CMakeFiles/ExtendedTrajectory.out.dir/glassyDynamicsProject/ExtendedTrajectory.cpp.o"
-  "CMakeFiles/ExtendedTrajectory.out.dir/glassyDynamicsProject/ExtendedTrajectory.cpp.o.d"
+  "../localTest/executable/ExtendedTrajectory.out"
+  "../localTest/executable/ExtendedTrajectory.out.pdb"
+  "CMakeFiles/ExtendedTrajectory.out.dir/localTest/ExtendedTrajectory.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

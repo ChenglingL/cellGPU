@@ -13,6 +13,7 @@ CMakeFiles/trueMSDProductionRuns.out.dir/localTest/trueMSDProductionRuns.cpp.o
  ../src/databases/GlassyDynModelDatabase.h
  ../src/databases/logEquilibrationStateWriter.h
  ../src/databases/nvtModelDatabase.h
+ ../src/databases/trajectoryModelDatabase.h
  ../src/databases/twoValuesDatabase.h
  ../src/models/DelaunayCGAL.h
  ../src/models/DelaunayGPU.h

@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named CRtauAlphaTable.out
+
+# Build rule for target.
+CRtauAlphaTable.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 CRtauAlphaTable.out
+.PHONY : CRtauAlphaTable.out
+
+# fast build rule for target.
+CRtauAlphaTable.out/fast:
+	$(MAKE) -f CMakeFiles/CRtauAlphaTable.out.dir/build.make CMakeFiles/CRtauAlphaTable.out.dir/build
+.PHONY : CRtauAlphaTable.out/fast
+
+#=============================================================================
 # Target rules for targets named trueMSDProductionRuns.out
 
 # Build rule for target.
@@ -240,6 +253,33 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
+localTest/CRtauAlphaTable.o: localTest/CRtauAlphaTable.cpp.o
+
+.PHONY : localTest/CRtauAlphaTable.o
+
+# target to build an object file
+localTest/CRtauAlphaTable.cpp.o:
+	$(MAKE) -f CMakeFiles/CRtauAlphaTable.out.dir/build.make CMakeFiles/CRtauAlphaTable.out.dir/localTest/CRtauAlphaTable.cpp.o
+.PHONY : localTest/CRtauAlphaTable.cpp.o
+
+localTest/CRtauAlphaTable.i: localTest/CRtauAlphaTable.cpp.i
+
+.PHONY : localTest/CRtauAlphaTable.i
+
+# target to preprocess a source file
+localTest/CRtauAlphaTable.cpp.i:
+	$(MAKE) -f CMakeFiles/CRtauAlphaTable.out.dir/build.make CMakeFiles/CRtauAlphaTable.out.dir/localTest/CRtauAlphaTable.cpp.i
+.PHONY : localTest/CRtauAlphaTable.cpp.i
+
+localTest/CRtauAlphaTable.s: localTest/CRtauAlphaTable.cpp.s
+
+.PHONY : localTest/CRtauAlphaTable.s
+
+# target to generate assembly for a file
+localTest/CRtauAlphaTable.cpp.s:
+	$(MAKE) -f CMakeFiles/CRtauAlphaTable.out.dir/build.make CMakeFiles/CRtauAlphaTable.out.dir/localTest/CRtauAlphaTable.cpp.s
+.PHONY : localTest/CRtauAlphaTable.cpp.s
+
 localTest/trueMSDProductionRuns.o: localTest/trueMSDProductionRuns.cpp.o
 
 .PHONY : localTest/trueMSDProductionRuns.o
@@ -275,6 +315,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... CRtauAlphaTable.out"
 	@echo "... trueMSDProductionRuns.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
@@ -285,6 +326,9 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
+	@echo "... localTest/CRtauAlphaTable.o"
+	@echo "... localTest/CRtauAlphaTable.i"
+	@echo "... localTest/CRtauAlphaTable.s"
 	@echo "... localTest/trueMSDProductionRuns.o"
 	@echo "... localTest/trueMSDProductionRuns.i"
 	@echo "... localTest/trueMSDProductionRuns.s"
