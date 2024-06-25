@@ -29,5 +29,6 @@ add_library(database
     twoValuesDatabase.cpp
     derivativeModelDatabase.cpp
     trajectoryModelDatabase.cpp
+    displacementModelDatabase.cpp
     )
 

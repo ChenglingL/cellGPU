@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/database.dir/DatabaseTextVoronoi.cpp.o"
   "CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.o"
   "CMakeFiles/database.dir/derivativeModelDatabase.cpp.o"
+  "CMakeFiles/database.dir/displacementModelDatabase.cpp.o"
   "CMakeFiles/database.dir/logEquilibrationStateWriter.cpp.o"
   "CMakeFiles/database.dir/logSACWritter.cpp.o"
   "CMakeFiles/database.dir/nvtModelDatabase.cpp.o"

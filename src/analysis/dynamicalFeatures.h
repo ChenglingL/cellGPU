@@ -77,7 +77,7 @@ class dynamicalFeatures
         double chi4Helper(vector<double2> &displacements, double k);
         //!helper function that computes the average of <Q^2(t)>
         double overlapChi4Helper(vector<double2> &displacements, double cutoff);
-    protected:
+    
         //!the box defining the periodic domain
         PeriodicBoxPtr Box;
         //!the initial positions

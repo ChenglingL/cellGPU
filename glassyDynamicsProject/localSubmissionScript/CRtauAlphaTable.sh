@@ -3,26 +3,11 @@
 #jobs on the CPU -- for n=4096, I estimate that if tau_alpha <= 10^(10/3) then it will finish within the 48 hour maxJobTime
 #jobs on the CPU -- for n=32768, I estimate that if tau_alpha <= 10^(7/3) then it will finish within the 48 hour maxJobTime
 
-number=4096
-p=3.90
-
-temperatures=(0.039 0.01 0.005 0.002)
-records=(10 11 12 13 14 15 16 17 18 19)
-waittime=999999
-
-for recordIdx in ${records[@]}; do
-    for i in ${!temperatures[@]}; do
-        temp=${temperatures[$i]}
-        echo ${number} ${p} ${temp} ${recordIdx}
-        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTable.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
-    done
-done
-
-
+nRelaxation=10
 number=4096
 p=3.85
 
-temperatures=(0.039 0.016 0.01 0.005 0.00385)
+temperatures=(0.00025 0.00014 9.1E-05 7.7E-05 5.4E-05 4.5E-05 3.6E-05)
 records=(15 16 17 18 19)
 waittime=999999
 
@@ -38,7 +23,7 @@ done
 number=4096
 p=3.825
 
-temperatures=(0.063 0.039 0.03105 0.016 0.01)
+temperatures=(0.001 0.00067 0.0005)
 records=(15 16 17 18 19)
 waittime=999999
 
@@ -53,7 +38,7 @@ done
 number=4096
 p=3.80
 
-temperatures=(0.063 0.039 0.03105 0.025 0.016)
+temperatures=(0.0028 0.0025 0.0022)
 records=(15 16 17 18 19)
 waittime=999999
 
@@ -64,34 +49,95 @@ for recordIdx in ${records[@]}; do
         /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTable.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
     done
 done
-number=4096
-p=3.775
+# number=4096
+# p=3.90
 
-temperatures=(0.03105 0.025 0.02)
-records=(15 16 17 18 19)
-waittime=999999
+# temperatures=(0.039 0.01 0.005 0.002)
+# records=(10 11 12 13 14 15 16 17 18 19)
+# waittime=999999
 
-for recordIdx in ${records[@]}; do
-    for i in ${!temperatures[@]}; do
-        temp=${temperatures[$i]}
-        echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
-        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTable.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
-    done
-done
-number=4096
-p=3.75
+# for recordIdx in ${records[@]}; do
+#     for i in ${!temperatures[@]}; do
+#         temp=${temperatures[$i]}
+#         echo ${number} ${p} ${temp} ${recordIdx}
+#         /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTable.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
+#     done
+# done
 
-temperatures=(0.063	0.039 0.03105)
-records=(15 16 17 18 19)
-waittime=999999
 
-for recordIdx in ${records[@]}; do
-    for i in ${!temperatures[@]}; do
-        temp=${temperatures[$i]}
-        echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
-        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTable.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
-    done
-done
+# number=4096
+# p=3.85
+
+# temperatures=(0.039 0.016 0.01 0.005 0.00385)
+# records=(15 16 17 18 19)
+# waittime=999999
+
+# for recordIdx in ${records[@]}; do
+#     for i in ${!temperatures[@]}; do
+#         temp=${temperatures[$i]}
+#         echo ${number} ${p} ${temp} ${recordIdx}
+#         /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTable.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
+#     done
+# done
+
+
+# number=4096
+# p=3.825
+
+# temperatures=(0.063 0.039 0.03105 0.016 0.01)
+# records=(15 16 17 18 19)
+# waittime=999999
+
+# for recordIdx in ${records[@]}; do
+#     for i in ${!temperatures[@]}; do
+#         temp=${temperatures[$i]}
+#         echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
+#         /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTable.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
+#     done
+# done
+
+# number=4096
+# p=3.80
+
+# temperatures=(0.063 0.039 0.03105 0.025 0.016)
+# records=(15 16 17 18 19)
+# waittime=999999
+
+# for recordIdx in ${records[@]}; do
+#     for i in ${!temperatures[@]}; do
+#         temp=${temperatures[$i]}
+#         echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
+#         /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTable.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
+#     done
+# done
+# number=4096
+# p=3.775
+
+# temperatures=(0.03105 0.025 0.02)
+# records=(15 16 17 18 19)
+# waittime=999999
+
+# for recordIdx in ${records[@]}; do
+#     for i in ${!temperatures[@]}; do
+#         temp=${temperatures[$i]}
+#         echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
+#         /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTable.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
+#     done
+# done
+# number=4096
+# p=3.75
+
+# temperatures=(0.063	0.039 0.03105)
+# records=(15 16 17 18 19)
+# waittime=999999
+
+# for recordIdx in ${records[@]}; do
+#     for i in ${!temperatures[@]}; do
+#         temp=${temperatures[$i]}
+#         echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
+#         /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTable.out -n ${number} -p ${p} -v ${temp} -m ${waittime} -r ${recordIdx} -g -1
+#     done
+# done
 
 # number=4096
 # p=3.90
