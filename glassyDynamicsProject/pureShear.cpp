@@ -118,7 +118,7 @@ int main(int argc, char*argv[])
     shared_ptr<trajectoryModelDatabase> initialConfdat=make_shared<trajectoryModelDatabase>(numpts,initialConfname,NcFile::Replace);
 
 
-    sprintf(pureShearname,"%spureShearDerivatives1st2nd_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
+    sprintf(pureShearname,"%stimepureShearstress_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
     shared_ptr<twoValuesDatabase> puresheardat=make_shared<twoValuesDatabase>(pureShearname,NcFile::Replace);
 
     sprintf(energyname,"%stimeEnergy_N%i_p%.4f_T%.8f_epsilon%.8f_idx%i.nc",saveDirName,numpts,p0,T,epsilon,recordIndex);
@@ -197,30 +197,31 @@ int main(int argc, char*argv[])
         }
         //save to one of the databases if needed
         if (ii < floor(initialData/dt)){
-            simpleShearProfiler.start();
-            voronoiModel->enforceTopology();
-            double sigma = voronoiModel->getSigmaXY();
-            simplesheardat->writeValues(sigma*area,voronoiModel->getd2Edgammadgamma());
-            simpleShearProfiler.end();
+            // simpleShearProfiler.start();
+            // voronoiModel->enforceTopology();
+            // double sigma = voronoiModel->getSigmaXY();
+            // simplesheardat->writeValues(sigma*area,voronoiModel->getd2Edgammadgamma());
+            // simpleShearProfiler.end();
 
+            voronoiModel->enforceTopology();
             pureShearProfiler.start();
-            puresheardat->writeValues(voronoiModel->getdEdepsilon(),voronoiModel->getd2Edepsilondepsilon());
+            puresheardat->writeValues(voronoiModel->currentTime,voronoiModel->getdEdepsilon());
             pureShearProfiler.end();
 
             energydat->writeValues(voronoiModel->currentTime,voronoiModel->computeEnergy()); 
 
             }else if (ii % spacingofDerivative == 0){
-            simpleShearProfiler.start();
+            // simpleShearProfiler.start();
+            // voronoiModel->enforceTopology();
+            // double sigma = voronoiModel->getSigmaXY();
+            // simplesheardat->writeValues(sigma*area,voronoiModel->getd2Edgammadgamma());
+            // simpleShearProfiler.end();
             voronoiModel->enforceTopology();
-            double sigma = voronoiModel->getSigmaXY();
-            simplesheardat->writeValues(sigma*area,voronoiModel->getd2Edgammadgamma());
-            simpleShearProfiler.end();
-
             pureShearProfiler.start();
-            puresheardat->writeValues(voronoiModel->getdEdepsilon(),voronoiModel->getd2Edepsilondepsilon());
+            puresheardat->writeValues(voronoiModel->currentTime,voronoiModel->getdEdepsilon());
             pureShearProfiler.end();
 
-            energydat->writeValues(voronoiModel->currentTime,voronoiModel->computeEnergy());
+            //energydat->writeValues(voronoiModel->currentTime,voronoiModel->computeEnergy());
             }
         
         //advance the simulationcd

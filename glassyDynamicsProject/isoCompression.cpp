@@ -23,6 +23,7 @@
 This .cpp is for numerically test the bulk modulus. We first load the configuration from equlibrated
 simulations. Then apply a isoCompression deformation to record energy and time, first/Second derivatives
 of E wrt epsilon / g.
+timelimit is set to be 100000/dt to collect low T bulk modulus.
 Sevral files will be saved: (data are saving at every tau)
 isoCompressionDerivativesFristSecond_.nc saves the first and second derivative of E wrt epsilon. 
 timeEnergy_.nc saves the time and energy.
@@ -95,7 +96,7 @@ int main(int argc, char*argv[])
     //set the equilibration time to be 1000tau if
     long long int equilibrationTimesteps = max(floor(10000/dt),floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt));
     //set the max time to be 20000000 so the simulation can run 48h in the NCSADelta
-    long long int runTimesteps = max(floor(10000/dt),floor((tauEstimate * numberOfRelaxationTimes)/ dt));
+    long long int runTimesteps = max(floor(100000/dt),floor((tauEstimate * numberOfRelaxationTimes)/ dt));
     cout << "tauAlpha estimate is " << tauEstimate  << endl;
     
 

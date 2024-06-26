@@ -114,6 +114,7 @@ this is a necessary part for computing some autocorrelations, e.g., the MSD
 */
 void autocorrelator::evaluate(bool normalize)
     {
+    correlator.clear();
     double auxiliary = 0.0;
     if (normalize)
         auxiliary = (accumulatedValue/nCorrelation[0][0])*(accumulatedValue/nCorrelation[0][0]);
