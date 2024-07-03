@@ -96,7 +96,8 @@ int main(int argc, char*argv[])
     //set the equilibration time to be 1000tau if
     long long int equilibrationTimesteps = max(floor(10000/dt),floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt));
     //set the max time to be 20000000 so the simulation can run 48h in the NCSADelta
-    long long int runTimesteps = max(floor(100000/dt),floor((tauEstimate * numberOfRelaxationTimes)/ dt));
+    //long long int runTimesteps = max(floor(100000/dt),floor((tauEstimate * numberOfRelaxationTimes)/ dt));
+    long long int runTimesteps = 99999999; // get as many data points as possible for low T
     cout << "tauAlpha estimate is " << tauEstimate  << endl;
     
 

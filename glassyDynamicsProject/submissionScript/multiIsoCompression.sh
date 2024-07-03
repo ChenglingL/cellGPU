@@ -2,15 +2,14 @@
 
 #jobs on the CPU -- for n=4096, I estimate that if tau_alpha <= 10^(10/3) then it will finish within the 48 hour maxJobTime
 #jobs on the CPU -- for n=32768, I estimate that if tau_alpha <= 10^(7/3) then it will finish within the 48 hour maxJobTime
-
 number=4096
 p=3.80
 
-temperatures=(0.00385 0.0031 0.0028 0.0025 0.0022)
-records=(10 11 12 13 14 15 16 17 18 19)
-epsilons=(0.0001 -0.0001)
+temperatures=(0.0028)
+records=(13)
+epsilons=(0.0001 0.001 0.0005 -0.0005 -0.001 -0.0001)
 
-tauEstimate=(600. 2000. 2500. 4500. 9500.)
+tauEstimate=(2500.)
 for recordIdx in ${records[@]}; do
     for epsilon in ${epsilons[@]}; do
         for i in ${!temperatures[@]}; do
@@ -21,6 +20,24 @@ for recordIdx in ${records[@]}; do
         done
     done
 done
+# number=4096
+# p=3.80
+
+# temperatures=(0.00385 0.0031 0.0028 0.0025 0.0022)
+# records=(10 11 12 13 14 15 16 17 18 19)
+# epsilons=(0.0001 -0.0001)
+
+# tauEstimate=(600. 2000. 2500. 4500. 9500.)
+# for recordIdx in ${records[@]}; do
+#     for epsilon in ${epsilons[@]}; do
+#         for i in ${!temperatures[@]}; do
+#             tauEst=${tauEstimate[$i]}
+#             temp=${temperatures[$i]}
+#             echo ${number} ${p} ${temp} ${recordIdx} ${tauEst} ${epsilon}
+#             sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/singleIsoCompressionCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst} ${epsilon}
+#         done
+#     done
+# done
 
 # number=4096
 # p=3.80

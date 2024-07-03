@@ -5,11 +5,11 @@
 number=4096
 p=3.85
 
-temperatures=(3.6E-05)
+temperatures=(0.00014 5.4E-05 3.6E-05)
 records=(10)
 
-tauEstimate=(9500)
-epsilons=(0.1 0.8 0.05 -0.05 -0.8 -0.1)
+tauEstimate=(2500 6000 9500)
+epsilons=(0.12 0.2 -0.2 -0.12)
 
 for recordIdx in ${records[@]}; do
     for epsilon in ${epsilons[@]}; do
@@ -21,6 +21,26 @@ for recordIdx in ${records[@]}; do
         done
     done
 done
+
+# number=4096
+# p=3.85
+
+# temperatures=(3.6E-05)
+# records=(10)
+
+# tauEstimate=(9500)
+# epsilons=(0.1 0.8 0.05 -0.05 -0.8 -0.1)
+
+# for recordIdx in ${records[@]}; do
+#     for epsilon in ${epsilons[@]}; do
+#         for i in ${!temperatures[@]}; do
+#             tauEst=${tauEstimate[$i]}
+#             temp=${temperatures[$i]}
+#             echo ${number} ${p} ${temp} ${recordIdx} ${tauEst} ${epsilon}
+#             sbatch /u/cli6/cellGPU/glassyDynamicsProject/submissionScript/singlePureShearCPU.sh ${number} ${p} ${temp} ${recordIdx} ${tauEst} ${epsilon}
+#         done
+#     done
+# done
 
 
 # number=4096

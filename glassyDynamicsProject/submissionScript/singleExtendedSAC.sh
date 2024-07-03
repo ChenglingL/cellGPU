@@ -8,4 +8,3 @@
 #SBATCH --job-name=cpuGlassyCellDynamics
 #SBATCH --time=48:00:00      # hh:mm:ss for the job
 /u/cli6/cellGPU/glassyDynamicsProject/ExtendedSAC.out -n ${1} -p ${2} -v ${3} -r ${4} -t ${5} -g -1 -l 10000000
-
