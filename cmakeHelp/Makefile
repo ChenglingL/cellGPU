@@ -117,30 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named isoCompression.out
+# Target rules for targets named SACfromAP.out
 
 # Build rule for target.
-isoCompression.out: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 isoCompression.out
-.PHONY : isoCompression.out
+SACfromAP.out: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SACfromAP.out
+.PHONY : SACfromAP.out
 
 # fast build rule for target.
-isoCompression.out/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/isoCompression.out.dir/build.make CMakeFiles/isoCompression.out.dir/build
-.PHONY : isoCompression.out/fast
-
-#=============================================================================
-# Target rules for targets named pureShear.out
-
-# Build rule for target.
-pureShear.out: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pureShear.out
-.PHONY : pureShear.out
-
-# fast build rule for target.
-pureShear.out/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pureShear.out.dir/build.make CMakeFiles/pureShear.out.dir/build
-.PHONY : pureShear.out/fast
+SACfromAP.out/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SACfromAP.out.dir/build.make CMakeFiles/SACfromAP.out.dir/build
+.PHONY : SACfromAP.out/fast
 
 #=============================================================================
 # Target rules for targets named utility
@@ -259,53 +246,29 @@ database/fast:
 	$(MAKE) $(MAKESILENT) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-glassyDynamicsProject/isoCompression.o: glassyDynamicsProject/isoCompression.cpp.o
-.PHONY : glassyDynamicsProject/isoCompression.o
+glassyDynamicsProject/SACfromAP.o: glassyDynamicsProject/SACfromAP.cpp.o
+.PHONY : glassyDynamicsProject/SACfromAP.o
 
 # target to build an object file
-glassyDynamicsProject/isoCompression.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/isoCompression.out.dir/build.make CMakeFiles/isoCompression.out.dir/glassyDynamicsProject/isoCompression.cpp.o
-.PHONY : glassyDynamicsProject/isoCompression.cpp.o
+glassyDynamicsProject/SACfromAP.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SACfromAP.out.dir/build.make CMakeFiles/SACfromAP.out.dir/glassyDynamicsProject/SACfromAP.cpp.o
+.PHONY : glassyDynamicsProject/SACfromAP.cpp.o
 
-glassyDynamicsProject/isoCompression.i: glassyDynamicsProject/isoCompression.cpp.i
-.PHONY : glassyDynamicsProject/isoCompression.i
-
-# target to preprocess a source file
-glassyDynamicsProject/isoCompression.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/isoCompression.out.dir/build.make CMakeFiles/isoCompression.out.dir/glassyDynamicsProject/isoCompression.cpp.i
-.PHONY : glassyDynamicsProject/isoCompression.cpp.i
-
-glassyDynamicsProject/isoCompression.s: glassyDynamicsProject/isoCompression.cpp.s
-.PHONY : glassyDynamicsProject/isoCompression.s
-
-# target to generate assembly for a file
-glassyDynamicsProject/isoCompression.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/isoCompression.out.dir/build.make CMakeFiles/isoCompression.out.dir/glassyDynamicsProject/isoCompression.cpp.s
-.PHONY : glassyDynamicsProject/isoCompression.cpp.s
-
-glassyDynamicsProject/pureShear.o: glassyDynamicsProject/pureShear.cpp.o
-.PHONY : glassyDynamicsProject/pureShear.o
-
-# target to build an object file
-glassyDynamicsProject/pureShear.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pureShear.out.dir/build.make CMakeFiles/pureShear.out.dir/glassyDynamicsProject/pureShear.cpp.o
-.PHONY : glassyDynamicsProject/pureShear.cpp.o
-
-glassyDynamicsProject/pureShear.i: glassyDynamicsProject/pureShear.cpp.i
-.PHONY : glassyDynamicsProject/pureShear.i
+glassyDynamicsProject/SACfromAP.i: glassyDynamicsProject/SACfromAP.cpp.i
+.PHONY : glassyDynamicsProject/SACfromAP.i
 
 # target to preprocess a source file
-glassyDynamicsProject/pureShear.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pureShear.out.dir/build.make CMakeFiles/pureShear.out.dir/glassyDynamicsProject/pureShear.cpp.i
-.PHONY : glassyDynamicsProject/pureShear.cpp.i
+glassyDynamicsProject/SACfromAP.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SACfromAP.out.dir/build.make CMakeFiles/SACfromAP.out.dir/glassyDynamicsProject/SACfromAP.cpp.i
+.PHONY : glassyDynamicsProject/SACfromAP.cpp.i
 
-glassyDynamicsProject/pureShear.s: glassyDynamicsProject/pureShear.cpp.s
-.PHONY : glassyDynamicsProject/pureShear.s
+glassyDynamicsProject/SACfromAP.s: glassyDynamicsProject/SACfromAP.cpp.s
+.PHONY : glassyDynamicsProject/SACfromAP.s
 
 # target to generate assembly for a file
-glassyDynamicsProject/pureShear.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pureShear.out.dir/build.make CMakeFiles/pureShear.out.dir/glassyDynamicsProject/pureShear.cpp.s
-.PHONY : glassyDynamicsProject/pureShear.cpp.s
+glassyDynamicsProject/SACfromAP.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SACfromAP.out.dir/build.make CMakeFiles/SACfromAP.out.dir/glassyDynamicsProject/SACfromAP.cpp.s
+.PHONY : glassyDynamicsProject/SACfromAP.cpp.s
 
 # Help Target
 help:
@@ -315,23 +278,19 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... SACfromAP.out"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... isoCompression.out"
 	@echo "... model"
 	@echo "... modelGPU"
-	@echo "... pureShear.out"
 	@echo "... simulation"
 	@echo "... updaters"
 	@echo "... updatersGPU"
 	@echo "... utility"
 	@echo "... utilityGPU"
-	@echo "... glassyDynamicsProject/isoCompression.o"
-	@echo "... glassyDynamicsProject/isoCompression.i"
-	@echo "... glassyDynamicsProject/isoCompression.s"
-	@echo "... glassyDynamicsProject/pureShear.o"
-	@echo "... glassyDynamicsProject/pureShear.i"
-	@echo "... glassyDynamicsProject/pureShear.s"
+	@echo "... glassyDynamicsProject/SACfromAP.o"
+	@echo "... glassyDynamicsProject/SACfromAP.i"
+	@echo "... glassyDynamicsProject/SACfromAP.s"
 .PHONY : help
 
 
