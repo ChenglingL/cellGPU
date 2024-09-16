@@ -111,17 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named autoCorrelatorTest.out
+# Target rules for targets named energy.out
 
 # Build rule for target.
-autoCorrelatorTest.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 autoCorrelatorTest.out
-.PHONY : autoCorrelatorTest.out
+energy.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 energy.out
+.PHONY : energy.out
 
 # fast build rule for target.
-autoCorrelatorTest.out/fast:
-	$(MAKE) -f CMakeFiles/autoCorrelatorTest.out.dir/build.make CMakeFiles/autoCorrelatorTest.out.dir/build
-.PHONY : autoCorrelatorTest.out/fast
+energy.out/fast:
+	$(MAKE) -f CMakeFiles/energy.out.dir/build.make CMakeFiles/energy.out.dir/build
+.PHONY : energy.out/fast
+
+#=============================================================================
+# Target rules for targets named FIREtest.out
+
+# Build rule for target.
+FIREtest.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 FIREtest.out
+.PHONY : FIREtest.out
+
+# fast build rule for target.
+FIREtest.out/fast:
+	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/build
+.PHONY : FIREtest.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -240,32 +253,59 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-localTest/autoCorrelatorTest.o: localTest/autoCorrelatorTest.cpp.o
+localTest/MCT/FIREtest.o: localTest/MCT/FIREtest.cpp.o
 
-.PHONY : localTest/autoCorrelatorTest.o
+.PHONY : localTest/MCT/FIREtest.o
 
 # target to build an object file
-localTest/autoCorrelatorTest.cpp.o:
-	$(MAKE) -f CMakeFiles/autoCorrelatorTest.out.dir/build.make CMakeFiles/autoCorrelatorTest.out.dir/localTest/autoCorrelatorTest.cpp.o
-.PHONY : localTest/autoCorrelatorTest.cpp.o
+localTest/MCT/FIREtest.cpp.o:
+	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/localTest/MCT/FIREtest.cpp.o
+.PHONY : localTest/MCT/FIREtest.cpp.o
 
-localTest/autoCorrelatorTest.i: localTest/autoCorrelatorTest.cpp.i
+localTest/MCT/FIREtest.i: localTest/MCT/FIREtest.cpp.i
 
-.PHONY : localTest/autoCorrelatorTest.i
+.PHONY : localTest/MCT/FIREtest.i
 
 # target to preprocess a source file
-localTest/autoCorrelatorTest.cpp.i:
-	$(MAKE) -f CMakeFiles/autoCorrelatorTest.out.dir/build.make CMakeFiles/autoCorrelatorTest.out.dir/localTest/autoCorrelatorTest.cpp.i
-.PHONY : localTest/autoCorrelatorTest.cpp.i
+localTest/MCT/FIREtest.cpp.i:
+	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/localTest/MCT/FIREtest.cpp.i
+.PHONY : localTest/MCT/FIREtest.cpp.i
 
-localTest/autoCorrelatorTest.s: localTest/autoCorrelatorTest.cpp.s
+localTest/MCT/FIREtest.s: localTest/MCT/FIREtest.cpp.s
 
-.PHONY : localTest/autoCorrelatorTest.s
+.PHONY : localTest/MCT/FIREtest.s
 
 # target to generate assembly for a file
-localTest/autoCorrelatorTest.cpp.s:
-	$(MAKE) -f CMakeFiles/autoCorrelatorTest.out.dir/build.make CMakeFiles/autoCorrelatorTest.out.dir/localTest/autoCorrelatorTest.cpp.s
-.PHONY : localTest/autoCorrelatorTest.cpp.s
+localTest/MCT/FIREtest.cpp.s:
+	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/localTest/MCT/FIREtest.cpp.s
+.PHONY : localTest/MCT/FIREtest.cpp.s
+
+localTest/MCT/energy.o: localTest/MCT/energy.cpp.o
+
+.PHONY : localTest/MCT/energy.o
+
+# target to build an object file
+localTest/MCT/energy.cpp.o:
+	$(MAKE) -f CMakeFiles/energy.out.dir/build.make CMakeFiles/energy.out.dir/localTest/MCT/energy.cpp.o
+.PHONY : localTest/MCT/energy.cpp.o
+
+localTest/MCT/energy.i: localTest/MCT/energy.cpp.i
+
+.PHONY : localTest/MCT/energy.i
+
+# target to preprocess a source file
+localTest/MCT/energy.cpp.i:
+	$(MAKE) -f CMakeFiles/energy.out.dir/build.make CMakeFiles/energy.out.dir/localTest/MCT/energy.cpp.i
+.PHONY : localTest/MCT/energy.cpp.i
+
+localTest/MCT/energy.s: localTest/MCT/energy.cpp.s
+
+.PHONY : localTest/MCT/energy.s
+
+# target to generate assembly for a file
+localTest/MCT/energy.cpp.s:
+	$(MAKE) -f CMakeFiles/energy.out.dir/build.make CMakeFiles/energy.out.dir/localTest/MCT/energy.cpp.s
+.PHONY : localTest/MCT/energy.cpp.s
 
 # Help Target
 help:
@@ -275,7 +315,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... autoCorrelatorTest.out"
+	@echo "... energy.out"
+	@echo "... FIREtest.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -285,9 +326,12 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... localTest/autoCorrelatorTest.o"
-	@echo "... localTest/autoCorrelatorTest.i"
-	@echo "... localTest/autoCorrelatorTest.s"
+	@echo "... localTest/MCT/FIREtest.o"
+	@echo "... localTest/MCT/FIREtest.i"
+	@echo "... localTest/MCT/FIREtest.s"
+	@echo "... localTest/MCT/energy.o"
+	@echo "... localTest/MCT/energy.i"
+	@echo "... localTest/MCT/energy.s"
 .PHONY : help
 
 

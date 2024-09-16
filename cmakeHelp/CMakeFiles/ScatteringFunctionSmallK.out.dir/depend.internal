@@ -13,6 +13,7 @@ CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.c
  ../src/databases/GlassyDynModelDatabase.h
  ../src/databases/logEquilibrationStateWriter.h
  ../src/databases/nvtModelDatabase.h
+ ../src/databases/structureFactorModelDatabase.h
  ../src/databases/trajectoryModelDatabase.h
  ../src/databases/twoValuesDatabase.h
  ../src/models/DelaunayCGAL.h

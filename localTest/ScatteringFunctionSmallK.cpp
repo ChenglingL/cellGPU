@@ -15,6 +15,7 @@
 #include "periodicBoundaries.h"
 #include "GlassyDynModelDatabase.h"
 #include "trajectoryModelDatabase.h"
+#include "structureFactorModelDatabase.h"
 #include <filesystem>
 
 /*!
@@ -91,8 +92,31 @@ int main(int argc, char*argv[])
     long long int runTimesteps = max(floor(10000/dt),floor((tauEstimate * numberOfRelaxationTimes)/ dt));
     long long int spacingofInstantaneous = floor(runTimesteps/10);
     waitingtime = max(10000.,(tauEstimate * equilibrationWaitingTimeMultiple));
-    sprintf(loaddataname,"%sinstantaneousStates_N%i_p%.4f_T%.8f_spacing%i_idx%i.nc",loadfolder,numpts,p0,T,spacingofInstantaneous,recordIndex);
+    sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
+    sprintf(saveDataName,"%sscatteringFunction_N%i_p%.4f_T%.8f_idx%i.nc",savefolder,numpts,p0,T,recordIndex);
+
+    trajectoryModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
+
+    shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
+    fluidConfigurations.readState(voronoiModel,0);
+    structuralFeatures strucFeat(voronoiModel->Box);
+    double time=voronoiModel->currentTime;
+    vector<double2> SofK;
+    //overlapdatNVT[rec] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
+    std::vector<double2> posdat(numpts);
+    ArrayHandle<double2> h_p(voronoiModel->returnPositions());
+    for (int ii = 0; ii < numpts; ++ii)
+    {
+        int pidx = voronoiModel->tagToIdx[ii];
+        double px = h_p.data[pidx].x;
+        double py = h_p.data[pidx].y;
+        posdat[ii].x = px;
+        posdat[ii].y = py;
+    }
+    strucFeat.computeStructureFactor(posdat,SofK,intk,dk);
     
+    shared_ptr<structureFactorModelDatabase> Sk=make_shared<structureFactorModelDatabase>(numpts,saveDataName,NcFile::Replace,SofK.size());    
+    Sk->writeK(SofK);
     if (fs::exists(loaddataname)) {
         cout << "reading record from " << loaddataname << endl;
     } else {
@@ -100,14 +124,13 @@ int main(int argc, char*argv[])
         abort();
     }
 
-    trajectoryModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
+
 
     for(int rec=0;rec<fluidConfigurations.GetNumRecs();rec++){
-        sprintf(saveDataName,"%ssmallKSk_N%i_p%.4f_T%.8f_spacing%i_idx%i_rec%i.nc",savefolder,numpts,p0,T,spacingofInstantaneous,recordIndex,rec);
         shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
         fluidConfigurations.readState(voronoiModel,rec);
         structuralFeatures strucFeat(voronoiModel->Box);
-        shared_ptr<twoValuesDatabase> Sk=make_shared<twoValuesDatabase>(saveDataName,NcFile::Replace);    
+        double time=voronoiModel->currentTime;
         vector<double2> SofK;
         //overlapdatNVT[rec] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
         std::vector<double2> posdat(numpts);
@@ -121,9 +144,7 @@ int main(int argc, char*argv[])
             posdat[ii].y = py;
         }
         strucFeat.computeStructureFactor(posdat,SofK,intk,dk);
-        for(int ii=0;ii<SofK.size();ii++){
-            Sk->writeValues(SofK[ii].x,SofK[ii].y);    
-        }
+        Sk->writeState(SofK,time);
     }
 
 

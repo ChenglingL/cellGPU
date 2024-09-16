@@ -425,8 +425,9 @@ void voronoiModelBase::enforceTopology()
     int oldNeighMax = delGPU.MaxSize;
     if(neighbors.getNumElements() != Ncells*oldNeighMax)
         resizeAndReset();
-
+    //cout<<"start testAndRepairDelaunayTriangulation"<<endl;
     delGPU.testAndRepairDelaunayTriangulation(cellPositions,neighbors,neighborNum);
+    //cout<<"finish testAndRepairDelaunayTriangulation"<<endl;
     //globalTriangulationDelGPU();
     //global rescue if needed
     if(NeighIdxNum != 6* Ncells)
@@ -439,7 +440,9 @@ void voronoiModelBase::enforceTopology()
     if(oldNeighMax != neighMax)
         {
         resizeAndReset();
+        //cout<<"Start globalTriangulationDelGPU"<<endl;
         globalTriangulationDelGPU();
+        //cout<<"finish globalTriangulationDelGPU"<<endl;
         }
     allDelSets();
     };

@@ -12,6 +12,7 @@ CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.c
 CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.o: ../src/databases/GlassyDynModelDatabase.h
 CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.o: ../src/databases/logEquilibrationStateWriter.h
 CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.o: ../src/databases/nvtModelDatabase.h
+CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.o: ../src/databases/structureFactorModelDatabase.h
 CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.o: ../src/databases/trajectoryModelDatabase.h
 CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.o: ../src/databases/twoValuesDatabase.h
 CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.o: ../src/models/DelaunayCGAL.h

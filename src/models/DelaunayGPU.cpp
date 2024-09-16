@@ -108,6 +108,8 @@ void DelaunayGPU::locallyRepairDelaunayTriangulation(GPUArray<double2> &points, 
         prof.end("cellList");
 		}
     bool recompute = true;
+    clock_t t1,t2;//THis is to prevent neighbor list explotion
+    t1=clock();
     while (recompute)
         {
         if(GPUcompute==true)
@@ -124,6 +126,13 @@ void DelaunayGPU::locallyRepairDelaunayTriangulation(GPUArray<double2> &points, 
             {
             GPUTriangulation.resize(MaxSize*currentN);
             }
+        t2=clock();
+        double enforcetime = (t2-t1)/(double)CLOCKS_PER_SEC;
+        if(enforcetime > 10)
+        {
+            cout<<"locallyRepairDelaunayTriangulation: Fix topology failure: neighbor number explodes"<<endl;
+            break;
+        }
         };
     cListUpdated=false;
     }
@@ -149,6 +158,8 @@ void DelaunayGPU::globalDelaunayTriangulation(GPUArray<double2> &points, GPUArra
     prof.end("cellList");
 
     bool recompute = true;
+    clock_t t1,t2;//THis is to prevent neighbor list explotion
+    t1=clock();
     while (recompute)
 	    {
         prof.start("vorocalc");
@@ -166,6 +177,13 @@ void DelaunayGPU::globalDelaunayTriangulation(GPUArray<double2> &points, GPUArra
         if(recompute)
             {
             GPUTriangulation.resize(MaxSize*currentN);
+            }
+        t2=clock();
+        double enforcetime = (t2-t1)/(double)CLOCKS_PER_SEC;
+        if(enforcetime > 10)
+            {
+            cout<<"globalDelaunayTriangulation: Fix topology failure: neighbor number explodes"<<endl;
+            break;
             }
         };
     }
@@ -290,7 +308,7 @@ bool DelaunayGPU::computeTriangulationRepairList_CPU(GPUArray<double2> &points, 
             if(postCallMaxOneRingSize > currentMaxOneRingSize)
                 {
                     recomputeNeighbors = true;
-                    printf("resizing potential neighbors from %i to %i and re-computing...\n",currentMaxOneRingSize,postCallMaxOneRingSize);
+                    printf("resizing potential neighbors from %i to %i and re-computing (computeTriangulationRepairList_CPU)...\n",currentMaxOneRingSize,postCallMaxOneRingSize);
                     resize(postCallMaxOneRingSize);
                 }
             };
@@ -349,7 +367,7 @@ bool DelaunayGPU::get_neighbors_CPU(GPUArray<double2> &points, GPUArray<int> &GP
         if(postCallMaxOneRingSize > currentMaxOneRingSize)
             {
             recomputeNeighbors = true;
-            printf("resizing potential neighbors from %i to %i and re-computing...\n",currentMaxOneRingSize,postCallMaxOneRingSize);
+            printf("resizing potential neighbors from %i to %i and re-computing(get_neighbors_CPU)...\n",currentMaxOneRingSize,postCallMaxOneRingSize);
             resize(postCallMaxOneRingSize);
             }
         };

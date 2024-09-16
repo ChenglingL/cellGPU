@@ -146,7 +146,16 @@ void EnergyMinimizerFIRE::velocityVerletCPU()
         };
     //move particles, then update the forces
     State->moveDegreesOfFreedom(displacements);
+    clock_t tenforce1,tenforce2;//THis is to prevent neighbor list explotion
+    tenforce1=clock();
     State->enforceTopology();
+    tenforce2=clock();
+    double enforcetime = (tenforce2-tenforce1)/(double)CLOCKS_PER_SEC;
+    if(enforcetime > 10)
+    {
+        cout<<"enforce topology failure: neighbor number explodes"<<endl;
+        return;
+    }
     State->computeForces();
     State->getForces(force);
 
@@ -286,8 +295,18 @@ void EnergyMinimizerFIRE::minimize()
     forceMax = 110.0;
     while( (iterations < maxIterations) && (sqrt(forceMax) > forceCutoff) )
         {
+        //cout<<"iteration"<<iterations<<endl;
         iterations +=1;
+        clock_t tVerlet1,tVerlet2;//THis is to prevent neighbor list explotion
+        tVerlet1=clock();
         velocityVerlet();
+        tVerlet2=clock();
+        double enforcetime = (tVerlet2-tVerlet1)/(double)CLOCKS_PER_SEC;
+        if(enforcetime > 10)
+        {
+            cout<<"velocityVerlet failure: neighbor number explodes"<<endl;
+            break;
+        }
         fireStep();
         };
         printf("step %i max force:%.3g \tpower: %.3g\t alpha %.3g\t dt %g \n",iterations,sqrt(forceMax),Power,alpha,deltaT);

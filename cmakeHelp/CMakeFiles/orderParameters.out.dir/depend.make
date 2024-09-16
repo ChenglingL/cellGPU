@@ -12,6 +12,7 @@ CMakeFiles/orderParameters.out.dir/localTest/orderParameters.cpp.o: ../src/datab
 CMakeFiles/orderParameters.out.dir/localTest/orderParameters.cpp.o: ../src/databases/GlassyDynModelDatabase.h
 CMakeFiles/orderParameters.out.dir/localTest/orderParameters.cpp.o: ../src/databases/logEquilibrationStateWriter.h
 CMakeFiles/orderParameters.out.dir/localTest/orderParameters.cpp.o: ../src/databases/nvtModelDatabase.h
+CMakeFiles/orderParameters.out.dir/localTest/orderParameters.cpp.o: ../src/databases/trajectoryModelDatabase.h
 CMakeFiles/orderParameters.out.dir/localTest/orderParameters.cpp.o: ../src/databases/twoValuesDatabase.h
 CMakeFiles/orderParameters.out.dir/localTest/orderParameters.cpp.o: ../src/models/DelaunayCGAL.h
 CMakeFiles/orderParameters.out.dir/localTest/orderParameters.cpp.o: ../src/models/DelaunayGPU.h

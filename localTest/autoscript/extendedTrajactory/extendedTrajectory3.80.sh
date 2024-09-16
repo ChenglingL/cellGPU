@@ -8,7 +8,7 @@ number=4096
 p=3.80
 
 temperatures=(0.063 0.039 0.03105 0.025 0.016)
-records=(15 16 17 18 19)
+records=(10 11 12 13 14 15 16 17 18 19)
 tauEstimate=(1. 3. 4. 8. 15. 40. 70. 150. 250. 600. 2000. 2500. 4500. 9500.)
 
 for recordIdx in ${records[@]}; do

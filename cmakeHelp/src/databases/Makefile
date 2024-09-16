@@ -395,6 +395,33 @@ nvtModelDatabase.cpp.s:
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/nvtModelDatabase.cpp.s
 .PHONY : nvtModelDatabase.cpp.s
 
+structureFactorModelDatabase.o: structureFactorModelDatabase.cpp.o
+
+.PHONY : structureFactorModelDatabase.o
+
+# target to build an object file
+structureFactorModelDatabase.cpp.o:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/structureFactorModelDatabase.cpp.o
+.PHONY : structureFactorModelDatabase.cpp.o
+
+structureFactorModelDatabase.i: structureFactorModelDatabase.cpp.i
+
+.PHONY : structureFactorModelDatabase.i
+
+# target to preprocess a source file
+structureFactorModelDatabase.cpp.i:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/structureFactorModelDatabase.cpp.i
+.PHONY : structureFactorModelDatabase.cpp.i
+
+structureFactorModelDatabase.s: structureFactorModelDatabase.cpp.s
+
+.PHONY : structureFactorModelDatabase.s
+
+# target to generate assembly for a file
+structureFactorModelDatabase.cpp.s:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/structureFactorModelDatabase.cpp.s
+.PHONY : structureFactorModelDatabase.cpp.s
+
 testModelDatabase.o: testModelDatabase.cpp.o
 
 .PHONY : testModelDatabase.o
@@ -542,6 +569,9 @@ help:
 	@echo "... nvtModelDatabase.o"
 	@echo "... nvtModelDatabase.i"
 	@echo "... nvtModelDatabase.s"
+	@echo "... structureFactorModelDatabase.o"
+	@echo "... structureFactorModelDatabase.i"
+	@echo "... structureFactorModelDatabase.s"
 	@echo "... testModelDatabase.o"
 	@echo "... testModelDatabase.i"
 	@echo "... testModelDatabase.s"
