@@ -70,43 +70,40 @@ int main(int argc, char*argv[])
 
     shared_ptr<NoseHooverChainNVT> nvt = make_shared<NoseHooverChainNVT>(numpts,Nchain,initializeGPU);
 
-    //define a voronoi configuration with a quadratic energy functional
-    shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,a0,p0,reproducible,initializeGPU);
-    voronoiModel->setCellPreferencesWithRandomAreas(p0,0.8,1.2);
-
-    voronoiModel->setCellVelocitiesMaxwellBoltzmann(T);
-    nvt->setT(T);
-
-    //combine the equation of motion and the cell configuration in a "Simulation"
-    SimulationPtr sim = make_shared<Simulation>();
-    sim->setConfiguration(voronoiModel);
-    sim->addUpdater(nvt,voronoiModel);
-    //set the time step size
-    sim->setIntegrationTimestep(dt);
-    //initialize Hilbert-curve sorting... can be turned off by commenting out this line or seting the argument to a negative number
-    //sim->setSortPeriod(initSteps/10);
-    //set appropriate CPU and GPU flags
-    sim->setCPUOperation(!initializeGPU);
-    if (!gpu)
-        sim->setOmpThreads(abs(USE_GPU));
-    sim->setReproducible(reproducible);
-
-    //run for a few initialization timesteps
-    printf("starting initialization\n");
-    for(long long int ii = 0; ii < initSteps; ++ii)
-        {
-        sim->performTimestep();
-        };
-    printf("Finished with initialization\n");
-
     for (int i = 0; i < Nsave; i++)
     {
-        for(long long int ii = 0; ii < 100000; ++ii)
-        {
-        sim->performTimestep();
-        };
+        //define a voronoi configuration with a quadratic energy functional
+        shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,a0,p0,reproducible,initializeGPU);
+        voronoiModel->setCellPreferencesWithRandomAreas(p0,0.8,1.2);
+
+        voronoiModel->setCellVelocitiesMaxwellBoltzmann(T);
+        nvt->setT(T);
+
+        //combine the equation of motion and the cell configuration in a "Simulation"
+        SimulationPtr sim = make_shared<Simulation>();
+        sim->setConfiguration(voronoiModel);
+        sim->addUpdater(nvt,voronoiModel);
+        //set the time step size
+        sim->setIntegrationTimestep(dt);
+        //initialize Hilbert-curve sorting... can be turned off by commenting out this line or seting the argument to a negative number
+        //sim->setSortPeriod(initSteps/10);
+        //set appropriate CPU and GPU flags
+        sim->setCPUOperation(!initializeGPU);
+        if (!gpu)
+            sim->setOmpThreads(abs(USE_GPU));
+        sim->setReproducible(reproducible);
+
+        //run for a few initialization timesteps
+        printf("starting initialization\n");
+        for(long long int ii = 0; ii < initSteps; ++ii)
+            {
+            sim->performTimestep();
+            };
+        printf("Finished with initialization\n");
+
         ncdat.writeState(voronoiModel);
     }
+
 
     
     

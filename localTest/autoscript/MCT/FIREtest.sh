@@ -11,7 +11,7 @@ tauEstimate=(99999.9 99999.9 99999.9 99999.9 99999.9 99999.9 99999.9 800. 500. 2
 for recordIdx in ${records[@]}; do
     for i in ${!temperatures[@]}; do
         temp=${temperatures[$i]}
-        echo ${number} ${p} ${temp} ${recordIdx}
-        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/MCT/FIREtest.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1 -k 100000 -i 10
+        echo ${number} ${p} ${temp} ${recordIdx}/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/MCT/FIREtest.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} 
+        -g -1 -k 100000 -i 10
     done
 done

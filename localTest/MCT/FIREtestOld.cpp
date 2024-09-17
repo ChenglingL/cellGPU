@@ -94,6 +94,9 @@ int main(int argc, char*argv[])
         initializeGPU = false;
 
     char saveDirName[256];
+    char loadfolder[256];
+    sprintf(loadfolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/productionRuns/p%.3f/",numpts,p0);
+
     sprintf(saveDirName, "/home/chengling/Research/Project/Cell/MCT/data/inherentStates/N%i/",numpts);
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
     char inherentgDataname[256];
