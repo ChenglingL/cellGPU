@@ -5,6 +5,7 @@
 #include "gpuarray.h"
 #include "Simple2DCell.h"
 #include "simpleEquationOfMotion.h"
+#include "GlassyDynModelDatabase.h"
 
 
 /*! \file EnergyMinimizerFIRE2D.h */

@@ -47,7 +47,7 @@ int main(int argc, char*argv[])
     double dk=0.05; // largest k in the S(k)
 
     //The defaults can be overridden from the command line
-    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:")) != -1)
+    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:d:k:")) != -1)
         switch(c)
         {
             case 'n': numpts = atoi(optarg); break;
@@ -60,6 +60,7 @@ int main(int argc, char*argv[])
             case 'l': T0 = atof(optarg); break;
             case 'p': p0 = atof(optarg); break;
             case 'k': intk = atof(optarg); break;
+            case 'd': dk = atof(optarg); break;
             case 's': statesSavedPerDecadeOfTime = atof(optarg); break;
             case 'r': recordIndex = atoi(optarg); break;
             case '?':
@@ -89,11 +90,15 @@ int main(int argc, char*argv[])
     sprintf(loadfolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/productionRuns/p%.3f/",numpts,p0);
 
     namespace fs = std::filesystem;
-    long long int runTimesteps = max(floor(10000/dt),floor((tauEstimate * numberOfRelaxationTimes)/ dt));
-    long long int spacingofInstantaneous = floor(runTimesteps/10);
-    waitingtime = max(10000.,(tauEstimate * equilibrationWaitingTimeMultiple));
+    if (p0<3.7)
+    {
+        waitingtime = max(1000.,(tauEstimate * equilibrationWaitingTimeMultiple));
+    }else{
+        waitingtime = max(10000.,(tauEstimate * equilibrationWaitingTimeMultiple));
+    }
+    
     sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
-    sprintf(saveDataName,"%sscatteringFunction_N%i_p%.4f_T%.8f_idx%i.nc",savefolder,numpts,p0,T,recordIndex);
+    sprintf(saveDataName,"%sscatteringFunction_N%i_p%.4f_T%.8f_intK%.0f_idx%i.nc",savefolder,numpts,p0,T,intk,recordIndex);
 
     trajectoryModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
 
@@ -126,7 +131,7 @@ int main(int argc, char*argv[])
 
 
 
-    for(int rec=0;rec<fluidConfigurations.GetNumRecs();rec++){
+    for(int rec=floor(fluidConfigurations.GetNumRecs()/3*2);rec<fluidConfigurations.GetNumRecs();rec++){
         shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
         fluidConfigurations.readState(voronoiModel,rec);
         structuralFeatures strucFeat(voronoiModel->Box);

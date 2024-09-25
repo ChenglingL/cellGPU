@@ -281,6 +281,8 @@ Simple2DCell.h
 ../src/updaters/Simple2DCell.h
 simpleEquationOfMotion.h
 ../src/updaters/simpleEquationOfMotion.h
+GlassyDynModelDatabase.h
+../src/updaters/GlassyDynModelDatabase.h
 
 ../src/updaters/NoseHooverChainNVT.h
 simpleEquationOfMotion.h

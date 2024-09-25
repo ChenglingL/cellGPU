@@ -437,6 +437,12 @@ void voronoiModelBase::enforceTopology()
         resizeAndReset();
         }
     neighMax = delGPU.MaxSize;
+    if(oldNeighMax != neighMax && neighMax > 100)
+        {
+        cout<<"the neighbor numbe max is exploding"<<endl;
+        return;
+        }
+    allDelSets();
     if(oldNeighMax != neighMax)
         {
         resizeAndReset();

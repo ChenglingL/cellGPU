@@ -89,7 +89,12 @@ int main(int argc, char*argv[])
     namespace fs = std::filesystem;
     if (waitingtime == 100000) //if waiting time is an input of .cpp then use that one as waitingtime
     {
-        waitingtime = max(10000.,floor(tauEstimate * equilibrationWaitingTimeMultiple));
+        if (p0<3.7)
+        {
+            waitingtime = max(1000.,(tauEstimate * equilibrationWaitingTimeMultiple));
+        }else{
+            waitingtime = max(10000.,(tauEstimate * equilibrationWaitingTimeMultiple));
+    }
     }
     sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
     sprintf(CRSISFDataName,"%stimeCRSISF_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);

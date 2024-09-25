@@ -86,7 +86,13 @@ int main(int argc, char*argv[])
     sprintf(loadfolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/productionRuns/p%.3f/",numpts,p0);
 
     namespace fs = std::filesystem;
-    waitingtime = max(10000.,(tauEstimate * equilibrationWaitingTimeMultiple));
+    if (p0<3.7)
+    {
+        waitingtime = max(10000.,(tauEstimate * equilibrationWaitingTimeMultiple));
+    }else{
+        waitingtime = max(1000.,(tauEstimate * equilibrationWaitingTimeMultiple));
+    }
+    
     sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
     sprintf(saveDataName,"%sscatteringFunction_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);
     if (fs::exists(loaddataname)) {
@@ -114,7 +120,7 @@ int main(int argc, char*argv[])
         posdat[ii].x = px;
         posdat[ii].y = py;
     }
-    strucFeat.computeStructureFactor(posdat,SofK,5.0,0.5);
+    strucFeat.computeStructureFactor(posdat,SofK,2.0,0.5);
     for(int ii=0;ii<SofK.size();ii++){
         Sk->writeValues(SofK[ii].x,SofK[ii].y);    
     }

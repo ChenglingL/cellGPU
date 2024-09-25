@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
-  "../glassyDynamicsProject/polydisperseProductionRuns.out"
-  "../glassyDynamicsProject/polydisperseProductionRuns.out.pdb"
-  "CMakeFiles/polydisperseProductionRuns.out.dir/glassyDynamicsProject/polydisperseProductionRuns.cpp.o"
-  "CMakeFiles/polydisperseProductionRuns.out.dir/glassyDynamicsProject/polydisperseProductionRuns.cpp.o.d"
+  "../localTest/executable/polydisperseProductionRuns.out"
+  "../localTest/executable/polydisperseProductionRuns.out.pdb"
+  "CMakeFiles/polydisperseProductionRuns.out.dir/localTest/polydisperseProductionRuns.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

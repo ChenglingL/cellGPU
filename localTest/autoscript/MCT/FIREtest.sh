@@ -1,5 +1,21 @@
 #!/bin/bash
 
+# nRelaxation=10
+# number=4096
+# p=3.80
+
+# records=(10)
+# temperatures=(0.0022)
+# tauEstimate=(99999.9)
+
+# for recordIdx in ${records[@]}; do
+#     for i in ${!temperatures[@]}; do
+#         temp=${temperatures[$i]}
+#         echo ${number} ${p} ${temp} ${recordIdx} 
+#         /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/MCT/FIREtest.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1 -k 100000 -i 10
+#     done
+# done
+
 nRelaxation=10
 number=4096
 p=3.85
@@ -11,7 +27,7 @@ tauEstimate=(99999.9 99999.9 99999.9 99999.9 99999.9 99999.9 99999.9 800. 500. 2
 for recordIdx in ${records[@]}; do
     for i in ${!temperatures[@]}; do
         temp=${temperatures[$i]}
-        echo ${number} ${p} ${temp} ${recordIdx}/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/MCT/FIREtest.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} 
-        -g -1 -k 100000 -i 10
+        echo ${number} ${p} ${temp} ${recordIdx} 
+        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/MCT/FIREtest.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1 -k 100000 -i 1
     done
 done

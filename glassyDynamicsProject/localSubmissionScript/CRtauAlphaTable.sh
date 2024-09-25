@@ -3,20 +3,38 @@
 #jobs on the CPU -- for n=4096, I estimate that if tau_alpha <= 10^(10/3) then it will finish within the 48 hour maxJobTime
 #jobs on the CPU -- for n=32768, I estimate that if tau_alpha <= 10^(7/3) then it will finish within the 48 hour maxJobTime
 
-#This is for the missing trajectory where the time steps are the same
+nRelaxation=10
+
 number=4096
-p0s=(3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75)
-ids=(14 15 17 15 17 16 15 16 17 14 16 17 15 16 17 14 15 16 14 15 17 14 15 16 15 16 14 16 19 19 16 17 18 19 18 15 17 19 17 18 18 19 19)
-temperatures=(0.063 0.063 0.063 0.039 0.039 0.03105 0.025 0.025 0.025 0.016 0.016 0.016 0.01 0.01 0.01 0.008 0.008 0.008 0.0063 0.0063 0.0063 0.005 0.005 0.005 0.00385 0.00385 0.0031 0.063 0.039 0.03105 0.025 0.025 0.025 0.025 0.02 0.016 0.016 0.016 0.014 0.014 0.012 0.012 0.011)
-tauEstimate=(1 1 1 3 3 4 8 8 8 15 15 15 40 40 40 70 70 70 150 150 150 250 250 250 600 600 2000 4 5 7 10 10 10 10 30 70 70 70 150 150 700 700 1400)
-for i in ${!temperatures[@]}; do
-    tauEst=${tauEstimate[$i]}
-    temp=${temperatures[$i]}
-    p=${p0s[$i]}
-    recordIdx=${ids[$i]}
-    echo ${number} ${p} ${temp} ${recordIdx} ${tauEst}
-    /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTableMissingTrajectory.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
+p=3.00
+
+temperatures=(0.22 0.2 0.18 0.16 0.14 0.12 0.1 0.09 0.08 0.075)
+records=(0 1 2 3 4 5 6 7 8 9)
+
+tauEstimate=(10 10 10 50 100 200 500 2000 5000 10000)
+for recordIdx in ${records[@]}; do
+    for i in ${!temperatures[@]}; do
+        temp=${temperatures[$i]}
+        echo ${number} ${p} ${temp} ${recordIdx}
+        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTable.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
+    done
 done
+
+
+#This is for the missing trajectory where the time steps are the same
+# number=4096
+# p0s=(3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.8 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75 3.75)
+# ids=(14 15 17 15 17 16 15 16 17 14 16 17 15 16 17 14 15 16 14 15 17 14 15 16 15 16 14 16 19 19 16 17 18 19 18 15 17 19 17 18 18 19 19)
+# temperatures=(0.063 0.063 0.063 0.039 0.039 0.03105 0.025 0.025 0.025 0.016 0.016 0.016 0.01 0.01 0.01 0.008 0.008 0.008 0.0063 0.0063 0.0063 0.005 0.005 0.005 0.00385 0.00385 0.0031 0.063 0.039 0.03105 0.025 0.025 0.025 0.025 0.02 0.016 0.016 0.016 0.014 0.014 0.012 0.012 0.011)
+# tauEstimate=(1 1 1 3 3 4 8 8 8 15 15 15 40 40 40 70 70 70 150 150 150 250 250 250 600 600 2000 4 5 7 10 10 10 10 30 70 70 70 150 150 700 700 1400)
+# for i in ${!temperatures[@]}; do
+#     tauEst=${tauEstimate[$i]}
+#     temp=${temperatures[$i]}
+#     p=${p0s[$i]}
+#     recordIdx=${ids[$i]}
+#     echo ${number} ${p} ${temp} ${recordIdx} ${tauEst}
+#     /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/CRtauAlphaTableMissingTrajectory.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1
+# done
 
 # nRelaxation=10
 # number=4096

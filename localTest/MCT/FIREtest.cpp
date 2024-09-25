@@ -164,7 +164,21 @@ int main(int argc, char*argv[])
         for (int ii = 0; ii < initSteps; ++ii)
             {
             fireMinimizer->setMaximumIterations((tSteps)*(1+ii));
+            clock_t tMinize1,tMinize2;//THis is to prevent neighbor list explotion
+            tMinize1=clock();
             sim->performTimestep();
+            tMinize2=clock();
+            double minimizeTime = (tMinize2-tMinize1)/(double)CLOCKS_PER_SEC;
+            if(minimizeTime > 10)
+            {
+                cout<<"Minimization failure: neighbor number explodes"<<endl;
+                char dataname[256];
+                sprintf(dataname,"%sFIREflaseConf_N%i_p%.3f_T%.8f_%i.nc",savefolder,numpts,p0,T,recordIndex);
+                cout<<"store the false conf in "<<dataname<<endl;
+                shared_ptr<GlassyDynModelDatabase> falseDat=make_shared<GlassyDynModelDatabase>(numpts,dataname,NcFile::Replace);
+                falseDat->writeState(voronoiModel);
+                throw std::exception();
+            }
             voronoiModel->computeGeometryCPU();
             voronoiModel->computeForces();
             mf = voronoiModel->getMaxForce();
