@@ -53,7 +53,7 @@ CMAKE_BINARY_DIR = /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cma
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/ScatteringFunctionSmallK.out.dir/all
+all: CMakeFiles/FIREtest.out.dir/all
 all: src/all
 
 .PHONY : all
@@ -64,7 +64,7 @@ preinstall: src/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/ScatteringFunctionSmallK.out.dir/clean
+clean: CMakeFiles/FIREtest.out.dir/clean
 clean: src/clean
 
 .PHONY : clean
@@ -217,39 +217,39 @@ src/utility/clean: src/utility/CMakeFiles/utility.dir/clean
 .PHONY : src/utility/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/ScatteringFunctionSmallK.out.dir
+# Target rules for target CMakeFiles/FIREtest.out.dir
 
 # All Build rule for target.
-CMakeFiles/ScatteringFunctionSmallK.out.dir/all: src/utility/CMakeFiles/utilityGPU.dir/all
-CMakeFiles/ScatteringFunctionSmallK.out.dir/all: src/utility/CMakeFiles/utility.dir/all
-CMakeFiles/ScatteringFunctionSmallK.out.dir/all: src/simulation/CMakeFiles/simulation.dir/all
-CMakeFiles/ScatteringFunctionSmallK.out.dir/all: src/updaters/CMakeFiles/updatersGPU.dir/all
-CMakeFiles/ScatteringFunctionSmallK.out.dir/all: src/updaters/CMakeFiles/updaters.dir/all
-CMakeFiles/ScatteringFunctionSmallK.out.dir/all: src/models/CMakeFiles/modelGPU.dir/all
-CMakeFiles/ScatteringFunctionSmallK.out.dir/all: src/models/CMakeFiles/model.dir/all
-CMakeFiles/ScatteringFunctionSmallK.out.dir/all: src/analysis/CMakeFiles/analysis.dir/all
-CMakeFiles/ScatteringFunctionSmallK.out.dir/all: src/databases/CMakeFiles/database.dir/all
-	$(MAKE) -f CMakeFiles/ScatteringFunctionSmallK.out.dir/build.make CMakeFiles/ScatteringFunctionSmallK.out.dir/depend
-	$(MAKE) -f CMakeFiles/ScatteringFunctionSmallK.out.dir/build.make CMakeFiles/ScatteringFunctionSmallK.out.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=1,2 "Built target ScatteringFunctionSmallK.out"
-.PHONY : CMakeFiles/ScatteringFunctionSmallK.out.dir/all
+CMakeFiles/FIREtest.out.dir/all: src/utility/CMakeFiles/utilityGPU.dir/all
+CMakeFiles/FIREtest.out.dir/all: src/utility/CMakeFiles/utility.dir/all
+CMakeFiles/FIREtest.out.dir/all: src/simulation/CMakeFiles/simulation.dir/all
+CMakeFiles/FIREtest.out.dir/all: src/updaters/CMakeFiles/updatersGPU.dir/all
+CMakeFiles/FIREtest.out.dir/all: src/updaters/CMakeFiles/updaters.dir/all
+CMakeFiles/FIREtest.out.dir/all: src/models/CMakeFiles/modelGPU.dir/all
+CMakeFiles/FIREtest.out.dir/all: src/models/CMakeFiles/model.dir/all
+CMakeFiles/FIREtest.out.dir/all: src/analysis/CMakeFiles/analysis.dir/all
+CMakeFiles/FIREtest.out.dir/all: src/databases/CMakeFiles/database.dir/all
+	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/depend
+	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=1,2 "Built target FIREtest.out"
+.PHONY : CMakeFiles/FIREtest.out.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/ScatteringFunctionSmallK.out.dir/rule: cmake_check_build_system
+CMakeFiles/FIREtest.out.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 77
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ScatteringFunctionSmallK.out.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/FIREtest.out.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 0
-.PHONY : CMakeFiles/ScatteringFunctionSmallK.out.dir/rule
+.PHONY : CMakeFiles/FIREtest.out.dir/rule
 
 # Convenience name for target.
-ScatteringFunctionSmallK.out: CMakeFiles/ScatteringFunctionSmallK.out.dir/rule
+FIREtest.out: CMakeFiles/FIREtest.out.dir/rule
 
-.PHONY : ScatteringFunctionSmallK.out
+.PHONY : FIREtest.out
 
 # clean rule for target.
-CMakeFiles/ScatteringFunctionSmallK.out.dir/clean:
-	$(MAKE) -f CMakeFiles/ScatteringFunctionSmallK.out.dir/build.make CMakeFiles/ScatteringFunctionSmallK.out.dir/clean
-.PHONY : CMakeFiles/ScatteringFunctionSmallK.out.dir/clean
+CMakeFiles/FIREtest.out.dir/clean:
+	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/clean
+.PHONY : CMakeFiles/FIREtest.out.dir/clean
 
 #=============================================================================
 # Target rules for target src/utility/CMakeFiles/utilityGPU.dir

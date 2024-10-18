@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ScatteringFunctionSmallK.out
+# Target rules for targets named FIREtest.out
 
 # Build rule for target.
-ScatteringFunctionSmallK.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ScatteringFunctionSmallK.out
-.PHONY : ScatteringFunctionSmallK.out
+FIREtest.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 FIREtest.out
+.PHONY : FIREtest.out
 
 # fast build rule for target.
-ScatteringFunctionSmallK.out/fast:
-	$(MAKE) -f CMakeFiles/ScatteringFunctionSmallK.out.dir/build.make CMakeFiles/ScatteringFunctionSmallK.out.dir/build
-.PHONY : ScatteringFunctionSmallK.out/fast
+FIREtest.out/fast:
+	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/build
+.PHONY : FIREtest.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -240,32 +240,32 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-localTest/ScatteringFunctionSmallK.o: localTest/ScatteringFunctionSmallK.cpp.o
+localTest/MCT/FIREtest.o: localTest/MCT/FIREtest.cpp.o
 
-.PHONY : localTest/ScatteringFunctionSmallK.o
+.PHONY : localTest/MCT/FIREtest.o
 
 # target to build an object file
-localTest/ScatteringFunctionSmallK.cpp.o:
-	$(MAKE) -f CMakeFiles/ScatteringFunctionSmallK.out.dir/build.make CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.o
-.PHONY : localTest/ScatteringFunctionSmallK.cpp.o
+localTest/MCT/FIREtest.cpp.o:
+	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/localTest/MCT/FIREtest.cpp.o
+.PHONY : localTest/MCT/FIREtest.cpp.o
 
-localTest/ScatteringFunctionSmallK.i: localTest/ScatteringFunctionSmallK.cpp.i
+localTest/MCT/FIREtest.i: localTest/MCT/FIREtest.cpp.i
 
-.PHONY : localTest/ScatteringFunctionSmallK.i
+.PHONY : localTest/MCT/FIREtest.i
 
 # target to preprocess a source file
-localTest/ScatteringFunctionSmallK.cpp.i:
-	$(MAKE) -f CMakeFiles/ScatteringFunctionSmallK.out.dir/build.make CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.i
-.PHONY : localTest/ScatteringFunctionSmallK.cpp.i
+localTest/MCT/FIREtest.cpp.i:
+	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/localTest/MCT/FIREtest.cpp.i
+.PHONY : localTest/MCT/FIREtest.cpp.i
 
-localTest/ScatteringFunctionSmallK.s: localTest/ScatteringFunctionSmallK.cpp.s
+localTest/MCT/FIREtest.s: localTest/MCT/FIREtest.cpp.s
 
-.PHONY : localTest/ScatteringFunctionSmallK.s
+.PHONY : localTest/MCT/FIREtest.s
 
 # target to generate assembly for a file
-localTest/ScatteringFunctionSmallK.cpp.s:
-	$(MAKE) -f CMakeFiles/ScatteringFunctionSmallK.out.dir/build.make CMakeFiles/ScatteringFunctionSmallK.out.dir/localTest/ScatteringFunctionSmallK.cpp.s
-.PHONY : localTest/ScatteringFunctionSmallK.cpp.s
+localTest/MCT/FIREtest.cpp.s:
+	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/localTest/MCT/FIREtest.cpp.s
+.PHONY : localTest/MCT/FIREtest.cpp.s
 
 # Help Target
 help:
@@ -275,7 +275,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ScatteringFunctionSmallK.out"
+	@echo "... FIREtest.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -285,9 +285,9 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... localTest/ScatteringFunctionSmallK.o"
-	@echo "... localTest/ScatteringFunctionSmallK.i"
-	@echo "... localTest/ScatteringFunctionSmallK.s"
+	@echo "... localTest/MCT/FIREtest.o"
+	@echo "... localTest/MCT/FIREtest.i"
+	@echo "... localTest/MCT/FIREtest.s"
 .PHONY : help
 
 

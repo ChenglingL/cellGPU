@@ -175,7 +175,7 @@ int main(int argc, char*argv[])
                 char dataname[256];
                 sprintf(dataname,"%sFIREflaseConf_N%i_p%.3f_T%.8f_%i.nc",savefolder,numpts,p0,T,recordIndex);
                 cout<<"store the false conf in "<<dataname<<endl;
-                shared_ptr<GlassyDynModelDatabase> falseDat=make_shared<GlassyDynModelDatabase>(numpts,dataname,NcFile::Replace);
+                shared_ptr<trajectoryModelDatabase> falseDat=make_shared<trajectoryModelDatabase>(numpts,dataname,NcFile::Replace);
                 falseDat->writeState(voronoiModel);
                 throw std::exception();
             }
