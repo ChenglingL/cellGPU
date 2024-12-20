@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named FIREtest.out
+# Target rules for targets named areaPerimeter.out
 
 # Build rule for target.
-FIREtest.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 FIREtest.out
-.PHONY : FIREtest.out
+areaPerimeter.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 areaPerimeter.out
+.PHONY : areaPerimeter.out
 
 # fast build rule for target.
-FIREtest.out/fast:
-	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/build
-.PHONY : FIREtest.out/fast
+areaPerimeter.out/fast:
+	$(MAKE) -f CMakeFiles/areaPerimeter.out.dir/build.make CMakeFiles/areaPerimeter.out.dir/build
+.PHONY : areaPerimeter.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -240,32 +240,32 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-localTest/MCT/FIREtest.o: localTest/MCT/FIREtest.cpp.o
+localTest/areaPerimeter.o: localTest/areaPerimeter.cpp.o
 
-.PHONY : localTest/MCT/FIREtest.o
+.PHONY : localTest/areaPerimeter.o
 
 # target to build an object file
-localTest/MCT/FIREtest.cpp.o:
-	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/localTest/MCT/FIREtest.cpp.o
-.PHONY : localTest/MCT/FIREtest.cpp.o
+localTest/areaPerimeter.cpp.o:
+	$(MAKE) -f CMakeFiles/areaPerimeter.out.dir/build.make CMakeFiles/areaPerimeter.out.dir/localTest/areaPerimeter.cpp.o
+.PHONY : localTest/areaPerimeter.cpp.o
 
-localTest/MCT/FIREtest.i: localTest/MCT/FIREtest.cpp.i
+localTest/areaPerimeter.i: localTest/areaPerimeter.cpp.i
 
-.PHONY : localTest/MCT/FIREtest.i
+.PHONY : localTest/areaPerimeter.i
 
 # target to preprocess a source file
-localTest/MCT/FIREtest.cpp.i:
-	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/localTest/MCT/FIREtest.cpp.i
-.PHONY : localTest/MCT/FIREtest.cpp.i
+localTest/areaPerimeter.cpp.i:
+	$(MAKE) -f CMakeFiles/areaPerimeter.out.dir/build.make CMakeFiles/areaPerimeter.out.dir/localTest/areaPerimeter.cpp.i
+.PHONY : localTest/areaPerimeter.cpp.i
 
-localTest/MCT/FIREtest.s: localTest/MCT/FIREtest.cpp.s
+localTest/areaPerimeter.s: localTest/areaPerimeter.cpp.s
 
-.PHONY : localTest/MCT/FIREtest.s
+.PHONY : localTest/areaPerimeter.s
 
 # target to generate assembly for a file
-localTest/MCT/FIREtest.cpp.s:
-	$(MAKE) -f CMakeFiles/FIREtest.out.dir/build.make CMakeFiles/FIREtest.out.dir/localTest/MCT/FIREtest.cpp.s
-.PHONY : localTest/MCT/FIREtest.cpp.s
+localTest/areaPerimeter.cpp.s:
+	$(MAKE) -f CMakeFiles/areaPerimeter.out.dir/build.make CMakeFiles/areaPerimeter.out.dir/localTest/areaPerimeter.cpp.s
+.PHONY : localTest/areaPerimeter.cpp.s
 
 # Help Target
 help:
@@ -275,7 +275,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... FIREtest.out"
+	@echo "... areaPerimeter.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -285,9 +285,9 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... localTest/MCT/FIREtest.o"
-	@echo "... localTest/MCT/FIREtest.i"
-	@echo "... localTest/MCT/FIREtest.s"
+	@echo "... localTest/areaPerimeter.o"
+	@echo "... localTest/areaPerimeter.i"
+	@echo "... localTest/areaPerimeter.s"
 .PHONY : help
 
 

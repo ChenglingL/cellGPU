@@ -260,6 +260,33 @@ GlassyDynModelDatabase.cpp.s:
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.s
 .PHONY : GlassyDynModelDatabase.cpp.s
 
+areaPerimeterDatabase.o: areaPerimeterDatabase.cpp.o
+
+.PHONY : areaPerimeterDatabase.o
+
+# target to build an object file
+areaPerimeterDatabase.cpp.o:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/areaPerimeterDatabase.cpp.o
+.PHONY : areaPerimeterDatabase.cpp.o
+
+areaPerimeterDatabase.i: areaPerimeterDatabase.cpp.i
+
+.PHONY : areaPerimeterDatabase.i
+
+# target to preprocess a source file
+areaPerimeterDatabase.cpp.i:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/areaPerimeterDatabase.cpp.i
+.PHONY : areaPerimeterDatabase.cpp.i
+
+areaPerimeterDatabase.s: areaPerimeterDatabase.cpp.s
+
+.PHONY : areaPerimeterDatabase.s
+
+# target to generate assembly for a file
+areaPerimeterDatabase.cpp.s:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/areaPerimeterDatabase.cpp.s
+.PHONY : areaPerimeterDatabase.cpp.s
+
 derivativeModelDatabase.o: derivativeModelDatabase.cpp.o
 
 .PHONY : derivativeModelDatabase.o
@@ -554,6 +581,9 @@ help:
 	@echo "... GlassyDynModelDatabase.o"
 	@echo "... GlassyDynModelDatabase.i"
 	@echo "... GlassyDynModelDatabase.s"
+	@echo "... areaPerimeterDatabase.o"
+	@echo "... areaPerimeterDatabase.i"
+	@echo "... areaPerimeterDatabase.s"
 	@echo "... derivativeModelDatabase.o"
 	@echo "... derivativeModelDatabase.i"
 	@echo "... derivativeModelDatabase.s"

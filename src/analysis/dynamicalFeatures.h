@@ -34,6 +34,8 @@ class dynamicalFeatures
         double computeCageRelativeOverlapFunction(GPUArray<double2> &currentPos, double cutoff = 0.5);
         //!compute cage relative SISF with 2D angular averaging
         double computeSISF(GPUArray<double2> &currentPos, double k = 6.28319);
+        //!compute cage relative SISF with 2D angular averaging
+        double computeScatteringFuncion(GPUArray<double2> &currentPos, double k = 6.28319);
 
         //!compute cage relative MSD
         double computeCageRelativeMSD(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox);

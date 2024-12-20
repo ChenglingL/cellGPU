@@ -45,7 +45,8 @@ void NoseHooverChainNVT::setT(double T, double omega)
     {
     Temperature = T;
     ArrayHandle<double4> h_bv(BathVariables);
-    h_bv.data[0].w = 2.0 * (Ndof-2)*Temperature / (omega * omega);
+    h_bv.data[0].w = 2.0 * (Ndof-1)*Temperature;
+    // h_bv.data[0].w = 2.0 * (Ndof-2)*Temperature;
     for (int ii = 1; ii < Nchain+1; ++ii)
         {
         h_bv.data[ii].w = Temperature / (omega * omega);
@@ -173,7 +174,8 @@ void NoseHooverChainNVT::propagateChain()
         Bath.data[ii].y += Bath.data[ii].z*dt4;
         Bath.data[ii].y *= ef;
         };
-    Bath.data[0].z = (2.0*h_kes.data[0] - 2.0*(Ndof-2)*Temperature)/Bath.data[0].w;
+    Bath.data[0].z = (2.0*h_kes.data[0]/Bath.data[0].w - 1.0);
+    //Bath.data[0].z = (2.0*h_kes.data[0] - 2.0*(Ndof-2)*Temperature)/Bath.data[0].w;
     double ef = exp(-dt8*Bath.data[1].y);
     Bath.data[0].y *= ef;
     Bath.data[0].y += Bath.data[0].z*dt4;
@@ -189,7 +191,8 @@ void NoseHooverChainNVT::propagateChain()
     h_kes.data[0] = h_kes.data[1]*h_kes.data[1]*h_kes.data[0];
 
     //finally, do the other quarter-timestep of the velocities and accelerations, from 0 to Nchain
-    Bath.data[0].z = (2.0*h_kes.data[0] - 2.0*(Ndof-2)*Temperature)/Bath.data[0].w;
+    Bath.data[0].z = (2.0*h_kes.data[0]/Bath.data[0].w - 1.0);
+    //Bath.data[0].z = (2.0*h_kes.data[0] - 2.0*(Ndof-2)*Temperature)/Bath.data[0].w;
     ef = exp(-dt8*Bath.data[1].y);
     Bath.data[0].y *= ef;
     Bath.data[0].y += Bath.data[0].z*dt4;

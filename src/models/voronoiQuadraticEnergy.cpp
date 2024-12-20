@@ -2198,3 +2198,16 @@ void VoronoiQuadraticEnergy::getd2EdgammadrOldPaperWrong(vector<double2> &d2Edga
 
 
     }
+/*!
+get the total force
+*/
+void VoronoiQuadraticEnergy::reportTotalForce()
+    {
+        double2 answer;
+        answer.x = 0; answer.y = 0;
+        ArrayHandle<double2> h_f(cellForces,access_location::host,access_mode::readwrite);
+        for (int ii = 0; ii < Ncells; ++ii){
+            answer = h_f.data[ii] + answer;
+        }
+        cout<<"The total force is ( "<<answer.x<<", "<<answer.y<<" )."<<endl;
+    };

@@ -85,7 +85,7 @@ int main(int argc, char*argv[])
     char saveDataName[256];
     char savefolder[256];
     char loadfolder[256];
-    sprintf(savefolder,"/home/chengling/Research/Project/Cell/MCT/sk/p%.3f/",numpts,p0);
+    sprintf(savefolder,"/home/chengling/Research/Project/Cell/glassyDynamics/sk/p%.3f/",numpts,p0);
     sprintf(loadfolder,"/home/chengling/Research/Project/Cell/glassyDynamics/N%i/productionRuns/p%.3f/",numpts,p0);
 
     namespace fs = std::filesystem;

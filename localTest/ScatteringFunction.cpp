@@ -90,6 +90,7 @@ int main(int argc, char*argv[])
         fluidConfigurations.readState(voronoiModel,rec,false);
         vector<double2> SofK;
         //overlapdatNVT[rec] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
+        //get the position data from the file
         std::vector<double2> posdat(numpts);
         ArrayHandle<double2> h_p(voronoiModel->returnPositions());
         for (int ii = 0; ii < numpts; ++ii)
@@ -100,7 +101,7 @@ int main(int argc, char*argv[])
             posdat[ii].x = px;
             posdat[ii].y = py;
         }
-        strucFeat.computeStructureFactor(posdat,SofK,5.0,0.5);
+        strucFeat.computeStructureFactor(posdat,SofK,5.0,0.5);//compute Sq
         for(int ii=0;ii<SofK.size();ii++){
             Sk->writeValues(SofK[ii].x,SofK[ii].y);    
         }
