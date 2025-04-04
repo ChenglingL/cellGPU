@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named velocityAutoCorrelation.out
+# Target rules for targets named spv.out
 
 # Build rule for target.
-velocityAutoCorrelation.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 velocityAutoCorrelation.out
-.PHONY : velocityAutoCorrelation.out
+spv.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 spv.out
+.PHONY : spv.out
 
 # fast build rule for target.
-velocityAutoCorrelation.out/fast:
-	$(MAKE) -f CMakeFiles/velocityAutoCorrelation.out.dir/build.make CMakeFiles/velocityAutoCorrelation.out.dir/build
-.PHONY : velocityAutoCorrelation.out/fast
+spv.out/fast:
+	$(MAKE) -f CMakeFiles/spv.out.dir/build.make CMakeFiles/spv.out.dir/build
+.PHONY : spv.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -240,32 +240,32 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-localTest/velocityAutoCorrelation.o: localTest/velocityAutoCorrelation.cpp.o
+localTest/spv.o: localTest/spv.cpp.o
 
-.PHONY : localTest/velocityAutoCorrelation.o
+.PHONY : localTest/spv.o
 
 # target to build an object file
-localTest/velocityAutoCorrelation.cpp.o:
-	$(MAKE) -f CMakeFiles/velocityAutoCorrelation.out.dir/build.make CMakeFiles/velocityAutoCorrelation.out.dir/localTest/velocityAutoCorrelation.cpp.o
-.PHONY : localTest/velocityAutoCorrelation.cpp.o
+localTest/spv.cpp.o:
+	$(MAKE) -f CMakeFiles/spv.out.dir/build.make CMakeFiles/spv.out.dir/localTest/spv.cpp.o
+.PHONY : localTest/spv.cpp.o
 
-localTest/velocityAutoCorrelation.i: localTest/velocityAutoCorrelation.cpp.i
+localTest/spv.i: localTest/spv.cpp.i
 
-.PHONY : localTest/velocityAutoCorrelation.i
+.PHONY : localTest/spv.i
 
 # target to preprocess a source file
-localTest/velocityAutoCorrelation.cpp.i:
-	$(MAKE) -f CMakeFiles/velocityAutoCorrelation.out.dir/build.make CMakeFiles/velocityAutoCorrelation.out.dir/localTest/velocityAutoCorrelation.cpp.i
-.PHONY : localTest/velocityAutoCorrelation.cpp.i
+localTest/spv.cpp.i:
+	$(MAKE) -f CMakeFiles/spv.out.dir/build.make CMakeFiles/spv.out.dir/localTest/spv.cpp.i
+.PHONY : localTest/spv.cpp.i
 
-localTest/velocityAutoCorrelation.s: localTest/velocityAutoCorrelation.cpp.s
+localTest/spv.s: localTest/spv.cpp.s
 
-.PHONY : localTest/velocityAutoCorrelation.s
+.PHONY : localTest/spv.s
 
 # target to generate assembly for a file
-localTest/velocityAutoCorrelation.cpp.s:
-	$(MAKE) -f CMakeFiles/velocityAutoCorrelation.out.dir/build.make CMakeFiles/velocityAutoCorrelation.out.dir/localTest/velocityAutoCorrelation.cpp.s
-.PHONY : localTest/velocityAutoCorrelation.cpp.s
+localTest/spv.cpp.s:
+	$(MAKE) -f CMakeFiles/spv.out.dir/build.make CMakeFiles/spv.out.dir/localTest/spv.cpp.s
+.PHONY : localTest/spv.cpp.s
 
 # Help Target
 help:
@@ -275,7 +275,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... velocityAutoCorrelation.out"
+	@echo "... spv.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -285,9 +285,9 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... localTest/velocityAutoCorrelation.o"
-	@echo "... localTest/velocityAutoCorrelation.i"
-	@echo "... localTest/velocityAutoCorrelation.s"
+	@echo "... localTest/spv.o"
+	@echo "... localTest/spv.i"
+	@echo "... localTest/spv.s"
 .PHONY : help
 
 

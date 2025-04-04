@@ -159,7 +159,7 @@ int main(int argc, char*argv[])
 
     //run for a few initialization timesteps
     printf("starting initialization\n");
-    for(long long int ii = 0; ii < initSteps; ++ii)
+    for(long long int ii = 0; ii < 1000; ++ii)
         {
         sim->performTimestep();
         };
@@ -176,7 +176,7 @@ int main(int argc, char*argv[])
     cout<<"start running"<<endl;
     dynamicalFeatures dynFeat(voronoiModel->returnVelocities());
     //the "+2" is to ensure there are no fence-post problems for the very longest equilibrated state
-    for(long long int ii = 0; ii < runTimesteps+2; ++ii)
+    for(long long int ii = 0; ii < 1000+2; ++ii)
         {
             ArrayHandle<double2> h_v(voronoiModel->returnVelocities());
             for (int j = 0; j < numpts; j++)

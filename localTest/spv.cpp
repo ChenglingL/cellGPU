@@ -6,20 +6,20 @@
 
 #include "Simulation.h"
 #include "voronoiQuadraticEnergy.h"
-#include "NoseHooverChainNVT.h"
+#include "brownianParticleDynamics.h"
+#include "selfPropelledParticleDynamics.h"
 #include "nvtModelDatabase.h"
+#include "twoValuesDatabase.h"
 #include "logEquilibrationStateWriter.h"
 #include "analysisPackage.h"
+#include "periodicBoundaries.h"
+#include "trajectoryModelDatabase.h"
+#include <filesystem>
+
 
 
 /*!
-This file compiles to produce an executable that can be used to reproduce the timing information
-in the main cellGPU paper. It sets up a simulation that takes control of a voronoi model and a simple
-model of active motility
-NOTE that in the output, the forces and the positions are not, by default, synchronized! The NcFile
-records the force from the last time "computeForces()" was called, and generally the equations of motion will 
-move the positions. If you want the forces and the positions to be sync'ed, you should call the
-Voronoi model's computeForces() funciton right before saving a state.
+spv model to reproduce Max's result
 */
 int main(int argc, char*argv[])
 {
@@ -33,7 +33,8 @@ int main(int argc, char*argv[])
     double dt = 0.01; //the time step size
     double p0 = 3.8;  //the preferred perimeter
     double a0 = 1.0;  // the preferred area
-    double T = 0.1;  // the temperature
+    double v0 = 0.1;  // the mobility
+    double dr = 1.0;  // the noise
     int Nchain = 4;     //The number of thermostats to chain together
 
     //The defaults can be overridden from the command line
@@ -47,7 +48,7 @@ int main(int argc, char*argv[])
             case 'e': dt = atof(optarg); break;
             case 'p': p0 = atof(optarg); break;
             case 'a': a0 = atof(optarg); break;
-            case 'v': T = atof(optarg); break;
+            case 'v': v0 = atof(optarg); break;
             case '?':
                     if(optopt=='c')
                         std::cerr<<"Option -" << optopt << "requires an argument.\n";
@@ -71,35 +72,42 @@ int main(int argc, char*argv[])
     //set-up a log-spaced state saver...can add as few as 1 database, or as many as you'd like. "0.1" will save 10 states per decade of time
     logEquilibrationStateWriter lewriter(0.1);
     char dataname[256];
-    double equilibrationTime = dt*initSteps;
+    char msdName[256];
+    char crmsdName[256];
+    char savefolder[256];
+
+    cout << "initializing a system of " << numpts <<  endl;
+    sprintf(savefolder,"/home/chengling/Research/Project/Cell/glassyDynamics/localTest/spv/");
+
     vector<long long int> offsets;
     offsets.push_back(0);
     //offsets.push_back(100);offsets.push_back(1000);offsets.push_back(50);
-    for(int ii = 0; ii < offsets.size(); ++ii)
-        {
-        sprintf(dataname,"test_N%i_p%.5f_T%.8f_et%.6f.nc",numpts,p0,T,offsets[ii]*dt);
-        shared_ptr<nvtModelDatabase> ncdat=make_shared<nvtModelDatabase>(numpts,dataname,NcFile::Replace);
-        lewriter.addDatabase(ncdat,offsets[ii]);
-        }
+
+    sprintf(dataname,"%sspv_N%i_p%.5f_Dr%.4f_v0%.4f_dt%.4f.nc",savefolder,numpts,p0,dr,v0,dt);
+    sprintf(msdName,"%stimeMSD_N%i_p%.5f_Dr%.4f_v0%.4f_dt%.4f.nc",savefolder,numpts,p0,dr,v0,dt);
+    sprintf(crmsdName,"%stimeCRMSD_N%i_p%.5f_Dr%.4f_v0%.4f_dt%.4f.nc",savefolder,numpts,p0,dr,v0,dt);
+    shared_ptr<trajectoryModelDatabase> ncdat=make_shared<trajectoryModelDatabase>(numpts,dataname,NcFile::Replace);
+    lewriter.addDatabase(ncdat,offsets[0]);
+
     lewriter.identifyNextFrame();
 
-
-    cout << "initializing a system of " << numpts << " cells at temperature " << T << endl;
-    shared_ptr<NoseHooverChainNVT> nvt = make_shared<NoseHooverChainNVT>(numpts,Nchain,initializeGPU);
+    shared_ptr<twoValuesDatabase> CRMSD=make_shared<twoValuesDatabase>(crmsdName,NcFile::Replace);
+    shared_ptr<twoValuesDatabase> MSD=make_shared<twoValuesDatabase>(msdName,NcFile::Replace);
+    cout << "initializing a system of " << numpts <<  endl;
+    shared_ptr<selfPropelledParticleDynamics> sp = make_shared<selfPropelledParticleDynamics>();
 
     //define a voronoi configuration with a quadratic energy functional
-    shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,4.0,reproducible,initializeGPU);
+    shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
 
     //set the cell preferences to uniformly have A_0 = 1, P_0 = p_0
-    voronoiModel->setCellPreferencesWithRandomAreas(p0,0.8,1.2);
 
-    voronoiModel->setCellVelocitiesMaxwellBoltzmann(T);
-    nvt->setT(T);
+    voronoiModel->setv0Dr(0,dr);
+
 
     //combine the equation of motion and the cell configuration in a "Simulation"
     SimulationPtr sim = make_shared<Simulation>();
     sim->setConfiguration(voronoiModel);
-    sim->addUpdater(nvt,voronoiModel);
+    sim->addUpdater(sp,voronoiModel);
     //set the time step size
     sim->setIntegrationTimestep(dt);
     //initialize Hilbert-curve sorting... can be turned off by commenting out this line or seting the argument to a negative number
@@ -116,33 +124,45 @@ int main(int argc, char*argv[])
         {
         sim->performTimestep();
         };
-    voronoiModel->computeGeometry();
-    printf("Finished with initialization\n");
-    cout << "current q = " << voronoiModel->reportq() << endl;
-    //the reporting of the force should yield a number that is numerically close to zero.
-    voronoiModel->reportMeanCellForce(false);
+    voronoiModel->setv0Dr(v0,dr);
+
 
     //run for additional timesteps, compute dynamical features, and record timing information
     dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
-    t1=clock();
+    dynFeat.setCageNeighbors(voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx); 
+    std::vector<int2> previousWhichBox(numpts);
+    std::vector<int2> previousWhichBoxCR(numpts);
+    for (int i = 0; i < numpts; ++i) {
+        previousWhichBox[i].x = 0;
+        previousWhichBox[i].y = 0;
+        previousWhichBoxCR[i].x = 0;
+        previousWhichBoxCR[i].y = 0;
+    }
+    int rec = 0;
+    double iniTime = voronoiModel->currentTime;
 //    cudaProfilerStart();
+    GPUArray<double2> previousPos;
     for(long long int ii = 0; ii < tSteps; ++ii)
         {
 
         if (ii == lewriter.nextFrameToSave)
             {
+
             lewriter.writeState(voronoiModel,ii);
+            if(rec==0){
+                previousPos = voronoiModel->returnPositions();
+            }else if(rec>0) {
+                MSD->writeValues(voronoiModel->currentTime - iniTime, dynFeat.computeMSD(voronoiModel->returnPositions(),previousPos,previousWhichBox));  
+                CRMSD->writeValues(voronoiModel->currentTime  - iniTime, dynFeat.computeCageRelativeMSD(voronoiModel->returnPositions(),previousPos,previousWhichBoxCR));
+                previousPos = voronoiModel->returnPositions();
+            }
+            rec++;
             }
 
         sim->performTimestep();
         };
 //    cudaProfilerStop();
-    t2=clock();
-    printf("final state:\t\t energy %f \t msd %f \t overlap %f\n",voronoiModel->computeEnergy(),dynFeat.computeMSD(voronoiModel->returnPositions()),dynFeat.computeOverlapFunction(voronoiModel->returnPositions()));
-    double steptime = (t2-t1)/(double)CLOCKS_PER_SEC/tSteps;
-    cout << "timestep ~ " << steptime << " per frame; " << endl;
 
-    if(initializeGPU)
-        cudaDeviceReset();
+
     return 0;
 };
