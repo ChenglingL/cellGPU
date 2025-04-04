@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named areaPerimeter.out
+# Target rules for targets named velocityAutoCorrelation.out
 
 # Build rule for target.
-areaPerimeter.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 areaPerimeter.out
-.PHONY : areaPerimeter.out
+velocityAutoCorrelation.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 velocityAutoCorrelation.out
+.PHONY : velocityAutoCorrelation.out
 
 # fast build rule for target.
-areaPerimeter.out/fast:
-	$(MAKE) -f CMakeFiles/areaPerimeter.out.dir/build.make CMakeFiles/areaPerimeter.out.dir/build
-.PHONY : areaPerimeter.out/fast
+velocityAutoCorrelation.out/fast:
+	$(MAKE) -f CMakeFiles/velocityAutoCorrelation.out.dir/build.make CMakeFiles/velocityAutoCorrelation.out.dir/build
+.PHONY : velocityAutoCorrelation.out/fast
 
 #=============================================================================
 # Target rules for targets named utilityGPU
@@ -240,32 +240,32 @@ database/fast:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
 .PHONY : database/fast
 
-localTest/areaPerimeter.o: localTest/areaPerimeter.cpp.o
+localTest/velocityAutoCorrelation.o: localTest/velocityAutoCorrelation.cpp.o
 
-.PHONY : localTest/areaPerimeter.o
+.PHONY : localTest/velocityAutoCorrelation.o
 
 # target to build an object file
-localTest/areaPerimeter.cpp.o:
-	$(MAKE) -f CMakeFiles/areaPerimeter.out.dir/build.make CMakeFiles/areaPerimeter.out.dir/localTest/areaPerimeter.cpp.o
-.PHONY : localTest/areaPerimeter.cpp.o
+localTest/velocityAutoCorrelation.cpp.o:
+	$(MAKE) -f CMakeFiles/velocityAutoCorrelation.out.dir/build.make CMakeFiles/velocityAutoCorrelation.out.dir/localTest/velocityAutoCorrelation.cpp.o
+.PHONY : localTest/velocityAutoCorrelation.cpp.o
 
-localTest/areaPerimeter.i: localTest/areaPerimeter.cpp.i
+localTest/velocityAutoCorrelation.i: localTest/velocityAutoCorrelation.cpp.i
 
-.PHONY : localTest/areaPerimeter.i
+.PHONY : localTest/velocityAutoCorrelation.i
 
 # target to preprocess a source file
-localTest/areaPerimeter.cpp.i:
-	$(MAKE) -f CMakeFiles/areaPerimeter.out.dir/build.make CMakeFiles/areaPerimeter.out.dir/localTest/areaPerimeter.cpp.i
-.PHONY : localTest/areaPerimeter.cpp.i
+localTest/velocityAutoCorrelation.cpp.i:
+	$(MAKE) -f CMakeFiles/velocityAutoCorrelation.out.dir/build.make CMakeFiles/velocityAutoCorrelation.out.dir/localTest/velocityAutoCorrelation.cpp.i
+.PHONY : localTest/velocityAutoCorrelation.cpp.i
 
-localTest/areaPerimeter.s: localTest/areaPerimeter.cpp.s
+localTest/velocityAutoCorrelation.s: localTest/velocityAutoCorrelation.cpp.s
 
-.PHONY : localTest/areaPerimeter.s
+.PHONY : localTest/velocityAutoCorrelation.s
 
 # target to generate assembly for a file
-localTest/areaPerimeter.cpp.s:
-	$(MAKE) -f CMakeFiles/areaPerimeter.out.dir/build.make CMakeFiles/areaPerimeter.out.dir/localTest/areaPerimeter.cpp.s
-.PHONY : localTest/areaPerimeter.cpp.s
+localTest/velocityAutoCorrelation.cpp.s:
+	$(MAKE) -f CMakeFiles/velocityAutoCorrelation.out.dir/build.make CMakeFiles/velocityAutoCorrelation.out.dir/localTest/velocityAutoCorrelation.cpp.s
+.PHONY : localTest/velocityAutoCorrelation.cpp.s
 
 # Help Target
 help:
@@ -275,7 +275,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... areaPerimeter.out"
+	@echo "... velocityAutoCorrelation.out"
 	@echo "... utilityGPU"
 	@echo "... utility"
 	@echo "... simulation"
@@ -285,9 +285,9 @@ help:
 	@echo "... model"
 	@echo "... analysis"
 	@echo "... database"
-	@echo "... localTest/areaPerimeter.o"
-	@echo "... localTest/areaPerimeter.i"
-	@echo "... localTest/areaPerimeter.s"
+	@echo "... localTest/velocityAutoCorrelation.o"
+	@echo "... localTest/velocityAutoCorrelation.i"
+	@echo "... localTest/velocityAutoCorrelation.s"
 .PHONY : help
 
 

@@ -1,0 +1,135 @@
+#include "autocorrelatorVector.h"
+/*! \file autocorrelatorVector.cpp */
+
+/*!
+The base constructor determines the number of points per correlator level, the number of points over
+which to average, and the time spacing rate at which values will be added
+*/
+autocorrelatorVector::autocorrelatorVector(int pp, int mm, double deltaT)
+    {
+    p=pp;
+    m=mm;
+    minimumDistance = p/m;
+    setDeltaT(deltaT);
+    initialize();
+    };
+
+/*!
+initializes the necessary data structures
+*/
+void autocorrelatorVector::initialize()
+    {
+    nCorrelators = 0;
+    vector<int> pZeroInt(p,0);
+    vector<double> pZerodouble(p,0.0);
+
+    growCorrelationLevel();
+    };
+
+/*!
+If a value is added so that the number of correlator levels needs to grow, this function will be
+called to do this;
+*/
+void autocorrelatorVector::growCorrelationLevel()
+    {
+    vector<int> pZeroInt(p,0);
+    vector<double> pZerodouble(p,0.0);
+    vector<double2> pShiftdouble(p,make_double2(-20000000000.0,-20000000000.0));
+    shift.push_back(pShiftdouble);
+    correlation.push_back(pZerodouble);
+    nCorrelation.push_back(pZeroInt);
+    nAccumulator.push_back(0);
+    accumulator.push_back(make_double2(0.0,0.0));
+    insertIndex.push_back(0);
+
+    nCorrelators+=1;
+    };
+
+/*!
+This function should always be called by the user using k=0 (the default value). The function will
+recursively call itself with higher k-values as needed.
+*/
+void autocorrelatorVector::add(double2 w, int k)
+    {
+    //If we exceed the number of correlator levels, grow the lists
+    if (k == nCorrelators)
+        growCorrelationLevel();
+    
+    //insert into shift array
+    shift[k][insertIndex[k]]=w;
+
+    //add to the average value
+
+    //add to accumulator, and, if needed, recursively call the higher-level add
+    accumulator[k] = accumulator[k] + w;
+    nAccumulator[k] +=1;
+    if(nAccumulator[k] == m)
+        {
+        add(accumulator[k]/m,k+1);
+        accumulator[k]=make_double2(0.0,0.0);
+        nAccumulator[k]=0;
+        };
+
+    //calculate the correlations...the first level has to be handled differently
+    int index1 = insertIndex[k];
+    if (k==0)
+        {
+        int index2 = index1;
+        for (int jj = 0; jj < p; ++jj)
+            {
+            if (shift[k][index2].x > -10000000000.0)
+                {
+                correlation[k][jj] +=dot(shift[k][index1],shift[k][index2]);
+                nCorrelation[k][jj] +=1;
+                };
+            index2 -= 1;
+            if (index2 < 0) index2 +=p;
+            };
+        }
+    else
+        {
+        int index2 = index1-minimumDistance;
+        for (int jj = minimumDistance; jj < p; ++jj)
+            {
+            if (index2 < 0) index2 +=p;
+            if (shift[k][index2].x > -10000000000.0)
+                {
+                correlation[k][jj] +=dot(shift[k][index1],shift[k][index2]);
+                nCorrelation[k][jj] +=1;
+                };
+            index2 -= 1;
+            };
+        };
+    insertIndex[k] +=1;
+    if (insertIndex[k] == p)
+        insertIndex[k] = 0;
+    };
+
+/*!
+if the boolean argument is set to true, the mean value will be subtracted off from the autocorrelation...
+this is a necessary part for computing some autocorrelations, e.g., the MSD
+*/
+void autocorrelatorVector::evaluate()
+    {
+    correlator.clear();
+    double auxiliary = 0.0;
+
+    //the first level of the correlator is handled differently from the others
+    for (int ii = 0; ii < p; ++ii)
+        if(nCorrelation[0][ii] > 0)
+            {
+            double autocorr = correlation[0][ii]/nCorrelation[0][ii] - auxiliary;
+            correlator.push_back(make_double2(ii*dt,autocorr));
+            };
+
+    //the other levels are all handled the same way
+    for (int k = 1; k < nCorrelators; ++k)
+        for (int ii = minimumDistance; ii < p; ++ii)
+            if (nCorrelation[k][ii] > 0)
+                {
+                double autocorr = correlation[k][ii]/nCorrelation[k][ii] - auxiliary;
+                double time = dt*ii*pow((double)m,k);
+                correlator.push_back(make_double2(time,autocorr));
+                };
+    };
+    

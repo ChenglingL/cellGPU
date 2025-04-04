@@ -152,6 +152,33 @@ autocorrelator.cpp.s:
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/analysis/CMakeFiles/analysis.dir/build.make src/analysis/CMakeFiles/analysis.dir/autocorrelator.cpp.s
 .PHONY : autocorrelator.cpp.s
 
+autocorrelatorVector.o: autocorrelatorVector.cpp.o
+
+.PHONY : autocorrelatorVector.o
+
+# target to build an object file
+autocorrelatorVector.cpp.o:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/analysis/CMakeFiles/analysis.dir/build.make src/analysis/CMakeFiles/analysis.dir/autocorrelatorVector.cpp.o
+.PHONY : autocorrelatorVector.cpp.o
+
+autocorrelatorVector.i: autocorrelatorVector.cpp.i
+
+.PHONY : autocorrelatorVector.i
+
+# target to preprocess a source file
+autocorrelatorVector.cpp.i:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/analysis/CMakeFiles/analysis.dir/build.make src/analysis/CMakeFiles/analysis.dir/autocorrelatorVector.cpp.i
+.PHONY : autocorrelatorVector.cpp.i
+
+autocorrelatorVector.s: autocorrelatorVector.cpp.s
+
+.PHONY : autocorrelatorVector.s
+
+# target to generate assembly for a file
+autocorrelatorVector.cpp.s:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/analysis/CMakeFiles/analysis.dir/build.make src/analysis/CMakeFiles/analysis.dir/autocorrelatorVector.cpp.s
+.PHONY : autocorrelatorVector.cpp.s
+
 dynamicalFeatures.o: dynamicalFeatures.cpp.o
 
 .PHONY : dynamicalFeatures.o
@@ -218,6 +245,9 @@ help:
 	@echo "... autocorrelator.o"
 	@echo "... autocorrelator.i"
 	@echo "... autocorrelator.s"
+	@echo "... autocorrelatorVector.o"
+	@echo "... autocorrelatorVector.i"
+	@echo "... autocorrelatorVector.s"
 	@echo "... dynamicalFeatures.o"
 	@echo "... dynamicalFeatures.i"
 	@echo "... dynamicalFeatures.s"

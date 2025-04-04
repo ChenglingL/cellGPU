@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/database.dir/DatabaseNetCDFAVM.cpp.o"
   "CMakeFiles/database.dir/DatabaseNetCDFSPV.cpp.o"
   "CMakeFiles/database.dir/DatabaseTextVoronoi.cpp.o"
+  "CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.o"
   "CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.o"
   "CMakeFiles/database.dir/areaPerimeterDatabase.cpp.o"
   "CMakeFiles/database.dir/derivativeModelDatabase.cpp.o"

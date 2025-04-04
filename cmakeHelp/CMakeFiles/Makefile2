@@ -53,7 +53,7 @@ CMAKE_BINARY_DIR = /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cma
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/areaPerimeter.out.dir/all
+all: CMakeFiles/velocityAutoCorrelation.out.dir/all
 all: src/all
 
 .PHONY : all
@@ -64,7 +64,7 @@ preinstall: src/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/areaPerimeter.out.dir/clean
+clean: CMakeFiles/velocityAutoCorrelation.out.dir/clean
 clean: src/clean
 
 .PHONY : clean
@@ -217,39 +217,39 @@ src/utility/clean: src/utility/CMakeFiles/utility.dir/clean
 .PHONY : src/utility/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/areaPerimeter.out.dir
+# Target rules for target CMakeFiles/velocityAutoCorrelation.out.dir
 
 # All Build rule for target.
-CMakeFiles/areaPerimeter.out.dir/all: src/utility/CMakeFiles/utilityGPU.dir/all
-CMakeFiles/areaPerimeter.out.dir/all: src/utility/CMakeFiles/utility.dir/all
-CMakeFiles/areaPerimeter.out.dir/all: src/simulation/CMakeFiles/simulation.dir/all
-CMakeFiles/areaPerimeter.out.dir/all: src/updaters/CMakeFiles/updatersGPU.dir/all
-CMakeFiles/areaPerimeter.out.dir/all: src/updaters/CMakeFiles/updaters.dir/all
-CMakeFiles/areaPerimeter.out.dir/all: src/models/CMakeFiles/modelGPU.dir/all
-CMakeFiles/areaPerimeter.out.dir/all: src/models/CMakeFiles/model.dir/all
-CMakeFiles/areaPerimeter.out.dir/all: src/analysis/CMakeFiles/analysis.dir/all
-CMakeFiles/areaPerimeter.out.dir/all: src/databases/CMakeFiles/database.dir/all
-	$(MAKE) -f CMakeFiles/areaPerimeter.out.dir/build.make CMakeFiles/areaPerimeter.out.dir/depend
-	$(MAKE) -f CMakeFiles/areaPerimeter.out.dir/build.make CMakeFiles/areaPerimeter.out.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=5,6 "Built target areaPerimeter.out"
-.PHONY : CMakeFiles/areaPerimeter.out.dir/all
+CMakeFiles/velocityAutoCorrelation.out.dir/all: src/utility/CMakeFiles/utilityGPU.dir/all
+CMakeFiles/velocityAutoCorrelation.out.dir/all: src/utility/CMakeFiles/utility.dir/all
+CMakeFiles/velocityAutoCorrelation.out.dir/all: src/simulation/CMakeFiles/simulation.dir/all
+CMakeFiles/velocityAutoCorrelation.out.dir/all: src/updaters/CMakeFiles/updatersGPU.dir/all
+CMakeFiles/velocityAutoCorrelation.out.dir/all: src/updaters/CMakeFiles/updaters.dir/all
+CMakeFiles/velocityAutoCorrelation.out.dir/all: src/models/CMakeFiles/modelGPU.dir/all
+CMakeFiles/velocityAutoCorrelation.out.dir/all: src/models/CMakeFiles/model.dir/all
+CMakeFiles/velocityAutoCorrelation.out.dir/all: src/analysis/CMakeFiles/analysis.dir/all
+CMakeFiles/velocityAutoCorrelation.out.dir/all: src/databases/CMakeFiles/database.dir/all
+	$(MAKE) -f CMakeFiles/velocityAutoCorrelation.out.dir/build.make CMakeFiles/velocityAutoCorrelation.out.dir/depend
+	$(MAKE) -f CMakeFiles/velocityAutoCorrelation.out.dir/build.make CMakeFiles/velocityAutoCorrelation.out.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=79,80 "Built target velocityAutoCorrelation.out"
+.PHONY : CMakeFiles/velocityAutoCorrelation.out.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/areaPerimeter.out.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 78
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/areaPerimeter.out.dir/all
+CMakeFiles/velocityAutoCorrelation.out.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 80
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/velocityAutoCorrelation.out.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 0
-.PHONY : CMakeFiles/areaPerimeter.out.dir/rule
+.PHONY : CMakeFiles/velocityAutoCorrelation.out.dir/rule
 
 # Convenience name for target.
-areaPerimeter.out: CMakeFiles/areaPerimeter.out.dir/rule
+velocityAutoCorrelation.out: CMakeFiles/velocityAutoCorrelation.out.dir/rule
 
-.PHONY : areaPerimeter.out
+.PHONY : velocityAutoCorrelation.out
 
 # clean rule for target.
-CMakeFiles/areaPerimeter.out.dir/clean:
-	$(MAKE) -f CMakeFiles/areaPerimeter.out.dir/build.make CMakeFiles/areaPerimeter.out.dir/clean
-.PHONY : CMakeFiles/areaPerimeter.out.dir/clean
+CMakeFiles/velocityAutoCorrelation.out.dir/clean:
+	$(MAKE) -f CMakeFiles/velocityAutoCorrelation.out.dir/build.make CMakeFiles/velocityAutoCorrelation.out.dir/clean
+.PHONY : CMakeFiles/velocityAutoCorrelation.out.dir/clean
 
 #=============================================================================
 # Target rules for target src/utility/CMakeFiles/utilityGPU.dir
@@ -447,12 +447,12 @@ src/models/CMakeFiles/model.dir/clean:
 src/analysis/CMakeFiles/analysis.dir/all:
 	$(MAKE) -f src/analysis/CMakeFiles/analysis.dir/build.make src/analysis/CMakeFiles/analysis.dir/depend
 	$(MAKE) -f src/analysis/CMakeFiles/analysis.dir/build.make src/analysis/CMakeFiles/analysis.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=1,2,3,4 "Built target analysis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=1,2,3,4,5 "Built target analysis"
 .PHONY : src/analysis/CMakeFiles/analysis.dir/all
 
 # Build rule for subdir invocation for target.
 src/analysis/CMakeFiles/analysis.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 src/analysis/CMakeFiles/analysis.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 0
 .PHONY : src/analysis/CMakeFiles/analysis.dir/rule
@@ -474,12 +474,12 @@ src/analysis/CMakeFiles/analysis.dir/clean:
 src/databases/CMakeFiles/database.dir/all:
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/depend
 	$(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 "Built target database"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 "Built target database"
 .PHONY : src/databases/CMakeFiles/database.dir/all
 
 # Build rule for subdir invocation for target.
 src/databases/CMakeFiles/database.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 src/databases/CMakeFiles/database.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles 0
 .PHONY : src/databases/CMakeFiles/database.dir/rule

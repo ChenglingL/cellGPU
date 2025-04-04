@@ -16,6 +16,7 @@ include_directories(
 
 add_library(analysis
     autocorrelator.cpp
+    autocorrelatorVector.cpp
     dynamicalFeatures.cpp
     structuralFeatures.cpp
     )

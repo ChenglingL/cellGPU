@@ -70,9 +70,22 @@ src/analysis/CMakeFiles/analysis.dir/autocorrelator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/analysis.dir/autocorrelator.cpp.s"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/analysis && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/autocorrelator.cpp -o CMakeFiles/analysis.dir/autocorrelator.cpp.s
 
+src/analysis/CMakeFiles/analysis.dir/autocorrelatorVector.cpp.o: src/analysis/CMakeFiles/analysis.dir/flags.make
+src/analysis/CMakeFiles/analysis.dir/autocorrelatorVector.cpp.o: ../src/analysis/autocorrelatorVector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/analysis/CMakeFiles/analysis.dir/autocorrelatorVector.cpp.o"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/analysis && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/analysis.dir/autocorrelatorVector.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/autocorrelatorVector.cpp
+
+src/analysis/CMakeFiles/analysis.dir/autocorrelatorVector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/analysis.dir/autocorrelatorVector.cpp.i"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/analysis && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/autocorrelatorVector.cpp > CMakeFiles/analysis.dir/autocorrelatorVector.cpp.i
+
+src/analysis/CMakeFiles/analysis.dir/autocorrelatorVector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/analysis.dir/autocorrelatorVector.cpp.s"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/analysis && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/autocorrelatorVector.cpp -o CMakeFiles/analysis.dir/autocorrelatorVector.cpp.s
+
 src/analysis/CMakeFiles/analysis.dir/dynamicalFeatures.cpp.o: src/analysis/CMakeFiles/analysis.dir/flags.make
 src/analysis/CMakeFiles/analysis.dir/dynamicalFeatures.cpp.o: ../src/analysis/dynamicalFeatures.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/analysis/CMakeFiles/analysis.dir/dynamicalFeatures.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/analysis/CMakeFiles/analysis.dir/dynamicalFeatures.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/analysis && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/analysis.dir/dynamicalFeatures.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/dynamicalFeatures.cpp
 
 src/analysis/CMakeFiles/analysis.dir/dynamicalFeatures.cpp.i: cmake_force
@@ -85,7 +98,7 @@ src/analysis/CMakeFiles/analysis.dir/dynamicalFeatures.cpp.s: cmake_force
 
 src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: src/analysis/CMakeFiles/analysis.dir/flags.make
 src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o: ../src/analysis/structuralFeatures.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/analysis && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/analysis.dir/structuralFeatures.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis/structuralFeatures.cpp
 
 src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.i: cmake_force
@@ -99,6 +112,7 @@ src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.s: cmake_force
 # Object files for target analysis
 analysis_OBJECTS = \
 "CMakeFiles/analysis.dir/autocorrelator.cpp.o" \
+"CMakeFiles/analysis.dir/autocorrelatorVector.cpp.o" \
 "CMakeFiles/analysis.dir/dynamicalFeatures.cpp.o" \
 "CMakeFiles/analysis.dir/structuralFeatures.cpp.o"
 
@@ -106,11 +120,12 @@ analysis_OBJECTS = \
 analysis_EXTERNAL_OBJECTS =
 
 src/analysis/libanalysis.a: src/analysis/CMakeFiles/analysis.dir/autocorrelator.cpp.o
+src/analysis/libanalysis.a: src/analysis/CMakeFiles/analysis.dir/autocorrelatorVector.cpp.o
 src/analysis/libanalysis.a: src/analysis/CMakeFiles/analysis.dir/dynamicalFeatures.cpp.o
 src/analysis/libanalysis.a: src/analysis/CMakeFiles/analysis.dir/structuralFeatures.cpp.o
 src/analysis/libanalysis.a: src/analysis/CMakeFiles/analysis.dir/build.make
 src/analysis/libanalysis.a: src/analysis/CMakeFiles/analysis.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libanalysis.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libanalysis.a"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/analysis && $(CMAKE_COMMAND) -P CMakeFiles/analysis.dir/cmake_clean_target.cmake
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/analysis && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/analysis.dir/link.txt --verbose=$(VERBOSE)
 

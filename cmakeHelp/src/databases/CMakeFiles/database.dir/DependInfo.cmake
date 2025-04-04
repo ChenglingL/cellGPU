@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/DatabaseNetCDFAVM.cpp" "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases/CMakeFiles/database.dir/DatabaseNetCDFAVM.cpp.o"
   "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/DatabaseNetCDFSPV.cpp" "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases/CMakeFiles/database.dir/DatabaseNetCDFSPV.cpp.o"
   "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/DatabaseTextVoronoi.cpp" "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases/CMakeFiles/database.dir/DatabaseTextVoronoi.cpp.o"
+  "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/GNNLearningModelDatabase.cpp" "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases/CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.o"
   "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/GlassyDynModelDatabase.cpp" "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases/CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.o"
   "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/areaPerimeterDatabase.cpp" "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases/CMakeFiles/database.dir/areaPerimeterDatabase.cpp.o"
   "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/derivativeModelDatabase.cpp" "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases/CMakeFiles/database.dir/derivativeModelDatabase.cpp.o"
@@ -31,7 +32,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/chengling/.local/include/eigen3"
-  "/usr/local/cuda-12.2/include"
   "../inc"
   "../src"
   "../src/utility"

@@ -71,7 +71,7 @@ set(generated_file_path "/home/chengling/Research/Project/Cell/AnalyticalG/cellG
 set(generated_file_internal "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters/CMakeFiles/updatersGPU.dir//./updatersGPU_generated_selfPropelledParticleDynamics.cu.o") # path
 set(generated_cubin_file_internal "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/updaters/CMakeFiles/updatersGPU.dir//./updatersGPU_generated_selfPropelledParticleDynamics.cu.o.cubin.txt") # path
 
-set(CUDA_NVCC_EXECUTABLE "/usr/local/cuda-12.2/bin/nvcc") # path
+set(CUDA_NVCC_EXECUTABLE "/usr/bin/nvcc") # path
 set(CUDA_NVCC_FLAGS  ;; ) # list
 # Build specific configuration flags
 set(CUDA_NVCC_FLAGS_DEBUG  ; )
@@ -79,7 +79,7 @@ set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
 set(CUDA_NVCC_FLAGS_RELEASE  ; )
 set(CUDA_NVCC_FLAGS_RELWITHDEBINFO  ; )
 set(nvcc_flags -m64) # list
-set(CUDA_NVCC_INCLUDE_DIRS [==[/usr/local/cuda-12.2/include;/home/chengling/.local/include/eigen3;/usr/local/cuda-12.2/include;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/inc;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/utility;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/simulation;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/incDirs;/home/chengling/.local/include/eigen3;/usr/local/cuda-12.2/include;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/inc;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/utility;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/forces;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/simulation]==]) # list (needs to be in lua quotes to address backslashes)
+set(CUDA_NVCC_INCLUDE_DIRS [==[/usr/include;/home/chengling/.local/include/eigen3;/usr/include;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/inc;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/utility;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/simulation;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/incDirs;/home/chengling/.local/include/eigen3;/usr/include;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/inc;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/utility;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/forces;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/simulation]==]) # list (needs to be in lua quotes to address backslashes)
 string(REPLACE "\\" "/" CUDA_NVCC_INCLUDE_DIRS "${CUDA_NVCC_INCLUDE_DIRS}")
 set(CUDA_NVCC_COMPILE_DEFINITIONS [==[ENABLE_CUDA]==]) # list (needs to be in lua quotes see #16510 ).
 set(format_flag "-c") # string
@@ -188,7 +188,7 @@ cuda_execute_process(
 # For CUDA 2.3 and below, -G -M doesn't work, so remove the -G flag
 # for dependency generation and hope for the best.
 set(depends_CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS}")
-set(CUDA_VERSION 12.2)
+set(CUDA_VERSION 10.1)
 if(CUDA_VERSION VERSION_LESS "3.0")
   # Note that this will remove all occurrences of -G.
   list(REMOVE_ITEM depends_CUDA_NVCC_FLAGS "-G")

@@ -252,9 +252,22 @@ src/databases/CMakeFiles/database.dir/displacementModelDatabase.cpp.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/database.dir/displacementModelDatabase.cpp.s"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/displacementModelDatabase.cpp -o CMakeFiles/database.dir/displacementModelDatabase.cpp.s
 
+src/databases/CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.o: src/databases/CMakeFiles/database.dir/flags.make
+src/databases/CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.o: ../src/databases/GNNLearningModelDatabase.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/databases/CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.o"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/GNNLearningModelDatabase.cpp
+
+src/databases/CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.i"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/GNNLearningModelDatabase.cpp > CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.i
+
+src/databases/CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.s"
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/GNNLearningModelDatabase.cpp -o CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.s
+
 src/databases/CMakeFiles/database.dir/structureFactorModelDatabase.cpp.o: src/databases/CMakeFiles/database.dir/flags.make
 src/databases/CMakeFiles/database.dir/structureFactorModelDatabase.cpp.o: ../src/databases/structureFactorModelDatabase.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/databases/CMakeFiles/database.dir/structureFactorModelDatabase.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/databases/CMakeFiles/database.dir/structureFactorModelDatabase.cpp.o"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/database.dir/structureFactorModelDatabase.cpp.o -c /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases/structureFactorModelDatabase.cpp
 
 src/databases/CMakeFiles/database.dir/structureFactorModelDatabase.cpp.i: cmake_force
@@ -282,6 +295,7 @@ database_OBJECTS = \
 "CMakeFiles/database.dir/derivativeModelDatabase.cpp.o" \
 "CMakeFiles/database.dir/trajectoryModelDatabase.cpp.o" \
 "CMakeFiles/database.dir/displacementModelDatabase.cpp.o" \
+"CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.o" \
 "CMakeFiles/database.dir/structureFactorModelDatabase.cpp.o"
 
 # External object files for target database
@@ -302,10 +316,11 @@ src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/twoValuesData
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/derivativeModelDatabase.cpp.o
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/trajectoryModelDatabase.cpp.o
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/displacementModelDatabase.cpp.o
+src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.o
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/structureFactorModelDatabase.cpp.o
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/build.make
 src/databases/libdatabase.a: src/databases/CMakeFiles/database.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX static library libdatabase.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX static library libdatabase.a"
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && $(CMAKE_COMMAND) -P CMakeFiles/database.dir/cmake_clean_target.cmake
 	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/databases && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/database.dir/link.txt --verbose=$(VERBOSE)
 
