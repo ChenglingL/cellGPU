@@ -84,7 +84,13 @@ int main(int argc, char*argv[])
         initializeGPU = false;
 
 
-    std::vector<std::shared_ptr<autocorrelatorVector>> acdat_vector(numpts);
+    std::vector<std::shared_ptr<autocorrelatorVector>> acdat_vector;
+    acdat_vector.reserve(numpts);
+    for (int i = 0;i < numpts; i++)
+    {
+        std::shared_ptr<autocorrelatorVector> acdat = std::make_shared<autocorrelatorVector>(16, 2, dt);
+        acdat_vector.push_back(acdat);
+    }
 
     long long int initSteps = max(floor(1000/dt),floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt));
     long long int equilibrationTimesteps = max(floor(10000/dt),floor((tauEstimate * equilibrationWaitingTimeMultiple)/ dt));
@@ -159,7 +165,7 @@ int main(int argc, char*argv[])
 
     //run for a few initialization timesteps
     printf("starting initialization\n");
-    for(long long int ii = 0; ii < 1000; ++ii)
+    for(long long int ii = 0; ii < initSteps; ++ii)
         {
         sim->performTimestep();
         };
@@ -176,18 +182,24 @@ int main(int argc, char*argv[])
     cout<<"start running"<<endl;
     dynamicalFeatures dynFeat(voronoiModel->returnVelocities());
     //the "+2" is to ensure there are no fence-post problems for the very longest equilibrated state
-    for(long long int ii = 0; ii < 1000+2; ++ii)
+    for(long long int ii = 0; ii < runTimesteps +2; ++ii)
         {
             ArrayHandle<double2> h_v(voronoiModel->returnVelocities());
             for (int j = 0; j < numpts; j++)
             {
+                // cout << "numpts = " << numpts << endl;
+                // cout << "tagToIdx.size() = " << voronoiModel->tagToIdx.size() << endl;
+                // cout << "acdat_vector.size() = " << acdat_vector.size() << endl;
                 int pidx = voronoiModel->tagToIdx[j];
-                acdat_vector[j]->add(h_v.data[pidx]);
+                // cout << "pidx = " << pidx << endl;
+                // cout << "h_v.data[pidx].x = " << h_v.data[pidx].x  << endl;
+                acdat_vector[j]->add(make_double2(h_v.data[pidx].x,h_v.data[pidx].y));
             }
             
-
         sim->performTimestep();
         };
+
+
     for (int i = 0;i < numpts; i++)
     {
         sprintf(dataname,"%svelocityAutoCorrelationTime_N%i_p%.4f_T%.8f_Cell_%i_idx%i.nc",saveDirName,numpts,p0,T,i,recordIndex);
