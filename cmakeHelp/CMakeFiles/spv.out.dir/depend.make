@@ -9,9 +9,9 @@ CMakeFiles/spv.out.dir/localTest/spv.cpp.o: ../src/analysis/dynamicalFeatures.h
 CMakeFiles/spv.out.dir/localTest/spv.cpp.o: ../src/analysis/structuralFeatures.h
 CMakeFiles/spv.out.dir/localTest/spv.cpp.o: ../src/databases/BaseDatabase.h
 CMakeFiles/spv.out.dir/localTest/spv.cpp.o: ../src/databases/DatabaseNetCDF.h
+CMakeFiles/spv.out.dir/localTest/spv.cpp.o: ../src/databases/GNNLearningModelDatabase.h
 CMakeFiles/spv.out.dir/localTest/spv.cpp.o: ../src/databases/logEquilibrationStateWriter.h
 CMakeFiles/spv.out.dir/localTest/spv.cpp.o: ../src/databases/nvtModelDatabase.h
-CMakeFiles/spv.out.dir/localTest/spv.cpp.o: ../src/databases/trajectoryModelDatabase.h
 CMakeFiles/spv.out.dir/localTest/spv.cpp.o: ../src/databases/twoValuesDatabase.h
 CMakeFiles/spv.out.dir/localTest/spv.cpp.o: ../src/models/DelaunayCGAL.h
 CMakeFiles/spv.out.dir/localTest/spv.cpp.o: ../src/models/DelaunayGPU.h

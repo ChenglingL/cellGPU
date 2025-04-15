@@ -59,7 +59,6 @@ void autocorrelatorVector::add(double2 w, int k)
     shift[k][insertIndex[k]]=w;
 
     //add to the average value
-
     //add to accumulator, and, if needed, recursively call the higher-level add
     accumulator[k] = accumulator[k] + w;
     nAccumulator[k] +=1;

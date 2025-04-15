@@ -10,9 +10,9 @@ CMakeFiles/spv.out.dir/localTest/spv.cpp.o
  ../src/analysis/structuralFeatures.h
  ../src/databases/BaseDatabase.h
  ../src/databases/DatabaseNetCDF.h
+ ../src/databases/GNNLearningModelDatabase.h
  ../src/databases/logEquilibrationStateWriter.h
  ../src/databases/nvtModelDatabase.h
- ../src/databases/trajectoryModelDatabase.h
  ../src/databases/twoValuesDatabase.h
  ../src/models/DelaunayCGAL.h
  ../src/models/DelaunayGPU.h

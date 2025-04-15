@@ -13,7 +13,7 @@
 #include "logEquilibrationStateWriter.h"
 #include "analysisPackage.h"
 #include "periodicBoundaries.h"
-#include "trajectoryModelDatabase.h"
+#include "GNNLearningModelDatabase.h"
 #include <filesystem>
 
 
@@ -35,10 +35,11 @@ int main(int argc, char*argv[])
     double a0 = 1.0;  // the preferred area
     double v0 = 0.1;  // the mobility
     double dr = 1.0;  // the noise
+    double KAKP = 1.0;// elsatic constant
     int Nchain = 4;     //The number of thermostats to chain together
 
     //The defaults can be overridden from the command line
-    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:")) != -1)
+    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:d:k:")) != -1)
         switch(c)
         {
             case 'n': numpts = atoi(optarg); break;
@@ -46,7 +47,9 @@ int main(int argc, char*argv[])
             case 'g': USE_GPU = atoi(optarg); break;
             case 'i': initSteps = atoi(optarg); break;
             case 'e': dt = atof(optarg); break;
+            case 'd': dr = atof(optarg); break;
             case 'p': p0 = atof(optarg); break;
+            case 'k': KAKP = atof(optarg); break;
             case 'a': a0 = atof(optarg); break;
             case 'v': v0 = atof(optarg); break;
             case '?':
@@ -83,10 +86,10 @@ int main(int argc, char*argv[])
     offsets.push_back(0);
     //offsets.push_back(100);offsets.push_back(1000);offsets.push_back(50);
 
-    sprintf(dataname,"%sspv_N%i_p%.5f_Dr%.4f_v0%.4f_dt%.4f.nc",savefolder,numpts,p0,dr,v0,dt);
-    sprintf(msdName,"%stimeMSD_N%i_p%.5f_Dr%.4f_v0%.4f_dt%.4f.nc",savefolder,numpts,p0,dr,v0,dt);
-    sprintf(crmsdName,"%stimeCRMSD_N%i_p%.5f_Dr%.4f_v0%.4f_dt%.4f.nc",savefolder,numpts,p0,dr,v0,dt);
-    shared_ptr<trajectoryModelDatabase> ncdat=make_shared<trajectoryModelDatabase>(numpts,dataname,NcFile::Replace);
+    sprintf(dataname,"%sspv_N%i_p%.5fKAKP_%.4f_Dr%.4f_v0%.4f_dt%.4f.nc",savefolder,numpts,p0,KAKP,dr,v0,dt);
+    sprintf(msdName,"%stimeMSD_N%i_p%.5fKAKP_%.4f_Dr%.4f_v0%.4f_dt%.4f.nc",savefolder,numpts,p0,KAKP,dr,v0,dt);
+    sprintf(crmsdName,"%stimeCRMSD_N%i_p%.5fKAKP_%.4f_Dr%.4f_v0%.4f_dt%.4f.nc",savefolder,numpts,p0,KAKP,dr,v0,dt);
+    shared_ptr<GNNLearningModelDatabase> ncdat=make_shared<GNNLearningModelDatabase>(numpts,dataname,NcFile::Replace);
     lewriter.addDatabase(ncdat,offsets[0]);
 
     lewriter.identifyNextFrame();
@@ -94,11 +97,11 @@ int main(int argc, char*argv[])
     shared_ptr<twoValuesDatabase> CRMSD=make_shared<twoValuesDatabase>(crmsdName,NcFile::Replace);
     shared_ptr<twoValuesDatabase> MSD=make_shared<twoValuesDatabase>(msdName,NcFile::Replace);
     cout << "initializing a system of " << numpts <<  endl;
-    shared_ptr<selfPropelledParticleDynamics> sp = make_shared<selfPropelledParticleDynamics>();
+    shared_ptr<selfPropelledParticleDynamics> sp = make_shared<selfPropelledParticleDynamics>(numpts);
 
     //define a voronoi configuration with a quadratic energy functional
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
-
+    voronoiModel->setModuliUniform(KAKP, KAKP);
     //set the cell preferences to uniformly have A_0 = 1, P_0 = p_0
 
     voronoiModel->setv0Dr(0,dr);
@@ -125,7 +128,12 @@ int main(int argc, char*argv[])
         sim->performTimestep();
         };
     voronoiModel->setv0Dr(v0,dr);
-
+    // ArrayHandle<double2> h_ap(voronoiModel->returnAreaPeriPreferences());
+    // for (int i = 0; i < 10; i++)
+    // {
+    //     cout<<"cell "<<i<<"has (A0,P0): ("<<h_ap.data[i].x<<", "<<h_ap.data[i].y<<")"<<endl;
+    // }
+    
 
     //run for additional timesteps, compute dynamical features, and record timing information
     dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
@@ -147,7 +155,8 @@ int main(int argc, char*argv[])
 
         if (ii == lewriter.nextFrameToSave)
             {
-
+            voronoiModel->enforceTopology();
+            voronoiModel->computeForces();
             lewriter.writeState(voronoiModel,ii);
             if(rec==0){
                 previousPos = voronoiModel->returnPositions();
