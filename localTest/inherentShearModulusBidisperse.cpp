@@ -4,7 +4,7 @@
 
 
 #include "Simulation.h"
-#include "vertexQuadraticEnergy.h"
+#include "voronoiQuadraticEnergy.h"
 #include "selfPropelledParticleDynamics.h"
 #include "EnergyMinimizerFIRE2D.h"
 #include "DatabaseNetCDFSPV.h"
@@ -13,7 +13,7 @@
 #include "nvtModelDatabase.h"
 
 /*!
-This is to run vertex model quenched from infinite T.
+This is to investigate if the critical point of rigidity transition is impacted by bidispersity
 */
 
 //! A function of convenience for setting FIRE parameters
@@ -42,8 +42,6 @@ int main(int argc, char*argv[])
     int tSteps = 5;
     int initSteps = 5;
     int Nconfigurations = 100;
-    
-    double epsilon = 0.01;
 
     double dt = 0.1;
     double fraction = 0.8;
@@ -55,25 +53,23 @@ int main(int argc, char*argv[])
     double KA = 1.0;
     double thresh = 1e-12;
 
-    //This example is a bit more ragged than the others, and program_switch has been abused for testing features that have not been cleaned up yet
-    int program_switch = 0;
+    int failureNumber = 100; // how many numbers of initial runs to fail before breaking
     while((c=getopt(argc,argv,"k:n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:q:c:f:")) != -1)
         switch(c)
         {
             case 'n': numpts = atoi(optarg); break;
             case 't': tSteps = atoi(optarg); break;
             case 'g': USE_GPU = atoi(optarg); break;
-            case 's': epsilon = atof(optarg); break;
             case 'i': initSteps = atoi(optarg); break;
-            case 'z': program_switch = atoi(optarg); break;
+            case 'z': failureNumber = atoi(optarg); break;
             case 'e': dt = atof(optarg); break;
             case 'k': KA = atof(optarg); break;
             case 'p': p0 = atof(optarg); break;
             case 'q': pf = atof(optarg); break;
-            case 'f': fraction = atof(optarg); break;
             case 'a': a0 = atof(optarg); break;
-            case 'y': sizeRatio = atof(optarg); break;
+            case 'f': fraction = atof(optarg); break;
             case 'r': thresh = atof(optarg); break;
+            case 'y': sizeRatio = atof(optarg); break;
             case 'c': Nconfigurations = atof(optarg); break;
             case '?':
                     if(optopt=='c')
@@ -103,23 +99,33 @@ int main(int argc, char*argv[])
         initializeGPU = false;
 
     char saveDirName[256];
-    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/vertexInherentEnergy/");
-    char energyDataname[256];
-    sprintf(energyDataname,"%sepsilon&pureShearModulus_N%i_p%.3f_KA%.4f_epsilon%.8f_sizeRatio%.3f_fraction%.3f.nc",saveDirName,numpts,p0,KA,epsilon,sizeRatio,fraction);
-    shared_ptr<twoValuesDatabase> energyDat=make_shared<twoValuesDatabase>(energyDataname,NcFile::Replace);
-    for (int idx = 0; idx < Nconfigurations; idx++)
-    {
+    sprintf(saveDirName, "/home/chengling/Research/Project/Cell/2dVoronoiBidisperse/");
+    char inherentgDataname[256];
+    sprintf(inherentgDataname,"%smaxForce&ShearModulus_N%i_p%.3f_KA%.4f_sizeRatio%.3f_fraction%.3f.nc.nc",saveDirName,numpts,p0,KA,sizeRatio,fraction);
 
+    shared_ptr<twoValuesDatabase> inherentgDat=make_shared<twoValuesDatabase>(inherentgDataname,NcFile::Replace);
+    int idx = 0;
+    int fail_count = 0;
+    while (idx < Nconfigurations)
+    {
+        if (fail_count >= failureNumber)
+        {
+            cout<<failureNumber<<" attempts of FIRE are failed. Terminate the simulation."<<endl;
+            break;
+        }
+        
         //the voronoi model set up is just as before
-        shared_ptr<VertexQuadraticEnergy> spv = make_shared<VertexQuadraticEnergy>(numpts,1.0,p0,reproducible,false,initializeGPU);
+        shared_ptr<VoronoiQuadraticEnergy> spv = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
         //..and instead of a self-propelled cell equation of motion, we use a FIRE minimizer
         cout<<"ready for initialize fire"<<endl;
         shared_ptr<EnergyMinimizerFIRE> fireMinimizer = make_shared<EnergyMinimizerFIRE>(spv,initializeGPU);
 
         spv->setBidisperseCellPreferences(p0,alpha,fraction);
+
         //spv->setCellPreferencesUniform(1.0,p0);
         spv->setModuliUniform(KA,1.0);
         printf("initializing with KA = %f\t p_0 = %f\n",KA,p0);
+
         SimulationPtr sim = make_shared<Simulation>();
 
         sim->setConfiguration(spv);
@@ -138,78 +144,69 @@ int main(int argc, char*argv[])
 
         //minimize to tolerance
         double mf=1.0;
-        int Nfire=0;
-        while (mf > thresh)
+        
+        fireMinimizer->setMaximumIterations(tSteps);
+        sim->performTimestep();
+        spv->computeGeometryCPU();
+        spv->computeForces();
+        mf = spv->getMaxForce();
+        printf("maxForce = %g\n",mf);
+
+        if (mf > thresh)
+        {
+            fail_count ++ ;
+            continue;
+        }
+        
+        idx++;
+
+        t2=clock();
+        double steptime = (t2-t1)/(double)CLOCKS_PER_SEC;
+        cout << "minimization cost ~ " << steptime << " s" << endl;
+
+
+        //build the dynamical matrix
+        spv->computeGeometryCPU();
+        vector<int2> rowCols;
+        vector<double> entries;
+        spv->getDynMatEntries(rowCols,entries,1.0,1.0);
+        printf("Number of partial entries: %lu\n",rowCols.size());
+        EigMat D(2*numpts);
+        for (int ii = 0; ii < rowCols.size(); ++ii)
             {
-            fireMinimizer->setMaximumIterations(tSteps);
-            sim->performTimestep();
-            spv->computeGeometryCPU();
-            spv->computeForces();
-            mf = spv->getMaxForce();
-            printf("maxForce = %g\n",mf);
-            Nfire++;
-            if (mf < thresh)
-                break;
-            if (Nfire > initSteps)
-                break;
+            int2 ij = rowCols[ii];
+            D.placeElementSymmetric(ij.x,ij.y,entries[ii]);
             };
-        // quasistatic pure shear
-        double energyBefore = spv->computeEnergy();
-        cout<<"epsilon: "<<epsilon<<endl;
-        double namda1 = 1+epsilon;
-        double namda0 = 1-epsilon;
-        double b1,b2,b3,b4;
-        spv->Box->getBoxDims(b1,b2,b3,b4);
-        double area = b1*b4;
-        cout<<"area: "<<area<<endl;
-        double l1=b1*namda1;
-        double l4=b4/namda1;
-        cout<<"new lx ly: "<<l1<<", "<<l4<<endl;
-        spv->setRectangularUnitCell(l1,l4);
 
-        mf=1.0;
-        Nfire=0;
-        while (mf > thresh)
+        D.SASolve();
+        //cout<<"D.solve"<<endl;
+
+        //calculate the non-affine relaxation
+        double nonaffine = 0.0;
+        vector<double2> derivative;
+        spv->getd2Edgammadr(derivative);
+        //cout<<"getd2Edgammadr"<<endl;
+        for (int i = 0; i < D.eigenvalues.size(); i++)
+        {
+            //cout<<"eigen value"<<D.eigenvalues[i]<<endl;
+            if (D.eigenvalues[i]>thresh)
             {
-            fireMinimizer->setMaximumIterations(tSteps);
-            sim->performTimestep();
-            spv->computeGeometryCPU();
-            spv->computeForces();
-            mf = spv->getMaxForce();
-            printf("maxForce = %g\n",mf);
-            Nfire++;
-            if (mf < thresh)
-                break;
-            if (Nfire > initSteps)
-                break;
-            };
-        double energy1 = spv->computeEnergy();
+                vector<double> localEigenVector;
+                D.getEvec(i,localEigenVector);
+                double localnonA = 0.0;
+                for (int ii = 0; ii < numpts; ++ii)
+                {
+                    localnonA += derivative[ii].x * localEigenVector[2*ii];
+                    localnonA += derivative[ii].y * localEigenVector[2*ii+1];
+                };
+                nonaffine += 1.0/D.eigenvalues[i] * localnonA * localnonA;
+            }
 
-        double l10=b1*namda0;
-        double l40=b4/namda0;
-        cout<<"new lx ly: "<<l10<<", "<<l40<<endl;
-        spv->setRectangularUnitCell(l10,l40);
-
-        mf=1.0;
-        Nfire=0;
-        while (mf > thresh)
-            {
-            fireMinimizer->setMaximumIterations(tSteps);
-            sim->performTimestep();
-            spv->computeGeometryCPU();
-            spv->computeForces();
-            mf = spv->getMaxForce();
-            printf("maxForce = %g\n",mf);
-            Nfire++;
-            if (mf < thresh)
-                break;
-            if (Nfire > initSteps)
-                break;
-            };
-        double energy0 = spv->computeEnergy();
-
-        energyDat->writeValues(epsilon, (energy0 + energy1 - 2 * energyBefore)/(epsilon * epsilon));
-
+        }
+        double d2edg2=spv->getd2Edgammadgamma();
+        double g = (d2edg2 - nonaffine)/numpts;
+        cout<<"the affine shear modulus is "<<d2edg2/numpts<<" and the non-affine shear modulus is "<<g<<endl;
+        inherentgDat->writeValues(mf,g);
     }
     
 
