@@ -44,10 +44,10 @@ int main(int argc, char*argv[])
     int Nchain = 4;     //The number of thermostats to chain together
     double statesSavedPerDecadeOfTime = 15.;
     double intk=5.0; // largest k in the S(k)
-    double dk=0.05; // largest k in the S(k)
+    double dk=0.5; // largest k in the S(k)
 
     //The defaults can be overridden from the command line
-    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:")) != -1)
+    while((c=getopt(argc,argv,"n:g:m:s:r:a:i:v:b:x:y:z:p:t:e:d:")) != -1)
         switch(c)
         {
             case 'n': numpts = atoi(optarg); break;
@@ -59,6 +59,7 @@ int main(int argc, char*argv[])
             case 'v': T = atof(optarg); break;
             case 'l': T0 = atof(optarg); break;
             case 'p': p0 = atof(optarg); break;
+            case 'd': dk = atof(optarg); break;
             case 'k': intk = atof(optarg); break;
             case 's': statesSavedPerDecadeOfTime = atof(optarg); break;
             case 'r': recordIndex = atoi(optarg); break;

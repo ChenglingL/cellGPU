@@ -39,19 +39,34 @@ void trajectoryModelDatabase::SetDimVar()
     timeVar             = File.add_var("time",     ncDouble,recDim, unitDim);
     }
 
-void trajectoryModelDatabase::GetDimVar()
+    void trajectoryModelDatabase::GetDimVar()
     {
-    //Get the dimensions
-    recDim = File.get_dim("rec");
-    boxDim = File.get_dim("boxdim");
-    NvDim  = File.get_dim("Nv");
-    dofDim = File.get_dim("dof");
-    unitDim = File.get_dim("unit");
-    //Get the variables
-    posVar = File.get_var("postion");
-    BoxMatrixVar = File.get_var("BoxMatrix");
-    timeVar = File.get_var("time");
-
+        // Disable automatic error reporting
+        NcError err(NcError::silent_nonfatal);
+    
+        // Get the dimensions
+        recDim  = File.get_dim("rec");
+        boxDim  = File.get_dim("boxdim");
+        NvDim   = File.get_dim("Nv");
+        dofDim  = File.get_dim("dof");
+        unitDim = File.get_dim("unit");
+    
+        // Check for both variable names
+        posVar = File.get_var("position");
+        if (posVar == nullptr) {
+            posVar = File.get_var("postion");
+            if (posVar == nullptr) {
+                std::cerr << "Error: Neither 'position' nor 'postion' found." << std::endl;
+                exit(EXIT_FAILURE); // Or handle it more gracefully
+            }
+        }
+    
+        // Get other variables
+        BoxMatrixVar = File.get_var("BoxMatrix");
+        timeVar      = File.get_var("time");
+    
+        // Re-enable error reporting (optional)
+        NcError restore(NcError::verbose_fatal);
     }
 
 void trajectoryModelDatabase::writeState(STATE c, double time, int rec)
