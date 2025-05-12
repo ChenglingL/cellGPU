@@ -42,7 +42,8 @@ int main(int argc, char*argv[])
     int tSteps = 5;
     int initSteps = 5;
     int Nconfigurations = 100;
-
+    
+    double epsilon = 0.01;
 
     double dt = 0.1;
     double fraction = 0.8;
@@ -62,6 +63,7 @@ int main(int argc, char*argv[])
             case 'n': numpts = atoi(optarg); break;
             case 't': tSteps = atoi(optarg); break;
             case 'g': USE_GPU = atoi(optarg); break;
+            case 's': epsilon = atof(optarg); break;
             case 'i': initSteps = atoi(optarg); break;
             case 'z': program_switch = atoi(optarg); break;
             case 'e': dt = atof(optarg); break;
@@ -103,7 +105,7 @@ int main(int argc, char*argv[])
     char saveDirName[256];
     sprintf(saveDirName, "/home/chengling/Research/Project/Cell/vertexInherentEnergy/");
     char energyDataname[256];
-    sprintf(energyDataname,"%smaxForceEnergy_N%i_p%.3f_KA%.4f_sizeRatio%.3f_fraction%.3f.nc",saveDirName,numpts,p0,KA,sizeRatio,fraction);
+    sprintf(energyDataname,"%sepsilon&pureShearModulus_N%i_p%.3f_KA%.4f_epsilon%.8f_sizeRatio%.3f_fraction%.3f.nc",saveDirName,numpts,p0,KA,epsilon,sizeRatio,fraction);
     shared_ptr<twoValuesDatabase> energyDat=make_shared<twoValuesDatabase>(energyDataname,NcFile::Replace);
     for (int idx = 0; idx < Nconfigurations; idx++)
     {
@@ -143,8 +145,8 @@ int main(int argc, char*argv[])
             sim->performTimestep();
             spv->computeGeometryCPU();
             spv->computeForces();
-            mf = sqrt(fireMinimizer->getMaxForce());
-            cout<<"maxForce = "<<mf<<endl;
+            mf = spv->getMaxForce();
+            printf("maxForce = %g\n",mf);
             Nfire++;
             if (mf < thresh)
                 break;
@@ -152,10 +154,61 @@ int main(int argc, char*argv[])
                 break;
             };
         // quasistatic pure shear
-        double energy = spv->computeEnergy();
+        double energyBefore = spv->computeEnergy();
+        cout<<"epsilon: "<<epsilon<<endl;
+        double namda1 = 1+epsilon;
+        double namda0 = 1-epsilon;
+        double b1,b2,b3,b4;
+        spv->Box->getBoxDims(b1,b2,b3,b4);
+        double area = b1*b4;
+        cout<<"area: "<<area<<endl;
+        double l1=b1*namda1;
+        double l4=b4/namda1;
+        cout<<"new lx ly: "<<l1<<", "<<l4<<endl;
+        spv->setRectangularUnitCell(l1,l4);
 
-        cout<<"at p0="<<p0<<", size ratio="<<sizeRatio<<", fraction = "<<fraction<<", final energy: "<<energy<<endl;
-        energyDat->writeValues(mf, energy);
+        mf=1.0;
+        Nfire=0;
+        while (mf > thresh)
+            {
+            fireMinimizer->setMaximumIterations(tSteps);
+            sim->performTimestep();
+            spv->computeGeometryCPU();
+            spv->computeForces();
+            mf = spv->getMaxForce();
+            printf("maxForce = %g\n",mf);
+            Nfire++;
+            if (mf < thresh)
+                break;
+            if (Nfire > initSteps)
+                break;
+            };
+        double energy1 = spv->computeEnergy();
+
+        double l10=b1*namda0;
+        double l40=b4/namda0;
+        cout<<"new lx ly: "<<l10<<", "<<l40<<endl;
+        spv->setRectangularUnitCell(l10,l40);
+
+        mf=1.0;
+        Nfire=0;
+        while (mf > thresh)
+            {
+            fireMinimizer->setMaximumIterations(tSteps);
+            sim->performTimestep();
+            spv->computeGeometryCPU();
+            spv->computeForces();
+            mf = spv->getMaxForce();
+            printf("maxForce = %g\n",mf);
+            Nfire++;
+            if (mf < thresh)
+                break;
+            if (Nfire > initSteps)
+                break;
+            };
+        double energy0 = spv->computeEnergy();
+
+        energyDat->writeValues(epsilon, (energy0 + energy1 - 2 * energyBefore)/(epsilon * epsilon));
 
     }
     
