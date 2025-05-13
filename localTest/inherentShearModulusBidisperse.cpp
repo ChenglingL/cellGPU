@@ -102,8 +102,12 @@ int main(int argc, char*argv[])
     sprintf(saveDirName, "/home/chengling/Research/Project/Cell/2dVoronoiBidisperse/");
     char inherentgDataname[256];
     sprintf(inherentgDataname,"%smaxForce&ShearModulus_N%i_p%.3f_KA%.4f_sizeRatio%.3f_fraction%.3f.nc.nc",saveDirName,numpts,p0,KA,sizeRatio,fraction);
+    char energyDataname[256];
+    sprintf(energyDataname,"%senergy&ShearModulus_N%i_p%.3f_KA%.4f_sizeRatio%.3f_fraction%.3f.nc.nc",saveDirName,numpts,p0,KA,sizeRatio,fraction);
 
     shared_ptr<twoValuesDatabase> inherentgDat=make_shared<twoValuesDatabase>(inherentgDataname,NcFile::Replace);
+    shared_ptr<twoValuesDatabase> energyDat=make_shared<twoValuesDatabase>(energyDataname,NcFile::Replace);
+
     int idx = 0;
     int fail_count = 0;
     while (idx < Nconfigurations)
@@ -207,6 +211,7 @@ int main(int argc, char*argv[])
         double g = (d2edg2 - nonaffine)/numpts;
         cout<<"the affine shear modulus is "<<d2edg2/numpts<<" and the non-affine shear modulus is "<<g<<endl;
         inherentgDat->writeValues(mf,g);
+        energyDat->writeValues(spv->computeEnergy(),g);
     }
     
 
