@@ -1,6 +1,6 @@
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/rebuild_cache.dir
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/edit_cache.dir
-/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/inherentShearModulusBidisperse.out.dir
+/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/zeroKA_dyanmics_voronoi.out.dir
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/CMakeFiles/vertexFIRE.out.dir
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/CMakeFiles/rebuild_cache.dir
 /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/CMakeFiles/edit_cache.dir
