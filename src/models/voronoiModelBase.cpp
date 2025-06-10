@@ -1035,6 +1035,43 @@ double2 voronoiModelBase::dHdgamma(double2 r1, double2 r2, double2 r3)
     return answer;
 };
 
+/*!
+\param r1 The position of cell 1 (similar to rj)
+\param r2 The position of cell 2 (similar to rj)
+\param r3 The position of cell 3 (similar to rk)
+Returns the analytical 1st derivative of the position of a voronoi vertex formd by cell 1, 2, and 3 w.r.t. to gamma.
+*/
+double2 voronoiModelBase::dHdgammaOnBounday(double2 r1, double2 r2, double2 r3)
+{
+    double2 answer;
+    double r2x,r2y,r3x,r3y;
+    double2 r12,r13;
+    
+    double b1,b2,b3,L;
+    Box->getBoxDims(b1,b2,b3,L);
+
+    Box->minDist(r2,r1,r12);
+    Box->minDist(r3,r1,r13);
+    r2x = r12.x;
+    r2y = r12.y;
+    r3x = r13.x;
+    r3y = r13.y;
+
+    int2 periodicity12, periodicity13;
+    Box->periodicity(r1,r2,periodicity12);
+    Box->periodicity(r1,r3,periodicity13);
+
+    int p12 = - periodicity12.y;
+    int p13 = - periodicity13.y;
+
+    double dhxdgamma = (L*(p13*r2y*(r2x*(r2x - 2*r3x)*r3y + r3y*(r2y*r2y) + r2y*(r3x*r3x - r3y*r3y)) + p12*r3y*(-2*r2x*r2y*r3x + r3y*(r2x*r2x) + r2y*(-(r2y*r3y) + r3x*r3x + r3y*r3y))))/(2.* (r2y*r3x - r2x*r3y) * (r2y*r3x - r2x*r3y));
+    double dhydgamma = -0.5*(L*(p13*r2x*(r2x*(r2x - 2*r3x)*r3y + r3y*(r2y*r2y) + r2y*(r3x*r3x - r3y*r3y)) + p12*r3x*(-2*r2x*r2y*r3x + r3y*(r2x*r2x) + r2y*(-(r2y*r3y) + r3x*r3x + r3y*r3y))))/((r2y*r3x - r2x*r3y) * (r2y*r3x - r2x*r3y));
+
+    answer.x=dhxdgamma;
+    answer.y=dhydgamma;
+    //cout<<"dHdgamma correct "<<answer.x<<" "<<answer.y<<endl;
+    return answer;
+};
 
 /*!
 \param r1 The position of cell 1 (similar to rj)

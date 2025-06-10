@@ -131,6 +131,8 @@ class voronoiModelBase : public Simple2DActiveCell
         vector<double> d2Hdridrj(double2 rj, double2 rk, int jj);
         //!First derivative of voronoi vertex with respect to shear strain gamma
         double2 dHdgamma(double2 r1, double2 r2, double2 r3);
+        //!First derivative of voronoi vertex with respect to shear strain gamma. Here we consider only shear by Lees-Edwards without deforming the box.
+        double2 dHdgammaOnBounday(double2 r1, double2 r2, double2 r3);
         //!Second derivative of voronoi vertex with respect to shear strain gamma
         double2 d2Hdgamma2(double2 r1, double2 r2, double2 r3);
         //!First derivative of voronoi vertex with respect to strain epsilon x
