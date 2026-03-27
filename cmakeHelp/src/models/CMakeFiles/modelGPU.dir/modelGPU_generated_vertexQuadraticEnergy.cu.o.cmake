@@ -58,20 +58,20 @@ endif()
 
 # Set these up as variables to make reading the generated file easier
 set(CMAKE_COMMAND "/usr/bin/cmake") # path
-set(source_file "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models/vertexQuadraticEnergy.cu") # path
-set(NVCC_generated_dependency_file "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/models/CMakeFiles/modelGPU.dir//modelGPU_generated_vertexQuadraticEnergy.cu.o.NVCC-depend") # path
-set(cmake_dependency_file "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/models/CMakeFiles/modelGPU.dir//modelGPU_generated_vertexQuadraticEnergy.cu.o.depend") # path
-set(CUDA_make2cmake "/usr/share/cmake-3.16/Modules/FindCUDA/make2cmake.cmake") # path
-set(CUDA_parse_cubin "/usr/share/cmake-3.16/Modules/FindCUDA/parse_cubin.cmake") # path
+set(source_file "/u/cli6/cellGPU/src/models/vertexQuadraticEnergy.cu") # path
+set(NVCC_generated_dependency_file "/u/cli6/cellGPU/cmakeHelp/src/models/CMakeFiles/modelGPU.dir//modelGPU_generated_vertexQuadraticEnergy.cu.o.NVCC-depend") # path
+set(cmake_dependency_file "/u/cli6/cellGPU/cmakeHelp/src/models/CMakeFiles/modelGPU.dir//modelGPU_generated_vertexQuadraticEnergy.cu.o.depend") # path
+set(CUDA_make2cmake "/usr/share/cmake/Modules/FindCUDA/make2cmake.cmake") # path
+set(CUDA_parse_cubin "/usr/share/cmake/Modules/FindCUDA/parse_cubin.cmake") # path
 set(build_cubin OFF) # bool
 set(CUDA_HOST_COMPILER "") # path
 # We won't actually use these variables for now, but we need to set this, in
 # order to force this file to be run again if it changes.
-set(generated_file_path "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/models/CMakeFiles/modelGPU.dir//.") # path
-set(generated_file_internal "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/models/CMakeFiles/modelGPU.dir//./modelGPU_generated_vertexQuadraticEnergy.cu.o") # path
-set(generated_cubin_file_internal "/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp/src/models/CMakeFiles/modelGPU.dir//./modelGPU_generated_vertexQuadraticEnergy.cu.o.cubin.txt") # path
+set(generated_file_path "/u/cli6/cellGPU/cmakeHelp/src/models/CMakeFiles/modelGPU.dir//.") # path
+set(generated_file_internal "/u/cli6/cellGPU/cmakeHelp/src/models/CMakeFiles/modelGPU.dir//./modelGPU_generated_vertexQuadraticEnergy.cu.o") # path
+set(generated_cubin_file_internal "/u/cli6/cellGPU/cmakeHelp/src/models/CMakeFiles/modelGPU.dir//./modelGPU_generated_vertexQuadraticEnergy.cu.o.cubin.txt") # path
 
-set(CUDA_NVCC_EXECUTABLE "/usr/local/cuda-12.2/bin/nvcc") # path
+set(CUDA_NVCC_EXECUTABLE "/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/bin/nvcc") # path
 set(CUDA_NVCC_FLAGS  ;; ) # list
 # Build specific configuration flags
 set(CUDA_NVCC_FLAGS_DEBUG  ; )
@@ -79,7 +79,7 @@ set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
 set(CUDA_NVCC_FLAGS_RELEASE  ; )
 set(CUDA_NVCC_FLAGS_RELWITHDEBINFO  ; )
 set(nvcc_flags -m64) # list
-set(CUDA_NVCC_INCLUDE_DIRS [==[/usr/local/cuda-12.2/include;/home/chengling/.local/include/eigen3;/usr/local/cuda-12.2/include;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/inc;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/utility;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/simulation;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/databases;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/incDirs;/home/chengling/.local/include/eigen3;/usr/local/cuda-12.2/include;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/inc;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/utility;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/analysis;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/models;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/forces;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/updaters;/home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/src/simulation]==]) # list (needs to be in lua quotes to address backslashes)
+set(CUDA_NVCC_INCLUDE_DIRS [==[/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include;/u/cli6/.local/include/eigen3;/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include;/u/cli6/cellGPU/inc;/u/cli6/cellGPU/src;/u/cli6/cellGPU/src/utility;/u/cli6/cellGPU/src/updaters;/u/cli6/cellGPU/src/simulation;/u/cli6/cellGPU/src/models;/u/cli6/cellGPU/src/analysis;/u/cli6/cellGPU/src/databases;/u/cli6/cellGPU/src/incDirs;/u/cli6/.local/include/eigen3;/sw/spack/delta-2022-03/apps/cuda/11.6.1-gcc-11.2.0-vglutoe/include;/u/cli6/cellGPU/inc;/u/cli6/cellGPU/src;/u/cli6/cellGPU/src/utility;/u/cli6/cellGPU/src/analysis;/u/cli6/cellGPU/src/models;/u/cli6/cellGPU/src/forces;/u/cli6/cellGPU/src/updaters;/u/cli6/cellGPU/src/simulation]==]) # list (needs to be in lua quotes to address backslashes)
 string(REPLACE "\\" "/" CUDA_NVCC_INCLUDE_DIRS "${CUDA_NVCC_INCLUDE_DIRS}")
 set(CUDA_NVCC_COMPILE_DEFINITIONS [==[ENABLE_CUDA]==]) # list (needs to be in lua quotes see #16510 ).
 set(format_flag "-c") # string
@@ -163,7 +163,7 @@ macro(cuda_execute_process status command)
     # copy and paste a runnable command line.
     set(cuda_execute_process_string)
     foreach(arg ${ARGN})
-      # If there are quotes, excape them, so they come through.
+      # If there are quotes, escape them, so they come through.
       string(REPLACE "\"" "\\\"" arg ${arg})
       # Args with spaces need quotes around them to get them to be parsed as a single argument.
       if(arg MATCHES " ")
@@ -182,13 +182,13 @@ endmacro()
 # Delete the target file
 cuda_execute_process(
   "Removing ${generated_file}"
-  COMMAND "${CMAKE_COMMAND}" -E remove "${generated_file}"
+  COMMAND "${CMAKE_COMMAND}" -E rm -f "${generated_file}"
   )
 
 # For CUDA 2.3 and below, -G -M doesn't work, so remove the -G flag
 # for dependency generation and hope for the best.
 set(depends_CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS}")
-set(CUDA_VERSION 12.2)
+set(CUDA_VERSION 11.6)
 if(CUDA_VERSION VERSION_LESS "3.0")
   # Note that this will remove all occurrences of -G.
   list(REMOVE_ITEM depends_CUDA_NVCC_FLAGS "-G")
@@ -249,7 +249,7 @@ endif()
 # Delete the temporary file
 cuda_execute_process(
   "Removing ${cmake_dependency_file}.tmp and ${NVCC_generated_dependency_file}"
-  COMMAND "${CMAKE_COMMAND}" -E remove "${cmake_dependency_file}.tmp" "${NVCC_generated_dependency_file}"
+  COMMAND "${CMAKE_COMMAND}" -E rm -f "${cmake_dependency_file}.tmp" "${NVCC_generated_dependency_file}"
   )
 
 if(CUDA_result)
@@ -275,7 +275,7 @@ if(CUDA_result)
   # Since nvcc can sometimes leave half done files make sure that we delete the output file.
   cuda_execute_process(
     "Removing ${generated_file}"
-    COMMAND "${CMAKE_COMMAND}" -E remove "${generated_file}"
+    COMMAND "${CMAKE_COMMAND}" -E rm -f "${generated_file}"
     )
   message(FATAL_ERROR "Error generating file ${generated_file}")
 else()

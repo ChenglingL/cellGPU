@@ -1,2 +1,2 @@
-/usr/bin/ar qc libutilityGPU.a  CMakeFiles/utilityGPU.dir/utilityGPU_generated_cellListGPU.cu.o CMakeFiles/utilityGPU.dir/utilityGPU_generated_noiseSource.cu.o CMakeFiles/utilityGPU.dir/utilityGPU_generated_utilities.cu.o
+/usr/bin/ar qc libutilityGPU.a CMakeFiles/utilityGPU.dir/utilityGPU_generated_cellListGPU.cu.o CMakeFiles/utilityGPU.dir/utilityGPU_generated_noiseSource.cu.o CMakeFiles/utilityGPU.dir/utilityGPU_generated_utilities.cu.o
 /usr/bin/ranlib libutilityGPU.a
