@@ -7,4 +7,4 @@
 #SBATCH --account=bbtm-delta-cpu  # OR bbtm-delta-gpu 
 #SBATCH --job-name=cpuGlassyCellDynamics
 #SBATCH --time=48:00:00      # hh:mm:ss for the job
-/u/cli6/cellGPU/agingProject/monodisperseVoronoi_equilibrium.out -n ${1} -p ${2} -v ${3} -g -1
+/u/cli6/cellGPU/glassyDynamicsProject/monodisperseVoronoi_equilibrium.out -n ${1} -p ${2} -v ${3} -g -1

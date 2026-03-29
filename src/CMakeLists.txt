@@ -1,5 +1,5 @@
 include_directories(incDirs)
-
+include_directories(${CUDAToolkit_INCLUDE_DIRS} ${CUDA_INCLUDE_DIRS})
 add_subdirectory(utility)
 add_subdirectory(simulation)
 add_subdirectory(updaters)

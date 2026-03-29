@@ -1,6 +1,7 @@
 if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
     add_definitions(-DDEBUGFLAGUP)
 endif(${CMAKE_BUILD_TYPE} MATCHES "Debug")
+include_directories(${CUDAToolkit_INCLUDE_DIRS} ${CUDA_INCLUDE_DIRS})
 
 include_directories(
             ${EIGEN3_INCLUDE_DIR}
@@ -33,3 +34,4 @@ add_library(database
     structureFactorModelDatabase.cpp
     )
 
+target_link_libraries(database  PUBLIC CUDA::curand CUDA::cudart)

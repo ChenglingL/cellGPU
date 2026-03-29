@@ -1,6 +1,8 @@
 if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
     add_definitions(-DDEBUGFLAGUP)
 endif(${CMAKE_BUILD_TYPE} MATCHES "Debug")
+include_directories(${CUDAToolkit_INCLUDE_DIRS} ${CUDA_INCLUDE_DIRS})
+
 
 include_directories(
             ${EIGEN3_INCLUDE_DIR}
@@ -41,3 +43,5 @@ cuda_add_library(updatersGPU
     simpleEquationOfMotion.cu
     langevinDynamics.cu
     )
+target_link_libraries(updaters  PUBLIC CUDA::curand CUDA::cudart)
+target_link_libraries(updatersGPU  CUDA::curand CUDA::cudart)

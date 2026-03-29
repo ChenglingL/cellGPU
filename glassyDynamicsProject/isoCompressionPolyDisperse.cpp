@@ -20,8 +20,7 @@
 
 
 /*!
-This .cpp is for numerically test the bulk modulus. We first load the configuration from equlibrated
-simulations. Then apply a isoCompression deformation to record energy and time, first/Second derivatives
+This .cpp is for numerically test the bulk modulus. We first equlibrate simulations. Then apply a isoCompression deformation to record energy and time, first/Second derivatives
 of E wrt epsilon / g.
 timelimit is set to be 100000/dt to collect low T bulk modulus.
 Sevral files will be saved: (data are saving at every tau)
