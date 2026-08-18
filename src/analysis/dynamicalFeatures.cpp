@@ -195,6 +195,20 @@ double dynamicalFeatures::MSDhelper(vector<double2> &displacements)
     return msd;
     };
 
+double dynamicalFeatures::MFDhelper(vector<double2> &displacements)
+    {
+    double2 disp;
+    double msd = 0.0;
+    for (int ii = 0; ii < N; ++ii)
+        {
+        disp = displacements[ii];
+        double sd = dot(disp,disp);
+        msd += sd * sd;
+        };
+    msd = msd / N;
+    return msd;
+    };
+
 double dynamicalFeatures::computeMSD(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox)
     {
     //call helper function to compute vector of current displacements
@@ -210,6 +224,24 @@ double dynamicalFeatures::computeCageRelativeMSD(GPUArray<double2> &currentPos, 
 
     //then just compute the MSD of that set of vectors..
     double result = MSDhelper(cageRelativeDisplacements);
+    return result;
+    };
+
+double dynamicalFeatures::computeCageRelativeMFD(GPUArray<double2> &currentPos)
+    {
+    //cage-relative displacements from the initial configuration (same path as computeCageRelativeSISF)
+    computeCageRelativeDisplacements(currentPos);
+    double result = MFDhelper(cageRelativeDisplacements);
+    return result;
+    };
+
+double dynamicalFeatures::computeCageRelativeMFD(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox)
+    {
+    //call helper function to compute the vector of current cage-relative displacement vectors
+    computeCageRelativeTrueDisplacements(currentPos,previousPos, previousWhichBox);
+
+    //then just compute the MFD of that set of vectors..
+    double result = MFDhelper(cageRelativeDisplacements);
     return result;
     };
 

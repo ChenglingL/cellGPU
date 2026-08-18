@@ -39,6 +39,10 @@ class dynamicalFeatures
 
         //!compute cage relative MSD
         double computeCageRelativeMSD(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox);
+        //!compute cage relative MFD from initial positions (same displacement path as SISF)
+        double computeCageRelativeMFD(GPUArray<double2> &currentPos);
+        //!compute cage relative MFD from unwrapped frame-to-frame displacements
+        double computeCageRelativeMFD(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox);
         //a helper function that computes the true (no more PBD) cage relative displacement
         void computeCageRelativeTrueDisplacements(GPUArray<double2> &currentPos, GPUArray<double2> &previousPos, vector<int2> &previousWhichBox);
         //!compute cage relative SISF with 2D angular averaging
@@ -74,6 +78,8 @@ class dynamicalFeatures
         double angularAverageSISF(vector<double2> &displacements, double k);
         //!helper function that computes the mean dot product of a vector of double2's
         double MSDhelper(vector<double2> &displacements);
+        //!helper function that computes the mean square of dot product of a vector of double2's
+        double MFDhelper(vector<double2> &displacements);
 
         //!helper function that computes the angular average of <F_s^2(q,t)>
         double chi4Helper(vector<double2> &displacements, double k);
