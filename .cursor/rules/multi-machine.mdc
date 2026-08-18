@@ -1,0 +1,32 @@
+---
+description: Multi-machine workflow for cellGPU clones on clusters and workstations
+alwaysApply: true
+---
+
+# Multi-machine cellGPU
+
+This repo is cloned on several SSH hosts (clusters and workstations). GitHub `master` is the source of truth for shared simulation code. Each host has its own CUDA/compiler modules and job scripts. Do not copy `src/` between machines by hand.
+
+## Shared (edit and commit)
+
+- `src/`, `inc/`
+- Simulation drivers (`glassyDynamicsProject/*.cpp`, `agingProject/`, `MCTProject/`, `gdRelaxation/`, `examples/`)
+- Portable analysis scripts
+- Reusable submit *templates* with no host paths, partitions, or accounts
+
+## Local only (never commit)
+
+- Root `CMakeLists.txt` (already gitignored; per-host include/lib/CUDA paths)
+- `local/` — this host's `env.sh`, module loads, and submit scripts
+- `data/`, binaries (`*.out`, `*.o`), and `build/` artifacts
+- Absolute paths such as `/home/chengling/...` or `/u/...`
+
+Put new host-specific submit scripts in `local/submit/`. Existing files under `*/localSubmissionScript/` may already contain host paths; do not rewrite them for another machine unless asked.
+
+## Agent behavior
+
+- After changing shared source, other hosts need `git pull` then a rebuild before new jobs.
+- Do not `git add .`. Stage only shared source.
+- Do not rebuild over a binary a running job is using; use a new `build-*` dir instead.
+- Prefer relative paths or `$CELLGPU_ROOT` in any script that is committed.
+- Record `git rev-parse HEAD` in new submit scripts so runs are reproducible.
