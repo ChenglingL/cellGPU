@@ -11,7 +11,8 @@ This repo is cloned on several SSH hosts (clusters and workstations). GitHub `ma
 
 - `src/`, `inc/`
 - Simulation drivers (`glassyDynamicsProject/*.cpp`, `agingProject/`, `MCTProject/`, `gdRelaxation/`, `examples/`)
-- Portable analysis scripts
+- Portable analysis scripts (`.wl`/`.wls`, Python)
+- Mathematica `*.nb`: commit from the analysis clone to origin only; simulation clones sparse-checkout them out (see `mathematica-notebooks.mdc`)
 - Reusable submit *templates* with no host paths, partitions, or accounts
 
 ## Local only (never commit)
