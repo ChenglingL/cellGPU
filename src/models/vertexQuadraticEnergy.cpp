@@ -142,3 +142,63 @@ void VertexQuadraticEnergy::computeForcesGPU()
                     d_f.data,
                     Nvertices);
     };
+
+/*!
+σ_xy = (1/A_box) ∂E/∂γ for affine simple shear
+F = [[1, γ], [0, 1]], so each vertex transforms as (x, y) → (x + γ y, y)
+and ∂v/∂γ = (y, 0).
+
+vertexForceSets stores dEdv from computeForceSetVertexModel, which is −∂E/∂v
+(the force). voroCur holds the same cell-relative vertex coordinates used to
+compute that force, so y in ∂v/∂γ is voroCur.y.
+
+The minus sign here matches VoronoiQuadraticEnergy::getSigmaXY (f = −∇E
+convention). Sum is over the 3 Nvertices cell–vertex force sets.
+*/
+double VertexQuadraticEnergy::getSigmaXY()
+    {
+    if(!forcesUpToDate)
+        computeForces();
+    ArrayHandle<double2> h_fs(vertexForceSets,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_vc(voroCur,access_location::host,access_mode::read);
+
+    double sigmaXY = 0.0;
+    int nForceSets = 3*Nvertices;
+    for (int fsidx = 0; fsidx < nForceSets; ++fsidx)
+        {
+        sigmaXY -= h_fs.data[fsidx].x * h_vc.data[fsidx].y;
+        };
+
+    double b1,b2,b3,b4;
+    Box->getBoxDims(b1,b2,b3,b4);
+    double area = b1*b4;
+    return sigmaXY/area;
+    };
+
+/*!
+Per-cell ∂E_i/∂γ for affine simple shear F = [[1, γ], [0, 1]].
+
+E_i = KA (A_i-A0_i)^2 + KP (P_i-P0_i)^2.
+vertexForceSets is F = −∂E_cell/∂v from cell vertexCellNeighbors[fs].
+∂v/∂γ = (y_rel, 0) with y_rel from voroCur.
+
+∂E_i/∂γ = − Σ_{force sets of cell i} F_x y_rel.
+
+This is not divided by box area. Sum_i ∂E_i/∂γ = A_box * getSigmaXY().
+*/
+void VertexQuadraticEnergy::getdEdgamma(vector<double> &dEdg)
+    {
+    if(!forcesUpToDate)
+        computeForces();
+    ArrayHandle<double2> h_fs(vertexForceSets,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_vc(voroCur,access_location::host,access_mode::read);
+    ArrayHandle<int> h_vcn(vertexCellNeighbors,access_location::host,access_mode::read);
+
+    dEdg.assign(Ncells, 0.0);
+    int nForceSets = 3*Nvertices;
+    for (int fsidx = 0; fsidx < nForceSets; ++fsidx)
+        {
+        int cellIdx = h_vcn.data[fsidx];
+        dEdg[cellIdx] -= h_fs.data[fsidx].x * h_vc.data[fsidx].y;
+        };
+    };
