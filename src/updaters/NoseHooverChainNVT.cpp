@@ -94,6 +94,27 @@ void NoseHooverChainNVT::reportBathData()
     };
 
 /*!
+Restore the Nose–Hoover chain and kinetic-energy helper from a saved snapshot.
+bath[i] = (position, velocity, acceleration, mass). ke and scale are
+kineticEnergyScaleFactor[0] and [1] after the last completed step.
+Does not call setT, so bath masses are not overwritten.
+*/
+void NoseHooverChainNVT::restoreBathState(const vector<double4> &bath, double ke, double scale)
+    {
+    int nBath = (int)bath.size();
+    if (nBath < 1)
+        return;
+    if (BathVariables.getNumElements() != nBath)
+        BathVariables.resize(nBath);
+    ArrayHandle<double4> h_bv(BathVariables,access_location::host,access_mode::overwrite);
+    for (int ii = 0; ii < nBath; ++ii)
+        h_bv.data[ii] = bath[ii];
+    ArrayHandle<double> h_kes(kineticEnergyScaleFactor,access_location::host,access_mode::overwrite);
+    h_kes.data[0] = ke;
+    h_kes.data[1] = scale;
+    };
+
+/*!
 The implementation here closely follows algorithms 30 - 32 in Frenkel & Smit, generalized to the
 case where the chain length is not necessarily always 2
 */

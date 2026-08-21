@@ -34,6 +34,9 @@ add_library(database
     displacementModelDatabase.cpp
     GNNLearningModelDatabase.cpp
     structureFactorModelDatabase.cpp
+    avmTopologyIO.cpp
+    nvtAVMRestartDatabase.cpp
+    vertexTrajectoryDatabase.cpp
     )
 
 target_link_libraries(database  PUBLIC CUDA::curand CUDA::cudart)

@@ -39,5 +39,8 @@ class VertexQuadraticEnergy : public vertexModelBase
 
     //be friends with the associated Database class so it can access data to store or read
     friend class AVMDatabaseNetCDF;
-    };
+    friend class AVMTopologyIO;
+    friend class nvtAVMRestartDatabase;
+    friend class vertexTrajectoryDatabase;
+};
 #endif

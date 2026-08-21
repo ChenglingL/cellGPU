@@ -44,6 +44,13 @@ class NoseHooverChainNVT : public simpleEquationOfMotion
         //!Report the current status of the bath
         void reportBathData();
 
+        //!Nose–Hoover chain length M
+        int getNchain(){return Nchain;};
+        //!Restore integrator step count (for exact restart)
+        void setTimestep(int ts){Timestep = ts;};
+        //!Copy bath (q,v,a,mass) and KE helper without resetting masses via setT
+        void restoreBathState(const vector<double4> &bath, double ke, double scale);
+
     protected:
         //!The targeted temperature
         double Temperature;

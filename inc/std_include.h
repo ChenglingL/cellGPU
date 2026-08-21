@@ -162,7 +162,7 @@ __host__ inline bool chooseGPU(int USE_GPU,bool verbose = false)
             {
             if (ii == USE_GPU) cout << "********************************" << endl;
             if (ii == USE_GPU) cout << "****Using the following gpu ****" << endl;
-            cout << ii <<"\t\t\t" << prop.name << "\t\t" << prop.memoryClockRate << "\t\t" << prop.memoryBusWidth << endl;
+            cout << ii <<"\t\t\t" << prop.name << "\t\t" << prop.memoryBusWidth << endl;
             if (ii == USE_GPU) cout << "*******************************" << endl;
             };
         };
@@ -170,7 +170,7 @@ __host__ inline bool chooseGPU(int USE_GPU,bool verbose = false)
         {
         cudaDeviceProp prop;
         cudaGetDeviceProperties(&prop,USE_GPU);
-        cout << "using " << prop.name << "\t ClockRate = " << prop.memoryClockRate << " memBusWidth = " << prop.memoryBusWidth << endl << endl;
+        cout << "using " << prop.name << " memBusWidth = " << prop.memoryBusWidth << endl << endl;
         };
     return true;
     };
