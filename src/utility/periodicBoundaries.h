@@ -194,8 +194,8 @@ void periodicBoundaries::periodicity(const double2 &p1, const double2 &p2, int2 
         pans.y = p1.y-p2.y;
         if(pans.x > halfx11) period.x --;
         if(pans.x < -halfx11) period.x ++;
-        if(pans.y > halfx11) period.y --;
-        if(pans.y < -halfx11) period.y ++;
+        if(pans.y > halfx22) period.y --;
+        if(pans.y < -halfx22) period.y ++;
         }
     else
         {
@@ -224,8 +224,8 @@ void periodicBoundaries::whichBox(const double2 &currentp, const double2 &previo
         pans.y = currentp.y-previousp.y;
         if(pans.x > halfx11) currentwhichBox.x --;
         if(pans.x < -halfx11) currentwhichBox.x ++;
-        if(pans.y > halfx11) currentwhichBox.y --;
-        if(pans.y < -halfx11) currentwhichBox.y ++;
+        if(pans.y > halfx22) currentwhichBox.y --;
+        if(pans.y < -halfx22) currentwhichBox.y ++;
         }
     else
         {

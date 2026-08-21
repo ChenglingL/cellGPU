@@ -3,22 +3,40 @@
 #jobs on the CPU -- for n=4096, I estimate that if tau_alpha <= 10^(10/3) then it will finish within the 48 hour maxJobTime
 #jobs on the CPU -- for n=32768, I estimate that if tau_alpha <= 10^(7/3) then it will finish within the 48 hour maxJobTime
 
-nRelaxation=10
+#Dec-20-2024
 number=4096
-p=3.00
+p=3.775
 
-temperatures=(0.22 0.2 0.18 0.16 0.14 0.12 0.1 0.09 0.08 0.075)
-records=(0 1 2 3 4 5 6 7 8 9)
+temperatures=(0.03105 0.025 0.02 0.016 0.012 0.01 0.009 0.008 0.0075 0.007 0.0063 0.0056 0.0054)
+records=(10 11 12 13 14 15 16 17 18 19)
 
-tauEstimate=(10 10 10 50 100 200 500 2000 5000 10000)
+tauEstimate=(2 10 20 30 80 100 400 500 2500 2500 3000 7000 10000)
 
 for recordIdx in ${records[@]}; do
     for i in ${!temperatures[@]}; do
         temp=${temperatures[$i]}
+        waittime=${tauEstimate[$i]}
         echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
-        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/ScatteringFunctionSmallK.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1 -d 0.2 -k 1.5
+        /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/ScatteringFunctionSmallK.out -n ${number} -p ${p} -v ${temp} -t ${waittime} -r ${recordIdx} -g -1
     done
 done
+
+# nRelaxation=10
+# number=4096
+# p=3.00
+
+# temperatures=(0.22 0.2 0.18 0.16 0.14 0.12 0.1 0.09 0.08 0.075)
+# records=(0 1 2 3 4 5 6 7 8 9)
+
+# tauEstimate=(10 10 10 50 100 200 500 2000 5000 10000)
+
+# for recordIdx in ${records[@]}; do
+#     for i in ${!temperatures[@]}; do
+#         temp=${temperatures[$i]}
+#         echo ${number} ${p} ${temp} ${waittime} ${recordIdx}
+#         /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/localTest/executable/ScatteringFunctionSmallK.out -n ${number} -p ${p} -v ${temp} -t ${tauEstimate[$i]} -r ${recordIdx} -g -1 -d 0.2 -k 1.5
+#     done
+# done
 
 # nRelaxation=10
 # number=4096

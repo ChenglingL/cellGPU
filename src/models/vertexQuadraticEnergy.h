@@ -31,6 +31,12 @@ class VertexQuadraticEnergy : public vertexModelBase
         //!Compute the geometry (area & perimeter) of the cells on the GPU
         void computeForcesGPU();
 
+        //! Analytic σ_xy = (1/A_box) ∂E/∂γ for simple shear F = [[1, γ], [0, 1]]
+        virtual double getSigmaXY();
+
+        //! Per-cell ∂E_i/∂γ for the same simple shear (no 1/A_box factor)
+        virtual void getdEdgamma(vector<double> &dEdg);
+
     //be friends with the associated Database class so it can access data to store or read
     friend class AVMDatabaseNetCDF;
     };

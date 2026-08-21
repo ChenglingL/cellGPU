@@ -989,6 +989,10 @@ __host__ __device__ inline void get_oneRing_function(int kidx,
                     if(poly_size > currentMaxNeighbors)
                         {
                         maximumNeighborNumber[0]=poly_size;
+                        if(poly_size>100)
+                        {
+                            cout<<"the point that has one ring with more than 100 neighbors is "<<kidx<<endl;
+                        }
                         return;
                         }
                     for(pp=poly_size-2; pp>j; pp--)

@@ -226,6 +226,33 @@ DatabaseTextVoronoi.cpp.s:
 	cd /u/cli6/cellGPU/cmakeHelp && $(MAKE) $(MAKESILENT) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/DatabaseTextVoronoi.cpp.s
 .PHONY : DatabaseTextVoronoi.cpp.s
 
+GNNLearningModelDatabase.o: GNNLearningModelDatabase.cpp.o
+
+.PHONY : GNNLearningModelDatabase.o
+
+# target to build an object file
+GNNLearningModelDatabase.cpp.o:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.o
+.PHONY : GNNLearningModelDatabase.cpp.o
+
+GNNLearningModelDatabase.i: GNNLearningModelDatabase.cpp.i
+
+.PHONY : GNNLearningModelDatabase.i
+
+# target to preprocess a source file
+GNNLearningModelDatabase.cpp.i:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.i
+.PHONY : GNNLearningModelDatabase.cpp.i
+
+GNNLearningModelDatabase.s: GNNLearningModelDatabase.cpp.s
+
+.PHONY : GNNLearningModelDatabase.s
+
+# target to generate assembly for a file
+GNNLearningModelDatabase.cpp.s:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/GNNLearningModelDatabase.cpp.s
+.PHONY : GNNLearningModelDatabase.cpp.s
+
 GlassyDynModelDatabase.o: GlassyDynModelDatabase.cpp.o
 .PHONY : GlassyDynModelDatabase.o
 
@@ -249,6 +276,33 @@ GlassyDynModelDatabase.s: GlassyDynModelDatabase.cpp.s
 GlassyDynModelDatabase.cpp.s:
 	cd /u/cli6/cellGPU/cmakeHelp && $(MAKE) $(MAKESILENT) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/GlassyDynModelDatabase.cpp.s
 .PHONY : GlassyDynModelDatabase.cpp.s
+
+areaPerimeterDatabase.o: areaPerimeterDatabase.cpp.o
+
+.PHONY : areaPerimeterDatabase.o
+
+# target to build an object file
+areaPerimeterDatabase.cpp.o:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/areaPerimeterDatabase.cpp.o
+.PHONY : areaPerimeterDatabase.cpp.o
+
+areaPerimeterDatabase.i: areaPerimeterDatabase.cpp.i
+
+.PHONY : areaPerimeterDatabase.i
+
+# target to preprocess a source file
+areaPerimeterDatabase.cpp.i:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/areaPerimeterDatabase.cpp.i
+.PHONY : areaPerimeterDatabase.cpp.i
+
+areaPerimeterDatabase.s: areaPerimeterDatabase.cpp.s
+
+.PHONY : areaPerimeterDatabase.s
+
+# target to generate assembly for a file
+areaPerimeterDatabase.cpp.s:
+	cd /home/chengling/Research/Project/Cell/AnalyticalG/cellGPU/cmakeHelp && $(MAKE) -f src/databases/CMakeFiles/database.dir/build.make src/databases/CMakeFiles/database.dir/areaPerimeterDatabase.cpp.s
+.PHONY : areaPerimeterDatabase.cpp.s
 
 derivativeModelDatabase.o: derivativeModelDatabase.cpp.o
 .PHONY : derivativeModelDatabase.o
@@ -511,9 +565,15 @@ help:
 	@echo "... DatabaseTextVoronoi.o"
 	@echo "... DatabaseTextVoronoi.i"
 	@echo "... DatabaseTextVoronoi.s"
+	@echo "... GNNLearningModelDatabase.o"
+	@echo "... GNNLearningModelDatabase.i"
+	@echo "... GNNLearningModelDatabase.s"
 	@echo "... GlassyDynModelDatabase.o"
 	@echo "... GlassyDynModelDatabase.i"
 	@echo "... GlassyDynModelDatabase.s"
+	@echo "... areaPerimeterDatabase.o"
+	@echo "... areaPerimeterDatabase.i"
+	@echo "... areaPerimeterDatabase.s"
 	@echo "... derivativeModelDatabase.o"
 	@echo "... derivativeModelDatabase.i"
 	@echo "... derivativeModelDatabase.s"

@@ -78,6 +78,8 @@ int main(int argc, char*argv[])
     if (!gpu)
         initializeGPU = false;
     char loaddataname[256];
+    char testLoaddataname1[256];
+    char testLoaddataname2[256];
     char MSDDataName[256];
     char CRMSDDataName[256];
     char savefolder[256];
@@ -89,22 +91,29 @@ int main(int argc, char*argv[])
     {
         waitingtime = max(10000.,floor(tauEstimate * equilibrationWaitingTimeMultiple));
     }
-    sprintf(loaddataname,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
+    sprintf(testLoaddataname1,"%sglassyDynamics_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
+    sprintf(testLoaddataname2,"%snvt_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",loadfolder,numpts,p0,T,waitingtime,recordIndex);
     sprintf(MSDDataName,"%stimeTrueMSD_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);
     sprintf(CRMSDDataName,"%stimeTrueCRMSD_N%i_p%.4f_T%.8f_waitingTime%.0f_idx%i.nc",savefolder,numpts,p0,T,waitingtime,recordIndex);
-    if (fs::exists(loaddataname)) {
-        cout << "reading record from " << loaddataname << endl;
+    if (fs::exists(testLoaddataname1)) {
+        cout << "reading record from " << testLoaddataname1 << endl;
+        strcpy(loaddataname, testLoaddataname1);
+    } else if (fs::exists(testLoaddataname2)) {
+        cout << "reading record from " << testLoaddataname2 << endl;
+        strcpy(loaddataname, testLoaddataname2);
     } else {
-        std::cout <<loaddataname<< " does not exist." << std::endl;
+        std::cout << testLoaddataname1 << " and " << testLoaddataname2 << " do not exist." << std::endl;
         abort();
     }
     cout << "save record in " << MSDDataName << endl;
     shared_ptr<twoValuesDatabase> MSDdat=make_shared<twoValuesDatabase>(MSDDataName,NcFile::Replace);
     shared_ptr<twoValuesDatabase> CRMSDdat=make_shared<twoValuesDatabase>(CRMSDDataName,NcFile::Replace);
     trajectoryModelDatabase fluidConfigurations(numpts,loaddataname,NcFile::ReadOnly);
+
     shared_ptr<VoronoiQuadraticEnergy> voronoiModel  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
     shared_ptr<VoronoiQuadraticEnergy> voronoiModelprevious  = make_shared<VoronoiQuadraticEnergy>(numpts,1.0,p0,reproducible,initializeGPU);
     fluidConfigurations.readState(voronoiModel,0);
+    double initialTime =voronoiModel->currentTime;
     voronoiModel->enforceTopology();
     dynamicalFeatures dynFeat(voronoiModel->returnPositions(),voronoiModel->Box);
     dynFeat.setCageNeighbors(voronoiModel->neighbors,voronoiModel->neighborNum,voronoiModel->n_idx); 
@@ -126,8 +135,8 @@ int main(int argc, char*argv[])
         double time =voronoiModel->currentTime;
         if(rec>10&&time<1e-12) break;
         //overlapdatNVT[rec] = dynFeat.computeOverlapFunction(voronoiModel->returnPositions());
-        MSDdat->writeValues(voronoiModel->currentTime, dynFeat.computeMSD(voronoiModel->returnPositions(),voronoiModelprevious->returnPositions(),previousWhichBox));        
-        CRMSDdat->writeValues(voronoiModel->currentTime, dynFeat.computeCageRelativeMSD(voronoiModel->returnPositions(),voronoiModelprevious->returnPositions(),previousWhichBoxCR));        
+        MSDdat->writeValues(time - initialTime, dynFeat.computeMSD(voronoiModel->returnPositions(),voronoiModelprevious->returnPositions(),previousWhichBox));        
+        CRMSDdat->writeValues(time - initialTime, dynFeat.computeCageRelativeMSD(voronoiModel->returnPositions(),voronoiModelprevious->returnPositions(),previousWhichBoxCR));        
 
     };   
         

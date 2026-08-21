@@ -57,6 +57,9 @@ class VoronoiQuadraticEnergy : public voronoiModelBase
         //!Report information about net forces...
         void reportForces(bool verbose);
 
+        //!Report information about net forces...
+        void reportTotalForce();
+
         //!Save tuples for half of the dynamical matrix
         virtual void getDynMatEntries(vector<int2> &rcs, vector<double> &vals,double unstress = 1.0, double stress = 1.0);
 
@@ -104,6 +107,10 @@ class VoronoiQuadraticEnergy : public voronoiModelBase
         //!calculate the current global d2Edgammadr for the shear modulus of inherent states
         //! Using the method to reproduce 2018 no jamming transition paper
         virtual void getd2EdgammadrOldPaperWrong(vector<double2> &d2Edgammadr);
+
+        //!calculate the current sigmaXY for cells on the upper/lower boundary. This is equivilent to what's coded in 3D Voronoi
+        //! Using the method to reproduce 2018 no jamming transition paper
+        virtual double getSigmaXYonBoundary();
 
     protected:
         //! Second derivative of the energy w/r/t cell positions...for getting dynMat info

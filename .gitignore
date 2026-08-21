@@ -9,5 +9,6 @@ doc/html/*
 doc/latex/*
 debug/*
 data/*
+local/
 CMakeLists.txt
 cmakeHelp/CMakeCache.txt

@@ -29,6 +29,11 @@ HOSTDEVICE double2 operator*(const double &a, const double2 &b)
     return make_double2(a*b.x,a*b.y);
     }
 
+HOSTDEVICE double2 operator/(const double2 &a, const double &b)
+    {
+    return make_double2(a.x/b,a.y/b);
+    }
+
 
 #endif
 

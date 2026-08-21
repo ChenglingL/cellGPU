@@ -57,11 +57,11 @@ class autocorrelator
         //!The actual values accumulating in each correlator
         vector<double> accumulator;
 
-        //!A vector of vectors with the number of values accumulated in each correlator
+        //!A vector of vectors with the number of values accumulated in each correlator ()
         vector<vector< int> > nCorrelation;
-        //!A vector of vectors with the actual correlation function
+        //!A vector of vectors with the actual correlation function (Cij)
         vector<vector< double> > correlation;
-        //!A vector of vector where incoming values get stored
+        //!A vector of vector where incoming values get stored (Dij)
         vector<vector< double> > shift;
     };
 #endif

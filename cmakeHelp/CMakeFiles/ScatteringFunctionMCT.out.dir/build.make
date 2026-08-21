@@ -79,7 +79,7 @@ ScatteringFunctionMCT_out_EXTERNAL_OBJECTS =
 
 ../localTest/executable/ScatteringFunctionMCT.out: CMakeFiles/ScatteringFunctionMCT.out.dir/localTest/ScatteringFunctionMCT.cpp.o
 ../localTest/executable/ScatteringFunctionMCT.out: CMakeFiles/ScatteringFunctionMCT.out.dir/build.make
-../localTest/executable/ScatteringFunctionMCT.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/ScatteringFunctionMCT.out: /usr/lib/x86_64-linux-gnu/libcudart_static.a
 ../localTest/executable/ScatteringFunctionMCT.out: /usr/lib/x86_64-linux-gnu/librt.so
 ../localTest/executable/ScatteringFunctionMCT.out: src/models/libmodel.a
 ../localTest/executable/ScatteringFunctionMCT.out: src/models/libmodelGPU.a
@@ -90,7 +90,7 @@ ScatteringFunctionMCT_out_EXTERNAL_OBJECTS =
 ../localTest/executable/ScatteringFunctionMCT.out: src/simulation/libsimulation.a
 ../localTest/executable/ScatteringFunctionMCT.out: src/utility/libutility.a
 ../localTest/executable/ScatteringFunctionMCT.out: src/utility/libutilityGPU.a
-../localTest/executable/ScatteringFunctionMCT.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/ScatteringFunctionMCT.out: /usr/lib/x86_64-linux-gnu/libcudart_static.a
 ../localTest/executable/ScatteringFunctionMCT.out: /usr/lib/x86_64-linux-gnu/librt.so
 ../localTest/executable/ScatteringFunctionMCT.out: /usr/lib/x86_64-linux-gnu/libgmpxx.so
 ../localTest/executable/ScatteringFunctionMCT.out: /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so

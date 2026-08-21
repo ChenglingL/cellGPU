@@ -24,6 +24,7 @@ add_library(database
     DatabaseTextVoronoi.cpp
     vectorValueDatabase.cpp
     nvtModelDatabase.cpp
+    areaPerimeterDatabase.cpp
     GlassyDynModelDatabase.cpp
     testModelDatabase.cpp
     logSACWritter.cpp
@@ -31,6 +32,7 @@ add_library(database
     derivativeModelDatabase.cpp
     trajectoryModelDatabase.cpp
     displacementModelDatabase.cpp
+    GNNLearningModelDatabase.cpp
     structureFactorModelDatabase.cpp
     )
 

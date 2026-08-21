@@ -79,7 +79,7 @@ trueMSDProductionRuns_out_EXTERNAL_OBJECTS =
 
 ../localTest/executable/trueMSDProductionRuns.out: CMakeFiles/trueMSDProductionRuns.out.dir/localTest/trueMSDProductionRuns.cpp.o
 ../localTest/executable/trueMSDProductionRuns.out: CMakeFiles/trueMSDProductionRuns.out.dir/build.make
-../localTest/executable/trueMSDProductionRuns.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/trueMSDProductionRuns.out: /usr/lib/x86_64-linux-gnu/libcudart_static.a
 ../localTest/executable/trueMSDProductionRuns.out: /usr/lib/x86_64-linux-gnu/librt.so
 ../localTest/executable/trueMSDProductionRuns.out: src/models/libmodel.a
 ../localTest/executable/trueMSDProductionRuns.out: src/models/libmodelGPU.a
@@ -90,7 +90,7 @@ trueMSDProductionRuns_out_EXTERNAL_OBJECTS =
 ../localTest/executable/trueMSDProductionRuns.out: src/simulation/libsimulation.a
 ../localTest/executable/trueMSDProductionRuns.out: src/utility/libutility.a
 ../localTest/executable/trueMSDProductionRuns.out: src/utility/libutilityGPU.a
-../localTest/executable/trueMSDProductionRuns.out: /usr/local/cuda-12.2/lib64/libcudart_static.a
+../localTest/executable/trueMSDProductionRuns.out: /usr/lib/x86_64-linux-gnu/libcudart_static.a
 ../localTest/executable/trueMSDProductionRuns.out: /usr/lib/x86_64-linux-gnu/librt.so
 ../localTest/executable/trueMSDProductionRuns.out: /usr/lib/x86_64-linux-gnu/libgmpxx.so
 ../localTest/executable/trueMSDProductionRuns.out: /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so
