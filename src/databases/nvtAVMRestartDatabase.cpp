@@ -142,10 +142,11 @@ void nvtAVMRestartDatabase::readState(shared_ptr<VertexQuadraticEnergy> t, share
     vcneighVar->set_cur(rec);
     vector<double> posdat(2*Nv,0.0);
     vector<double> veldat(2*Nv,0.0);
-    vector<int> vndat(3*Nv,0);
-    vector<int> vcndat(3*Nv,0);
     posVar->get(&posdat[0],1, dofDim->size());
     velVar->get(&veldat[0],1, dofDim->size());
+    // ncInt fields: read as int. A double buffer does not convert and yields garbage tags.
+    vector<int> vndat(3*Nv,0);
+    vector<int> vcndat(3*Nv,0);
     vneighVar->get(&vndat[0],1, NvnDim->size());
     vcneighVar->get(&vcndat[0],1, NvnDim->size());
 

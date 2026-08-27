@@ -92,6 +92,7 @@ void AVMTopologyIO::unpackNeighborsAndCells(shared_ptr<VertexQuadraticEnergy> t,
     {
     int Nv = t->Nvertices;
     int Nc = t->Ncells;
+    {
     ArrayHandle<int> h_vn(t->vertexNeighbors,access_location::host,access_mode::overwrite);
     ArrayHandle<int> h_vcn(t->vertexCellNeighbors,access_location::host,access_mode::overwrite);
     for (int vv = 0; vv < Nv; ++vv)
@@ -102,6 +103,7 @@ void AVMTopologyIO::unpackNeighborsAndCells(shared_ptr<VertexQuadraticEnergy> t,
             h_vcn.data[3*vv+ii] = vcndat[3*vv+ii];
             };
         };
+    };
 
     vector<int> cvn(Nc,0);
     for (int vv = 0; vv < Nv; ++vv)
@@ -112,6 +114,7 @@ void AVMTopologyIO::unpackNeighborsAndCells(shared_ptr<VertexQuadraticEnergy> t,
                 cvn[cell] += 1;
             };
     int nMax = 0;
+    {
     ArrayHandle<int> h_nn(t->cellVertexNum,access_location::host,access_mode::overwrite);
     for (int cc = 0; cc < Nc; ++cc)
         {
@@ -120,53 +123,105 @@ void AVMTopologyIO::unpackNeighborsAndCells(shared_ptr<VertexQuadraticEnergy> t,
             nMax = cvn[cc];
         cvn[cc] = 0;
         };
-    t->vertexMax = nMax+2;
-    t->cellVertices.resize((nMax+2)*Nc);
-    t->n_idx = Index2D(nMax+2,Nc);
+    };
+    // Keep rings in the existing vertexMax-wide cellVertices layout when it already fits
+    // (constructor uses vertexMax=30). Shrinking n_idx desyncs computeGeometryCPU.
+    int needMax = nMax + 2;
+    if (needMax > t->vertexMax)
+        t->growCellVerticesList(needMax);
 
+    int nReversed = 0;
+    int nWalkFail = 0;
+    {
     ArrayHandle<double2> h_p(t->vertexPositions,access_location::host,access_mode::read);
     ArrayHandle<int> h_n(t->cellVertices,access_location::host,access_mode::overwrite);
-    for (int vv = 0; vv < Nv; ++vv)
-        for (int ii = 0; ii < 3; ++ii)
-            {
-            int cell = vcndat[3*vv+ii];
-            if (cell < 0 || cell >= Nc)
-                continue;
-            h_n.data[t->n_idx(cvn[cell],cell)] = vv;
-            cvn[cell] += 1;
-            };
+    ArrayHandle<int> h_nn(t->cellVertexNum,access_location::host,access_mode::read);
+    ArrayHandle<int> h_vn(t->vertexNeighbors,access_location::host,access_mode::read);
+    ArrayHandle<int> h_vcn(t->vertexCellNeighbors,access_location::host,access_mode::read);
+
+    auto vertexHasCell = [&](int v, int cell)
+        {
+        for (int ff = 0; ff < 3; ++ff)
+            if (h_vcn.data[3*v+ff] == cell)
+                return true;
+        return false;
+        };
 
     for (int cc = 0; cc < Nc; ++cc)
         {
         int neigh = h_nn.data[cc];
         if (neigh < 3)
             continue;
-        vector<double2> Vpoints(neigh);
-        int v0 = h_n.data[t->n_idx(0,cc)];
-        double2 meanPos = make_double2(0.0,0.0);
-        vector<int> originalVertexOrder(neigh);
-        for (int vv = 0; vv < neigh; ++vv)
+        int v0 = -1;
+        for (int vv = 0; vv < Nv && v0 < 0; ++vv)
+            if (vertexHasCell(vv,cc))
+                v0 = vv;
+        if (v0 < 0)
             {
-            int v1 = h_n.data[t->n_idx(vv,cc)];
-            originalVertexOrder[vv] = v1;
-            t->Box->minDist(h_p.data[v0],h_p.data[v1],Vpoints[vv]);
-            meanPos = meanPos + Vpoints[vv];
+            nWalkFail += 1;
+            continue;
             };
-        for (int vv = 0; vv < neigh; ++vv)
-            Vpoints[vv] = Vpoints[vv] - meanPos;
-        vector<pair<double,int> > CCWorder(neigh);
-        for (int vv = 0; vv < neigh; ++vv)
+        // Walk the 3-valent mesh around cell cc (two neighbors of each vertex also bound cc).
+        int vPrev = -1;
+        int vCur = v0;
+        int nGot = 0;
+        bool ok = true;
+        for (int step = 0; step < neigh; ++step)
             {
-            CCWorder[vv].first = atan2(Vpoints[vv].y,Vpoints[vv].x);
-            CCWorder[vv].second = vv;
+            h_n.data[t->n_idx(nGot,cc)] = vCur;
+            nGot += 1;
+            int vNext = -1;
+            for (int ff = 0; ff < 3; ++ff)
+                {
+                int w = h_vn.data[3*vCur+ff];
+                if (w < 0 || w >= Nv || w == vPrev)
+                    continue;
+                if (!vertexHasCell(w,cc))
+                    continue;
+                vNext = w;
+                if (vPrev >= 0)
+                    break;
+                };
+            if (vNext < 0)
+                {
+                ok = false;
+                break;
+                };
+            vPrev = vCur;
+            vCur = vNext;
             };
-        sort(CCWorder.begin(),CCWorder.begin()+neigh);
-        for (int vv = 0; vv < neigh; ++vv)
+        if (!ok || nGot != neigh || vCur != v0)
             {
-            int orderedVertexIndex = CCWorder[neigh-1-vv].second;
-            h_n.data[t->n_idx(vv,cc)] = originalVertexOrder[orderedVertexIndex];
+            nWalkFail += 1;
+            continue;
+            };
+        double2 cellPos = h_p.data[h_n.data[t->n_idx(neigh-2,cc)]];
+        int vidx = h_n.data[t->n_idx(neigh-1,cc)];
+        double2 vcur, vnext;
+        t->Box->minDist(h_p.data[vidx],cellPos,vcur);
+        double Varea = 0.0;
+        for (int nn = 0; nn < neigh; ++nn)
+            {
+            vidx = h_n.data[t->n_idx(nn,cc)];
+            t->Box->minDist(h_p.data[vidx],cellPos,vnext);
+            Varea += SignedPolygonAreaPart(vcur,vnext);
+            vcur = vnext;
+            };
+        if (Varea < 0.0)
+            {
+            nReversed += 1;
+            for (int vv = 0; vv < neigh/2; ++vv)
+                {
+                int a = t->n_idx(vv,cc);
+                int b = t->n_idx(neigh-1-vv,cc);
+                int tmp = h_n.data[a];
+                h_n.data[a] = h_n.data[b];
+                h_n.data[b] = tmp;
+                };
             };
         };
+    };
+    printf("AVM unpack: nMax=%d reversed_rings=%d walk_fail=%d\n", nMax, nReversed, nWalkFail);
 
     t->initializeEdgeFlipLists();
     t->forcesUpToDate = false;

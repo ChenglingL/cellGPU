@@ -12,3 +12,9 @@ data/*
 local/
 CMakeLists.txt
 cmakeHelp/CMakeCache.txt
+core
+core.*
+slurm-*.out
+slurm-*.err
+__pycache__/
+*.pyc
