@@ -29,5 +29,6 @@ Put new host-specific submit scripts in `local/submit/`. Existing files under `*
 - After changing shared source, other hosts need `git pull` then a rebuild before new jobs.
 - Do not `git add .`. Stage only shared source.
 - Do not rebuild over a binary a running job is using; use a new `build-*` dir instead.
+- Do not leave `cursor-agent` workers or other daemons on cluster login nodes (see `delta-login-nodes.mdc`).
 - Prefer relative paths or `$CELLGPU_ROOT` in any script that is committed.
 - Record `git rev-parse HEAD` in new submit scripts so runs are reproducible.
