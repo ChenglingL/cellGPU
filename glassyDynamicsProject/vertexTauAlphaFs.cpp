@@ -23,6 +23,7 @@ static void formatT1Tag(double t1t, char *out, int n)
 // Cage-relative SISF of AVM cell centroids from log-spaced vertex trajectories.
 // F_s^CR(q, dt) = (1/N) sum_j J_0(q |dr_j^CR|), cage = t_w cell-cell neighbors.
 // q default 6.80 (same k as Voronoi tauAlphaTableAnalyse.cpp CRSISF).
+// -f productionRuns: read/write vertex/productionRuns/ (production Fs uses -k 6.7).
 // Writes (dt, Fs) with dt = t - t0. Data on $CELLGPU_SCRATCH.
 
 // Dual of the 3-valent mesh: an edge (v,w) bounding cell cc is shared with
@@ -116,9 +117,10 @@ int main(int argc, char *argv[])
     double t1t = -1.0;
     int recordIndex = 0;
     double ks = 6.80;
+    string folderTag;
 
     int c;
-    while ((c = getopt(argc, argv, "n:g:m:r:p:v:k:a:")) != -1)
+    while ((c = getopt(argc, argv, "n:g:m:r:p:v:k:a:f:")) != -1)
         switch (c)
             {
             case 'n': numpts = atoi(optarg); break;
@@ -128,6 +130,7 @@ int main(int argc, char *argv[])
             case 'p': p0 = atof(optarg); break;
             case 'k': ks = atof(optarg); break;
             case 'a': t1t = atof(optarg); break;
+            case 'f': folderTag = optarg; break;
             case 'r': recordIndex = atoi(optarg); break;
             case '?':
                 return 1;
@@ -158,6 +161,11 @@ int main(int argc, char *argv[])
         {
         sprintf(loadfolder, "%s/N%i/vertex/t1Scan/t1_%s/p%.3f/", scratch.c_str(), numpts, t1tag, p0);
         sprintf(savefolder, "%s/N%i/vertex/t1Scan/t1_%s/tauAlphaData/p%.3f/", scratch.c_str(), numpts, t1tag, p0);
+        }
+    else if (folderTag == "productionRuns")
+        {
+        sprintf(loadfolder, "%s/N%i/vertex/productionRuns/p%.3f/", scratch.c_str(), numpts, p0);
+        sprintf(savefolder, "%s/N%i/vertex/productionRuns/tauAlphaData/p%.3f/", scratch.c_str(), numpts, p0);
         }
     else
         {

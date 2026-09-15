@@ -7,8 +7,9 @@ Physics:
   tau_alpha is the CRSISF 1/e crossing at q = 6.80. Vertex tracers are cell
   centroids (polygon centroid of the vertex ring). Per (p0, T) we keep the
   longest waiting time whose F_s^CR still crosses 1/e.
-  Batches 2-4 only (same tau_block = max(tau_est, 1000) protocol). Later
-  batch overrides the same T.
+  Batches 2-4, plus later batches if their per_curve.csv exists
+  (same tau_block = max(tau_est, 1000) protocol). Later batch
+  overrides the same T.
   Recommended T: read T off the measured tau(T) curve at tau_k = 10**(1+k/3)
   by walking log tau vs 1/T (hotter than the table: log tau vs log T).
   Tg is T where tau_alpha = 1e4, same interpolation. Units: reduced kT, p0
@@ -16,6 +17,7 @@ Physics:
 
 Usage:
   python3 plot_vertex_voronoi_comparison.py
+  After batch-5/6 FS: measure_and_plot_tau_alpha_batchN.py then this script.
 """
 
 from __future__ import annotations
@@ -44,6 +46,8 @@ from propose_vertex_tau_alpha_batch4 import (
 )
 
 CURVE_B4 = HERE / "vertexModel_tauAlpha_batch4" / "vertexModel_tauAlpha_batch4_per_curve.csv"
+CURVE_B5 = HERE / "vertexModel_tauAlpha_batch5" / "vertexModel_tauAlpha_batch5_per_curve.csv"
+CURVE_B6 = HERE / "vertexModel_tauAlpha_batch6" / "vertexModel_tauAlpha_batch6_per_curve.csv"
 VORONOI_CSV = (
     HERE.parent / "TauAlphaTable" / "data_2DVoronoi" / "tauAlpha_2DVoronoi_all.csv"
 )
@@ -162,7 +166,12 @@ def main():
     a2 = longest_crossed_tw_rows(load_curves(CURVE_B2), 2)
     a3 = longest_crossed_tw_rows(load_curves(CURVE_B3), 3)
     a4 = longest_crossed_tw_rows(load_curves(CURVE_B4), 4)
-    anchors = merge_anchors(a2, a3, a4)
+    parts = [a2, a3, a4]
+    if CURVE_B5.is_file():
+        parts.append(longest_crossed_tw_rows(load_curves(CURVE_B5), 5))
+    if CURVE_B6.is_file():
+        parts.append(longest_crossed_tw_rows(load_curves(CURVE_B6), 6))
+    anchors = merge_anchors(*parts)
     vertex = [
         a
         for a in anchors
