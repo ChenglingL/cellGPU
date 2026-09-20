@@ -176,6 +176,61 @@ double VertexQuadraticEnergy::getSigmaXY()
     };
 
 /*!
+σ_xx = (1/A_box) ∂E/∂ε_x for affine uniaxial strain
+F = [[1+ε_x, 0], [0, 1]], so each vertex transforms as (x, y) → ((1+ε_x) x, y)
+and ∂v/∂ε_x = (x, 0).
+
+vertexForceSets stores dEdv = −∂E/∂v. voroCur holds the cell-relative
+vertex coordinates, so x in ∂v/∂ε_x is voroCur.x.
+
+The minus sign matches getSigmaXY (f = −∇E). Sum over 3 Nvertices force sets.
+*/
+double VertexQuadraticEnergy::getSigmaXX()
+    {
+    if(!forcesUpToDate)
+        computeForces();
+    ArrayHandle<double2> h_fs(vertexForceSets,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_vc(voroCur,access_location::host,access_mode::read);
+
+    double sigmaXX = 0.0;
+    int nForceSets = 3*Nvertices;
+    for (int fsidx = 0; fsidx < nForceSets; ++fsidx)
+        {
+        sigmaXX -= h_fs.data[fsidx].x * h_vc.data[fsidx].x;
+        };
+
+    double b1,b2,b3,b4;
+    Box->getBoxDims(b1,b2,b3,b4);
+    double area = b1*b4;
+    return sigmaXX/area;
+    };
+
+/*!
+σ_yy = (1/A_box) ∂E/∂ε_y for affine uniaxial strain
+F = [[1, 0], [0, 1+ε_y]], so each vertex transforms as (x, y) → (x, (1+ε_y) y)
+and ∂v/∂ε_y = (0, y). y_rel is voroCur.y. Same force-set convention as getSigmaXX.
+*/
+double VertexQuadraticEnergy::getSigmaYY()
+    {
+    if(!forcesUpToDate)
+        computeForces();
+    ArrayHandle<double2> h_fs(vertexForceSets,access_location::host,access_mode::read);
+    ArrayHandle<double2> h_vc(voroCur,access_location::host,access_mode::read);
+
+    double sigmaYY = 0.0;
+    int nForceSets = 3*Nvertices;
+    for (int fsidx = 0; fsidx < nForceSets; ++fsidx)
+        {
+        sigmaYY -= h_fs.data[fsidx].y * h_vc.data[fsidx].y;
+        };
+
+    double b1,b2,b3,b4;
+    Box->getBoxDims(b1,b2,b3,b4);
+    double area = b1*b4;
+    return sigmaYY/area;
+    };
+
+/*!
 Per-cell ∂E_i/∂γ for affine simple shear F = [[1, γ], [0, 1]].
 
 E_i = KA (A_i-A0_i)^2 + KP (P_i-P0_i)^2.

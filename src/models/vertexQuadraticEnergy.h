@@ -34,6 +34,12 @@ class VertexQuadraticEnergy : public vertexModelBase
         //! Analytic σ_xy = (1/A_box) ∂E/∂γ for simple shear F = [[1, γ], [0, 1]]
         virtual double getSigmaXY();
 
+        //! Analytic σ_xx = (1/A_box) ∂E/∂ε_x for uniaxial strain F = [[1+ε_x, 0], [0, 1]]
+        virtual double getSigmaXX();
+
+        //! Analytic σ_yy = (1/A_box) ∂E/∂ε_y for uniaxial strain F = [[1, 0], [0, 1+ε_y]]
+        virtual double getSigmaYY();
+
         //! Per-cell ∂E_i/∂γ for the same simple shear (no 1/A_box factor)
         virtual void getdEdgamma(vector<double> &dEdg);
 
