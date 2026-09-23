@@ -7,7 +7,17 @@ Physics:
   mu(t) = A * exp(-(t / tau)^beta), baseline B=0.
   tau is the KWW scale: mu(tau) = A/e (not the CRSISF 1/e crossing unless A=1).
   Likelihood: Fs_mean(t) ~ Normal(mu(t), sigma) with sigma = Fs_std or Fs_sem.
-  Tail window in Fs space: fs_min <= Fs_mean <= fs_max.
+  Tail window (--tail):
+    plateau:   fs_min <= Fs_mean <= fs_max after the last time Fs > fs_max.
+    last_rise: after that curve's last rise larger than --rise-tol, and Fs >= fs_min.
+               Fs is not monotonic (dip, rebound, then decay). The fit keeps only
+               the final decay: a later point is a rise if it exceeds the current
+               Fs by more than rise_tol.
+               If that last peak is below --hot-peak (no plateau), also require
+               Fs <= --hot-fs-max. High-T curves rebound only to ~0.2 and the
+               shoulder down to 0.1 is not the tail.
+               --hot-extra N also applies that Fs cap to the N next-colder T
+               on each p0.
 
 Sharing (--share):
   global:       one A, one beta, one tau per (p0, T)
@@ -77,6 +87,42 @@ def tail_after_plateau(g: pd.DataFrame, fs_min: float, fs_max: float) -> pd.Data
     return late[(late["Fs_mean"] >= fs_min) & (late["Fs_mean"] <= fs_max)]
 
 
+def tail_after_last_rise(
+    g: pd.DataFrame,
+    fs_min: float,
+    rise_tol: float,
+    hot_peak: float | None = None,
+    hot_fs_max: float | None = None,
+) -> pd.DataFrame:
+    """Final decay only: the suffix that is never again exceeded by rise_tol.
+
+    rise_tol is dimensionless Fs. Replica std on these curves is ~0.002–0.005,
+    so rise_tol=0.01 ignores noise wiggles but keeps the rebound as a rise.
+    If the last peak is below hot_peak, the curve has no plateau: keep only
+    Fs <= hot_fs_max (the steep part of a high-T tail).
+    """
+    g = g.sort_values("t")
+    y = g["Fs_mean"].to_numpy(float)
+    if y.size == 0:
+        return g.iloc[0:0]
+    future_max = np.maximum.accumulate(y[::-1])[::-1]
+    later = np.empty_like(y)
+    later[-1] = -np.inf
+    later[:-1] = future_max[1:]
+    exceeded = np.flatnonzero(later > y + rise_tol)
+    start = int(exceeded[-1] + 1) if exceeded.size else 0
+    late = g.iloc[start:]
+    late = late[late["Fs_mean"] >= fs_min]
+    if (
+        hot_peak is not None
+        and hot_fs_max is not None
+        and len(late)
+        and float(late["Fs_mean"].iloc[0]) < hot_peak
+    ):
+        late = late[late["Fs_mean"] <= hot_fs_max]
+    return late
+
+
 def one_over_e_from_curve(g: pd.DataFrame) -> tuple[float, bool]:
     dt = g["t"].to_numpy(float)
     fs = g["Fs_mean"].to_numpy(float)
@@ -124,34 +170,125 @@ def main() -> None:
     parser.add_argument("--sigma", choices=("std", "sem"), default="std")
     parser.add_argument("--fs-min", type=float, default=0.001)
     parser.add_argument("--fs-max", type=float, default=0.45)
+    parser.add_argument(
+        "--tail",
+        choices=("plateau", "last_rise"),
+        default="plateau",
+        help="plateau: fixed Fs window; last_rise: per-curve final decay after the last rise",
+    )
+    parser.add_argument(
+        "--rise-tol",
+        type=float,
+        default=0.01,
+        help="with --tail last_rise, a later Fs this much higher still counts as a rise",
+    )
+    parser.add_argument(
+        "--hot-peak",
+        type=float,
+        default=None,
+        help="if the last rise peaks below this Fs, cap the window at --hot-fs-max",
+    )
+    parser.add_argument(
+        "--hot-fs-max",
+        type=float,
+        default=0.1,
+        help="upper Fs of the tail when the last peak is below --hot-peak",
+    )
+    parser.add_argument(
+        "--hot-extra",
+        type=int,
+        default=0,
+        help="also apply --hot-fs-max to this many next-colder T on each p0",
+    )
     parser.add_argument("--fs-max-csv", type=Path, default=None)
+    parser.add_argument(
+        "--narrow-csv",
+        type=Path,
+        default=None,
+        help="CSV p0,T,fs_max: after the usual tail cut, keep only Fs<=fs_max for those states",
+    )
     parser.add_argument("--draws", type=int, default=2000)
     parser.add_argument("--tune", type=int, default=2000)
     parser.add_argument("--chains", type=int, default=4)
     parser.add_argument("--target-accept", type=float, default=0.95)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--input", type=Path, default=CSV_COMBINED)
+    parser.add_argument(
+        "--outdir",
+        type=Path,
+        default=None,
+        help="where kww_* files are written (default: production Fs directory)",
+    )
     args = parser.parse_args()
 
     import arviz as az
     import pymc as pm
 
-    OUTDIR.mkdir(parents=True, exist_ok=True)
+    outdir = args.outdir if args.outdir is not None else OUTDIR
+    outdir.mkdir(parents=True, exist_ok=True)
     df = pd.read_csv(args.input)
     df = df[np.isfinite(df["t"]) & np.isfinite(df["Fs_mean"])].copy()
     sigma_col = "Fs_sem" if args.sigma == "sem" else "Fs_std"
 
     fs_max_table = load_fs_max_table(args.fs_max_csv) if args.fs_max_csv else None
+    narrow_table = load_fs_max_table(args.narrow_csv) if args.narrow_csv else None
     df["fs_max"] = [
         fs_max_for_row(float(p0), float(T), args.fs_max, fs_max_table)
         for p0, T in zip(df["p0"], df["T"])
     ]
-    pieces = []
+    built: list[tuple[float, float, pd.DataFrame, float]] = []
     for (p0, T), g in df.groupby(["p0", "T"], sort=False):
         fs_max = float(g["fs_max"].iloc[0])
-        piece = tail_after_plateau(g, args.fs_min, fs_max)
+        if args.tail == "last_rise":
+            # Last-rise suffix only. The Fs cap is applied below, per p0.
+            piece = tail_after_last_rise(g, args.fs_min, args.rise_tol)
+            peak = float(piece["Fs_mean"].iloc[0]) if len(piece) else float("nan")
+        else:
+            piece = tail_after_plateau(g, args.fs_min, fs_max)
+            peak = float("nan")
+        built.append((float(p0), float(T), piece, peak))
+
+    extra_cap: set[tuple[float, float]] = set()
+    if args.tail == "last_rise" and args.hot_extra > 0:
+        by_p0: dict[float, list[tuple[float, float]]] = {}
+        for p0, T, _piece, peak in built:
+            by_p0.setdefault(p0, []).append((T, peak))
+        for p0, rows in by_p0.items():
+            rows.sort(key=lambda z: -z[0])
+            n_extra = 0
+            for T, peak in rows:
+                auto = args.hot_peak is not None and peak < args.hot_peak
+                if auto:
+                    continue
+                if n_extra >= args.hot_extra:
+                    break
+                extra_cap.add((p0, T))
+                n_extra += 1
+
+    pieces = []
+    for p0, T, piece, peak in built:
+        auto_cap = (
+            args.tail == "last_rise"
+            and args.hot_peak is not None
+            and peak < args.hot_peak
+        )
+        if auto_cap or (p0, T) in extra_cap:
+            piece = piece[piece["Fs_mean"] <= args.hot_fs_max]
+            tag = "extra" if (p0, T) in extra_cap else "hot"
+        else:
+            tag = "plateau" if args.tail == "plateau" else "rise"
+        narrow = fs_max_for_row(p0, T, float("nan"), narrow_table)
+        if np.isfinite(narrow):
+            piece = piece[piece["Fs_mean"] <= narrow]
+            tag = "narrow"
         if len(piece) >= 5:
             pieces.append(piece)
+            y0 = float(piece["Fs_mean"].iloc[0])
+            t0 = float(piece["t"].iloc[0])
+            print(
+                f"tail p0={p0:.3f} T={T:.6g}: n={len(piece)} "
+                f"t0={t0:.4g} Fs0={y0:.3f} {tag}"
+            )
         else:
             print(f"skip p0={p0} T={T}: {len(piece)} tail points")
     tail = pd.concat(pieces, ignore_index=True) if pieces else pd.DataFrame()
@@ -188,8 +325,37 @@ def main() -> None:
 
     print(
         f"tail points {len(tail)} / {len(df)}; M={M} states; "
-        f"share={args.share}; sigma={args.sigma}"
+        f"share={args.share}; sigma={args.sigma}; tail={args.tail}"
     )
+
+    initvals = None
+    if args.tail == "last_rise":
+        # Time when the tail has fallen by 1/e from its own start. NUTS start
+        # only; the posterior is still the Gaussian KWW likelihood.
+        tau_guess = np.full(M, 10.0)
+        for i in range(M):
+            piece = tail[tail["state_id"] == i].sort_values("t")
+            y = piece["Fs_mean"].to_numpy(float)
+            tt = piece["t"].to_numpy(float)
+            target = y[0] / np.e
+            hit = np.flatnonzero(y <= target)
+            tau_guess[i] = tt[hit[0]] if hit.size else tt[len(tt) // 2]
+        tau_guess = np.maximum(tau_guess, 1e-3)
+
+        def _logit(p: float) -> float:
+            p = float(np.clip(p, 1e-3, 1.0 - 1e-3))
+            return float(np.log(p / (1.0 - p)))
+
+        initvals = {"logtau": np.log(tau_guess)}
+        if args.share == "global":
+            initvals["qA"] = _logit(0.58)
+            initvals["qbeta"] = _logit(0.60)
+        elif args.share == "per_p0":
+            initvals["qA"] = np.full(n_p0, _logit(0.58))
+            initvals["qbeta"] = np.full(n_p0, _logit(0.60))
+        else:
+            initvals["qA"] = np.full(M, _logit(0.58))
+            initvals["qbeta"] = np.full(M, _logit(0.60))
 
     model = build_model(
         args.share, t_all, y_all, y_std, state_id, p0_id_states, M, n_p0
@@ -202,6 +368,8 @@ def main() -> None:
             target_accept=args.target_accept,
             random_seed=args.seed,
         )
+        if initvals is not None:
+            sample_kw["initvals"] = initvals
         try:
             idata = pm.sample(**sample_kw)
             idata = pm.compute_log_likelihood(idata)
@@ -233,15 +401,22 @@ def main() -> None:
             bi, bsi = float(beta_mean[i]), float(beta_std[i])
         g = full[(np.isclose(full["p0"], p0)) & (np.isclose(full["T"], T))]
         tau_1e, crossed = one_over_e_from_curve(g)
-        n_tail = int((tail["state_id"] == i).sum())
+        piece = tail[tail["state_id"] == i]
+        n_tail = int(len(piece))
+        t_tail = float(piece["t"].min()) if n_tail else float("nan")
+        fs_tail = float(piece.loc[piece["t"].idxmin(), "Fs_mean"]) if n_tail else float("nan")
         rows.append(
             {
                 "p0": p0,
                 "T": T,
                 "share": args.share,
                 "sigma": args.sigma,
+                "tail": args.tail,
+                "rise_tol": args.rise_tol if args.tail == "last_rise" else float("nan"),
                 "fs_min": args.fs_min,
                 "fs_max": fs_max_for_row(p0, T, args.fs_max, fs_max_table),
+                "t_tail_start": t_tail,
+                "Fs_tail_start": fs_tail,
                 "n_tail": n_tail,
                 "A": Ai,
                 "A_std": Asi,
@@ -254,15 +429,15 @@ def main() -> None:
             }
         )
 
-    tau_csv = OUTDIR / f"kww_{args.share}_tau.csv"
+    tau_csv = outdir / f"kww_{args.share}_tau.csv"
     pd.DataFrame(rows).to_csv(tau_csv, index=False)
     print(f"wrote {tau_csv}")
 
-    idata_path = OUTDIR / f"kww_{args.share}_idata.nc"
+    idata_path = outdir / f"kww_{args.share}_idata.nc"
     idata.to_netcdf(idata_path)
     print(f"wrote {idata_path}")
 
-    loo_path = OUTDIR / f"kww_{args.share}_loo.txt"
+    loo_path = outdir / f"kww_{args.share}_loo.txt"
     try:
         loo = az.loo(idata)
         waic = az.waic(idata)

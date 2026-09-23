@@ -2,6 +2,7 @@
 # Measured (p0,T) covering tau_k=10^{1+k/3}. Glass end is the warmest T with tau_alpha>10000.
 # Rows batch=2..6: tauAlpha is longest-tw CRSISF 1/e, q=6.80 (scouting).
 # Rows batch=fill: production CRSISF KWW tau_alpha, q=6.7 (kww_global_tau.csv).
+# Rows batch=round2: T from round-2 KWW, log tau vs 1/T. tauAlpha is the target, not a measured 1/e.
 # Default l_T1=0.01, N=4096.
 p0,T,tauAlphaEst,tauAlpha,waitingTime,batch,how
 3.750,0.1507937,10,11.046405,14000,2,nearest
@@ -73,3 +74,4 @@ p0,T,tauAlphaEst,tauAlpha,waitingTime,batch,how
 3.825,0.12355752,10,28.1315,10000,fill,logT_prodKWW_scout1e
 3.850,0.11421505,10,29.1458,10000,fill,logT_mean_slope
 3.850,0.0025044372,10000,11294.3,100000,fill,1/T_kww_segment
+3.825,0.00487453,10000,10000,100000,round2,1/T_kww_round2
