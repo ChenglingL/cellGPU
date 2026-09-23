@@ -51,6 +51,15 @@ def _combined_axes(fig_w: float = 13.6, fig_h: float = 8.0):
     return fig, axes
 
 
+def fitted_tail(g: pd.DataFrame, r) -> pd.DataFrame:
+    """Points used in the fit. Prefer the stored per-curve tail start."""
+    g = g.sort_values("t")
+    t0 = getattr(r, "t_tail_start", float("nan"))
+    if t0 == t0:
+        return g[(g["t"] >= float(t0)) & (g["Fs_mean"] >= float(r.fs_min))]
+    return tail_after_plateau(g, float(r.fs_min), float(r.fs_max))
+
+
 def kww(t, A, beta, tau):
     t = np.asarray(t, dtype=float)
     tau = max(float(tau), 1e-30)
@@ -122,11 +131,18 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Plot KWW HMC fit and t/tau collapse.")
     parser.add_argument("--share", choices=("global", "per_p0", "independent"), default="global")
     parser.add_argument("--input", type=Path, default=OUTDIR / "Fs_combined_mean.csv")
+    parser.add_argument(
+        "--outdir",
+        type=Path,
+        default=None,
+        help="where kww_* plots are written (default: production Fs directory)",
+    )
     args = parser.parse_args()
 
-    OUTDIR.mkdir(parents=True, exist_ok=True)
+    outdir = args.outdir if args.outdir is not None else OUTDIR
+    outdir.mkdir(parents=True, exist_ok=True)
     fs = pd.read_csv(args.input)
-    tau_path = OUTDIR / f"kww_{args.share}_tau.csv"
+    tau_path = outdir / f"kww_{args.share}_tau.csv"
     tau_df = pd.read_csv(tau_path)
     cmap = plt.get_cmap("coolwarm")
 
@@ -145,7 +161,7 @@ def main() -> None:
             t = g["t"].to_numpy(float)
             y = g["Fs_mean"].to_numpy(float)
             ax.plot(t, y, color=color, lw=1.0, alpha=0.85)
-            piece = tail_after_plateau(g, float(r.fs_min), float(r.fs_max))
+            piece = fitted_tail(g, r)
             if not piece.empty:
                 ax.plot(piece["t"], piece["Fs_mean"], color=color, lw=2.0)
             if t.size:
@@ -158,7 +174,7 @@ def main() -> None:
             ax.set_xlabel(r"$\Delta t$", fontsize=FS_LABEL)
         if col == 0:
             ax.set_ylabel(r"$F_s^{\mathrm{CR}}$", fontsize=FS_LABEL)
-    png = OUTDIR / f"kww_{args.share}_overlay.png"
+    png = outdir / f"kww_{args.share}_overlay.png"
     fig.savefig(png, dpi=150)
     plt.close(fig)
     print(f"wrote {png}")
@@ -194,10 +210,10 @@ def main() -> None:
             ax.set_ylim(1e-3, 2.0)
             row, col = divmod(i, 3)
             if row == 1:
-                ax.set_xlabel(r"$t/\tau_{\mathrm{KWW}}$", fontsize=FS_LABEL)
+                ax.set_xlabel(r"$t/\tau_\alpha$", fontsize=FS_LABEL)
             if col == 0:
                 ax.set_ylabel(ylabel, fontsize=FS_LABEL)
-        out = OUTDIR / f"kww_{args.share}_collapse{suffix}_by_p0.png"
+        out = outdir / f"kww_{args.share}_collapse{suffix}_by_p0.png"
         fig.savefig(out, dpi=150)
         plt.close(fig)
         print(f"wrote {out}")
@@ -233,11 +249,11 @@ def main() -> None:
         ax.set_xscale("log")
         ax.set_yscale("log")
         ax.set_ylim(1e-3, 2.0)
-        ax.set_xlabel(r"$t/\tau_{\mathrm{KWW}}$", fontsize=FS_LABEL)
+        ax.set_xlabel(r"$t/\tau_\alpha$", fontsize=FS_LABEL)
         ax.set_ylabel(ylabel, fontsize=FS_LABEL)
         ax.tick_params(labelsize=FS_TICK)
         ax.legend(fontsize=10, frameon=False, loc="lower left")
-        out = OUTDIR / f"kww_{args.share}_collapse{suffix}.png"
+        out = outdir / f"kww_{args.share}_collapse{suffix}.png"
         fig.savefig(out, dpi=150)
         plt.close(fig)
         print(f"wrote {out}")
@@ -250,7 +266,7 @@ def main() -> None:
     for i, p0 in enumerate(P0_ORDER):
         ax = axes[i]
         sub = tau_df[np.isclose(tau_df["p0"], p0)].sort_values("T")
-        ax.loglog(sub["T"], sub["tau_kww"], "o-", color="C0", label=r"$\tau_{\mathrm{KWW}}$")
+        ax.loglog(sub["T"], sub["tau_kww"], "o-", color="C0", label=r"$\tau_\alpha$")
         ax.loglog(sub["T"], sub["tau_1e"], "s--", color="C1", label=r"$1/e$")
         row, col = divmod(i, 3)
         if row == 1:
@@ -259,7 +275,7 @@ def main() -> None:
             ax.set_ylabel(r"$\tau_\alpha$", fontsize=FS_LABEL)
         if i == 0:
             ax.legend(fontsize=11, frameon=False)
-    tau_png = OUTDIR / f"kww_{args.share}_tau_vs_T.png"
+    tau_png = outdir / f"kww_{args.share}_tau_vs_T.png"
     fig.savefig(tau_png, dpi=150)
     plt.close(fig)
     print(f"wrote {tau_png}")
@@ -274,14 +290,14 @@ def main() -> None:
         ax.set_ylabel(r"$\beta$", fontsize=FS_LABEL)
         ax.legend(fontsize=10, frameon=False)
         ax.tick_params(labelsize=FS_TICK)
-        bpng = OUTDIR / f"kww_{args.share}_beta_vs_T.png"
+        bpng = outdir / f"kww_{args.share}_beta_vs_T.png"
         fig.savefig(bpng, dpi=150)
         plt.close(fig)
         print(f"wrote {bpng}")
 
     rms = collapse_rms(fs, tau_df)
     rms["share"] = args.share
-    rms_path = OUTDIR / f"kww_{args.share}_collapse_rms.csv"
+    rms_path = outdir / f"kww_{args.share}_collapse_rms.csv"
     rms.to_csv(rms_path, index=False)
     print(f"wrote {rms_path}")
     print(rms.to_string(index=False))

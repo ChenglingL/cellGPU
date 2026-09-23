@@ -212,7 +212,7 @@ def plot_grid(kww_rows, points, outpath: Path):
             c="0.35",
             s=28,
             zorder=3,
-            label=r"existing $\tau_{\mathrm{KWW}}$",
+            label=r"existing $\tau_\alpha$",
         )
         pp = [p for p in points if match_p0(float(p["p0"]), p0)]
         if pp:
@@ -231,7 +231,7 @@ def plot_grid(kww_rows, points, outpath: Path):
         ax.set_yscale("log")
         ax.set_title(rf"$p_0={p0:.3f}$")
         ax.set_xlabel(r"$T$")
-        ax.set_ylabel(r"$\tau_{\mathrm{KWW}}$")
+        ax.set_ylabel(r"$\tau_\alpha$")
         ax.legend(loc="best", fontsize=7, frameon=False)
     fig.suptitle(
         r"KWW production fill: keep existing $T$, add 9 (hot $\tau=10$ + 3 cold)",
