@@ -48,6 +48,8 @@ HERE = Path(__file__).resolve().parent
 OUTDIR = HERE / "vertexModel_vertexPositionFs"
 PEAK_CSV = HERE / "vertexModel_vertexPositionSq" / "sq_first_peak.csv"
 Q_FILE = HERE / "vertexModel_vertexPositionSq" / "crsisf_q.txt"
+# Extra states equilibrated on the vertex-position tau only (cells not equilibrated).
+CSV_VTX = OUTDIR / "production_state_points_vtx.csv"
 P0_ORDER = (3.750, 3.775, 3.800, 3.815, 3.825, 3.850)
 N = 4096
 
@@ -144,7 +146,7 @@ def main() -> None:
             nfile += 1
     print(f"loaded {nfile} CRSISF files from {root} at q={q_use:g}")
 
-    expected = load_state_points()
+    expected = load_state_points((CSV_VTX,))
     missing: list[tuple[float, float]] = []
     peaks: list[tuple[float, float, float, int, int]] = []
     by_p0: dict[float, list[tuple[float, np.ndarray, np.ndarray]]] = {p: [] for p in P0_ORDER}

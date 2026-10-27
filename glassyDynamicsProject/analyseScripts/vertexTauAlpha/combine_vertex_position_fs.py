@@ -9,6 +9,8 @@ Physics:
   Per (p0, T), interpolate idx=0..9 onto a common geomspace dt grid, then
   take the arithmetic mean and sample standard deviation (ddof=1).
   SEM = std / sqrt(n_idx). dt is simulation time; Fs is dimensionless.
+  States: production_state_points.csv and the KWW fill, plus the vertex-position-only
+  states in vertexModel_vertexPositionFs/production_state_points_vtx.csv.
 
 Writes vertexModel_vertexPositionFs/Fs_combined_mean.csv.
 
@@ -27,6 +29,7 @@ import pandas as pd
 
 from combine_vertex_production_fs import STD_FLOOR, curves_for_state, mean_std_curve
 from plot_vertex_position_fs import (
+    CSV_VTX,
     OUTDIR,
     Q_FILE as VERTEX_Q_FILE,
     VERTEX_FS_NAME,
@@ -83,7 +86,7 @@ def main() -> None:
 
     OUTDIR.mkdir(parents=True, exist_ok=True)
     by_key = load_by_key(scratch_fs(), q_use)
-    expected = load_state_points()
+    expected = load_state_points((CSV_VTX,))
     rows: list[dict] = []
     missing: list[tuple[float, float]] = []
 

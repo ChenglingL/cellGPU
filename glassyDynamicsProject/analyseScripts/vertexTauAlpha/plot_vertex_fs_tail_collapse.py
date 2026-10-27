@@ -10,10 +10,10 @@ Physics:
   Offset at level L: log10(u_L / u*_L). u_L is the last downward crossing of
   Fs = L (log-t interpolation), u*_L = (ln(A/L))^(1/beta) is the master value.
   Positive = the curve decays later than the master, in decades of t/tau.
-  Only crossings inside the fitted window count (all windows start at Fs>0.48,
-  so L <= 0.4 is inside every window; hot curves cross 0.5 in the cage drop).
-  Solid = the fitted window (after the last rise; Fs <= 0.5 for the cold
-  states in narrow_fs_max.csv); faint = the rest of the curve.
+  Only crossings inside the fitted window count (hot curves cross the upper
+  levels in the cage drop, before their window starts).
+  Solid = the fitted window, as stored by the fit (t >= t_tail_start);
+  faint = the rest of the curve.
 
 Output (default vertexModel_productionFs/round2/):
   kww_global_tail_collapse.png        all states: Fs and dFs vs t/tau, offsets vs tau
@@ -24,6 +24,8 @@ Usage:
   python3 plot_vertex_fs_tail_collapse.py
   python3 plot_vertex_fs_tail_collapse.py --input vertexModel_productionFs/Fs_combined_mean.csv \
       --outdir vertexModel_productionFs/round2
+  python3 plot_vertex_fs_tail_collapse.py --input vertexModel_vertexPositionFs/Fs_combined_mean.csv \
+      --outdir vertexModel_vertexPositionFs --tracer "vertex positions" --highlight 3.750,0.0113 ...
 """
 
 from __future__ import annotations
@@ -48,8 +50,8 @@ from plot_vertex_production_fs import OUTDIR, P0_ORDER
 U_LO, U_HI = 0.05, 15.0
 LEVELS = (0.4, 0.2, 0.05)
 RESID_LIM = 0.08
-# Round-2 production state added for tau_KWW ~ 1e4 at p0=3.825.
-HIGHLIGHT = (3.825, 0.00487453)
+# Default highlight: round-2 production state added for tau_KWW ~ 1e4 at p0=3.825.
+HIGHLIGHT = ((3.825, 0.00487453),)
 
 # Same p0 and tau colors as the rigid-quench and hexagonality figures.
 P0_COLOR = dict(zip(P0_ORDER, ("#0a2a52", "#104281", "#1c5cab", "#2a78d6", "#5598e7", "#86b6ef")))
@@ -82,7 +84,7 @@ def last_crossing_t(t: np.ndarray, y: np.ndarray, level: float) -> float:
     return float(np.exp(np.log(t[i]) + f * (np.log(t[i + 1]) - np.log(t[i]))))
 
 
-def build_states(fs: pd.DataFrame, tau_df: pd.DataFrame) -> list[dict]:
+def build_states(fs: pd.DataFrame, tau_df: pd.DataFrame, highlight) -> list[dict]:
     states = []
     for r in tau_df.itertuples(index=False):
         g = fs[np.isclose(fs["p0"], r.p0) & np.isclose(fs["T"], r.T)].sort_values("t")
@@ -112,6 +114,7 @@ def build_states(fs: pd.DataFrame, tau_df: pd.DataFrame) -> list[dict]:
             in_tail = t_L >= float(r.t_tail_start)
             row[f"off_{L:g}"] = math.log10(t_L / r.tau_kww / u_star) if in_tail else math.nan
         row["_u"], row["_y"], row["_res"], row["_win"] = u, y, res, in_win
+        row["_hl"] = any(is_state(row["p0"], row["T"], k) for k in highlight)
         states.append(row)
     return states
 
@@ -126,7 +129,7 @@ def style_axes(ax) -> None:
 def draw_curves(ax_f, ax_r, states, norm, A, beta) -> None:
     """Faint full curve, solid fitted window, highlight and master on top."""
     for s in sorted(states, key=lambda s: -s["tau_kww"]):
-        hl = is_state(s["p0"], s["T"], HIGHLIGHT)
+        hl = s["_hl"]
         extrap = s["crossed_1e"] == 0
         color = HILITE if hl else TAU_CMAP(norm(s["tau_kww"]))
         lw, z = (2.2, 8) if hl else (1.0, 3)
@@ -141,18 +144,21 @@ def draw_curves(ax_f, ax_r, states, norm, A, beta) -> None:
     ax_r.axhline(0.0, color=INK, ls="--", lw=1.0, zorder=10)
     ax_f.set_xscale("log")
     ax_f.set_xlim(U_LO, U_HI)
-    ax_f.set_ylim(-0.02, 0.85)
+    ax_f.set_ylim(-0.02, min(0.85, A + 0.15))
     ax_r.set_ylim(-RESID_LIM, RESID_LIM)
 
 
-def legend_handles(A: float, beta: float, states) -> list[Line2D]:
+def legend_handles(A: float, beta: float, states, per_state: bool = True) -> list[Line2D]:
     h = [Line2D([], [], color=INK, ls="--", lw=1.4,
                 label=rf"KWW $A\,e^{{-u^\beta}}$, $A={A:.3f}$, $\beta={beta:.3f}$")]
-    for s in states:
-        if is_state(s["p0"], s["T"], HIGHLIGHT):
+    new = [s for s in states if s["_hl"]]
+    if per_state:
+        for s in new:
             h.append(Line2D([], [], color=HILITE, lw=2.2,
                             label=rf"$p_0={s['p0']:.3f}$, $T={s['T']:.5f}$, "
                                   rf"$\tau_\alpha={s['tau_kww']:.0f}$ (new)"))
+    elif new:
+        h.append(Line2D([], [], color=HILITE, lw=2.2, label=f"{len(new)} new states"))
     for s in states:
         if s["crossed_1e"] == 0:
             h.append(Line2D([], [], color=TAU_CMAP(1.0), lw=1.0, ls=":",
@@ -161,15 +167,15 @@ def legend_handles(A: float, beta: float, states) -> list[Line2D]:
     return h
 
 
-def tau_colorbar(fig, ax, norm) -> None:
-    cax = ax.inset_axes([0.58, 0.90, 0.38, 0.035])
+def tau_colorbar(fig, ax, norm, y0: float = 0.90) -> None:
+    cax = ax.inset_axes([0.58, y0, 0.38, 0.035])
     cb = fig.colorbar(ScalarMappable(norm=norm, cmap=TAU_CMAP), cax=cax, orientation="horizontal")
     cb.set_label(r"$\tau_\alpha$", fontsize=FS_NOTE, color=INK2, labelpad=1)
     cb.ax.tick_params(labelsize=FS_TICK - 2, colors=INK2)
     cb.outline.set_edgecolor(MUTED)
 
 
-def plot_all(states, A, beta, norm, out: Path) -> None:
+def plot_all(states, A, beta, norm, out: Path, tracer: str = "") -> None:
     fig = plt.figure(figsize=(14.0, 8.8))
     gs = fig.add_gridspec(6, 2, width_ratios=(1.6, 1.0), left=0.07, right=0.985,
                           top=0.95, bottom=0.15, wspace=0.27, hspace=0.25)
@@ -182,14 +188,19 @@ def plot_all(states, A, beta, norm, out: Path) -> None:
     ax_f.set_ylabel(r"$F_s^{\mathrm{CR}}$", fontsize=FS_LABEL, color=INK)
     ax_r.set_ylabel(r"$\Delta F_s$", fontsize=FS_LABEL, color=INK)
     ax_r.set_xlabel(r"$u=t/\tau_\alpha$", fontsize=FS_LABEL, color=INK)
-    ax_f.set_title(f"(a) all {len(states)} states, global KWW", fontsize=FS_TITLE, color=INK, loc="left")
+    title = f"(a) all {len(states)} states, global KWW" + (f", {tracer}" if tracer else "")
+    ax_f.set_title(title, fontsize=FS_TITLE, color=INK, loc="left")
     ax_r.text(0.01, 0.94, r"(b) residual $\Delta F_s=F_s^{\mathrm{CR}}-A\,e^{-u^\beta}$",
               transform=ax_r.transAxes, ha="left", va="top", fontsize=FS_NOTE, color=INK2)
     tau_colorbar(fig, ax_f, norm)
-    ax_f.legend(handles=legend_handles(A, beta, states), loc="lower left", fontsize=FS_LEGEND,
-                frameon=False)
+    n_new = sum(s["_hl"] for s in states)
+    ax_f.legend(handles=legend_handles(A, beta, states, per_state=n_new <= 2), loc="lower left",
+                fontsize=FS_LEGEND, frameon=False)
 
-    axes_c = [fig.add_subplot(gs[2 * k:2 * k + 2, 1]) for k in range(len(LEVELS))]
+    # shared at creation, so the x autoscale sees all levels (hot windows only reach the lowest)
+    axes_c = []
+    for k in range(len(LEVELS)):
+        axes_c.append(fig.add_subplot(gs[2 * k:2 * k + 2, 1], sharex=axes_c[0] if axes_c else None))
     for k, (ax, L) in enumerate(zip(axes_c, LEVELS)):
         style_axes(ax)
         ax.axhline(0.0, color=INK, ls="--", lw=1.0, zorder=2)
@@ -199,7 +210,7 @@ def plot_all(states, A, beta, norm, out: Path) -> None:
                 hollow = s["crossed_1e"] == 0
                 ax.plot(s["tau_kww"], s[f"off_{L:g}"], P0_MARKER[p0], ms=6.5, mew=1.2,
                         mec=P0_COLOR[p0], mfc="white" if hollow else P0_COLOR[p0], zorder=4)
-                if is_state(s["p0"], s["T"], HIGHLIGHT):
+                if s["_hl"]:
                     ax.plot(s["tau_kww"], s[f"off_{L:g}"], "o", ms=15, mfc="none", mec=HILITE,
                             mew=1.8, zorder=5)
         ax.set_xscale("log")
@@ -208,15 +219,13 @@ def plot_all(states, A, beta, norm, out: Path) -> None:
         ax.set_ylabel(rf"at $F_s^{{\mathrm{{CR}}}}={L:g}$", fontsize=FS_NOTE + 1, color=INK)
         if k < len(LEVELS) - 1:
             plt.setp(ax.get_xticklabels(), visible=False)
-        if k > 0:
-            ax.sharex(axes_c[0])
     axes_c[0].set_title(r"(c) offset $\log_{10}(u_L/u^*_L)$ [decades]", fontsize=FS_TITLE,
                         color=INK, loc="left")
     axes_c[-1].set_xlabel(r"$\tau_\alpha$", fontsize=FS_LABEL, color=INK)
     handles = [Line2D([], [], ls="", marker=P0_MARKER[p], ms=6.5, color=P0_COLOR[p],
                       label=rf"$p_0={p:.3f}$") for p in P0_ORDER]
     handles.append(Line2D([], [], ls="", marker="o", ms=11, mfc="none", mec=HILITE, mew=1.8,
-                          label="new state"))
+                          label="new state" if n_new == 1 else "new states"))
     pos = axes_c[-1].get_position()
     fig.legend(handles=handles, ncol=4, fontsize=FS_LEGEND, frameon=False, loc="lower center",
                bbox_to_anchor=(0.5 * (pos.x0 + pos.x1), 0.005), handletextpad=0.3,
@@ -250,8 +259,9 @@ def plot_by_p0(states, A, beta, norm, out: Path) -> None:
         if row == 1:
             ax_r.set_xlabel(r"$t/\tau_\alpha$", fontsize=FS_LABEL, color=INK)
         if i == 0:
-            tau_colorbar(fig, ax_f, norm)
-        if any(is_state(s["p0"], s["T"], HIGHLIGHT) for s in sub):
+            # below the highlight legend when this panel has one
+            tau_colorbar(fig, ax_f, norm, y0=0.62 if any(s["_hl"] for s in sub) else 0.90)
+        if any(s["_hl"] for s in sub):
             ax_f.legend(handles=legend_handles(A, beta, sub)[1:-1], loc="upper right",
                         fontsize=FS_LEGEND - 1, frameon=False)
     fig.savefig(out, dpi=150)
@@ -264,16 +274,20 @@ def main() -> None:
     parser.add_argument("--share", choices=("global",), default="global")
     parser.add_argument("--input", type=Path, default=OUTDIR / "Fs_combined_mean.csv")
     parser.add_argument("--outdir", type=Path, default=OUTDIR / "round2")
+    parser.add_argument("--highlight", action="append", default=None, metavar="P0,T",
+                        help="state drawn in blue and ringed; repeat for several (default 3.825,0.00487453)")
+    parser.add_argument("--tracer", default="", help="appended to the title of the all-states figure")
     args = parser.parse_args()
+    highlight = (tuple(float(v) for v in h.split(",")) for h in args.highlight) if args.highlight else HIGHLIGHT
 
     fs = pd.read_csv(args.input)
     tau_df = pd.read_csv(args.outdir / f"kww_{args.share}_tau.csv")
     A, beta = float(tau_df["A"].iloc[0]), float(tau_df["beta"].iloc[0])
-    states = build_states(fs, tau_df)
+    states = build_states(fs, tau_df, list(highlight))
     crossed = [s["tau_kww"] for s in states if s["crossed_1e"] == 1]
     norm = LogNorm(vmin=min(crossed), vmax=max(crossed), clip=True)
 
-    plot_all(states, A, beta, norm, args.outdir / f"kww_{args.share}_tail_collapse.png")
+    plot_all(states, A, beta, norm, args.outdir / f"kww_{args.share}_tail_collapse.png", args.tracer)
     plot_by_p0(states, A, beta, norm, args.outdir / f"kww_{args.share}_tail_collapse_by_p0.png")
 
     cols = [k for k in states[0] if not k.startswith("_")]
@@ -287,8 +301,7 @@ def main() -> None:
     for L in LEVELS:
         off = fit[f"off_{L:g}"].dropna()
         print(f"offset at Fs={L:g}: {off.min():+.3f} .. {off.max():+.3f} decades (n={len(off)})")
-    hl = table[[is_state(p, T, HIGHLIGHT) for p, T in zip(table["p0"], table["T"])]]
-    print(hl.to_string(index=False))
+    print(table[[s["_hl"] for s in states]].to_string(index=False))
 
 
 if __name__ == "__main__":

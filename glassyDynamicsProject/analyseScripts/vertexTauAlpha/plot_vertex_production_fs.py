@@ -56,10 +56,10 @@ def scratch_fs() -> Path:
     return root / f"N{N}" / "vertex" / "productionRuns" / "tauAlphaData"
 
 
-def load_state_points() -> list[tuple[float, float]]:
-    """Production T plus KWW-fill T (vertexModel_productionKwwFill)."""
+def load_state_points(extra: tuple[Path, ...] = ()) -> list[tuple[float, float]]:
+    """Production T plus KWW-fill T (vertexModel_productionKwwFill), then any extra state CSVs."""
     rows: list[tuple[float, float]] = []
-    for path in (CSV_STATES, CSV_FILL):
+    for path in (CSV_STATES, CSV_FILL, *extra):
         if not path.is_file():
             continue
         with path.open() as f:

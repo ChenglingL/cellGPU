@@ -4,6 +4,7 @@
 # Rows batch=fill: production CRSISF KWW tau_alpha, q=6.7 (kww_global_tau.csv).
 # Rows batch=round2: T from round-2 KWW, log tau vs 1/T. tauAlpha is the target, not a measured 1/e.
 # Default l_T1=0.01, N=4096.
+# Vertex-position production states (batches vtx1e4, vtx2e4; cells not equilibrated) are in vertexModel_vertexPositionFs/production_state_points_vtx.csv.
 p0,T,tauAlphaEst,tauAlpha,waitingTime,batch,how
 3.750,0.1507937,10,11.046405,14000,2,nearest
 3.750,0.09518981,21.5443,19.06718,14000,2,nearest
